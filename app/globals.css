@@ -4,14 +4,23 @@
   --font-sans: var(--font-outfit), system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-playfair), Georgia, serif;
   
-  --color-primary: #a17a4c;
-  --color-primary-hover: #8b6239;
-  --color-primary-light: #fbf8f3;
-  --color-primary-cream: #f6efe2;
-  --color-accent: #1c1917;
-  --color-dark-bg: #121212;
-  --color-dark-card: #1e1e1e;
-  --color-muted-gray: #78716c;
+  --color-primary: var(--theme-primary);
+  --color-primary-hover: var(--theme-primary-hover);
+  --color-primary-light: var(--theme-primary-light);
+  --color-primary-cream: var(--theme-primary-cream);
+  
+  --color-white: var(--theme-white);
+  --color-stone-50: var(--theme-stone-50);
+  --color-stone-100: var(--theme-stone-100);
+  --color-stone-200: var(--theme-stone-200);
+  --color-stone-300: var(--theme-stone-300);
+  --color-stone-400: var(--theme-stone-400);
+  --color-stone-500: var(--theme-stone-500);
+  --color-stone-600: var(--theme-stone-600);
+  --color-stone-700: var(--theme-stone-700);
+  --color-stone-800: var(--theme-stone-800);
+  --color-stone-900: var(--theme-stone-900);
+  --color-stone-950: var(--theme-stone-950);
 
   --animate-fade-in-up: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-scale-in: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -40,8 +49,27 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #1c1917;
+  /* Permanent Theme: Warm Linen & Walnut (Warm Organic Light Theme) */
+  --theme-white: #fffdfa; /* Cream surface/card background */
+  --theme-stone-50: #faf7f2; /* Linen canvas/body background */
+  --theme-stone-100: #f4ede2; /* Muted background borders/alternates */
+  --theme-stone-200: #e7dfd3; /* Borders */
+  --theme-stone-300: #c4b9a8;
+  --theme-stone-400: #a79a86;
+  --theme-stone-500: #7a6b58; /* Muted/secondary text */
+  --theme-stone-600: #5c4f3d;
+  --theme-stone-700: #493d2e;
+  --theme-stone-800: #3b3023;
+  --theme-stone-900: #2a2015; /* Deep espresso titles/headings */
+  --theme-stone-950: #120e09; /* Dark footer / top header */
+
+  --theme-primary: #b08752; /* Warm Golden Walnut accent */
+  --theme-primary-hover: #967041;
+  --theme-primary-light: #faf5ed;
+  --theme-primary-cream: #f4eae0;
+
+  --background: var(--theme-stone-50);
+  --foreground: var(--theme-stone-900);
 }
 
 body {
@@ -50,6 +78,7 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom Scrollbar */
@@ -57,35 +86,35 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--theme-stone-100);
 }
 ::-webkit-scrollbar-thumb {
-  background: #c5b39c;
+  background: var(--theme-stone-300);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a17a4c;
+  background: var(--theme-primary);
 }
 
 /* Custom Selection */
 ::selection {
-  background-color: #a17a4c;
-  color: white;
+  background-color: var(--theme-primary);
+  color: var(--theme-stone-950);
 }
 
 /* Glassmorphism utility */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.85);
+  background: color-mix(in srgb, var(--theme-white) 85%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid color-mix(in srgb, var(--theme-white) 20%, transparent);
 }
 
 .dark-glass-effect {
-  background: rgba(28, 25, 23, 0.85);
+  background: color-mix(in srgb, var(--theme-stone-950) 85%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid color-mix(in srgb, var(--theme-white) 5%, transparent);
 }
 
 /* Heading font styling helper */
@@ -99,3 +128,4 @@ body {
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+

@@ -54,6 +54,16 @@ self.addEventListener("fetch", (event) => {
   // Skip chrome extensions or other protocol requests
   if (!url.protocol.startsWith("http")) return;
 
+  // Bypass service worker caching on localhost (development environment)
+  if (
+    self.location.hostname === "localhost" ||
+    self.location.hostname === "127.0.0.1" ||
+    url.hostname === "localhost" ||
+    url.hostname === "127.0.0.1"
+  ) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {

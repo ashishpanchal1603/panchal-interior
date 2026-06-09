@@ -44,20 +44,40 @@ export default function RootLayout({
           <Footer />
           <FloatingButtons />
           <QuoteModal />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                if ('serviceWorker' in navigator) {
-                  window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('/sw.js').then(
-                      function(reg) { console.log('SW registered:', reg.scope); },
-                      function(err) { console.log('SW fail:', err); }
-                    );
-                  });
-                }
-              `
-            }}
-          />
+          {process.env.NODE_ENV === "production" ? (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', function() {
+                      navigator.serviceWorker.register('/sw.js').then(
+                        function(reg) { console.log('SW registered:', reg.scope); },
+                        function(err) { console.log('SW fail:', err); }
+                      );
+                    });
+                  }
+                `
+              }}
+            />
+          ) : (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                      for (let registration of registrations) {
+                        registration.unregister().then(function(unregistered) {
+                          if (unregistered) {
+                            console.log('SW unregistered in development:', registration.scope);
+                          }
+                        });
+                      }
+                    });
+                  }
+                `
+              }}
+            />
+          )}
         </QuoteModalProvider>
       </body>
     </html>
