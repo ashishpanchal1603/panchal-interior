@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import InteriorEstimator from "@/components/InteriorEstimator";
+import EndToEndSolutions from "@/components/EndToEndSolutions";
 import { 
   servicesData, 
   categoriesData, 
@@ -231,6 +233,12 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* 2.3 End-to-End Solutions Section */}
+      <EndToEndSolutions />
+
+      {/* 2.5 Cost Estimator Section */}
+      <InteriorEstimator />
 
       {/* 3. Why Choose Us Section */}
       <section className="py-24 bg-stone-50">

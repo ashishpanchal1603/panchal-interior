@@ -39,7 +39,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent" />
 
       {/* Hero Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 w-full pt-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 w-full pt-10  pb-20">
         <div className="max-w-2xl text-left">
           {/* Label */}
           <motion.span
@@ -86,21 +86,12 @@ export default function Hero() {
               Get Free Quote
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            {/* <a
-              href="https://wa.me/919876543210?text=Hello%20Panchal%20Interior%2C%20I'd%20like%20to%20get%20information%20about%20your%20furniture%20manufacturing%20and%20design%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 text-white font-bold py-3.5 px-7 backdrop-blur-sm transition duration-300"
-            >
-              <FaWhatsapp className="h-5 w-5 text-emerald-400" />
-              WhatsApp Us
-            </a> */}
           </motion.div>
         </div>
       </div>
 
       {/* Floating Indicators (Mock Dots from screenshot) */}
-      <div className="absolute bottom-6 right-8 z-10 flex gap-2">
+      <div className="absolute bottom-6 right-8 z-10  flex gap-2">
         <button aria-label="Slide 1" className="h-2 w-2 rounded-full bg-primary" />
         <button aria-label="Slide 2" className="h-2 w-2 rounded-full bg-white/50 hover:bg-white transition" />
         <button aria-label="Slide 3" className="h-2 w-2 rounded-full bg-white/50 hover:bg-white transition" />
