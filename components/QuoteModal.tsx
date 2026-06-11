@@ -47,7 +47,7 @@ export default function QuoteModal() {
     };
   }, [isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone) {
       alert("Please fill in your name and phone number.");
@@ -55,16 +55,40 @@ export default function QuoteModal() {
     }
 
     setLoading(true);
-    // Simulate API request
-    setTimeout(() => {
-      setLoading(false);
-      setSuccess(true);
 
-      // Auto close after 3 seconds
-      setTimeout(() => {
-        closeQuoteModal();
-      }, 3000);
-    }, 1500);
+    try {
+      const response = await fetch("/api/inquire", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          leadName: name,
+          leadPhone: phone,
+          leadEmail: email,
+          leadMessage: `${interest ? `[Interest: ${interest}] ` : ""}${message}`,
+          calcType: null,
+          details: null,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSuccess(true);
+        // Auto close after 3 seconds
+        setTimeout(() => {
+          closeQuoteModal();
+        }, 3000);
+      } else {
+        alert(data.error || "Failed to submit request. Please try again.");
+      }
+    } catch (error) {
+      console.error("Quote submit error:", error);
+      alert("Failed to send request due to connection error.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -90,7 +114,7 @@ export default function QuoteModal() {
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-stone-100 bg-stone-50 px-6 py-4">
-              <h3 className="font-serif text-xl font-bold text-stone-900">
+              <h3 className=" text-xl font-bold text-stone-900">
                 Request a Free Quote
               </h3>
               <button

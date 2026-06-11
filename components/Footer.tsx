@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Sofa, Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 import { useQuoteModal } from "./QuoteModalContext";
 import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
@@ -8,6 +10,26 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa"
 export default function Footer() {
   const { openQuoteModal } = useQuoteModal();
   const currentYear = new Date().getFullYear();
+  const router = useRouter();
+
+  const [clickCount, setClickCount] = useState(0);
+  const [lastClickTime, setLastClickTime] = useState(0);
+
+  const handleCopyrightClick = () => {
+    const now = Date.now();
+    if (now - lastClickTime > 1500) {
+      setClickCount(1);
+    } else {
+      const newCount = clickCount + 1;
+      setClickCount(newCount);
+      if (newCount >= 5) {
+        setClickCount(0);
+        router.push("/admin/login");
+      }
+    }
+    setLastClickTime(now);
+  };
+
 
   const servicesLinks = [
     { label: "Custom Furniture", href: "/services/custom-furniture" },
@@ -143,7 +165,7 @@ export default function Footer() {
 
       {/* Bottom Copyright */}
       <div className="max-w-7xl mx-auto px-5 mt-16 pt-8 border-t border-stone-900 text-xs text-stone-500 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p>© {currentYear} Panchal Interior & Furniture. All rights reserved.</p>
+        <p className="cursor-default select-none" onClick={handleCopyrightClick}>© {currentYear} Panchal Interior & Furniture. All rights reserved.</p>
         <p className="flex gap-4">
           <Link href="/contact" className="hover:text-stone-300 transition">Privacy Policy</Link>
           <span>•</span>
