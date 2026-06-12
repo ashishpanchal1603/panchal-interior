@@ -92,8 +92,8 @@ export default function InteriorEstimator() {
         calcType === "full"
           ? fullState
           : calcType === "kitchen"
-          ? kitchenState
-          : wardrobeState;
+            ? kitchenState
+            : wardrobeState;
 
       const response = await fetch("/api/inquire", {
         method: "POST",
@@ -128,7 +128,7 @@ export default function InteriorEstimator() {
   return (
     <section id="cost-estimator" className="py-24 bg-stone-50 border-y border-stone-200/50">
       <div className="max-w-7xl mx-auto px-5">
-        
+
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-primary font-bold text-xs uppercase tracking-widest bg-primary-light px-3 py-1 rounded-full border border-primary/20">
@@ -143,8 +143,8 @@ export default function InteriorEstimator() {
         </div>
 
         {/* Wizard Card Container */}
-        <div className="max-w-4xl mx-auto bg-white rounded-3xl border border-stone-100 shadow-xl overflow-hidden min-h-[520px] md:min-h-[620px] flex flex-col">
-          
+        <div className=" mx-auto bg-white rounded-3xl border border-stone-100 shadow-xl overflow-hidden min-h-[520px] md:min-h-[620px] flex flex-col">
+
           {/* Progress Bar (Visible inside active wizard flows) */}
           {calcType && !isSubmitted && (
             <div className="bg-stone-50 border-b border-stone-100 px-8 py-4 flex flex-wrap items-center justify-between gap-4 select-none">
@@ -162,21 +162,19 @@ export default function InteriorEstimator() {
                 {[1, 2, 3, 4].map((s) => (
                   <div key={s} className="flex items-center">
                     <div
-                      className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
-                        step === s
-                          ? "bg-primary text-white scale-110 shadow-sm"
-                          : step > s
+                      className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${step === s
+                        ? "bg-primary text-white scale-110 shadow-sm"
+                        : step > s
                           ? "bg-primary-cream text-primary border border-primary/20"
                           : "bg-stone-100 text-stone-400"
-                      }`}
+                        }`}
                     >
                       {s}
                     </div>
                     {s < 4 && (
                       <div
-                        className={`w-6 sm:w-12 h-0.5 transition-colors duration-300 ${
-                          step > s ? "bg-primary/50" : "bg-stone-100"
-                        }`}
+                        className={`w-6 sm:w-12 h-0.5 transition-colors duration-300 ${step > s ? "bg-primary/50" : "bg-stone-100"
+                          }`}
                       />
                     )}
                   </div>
@@ -192,7 +190,7 @@ export default function InteriorEstimator() {
           {/* Main Wizard Content Area */}
           <div className="flex-grow flex flex-col justify-center p-0">
             <AnimatePresence mode="wait">
-              
+
               {/* STEP 0: Select Calculator Type */}
               {calcType === null && (
                 <motion.div
@@ -379,7 +377,7 @@ export default function InteriorEstimator() {
           {/* Reset footer bar */}
           {calcType && !isSubmitted && (
             <div className="bg-stone-50 border-t border-stone-100 px-8 py-4 flex items-center justify-between text-xs text-stone-500 font-medium select-none">
-              <span>*Prices shown are estimates for Gota, Ahmedabad home interior services.</span>
+              <span>*Submit your specifications to get a customized estimate based on Gota, Ahmedabad factory rates.</span>
               <button
                 type="button"
                 onClick={resetEstimator}

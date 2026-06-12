@@ -98,11 +98,10 @@ export default function KitchenFlow({
                 onClick={() => handleLayoutSelect(item.id as KitchenState["layout"])}
                 onMouseEnter={() => setHoveredItem(item.id)}
                 onMouseLeave={() => setHoveredItem(null)}
-                className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[170px] md:min-h-[200px] cursor-pointer ${
-                  kitchenState.layout === item.id
-                    ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
-                    : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-                }`}
+                className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[170px] md:min-h-[200px] cursor-pointer ${kitchenState.layout === item.id
+                  ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
+                  : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                  }`}
               >
                 <div>
                   <span className="block font-bold text-stone-900 text-sm sm:text-base leading-tight">
@@ -252,11 +251,10 @@ export default function KitchenFlow({
               onClick={() => onChange({ ...kitchenState, finish: "laminate" })}
               onMouseEnter={() => setHoveredItem("laminate")}
               onMouseLeave={() => setHoveredItem(null)}
-              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[220px] md:min-h-[250px] cursor-pointer ${
-                kitchenState.finish === "laminate"
-                  ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
-                  : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-              }`}
+              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[220px] md:min-h-[250px] cursor-pointer ${kitchenState.finish === "laminate"
+                ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
+                : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                }`}
             >
               <div>
                 <span className="inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-stone-100 text-stone-600 mb-2">
@@ -267,7 +265,7 @@ export default function KitchenFlow({
                   0.8mm Merinolam/Century laminates. Scratch-proof, heat-proof, and budget-friendly. Excellent for heavy daily Indian cooking.
                 </p>
               </div>
-              <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹1,800 / running ft</span>
+              {/* <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹1,800 / running ft</span> */}
             </button>
 
             {/* Acrylic */}
@@ -276,11 +274,10 @@ export default function KitchenFlow({
               onClick={() => onChange({ ...kitchenState, finish: "acrylic" })}
               onMouseEnter={() => setHoveredItem("acrylic")}
               onMouseLeave={() => setHoveredItem(null)}
-              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[220px] md:min-h-[250px] cursor-pointer ${
-                kitchenState.finish === "acrylic"
-                  ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
-                  : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-              }`}
+              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[220px] md:min-h-[250px] cursor-pointer ${kitchenState.finish === "acrylic"
+                ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
+                : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                }`}
             >
               <div>
                 <span className="inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-primary-light text-primary mb-2">
@@ -291,7 +288,7 @@ export default function KitchenFlow({
                   1.2mm anti-scratch German acrylic doors. Sleek reflective mirror finish that makes compact kitchens look spacious and upscale.
                 </p>
               </div>
-              <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹2,900 / running ft</span>
+              {/* <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹2,900 / running ft</span> */}
             </button>
 
             {/* Glass */}
@@ -300,11 +297,10 @@ export default function KitchenFlow({
               onClick={() => onChange({ ...kitchenState, finish: "glass" })}
               onMouseEnter={() => setHoveredItem("glass")}
               onMouseLeave={() => setHoveredItem(null)}
-              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[220px] md:min-h-[250px] cursor-pointer ${
-                kitchenState.finish === "glass"
-                  ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
-                  : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-              }`}
+              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[220px] md:min-h-[250px] cursor-pointer ${kitchenState.finish === "glass"
+                ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
+                : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                }`}
             >
               <div>
                 <span className="inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-amber-50 text-amber-600 mb-2">
@@ -315,7 +311,7 @@ export default function KitchenFlow({
                   Premium dark-tinted or frosted glass panes mounted in sleek matte black aluminum profile frames. Includes interior shelf sensor lights.
                 </p>
               </div>
-              <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹4,200 / running ft</span>
+              {/* <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹4,200 / running ft</span> */}
             </button>
           </div>
 

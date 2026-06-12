@@ -14,6 +14,15 @@ import {
   ChevronUp
 } from "lucide-react";
 import { motion } from "framer-motion";
+import CustomSelect from "@/components/CustomSelect";
+
+const subjectOptions = [
+  { value: "General Inquiry", label: "General Inquiry / Information" },
+  { value: "Custom Furniture Design", label: "Custom Furniture Manufacturing" },
+  { value: "Modular Kitchen Consultation", label: "Modular Kitchen Layout Setup" },
+  { value: "Turnkey Interior Execution", label: "Full House Interior Design" },
+  { value: "Site Measurement Visit", label: "Schedule Site Measurement Visit" },
+];
 
 export default function ContactPage() {
   // Form states
@@ -268,17 +277,12 @@ export default function ContactPage() {
                   <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
                     What is this regarding?
                   </label>
-                  <select
+                  <CustomSelect
                     value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 bg-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition text-sm"
-                  >
-                    <option value="General Inquiry">General Inquiry / Information</option>
-                    <option value="Custom Furniture Design">Custom Furniture Manufacturing</option>
-                    <option value="Modular Kitchen Consultation">Modular Kitchen Layout Setup</option>
-                    <option value="Turnkey Interior Execution">Full House Interior Design</option>
-                    <option value="Site Measurement Visit">Schedule Site Measurement Visit</option>
-                  </select>
+                    onChange={setSubject}
+                    options={subjectOptions}
+                    placeholder="General Inquiry / Information"
+                  />
                 </div>
 
                 <div>

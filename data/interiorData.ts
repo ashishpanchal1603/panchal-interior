@@ -16,7 +16,7 @@ export interface Product {
   description: string;
   image: string;
   gallery: string[];
-  priceRange: string;
+  // //priceRange: string;
   features: string[];
   materials: string[];
   dimensions: string;
@@ -180,7 +180,7 @@ export const servicesData: Service[] = [
     name: "Electrical Work",
     description: "Safe, reliable, and compliant electrical installation, wiring, and architectural lighting solutions.",
     icon: "Zap",
-    image: "/images/tv_unit.png",
+    image: "/images/electrical_work.png",
     features: [
       "Concealed wiring using fire-retardant copper wires (Finolex/Polycab)",
       "Premium modular switchboard fitting (Legrand, Roma, Havells)",
@@ -205,7 +205,7 @@ export const servicesData: Service[] = [
     name: "Painting Services",
     description: "Flawless interior and exterior painting services with premium textured finishes and wall care.",
     icon: "Paintbrush",
-    image: "/images/wardrobe.png",
+    image: "/images/painting_service.png",
     features: [
       "Smooth wall preparation with double coat acrylic wall putty and primer",
       "Premium paints: Asian Paints Royal, Berger Silk, and Dulux Velvet",
@@ -245,7 +245,7 @@ export const productsData: Product[] = [
     description: "Add a touch of royalty to your living room. Built with high-density Sleepwell foam and upholstered in premium Italian velvet, this set offers luxury and ergonomic posture support.",
     image: "/images/sofa_set.png",
     gallery: ["/images/sofa_set.png", "/images/l_shape_sofa.png"],
-    priceRange: "₹45,000 - ₹65,000",
+    //priceRange: "₹45,000 - ₹65,000",
     features: ["40 Density HR Foam", "Solid Teak Wood base framing", "Includes 6 custom throw pillows", "Stain-resistant velvet fabric"],
     materials: ["Solid Teak Wood", "Sleepwell Foam", "Premium Italian Velvet Fabric"],
     dimensions: "3 Seater: 84\"W x 34\"D x 32\"H, 2 Seater: 60\"W x 34\"D x 32\"H",
@@ -258,7 +258,7 @@ export const productsData: Product[] = [
     description: "An elegant, timeless Chesterfield design with deep button tufting, rolled arms, and solid wooden legs. Perfect for modern and classic interiors alike.",
     image: "/images/l_shape_sofa.png",
     gallery: ["/images/l_shape_sofa.png", "/images/sofa_set.png"],
-    priceRange: "₹55,000 - ₹80,000",
+    //priceRange: "₹55,000 - ₹80,000",
     features: ["Deep button tufting on backrest and arms", "Solid wood turned legs", "Removable seat cushions with pocket springs", "Durable leatherette/suede option"],
     materials: ["Seasoned Pine Frame", "Pocket Spring suspension", "Premium Suede Fabric"],
     dimensions: "88\"W x 36\"D x 30\"H",
@@ -272,7 +272,7 @@ export const productsData: Product[] = [
     description: "A sleek, minimalist L-shaped corner sofa styled with light wood legs, clean lines, and soft linen blend upholstery. Complements modern apartment layouts perfectly.",
     image: "/images/l_shape_sofa.png",
     gallery: ["/images/l_shape_sofa.png", "/images/sofa_set.png"],
-    priceRange: "₹50,000 - ₹75,000",
+    //priceRange: "₹50,000 - ₹75,000",
     features: ["Reversible lounger side", "Natural beechwood tapered legs", "Breathable linen upholstery fabric", "Zippered covers for easy cleaning"],
     materials: ["Seasoned Neem wood frame", "Natural Beechwood legs", "Linen Blend Fabric", "Soft Microfiber filling"],
     dimensions: "96\"W x 62\"D (chaiselongue) x 33\"H",
@@ -286,7 +286,7 @@ export const productsData: Product[] = [
     description: "A gorgeous modern wall-mounted entertainment center. Features a high-definition white marble back panel with oak veneer shelves, warm LED cove lighting, and spacious drawers.",
     image: "/images/tv_unit.png",
     gallery: ["/images/tv_unit.png", "/images/hero.png"],
-    priceRange: "₹28,000 - ₹42,000",
+    //priceRange: "₹28,000 - ₹42,000",
     features: ["Wall-mounted space-saving design", "Integrated cable management channels", "Soft-close hydraulic drawer runners", "Pre-wired LED strip channels"],
     materials: ["Action Tesa HDMR Board", "Oak Veneer", "Italian Quartz Back Panel", "Hafele Drawer Slides"],
     dimensions: "72\"W x 14\"D x 60\"H",
@@ -300,7 +300,7 @@ export const productsData: Product[] = [
     description: "A sleek 3-door wardrobe with sliding profile glass shutters, dynamic interior layout, built-in dresser unit, drawer lockers, and custom smart LED hanging rods.",
     image: "/images/wardrobe.png",
     gallery: ["/images/wardrobe.png", "/images/wooden_bed.png"],
-    priceRange: "₹65,000 - ₹95,000",
+    //priceRange: "₹65,000 - ₹95,000",
     features: ["Heavy-duty anti-jump slider tracks", "Smoked profile glass doors with metal frame", "Built-in jewelry lock drawer", "Sensor lights that light up when opened"],
     materials: ["Waterproof Plywood", "High-Gloss Acrylic Laminate", "Aluminium Profile Shutter Frame", "Hettich Sliding hardware"],
     dimensions: "96\"W x 24\"D x 96\"H",
@@ -314,7 +314,7 @@ export const productsData: Product[] = [
     description: "Experience the strength of solid teak wood combined with massive storage space. Built with heavy duty hydraulic gas lift pistons, accessing storage is smooth and effortless.",
     image: "/images/wooden_bed.png",
     gallery: ["/images/wooden_bed.png", "/images/wardrobe.png"],
-    priceRange: "₹50,000 - ₹75,000",
+    //priceRange: "₹50,000 - ₹75,000",
     features: ["150kg heavy capacity hydraulic gas lift pistons", "Solid Teak wood headboard with fabric cushion", "Reinforced iron frame support", "Termite treated base"],
     materials: ["CP Teak Wood", "Waterproof Marine Plywood base", "Fabric Tufted Headboard Cushion", "Gas-lift mechanisms"],
     dimensions: "King Size: 78\"L x 72\"W x 48\"H (headboard)",
@@ -328,7 +328,7 @@ export const productsData: Product[] = [
     description: "A super premium modular kitchen utilizing factory-finished high-gloss acrylic panels. Features smart soft-close drawers, pull-out pantry, quartz countertop, and integrated profile handles.",
     image: "/images/modular_kitchen.png",
     gallery: ["/images/modular_kitchen.png", "/images/hero.png"],
-    priceRange: "₹1,80,000 - ₹3,50,000",
+    //priceRange: "₹1,80,000 - ₹3,50,000",
     features: ["Seamless edgebanded acrylic shutters", "BWP grade waterproof plywood carcasses", "Hafele tandem boxes with soft-close warranty", "Dedicated tall unit pantry storage"],
     materials: ["Boiling Water Proof Marine Plywood", "High Gloss Acrylic sheets", "Premium Quartz countertop", "Hettich soft-close hardware"],
     dimensions: "Customized to fit individual site layouts",

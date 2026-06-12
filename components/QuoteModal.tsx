@@ -4,6 +4,24 @@ import { useState, useEffect } from "react";
 import { useQuoteModal } from "./QuoteModalContext";
 import { X, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import CustomSelect from "./CustomSelect";
+
+const interestOptions = [
+  { value: "", label: "General Inquiry / Custom Project" },
+  { value: "Custom Furniture", label: "Custom Furniture" },
+  { value: "Sofa Manufacturing", label: "Sofa Manufacturing" },
+  { value: "Modular Kitchen", label: "Modular Kitchen" },
+  { value: "Interior Design", label: "Interior Design" },
+  { value: "Electrical Work", label: "Electrical Work" },
+  { value: "Painting Services", label: "Painting Services" },
+  { value: "Royal Velvet Sofa Set", label: "Royal Velvet Sofa Set" },
+  { value: "Classic Chesterfield Sofa", label: "Classic Chesterfield Sofa" },
+  { value: "Scandinavian L-Shape Sectional", label: "Scandinavian L-Shape Sectional" },
+  { value: "Floating Oak & Marble TV Console", label: "Floating Oak & Marble TV Console" },
+  { value: "Luxurious Glass Profile Sliding Wardrobe", label: "Glass Profile Sliding Wardrobe" },
+  { value: "Premium Teak Wood Hydraulic Storage Bed", label: "Teak Wood Hydraulic Bed" },
+  { value: "German High-Gloss Acrylic Kitchen", label: "German Acrylic Modular Kitchen" },
+];
 
 export default function QuoteModal() {
   const { isOpen, closeQuoteModal, prefilledItem } = useQuoteModal();
@@ -94,7 +112,7 @@ export default function QuoteModal() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -110,10 +128,10 @@ export default function QuoteModal() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ type: "spring", duration: 0.4 }}
-            className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl z-10 border border-stone-100"
+            className="relative w-full max-w-lg rounded-2xl bg-white shadow-2xl z-10 border border-stone-100 my-8 sm:my-0"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-stone-100 bg-stone-50 px-6 py-4">
+            <div className="flex items-center justify-between border-b border-stone-100 bg-stone-50 px-6 py-4 rounded-t-2xl">
               <h3 className=" text-xl font-bold text-stone-900">
                 Request a Free Quote
               </h3>
@@ -197,26 +215,12 @@ export default function QuoteModal() {
                     <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
                       Interested In
                     </label>
-                    <select
+                    <CustomSelect
                       value={interest}
-                      onChange={(e) => setInterest(e.target.value)}
-                      className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 bg-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition"
-                    >
-                      <option value="">General Inquiry / Custom Project</option>
-                      <option value="Custom Furniture">Custom Furniture</option>
-                      <option value="Sofa Manufacturing">Sofa Manufacturing</option>
-                      <option value="Modular Kitchen">Modular Kitchen</option>
-                      <option value="Interior Design">Interior Design</option>
-                      <option value="Electrical Work">Electrical Work</option>
-                      <option value="Painting Services">Painting Services</option>
-                      <option value="Royal Velvet Sofa Set">Royal Velvet Sofa Set</option>
-                      <option value="Classic Chesterfield Sofa">Classic Chesterfield Sofa</option>
-                      <option value="Scandinavian L-Shape Sectional">Scandinavian L-Shape Sectional</option>
-                      <option value="Floating Oak & Marble TV Console">Floating Oak & Marble TV Console</option>
-                      <option value="Luxurious Glass Profile Sliding Wardrobe">Glass Profile Sliding Wardrobe</option>
-                      <option value="Premium Teak Wood Hydraulic Storage Bed">Teak Wood Hydraulic Bed</option>
-                      <option value="German High-Gloss Acrylic Kitchen">German Acrylic Modular Kitchen</option>
-                    </select>
+                      onChange={setInterest}
+                      options={interestOptions}
+                      placeholder="General Inquiry / Custom Project"
+                    />
                   </div>
 
                   <div>

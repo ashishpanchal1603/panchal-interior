@@ -213,13 +213,13 @@ export default function EndToEndSolutions() {
   return (
     <section className="py-24 bg-white border-b border-stone-100">
       <div className="max-w-7xl mx-auto px-5 text-center">
-        
+
         {/* Header */}
         <div className="max-w-2xl mx-auto mb-16">
           <span className="text-primary font-bold text-xs uppercase tracking-widest bg-primary-light px-3 py-1 rounded-full border border-primary/20">
             What We Do
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 mt-4 leading-tight">
+          <h2 className=" text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 mt-4 leading-tight">
             End-to-End Interior Solutions
           </h2>
           <p className="text-stone-500 text-sm sm:text-base mt-4">
@@ -238,14 +238,14 @@ export default function EndToEndSolutions() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: idx * 0.03 }}
-                onClick={() => openQuoteModal(item.name)}
+                // onClick={() => openQuoteModal(item.name)}
                 className="group p-6 rounded-2xl border border-stone-200/50 hover:border-primary/40 bg-white hover:bg-stone-50/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer text-center justify-between"
               >
                 {/* Icon Container */}
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-light text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 border border-primary/10 shadow-sm">
                   <IconComponent className="h-10 w-10 transition-transform duration-300 group-hover:scale-110" />
                 </div>
-                
+
                 {/* Details */}
                 <div className="mt-4 flex-grow flex flex-col justify-between w-full">
                   <div>
@@ -256,10 +256,10 @@ export default function EndToEndSolutions() {
                       {item.description}
                     </p>
                   </div>
-                  
-                  <div className="mt-4 flex items-center justify-center gap-1 text-[10px] font-bold text-primary opacity-30 group-hover:opacity-100 transition-opacity">
+
+                  {/* <div className="mt-4 flex items-center justify-center gap-1 text-[10px] font-bold text-primary opacity-30 group-hover:opacity-100 transition-opacity">
                     Inquire <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             );

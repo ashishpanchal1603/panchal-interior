@@ -69,17 +69,18 @@ export default function LeadForm({
 
         <div className="relative z-10 space-y-6">
           <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
-            Estimated Range
+            Estimation Status
           </span>
 
           <div>
-            <h4 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              {formatPrice(priceRange.low)}
-              <span className="text-stone-500 text-base font-normal block mt-1">to</span>
-              {formatPrice(priceRange.high)}
+            <h4 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Calculation Ready!
             </h4>
-            <p className="text-[11px] text-stone-400 mt-3 leading-relaxed">
-              *Estimated price includes basic carpentry, core BWR material carcasses, hinges, edgeband gluing, and on-site alignment. Exact prices depend on final measurements and appliance choices.
+            <p className="text-stone-300 text-xs mt-3 leading-relaxed">
+              Submit your inquiry to calculate and unlock your custom budget estimate.
+            </p>
+            <p className="text-[11px] text-stone-500 mt-3 leading-relaxed">
+              *Our estimate will include basic carpentry, core BWR material carcasses, hinges, edgeband gluing, and on-site alignment, customized specifically for your selection.
             </p>
           </div>
 

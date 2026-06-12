@@ -57,12 +57,9 @@ export default function SuccessState({
           Estimation Submitted!
         </h3>
         <p className="text-stone-500 text-sm mt-3 leading-relaxed">
-          Thank you, <span className="font-bold text-stone-850">{leadName}</span>. Your estimate of{" "}
-          <span className="font-bold text-primary">
-            {formatPrice(priceRange.low)} - {formatPrice(priceRange.high)}
-          </span>{" "}
-          has been logged. Our design engineer will reach out to you within 24 hours at{" "}
-          <span className="font-bold text-stone-850">{leadPhone}</span> to arrange a free on-site measurement verification.
+          Thank you, <span className="font-bold text-stone-850">{leadName}</span>. Your custom configuration has been logged successfully. 
+          Our design engineer will analyze your requirements and reach out to you within 24 hours at{" "}
+          <span className="font-bold text-stone-850">{leadPhone}</span> to share your detailed budget estimate and arrange a free on-site measurement verification.
         </p>
       </div>
 

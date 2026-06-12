@@ -24,7 +24,7 @@ export default function FullHomeFlow({
     const allowedScopes = getAvailableScopes(bhkId);
     // Filter active scopes to only keep allowed ones
     const filteredScope = fullState.scope.filter((s) => allowedScopes.includes(s));
-    
+
     // Ensure at least one valid scope is selected by default if previous selection was cleared
     const finalScope = filteredScope.length > 0 ? filteredScope : [allowedScopes[0]];
 
@@ -67,7 +67,7 @@ export default function FullHomeFlow({
           className="space-y-8"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-2xl font-bold text-stone-900">Select your BHK Type</h3>
+            <h3 className=" text-2xl font-bold text-stone-900">Select your BHK Type</h3>
             <p className="text-stone-500 text-sm mt-1">
               Please select the overall size configuration of your property.
             </p>
@@ -87,11 +87,10 @@ export default function FullHomeFlow({
                 key={item.id}
                 type="button"
                 onClick={() => handleBhkSelect(item.id)}
-                className={`p-5 text-left border rounded-xl transition duration-200 cursor-pointer ${
-                  fullState.bhk === item.id
-                    ? "border-primary bg-primary-light/35 shadow-sm ring-1 ring-primary"
-                    : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-                }`}
+                className={`p-5 text-left border rounded-xl transition duration-200 cursor-pointer ${fullState.bhk === item.id
+                  ? "border-primary bg-primary-light/35 shadow-sm ring-1 ring-primary"
+                  : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                  }`}
               >
                 <span className="block font-bold text-stone-900">{item.title}</span>
                 <span className="block text-stone-400 text-xs mt-1">{item.desc}</span>
@@ -130,11 +129,10 @@ export default function FullHomeFlow({
             <button
               type="button"
               onClick={() => onChange({ ...fullState, packageTier: "essentials" })}
-              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[260px] md:min-h-[290px] cursor-pointer ${
-                fullState.packageTier === "essentials"
-                  ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
-                  : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-              }`}
+              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[260px] md:min-h-[290px] cursor-pointer ${fullState.packageTier === "essentials"
+                ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
+                : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                }`}
             >
               <div>
                 <span className="inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-stone-100 text-stone-600 mb-2">
@@ -156,11 +154,10 @@ export default function FullHomeFlow({
             <button
               type="button"
               onClick={() => onChange({ ...fullState, packageTier: "premium" })}
-              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[260px] md:min-h-[290px] relative cursor-pointer ${
-                fullState.packageTier === "premium"
-                  ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
-                  : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-              }`}
+              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[260px] md:min-h-[290px] relative cursor-pointer ${fullState.packageTier === "premium"
+                ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
+                : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                }`}
             >
               <span className="absolute -top-2.5 left-4 inline-block bg-primary text-white px-2.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider shadow-sm">
                 Most Popular
@@ -185,11 +182,10 @@ export default function FullHomeFlow({
             <button
               type="button"
               onClick={() => onChange({ ...fullState, packageTier: "elite" })}
-              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[260px] md:min-h-[290px] cursor-pointer ${
-                fullState.packageTier === "elite"
-                  ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
-                  : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-              }`}
+              className={`p-4 sm:p-5 text-left border rounded-xl flex flex-col justify-between transition h-auto min-h-[260px] md:min-h-[290px] cursor-pointer ${fullState.packageTier === "elite"
+                ? "border-primary bg-primary-light/35 shadow-md ring-1 ring-primary"
+                : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                }`}
             >
               <div>
                 <span className="inline-block px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-amber-50 text-amber-600 mb-2">
@@ -246,7 +242,7 @@ export default function FullHomeFlow({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { id: "living", title: "Living Room Design", desc: "TV Panel, Sofa Set, Wallpaper, Ceiling", pct: "25%" },
+              { id: "living", title: "Living Home Design", desc: "TV Panel, Sofa Set, Wallpaper, Ceiling", pct: "25%" },
               { id: "master", title: "Master Bedroom", desc: "Teak Bed, Hydraulic Storage, Sliding Wardrobe", pct: "25%" },
               { id: "kids", title: "Kids Bedroom", desc: "Bed, Wardrobe, Integrated Study Console", pct: "20%" },
               { id: "kitchen", title: "Modular Kitchen", desc: "Soft-Close Cabinets, Baskets, Chimney", pct: "20%" },
@@ -262,11 +258,10 @@ export default function FullHomeFlow({
                     onClick={() => toggleScope(item.id)}
                     onMouseEnter={() => setHoveredItem(item.id)}
                     onMouseLeave={() => setHoveredItem(null)}
-                    className={`p-5 text-left border rounded-xl flex justify-between items-start transition duration-200 cursor-pointer ${
-                      isSelected
-                        ? "border-primary bg-primary-light/35 shadow-sm ring-1 ring-primary"
-                        : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
-                    }`}
+                    className={`p-5 text-left border rounded-xl flex justify-between items-start transition duration-200 cursor-pointer ${isSelected
+                      ? "border-primary bg-primary-light/35 shadow-sm ring-1 ring-primary"
+                      : "border-stone-200 hover:border-stone-300 hover:bg-stone-50/50"
+                      }`}
                   >
                     <div>
                       <span className="block font-bold text-stone-900 text-sm sm:text-base">{item.title}</span>

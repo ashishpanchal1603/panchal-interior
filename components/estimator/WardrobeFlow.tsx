@@ -200,7 +200,7 @@ export default function WardrobeFlow({
                   0.8mm Century woodgrain or linen textured laminates. Highly scratch resistant and easy to clean. Perfect for standard wardrobes.
                 </p>
               </div>
-              <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹450 / sq.ft</span>
+              {/* <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹450 / sq.ft</span> */}
             </button>
 
             {/* Acrylic */}
@@ -223,7 +223,7 @@ export default function WardrobeFlow({
                   1.2mm acrylic sheets with mirror-like luster. Gives bedrooms a luxurious, shiny reflective surface that enhances visual space.
                 </p>
               </div>
-              <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹680 / sq.ft</span>
+              {/* <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹680 / sq.ft</span> */}
             </button>
 
             {/* Glass */}
@@ -246,7 +246,7 @@ export default function WardrobeFlow({
                   Toughened smoked, black glass shutters in champagne gold or black aluminum frames. Includes sensor interior LED hanger rod lights.
                 </p>
               </div>
-              <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹950 / sq.ft</span>
+              {/* <span className="text-xs text-primary font-bold mt-3 border-t border-stone-100 pt-2">₹950 / sq.ft</span> */}
             </button>
           </div>
 
