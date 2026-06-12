@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useQuoteModal } from "./QuoteModalContext";
@@ -191,6 +192,7 @@ interface SolutionItem {
 
 export default function EndToEndSolutions() {
   const { openQuoteModal } = useQuoteModal();
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   const solutions: SolutionItem[] = [
     { id: "kitchen", name: "Modular Kitchen", icon: KitchenIcon, description: "Custom layouts, soft-close hardware & acrylic finishes" },
@@ -231,6 +233,7 @@ export default function EndToEndSolutions() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 mt-16">
           {solutions.map((item, idx) => {
             const IconComponent = item.icon;
+            const isActive = activeId === item.id;
             return (
               <motion.div
                 key={item.id}
@@ -238,28 +241,38 @@ export default function EndToEndSolutions() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: idx * 0.03 }}
-                // onClick={() => openQuoteModal(item.name)}
-                className="group p-6 rounded-2xl border border-stone-200/50 hover:border-primary/40 bg-white hover:bg-stone-50/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center cursor-pointer text-center justify-between"
+                onClick={() => setActiveId(isActive ? null : item.id)}
+                className={`group p-6 rounded-2xl border transition-all duration-300 flex flex-col items-center cursor-pointer text-center justify-between shadow-sm hover:shadow-lg ${
+                  isActive
+                    ? "border-primary bg-stone-50/50"
+                    : "border-stone-200/50 hover:border-primary/40 bg-white hover:bg-stone-50/50"
+                }`}
               >
                 {/* Icon Container */}
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-light text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 border border-primary/10 shadow-sm">
+                <div className={`flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-300 border shadow-sm ${
+                  isActive
+                    ? "bg-primary text-white border-primary"
+                    : "bg-primary-light text-primary group-hover:bg-primary group-hover:text-white border-primary/10"
+                }`}>
                   <IconComponent className="h-10 w-10 transition-transform duration-300 group-hover:scale-110" />
                 </div>
 
                 {/* Details */}
                 <div className="mt-4 flex-grow flex flex-col justify-between w-full">
                   <div>
-                    <h3 className="font-bold text-stone-900 text-sm sm:text-base leading-tight group-hover:text-primary transition">
+                    <h3 className={`font-bold text-sm sm:text-base leading-tight transition ${
+                      isActive ? "text-primary" : "text-stone-900 group-hover:text-primary"
+                    }`}>
                       {item.name}
                     </h3>
-                    <p className="text-stone-400 text-[10px] sm:text-xs mt-2 leading-relaxed opacity-0 group-hover:opacity-100 h-0 group-hover:h-auto overflow-hidden transition-all duration-350">
+                    <p className={`text-stone-400 text-[10px] sm:text-xs mt-2 leading-relaxed transition-all duration-350 ${
+                      isActive
+                        ? "opacity-100 h-auto overflow-visible"
+                        : "opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto overflow-hidden"
+                    }`}>
                       {item.description}
                     </p>
                   </div>
-
-                  {/* <div className="mt-4 flex items-center justify-center gap-1 text-[10px] font-bold text-primary opacity-30 group-hover:opacity-100 transition-opacity">
-                    Inquire <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
-                  </div> */}
                 </div>
               </motion.div>
             );
