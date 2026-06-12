@@ -16,7 +16,7 @@ export interface Product {
   description: string;
   image: string;
   gallery: string[];
-  // //priceRange: string;
+  priceRange?: string;
   features: string[];
   materials: string[];
   dimensions: string;

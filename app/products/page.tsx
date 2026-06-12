@@ -165,9 +165,7 @@ function ProductsCatalog() {
                           sizes="(max-w-7xl) 33vw, 50vw"
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        <span className="absolute top-3 right-3 text-[10px] font-bold text-stone-900 bg-white/95 px-2 py-0.5 rounded shadow-sm">
-                          {product.priceRange}
-                        </span>
+
                       </div>
 
                       {/* Info Panel */}

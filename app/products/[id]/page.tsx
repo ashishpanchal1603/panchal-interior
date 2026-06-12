@@ -108,10 +108,8 @@ export default function ProductDetailPage({
               {product.name}
             </h1>
             
-            {/* Price & Stock info */}
+            {/* Stock info */}
             <div className="flex flex-wrap items-center gap-4 mt-4">
-              <span className="text-2xl font-black text-stone-900">{product.priceRange}</span>
-              <span className="text-stone-400">|</span>
               <span className="flex items-center gap-1.5 text-xs text-stone-600">
                 <BadgeCheck className="h-4.5 w-4.5 text-emerald-500" />
                 Custom sizes & wood polishes available
