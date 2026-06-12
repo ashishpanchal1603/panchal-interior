@@ -376,6 +376,76 @@ export const projectsData: Project[] = [
     image: "/images/tv_unit.png",
     gallery: ["/images/tv_unit.png", "/images/sofa_set.png"],
     description: "Dynamic workspace styling with customized partition panels, teak wood executive conference tables, elegant reception lounge, and custom glass cabinetry."
+  },
+  {
+    id: "proj-gota-penthouse",
+    title: "Gota Luxury Penthouse",
+    category: "Residential",
+    location: "Gota, Ahmedabad",
+    year: "2025",
+    image: "/images/interior_3bhk.png",
+    gallery: ["/images/interior_3bhk.png", "/images/wardrobe_walkin.png", "/images/wooden_bed.png"],
+    description: "Spacious duplex penthouse interior execution featuring premium veneer ceilings, custom walk-in closets, false ceilings with cove lights, and custom hand-carved teak wood doors."
+  },
+  {
+    id: "proj-thaltej-kitchen",
+    title: "High-Gloss U-Shape Kitchen",
+    category: "Kitchen",
+    location: "Thaltej, Ahmedabad",
+    year: "2025",
+    image: "/images/kitchen_ushape.png",
+    gallery: ["/images/kitchen_ushape.png", "/images/kitchen_parallel.png"],
+    description: "A complete U-shaped modular kitchen layout with high-gloss German acrylic shutters, durable BWP marine plywood carcass, premium quartz countertop, and integrated profile handles."
+  },
+  {
+    id: "proj-science-city-villa",
+    title: "Contemporary 5BHK Villa",
+    category: "Residential",
+    location: "Science City, Ahmedabad",
+    year: "2024",
+    image: "/images/interior_2bhk.png",
+    gallery: ["/images/interior_2bhk.png", "/images/sofa_set.png", "/images/wooden_bed.png"],
+    description: "Full turnkey custom woodworks and styling for a modern 5BHK villa. Features Sleepwell foam customized sofa sets, hydraulic storage beds, and detailed TV paneling in the living lounge."
+  },
+  {
+    id: "proj-sindhu-bhavan-office",
+    title: "Sindhu Bhavan Corporate Suite",
+    category: "Commercial",
+    location: "Sindhu Bhavan Road, Ahmedabad",
+    year: "2025",
+    image: "/images/hero.png",
+    gallery: ["/images/hero.png", "/images/tv_unit.png"],
+    description: "High-end corporate office interior styling. Incorporates acoustic fluted wall panels, conference tables crafted from premium teak wood logs, and modern concealed lighting fixtures."
+  },
+  {
+    id: "proj-vastrapur-apartment",
+    title: "Cozy 2BHK Renovation",
+    category: "Residential",
+    location: "Vastrapur, Ahmedabad",
+    year: "2024",
+    image: "/images/interior_1bhk.png",
+    gallery: ["/images/interior_1bhk.png", "/images/wardrobe_sliding.png"],
+    description: "Renovation of a 2BHK flat. Optimized for compact living with space-saving custom sliding wardrobes, straight kitchen modular cabins, and dual-purpose living room sofa-cum-beds."
+  },
+  {
+    id: "proj-bodakdev-wardrobe",
+    title: "Walk-In Glass Wardrobe Suite",
+    category: "Residential",
+    location: "Bodakdev, Ahmedabad",
+    year: "2025",
+    image: "/images/wardrobe_walkin.png",
+    gallery: ["/images/wardrobe_walkin.png", "/images/wardrobe_sliding.png"],
+    description: "Bespoke glass profile wardrobe setup in a master bedroom dressing suite. Engineered with champagne-gold metal profile shutters, smoked glass doors, and internal automatic sensor LED hanger rods."
+  },
+  {
+    id: "proj-south-bopal-lounge",
+    title: "Minimalist Lounge & TV Hub",
+    category: "Residential",
+    location: "South Bopal, Ahmedabad",
+    year: "2024",
+    image: "/images/tv_unit.png",
+    gallery: ["/images/tv_unit.png", "/images/l_shape_sofa.png"],
+    description: "Custom living lounge room featuring white Italian marble TV unit back paneling, floating oak shelves, hidden LED strip lights, and a low-profile fabric L-shape sofa."
   }
 ];
 
