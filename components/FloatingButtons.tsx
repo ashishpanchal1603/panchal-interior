@@ -32,7 +32,7 @@ export default function FloatingButtons() {
     <>
       {/* WhatsApp Button (Bottom Left) */}
       <a
-        href="https://wa.me/919876543210?text=Hello%20Panchal%20Interior%2C%20I'm%20interested%20in%20your%20interior%20design%20and%20furniture%20services.%20Could%20we%20connect%3F"
+        href="https://wa.me/919664956491?text=Hello%20Panchal%20Interior%2C%20I'm%20interested%20in%20your%20interior%20design%20and%20furniture%20services.%20Could%20we%20connect%3F"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"

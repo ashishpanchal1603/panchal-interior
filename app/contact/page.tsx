@@ -137,7 +137,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">Hotline Contact</span>
-                  <a href="tel:+919876543210" className="block text-stone-900 font-bold hover:text-primary transition mt-1">
+                  <a href="tel:+919925111438" className="block text-stone-900 font-bold hover:text-primary transition mt-1">
                     +91 9925111438
                   </a>
                 </div>

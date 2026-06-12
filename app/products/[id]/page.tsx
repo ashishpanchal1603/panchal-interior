@@ -160,7 +160,7 @@ export default function ProductDetailPage({
           {/* Direct CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 border-t border-stone-100 pt-8">
             <a
-              href={`https://wa.me/919876543210?text=${waMessage}`}
+              href={`https://wa.me/919925111438?text=${waMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-6 shadow-md transition duration-300"

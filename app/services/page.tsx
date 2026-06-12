@@ -168,10 +168,10 @@ export default function ServicesPage() {
               onClick={() => openQuoteModal()}
               className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-5 text-sm cursor-pointer"
             >
-              Consult Rajesh Panchal
+              Consult Bechar Panchal
             </button>
             <a
-              href="tel:+919876543210"
+              href="tel:+919925111438"
               className="rounded-lg border border-stone-700 hover:bg-stone-850 text-stone-300 font-bold py-2.5 px-5 text-sm"
             >
               Call Hotline
