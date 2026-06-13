@@ -193,7 +193,7 @@ export default function QuoteModal() {
                         required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        placeholder="e.g. +91 9925111438"
+                        placeholder="e.g. +91 96649 56491"
                         className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition"
                       />
                     </div>

@@ -191,7 +191,7 @@ export default function ServiceDetailPage({
             </button>
             
             <a
-              href="tel:+919925111438"
+              href="tel:+919664956491"
               className="block w-full text-center mt-3 text-xs text-stone-400 hover:text-white underline transition relative z-10"
             >
               Call for quick booking

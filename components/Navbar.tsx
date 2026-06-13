@@ -165,7 +165,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-6">
 
           <a
-            href="tel:+919925111438"
+            href="tel:+919664956491"
             className="flex items-center gap-3 group"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition">
@@ -178,7 +178,7 @@ export default function Navbar() {
               </span>
 
               <span className="block font-bold group-hover:text-primary transition">
-                +91 9925111438
+                +91 96649 56491
               </span>
             </div>
           </a>

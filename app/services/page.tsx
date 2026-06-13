@@ -171,7 +171,7 @@ export default function ServicesPage() {
               Consult Bechar Panchal
             </button>
             <a
-              href="tel:+919925111438"
+              href="tel:+919664956491"
               className="rounded-lg border border-stone-700 hover:bg-stone-850 text-stone-300 font-bold py-2.5 px-5 text-sm"
             >
               Call Hotline

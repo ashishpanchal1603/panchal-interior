@@ -36,7 +36,7 @@ export default function FloatingButtons() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        className="fixed bottom-6 left-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg transition duration-300 hover:bg-emerald-600 hover:scale-110 active:scale-95"
+        className="fixed bottom-6 left-6 z-40 hidden md:flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg transition duration-300 hover:bg-emerald-600 hover:scale-110 active:scale-95"
       >
         <FaWhatsapp className="h-8 w-8" />
         <span className="absolute -top-1 -right-1 flex h-4 w-4">
@@ -54,7 +54,7 @@ export default function FloatingButtons() {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-white shadow-lg transition duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+            className="fixed bottom-24 md:bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-white shadow-lg transition duration-300 hover:scale-110 active:scale-95 cursor-pointer"
           >
             <ArrowUp className="h-5 w-5" />
           </motion.button>

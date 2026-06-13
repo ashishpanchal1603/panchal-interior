@@ -81,7 +81,7 @@ export default function Footer() {
             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
               <FaYoutube className="h-4 w-4" />
             </a>
-            <a href="https://wa.me/919925111438" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
+            <a href="https://wa.me/919664956491" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
               <FaWhatsapp className="h-4 w-4" />
             </a>
           </div>
@@ -135,8 +135,8 @@ export default function Footer() {
             </li>
             <li className="flex gap-3 items-center">
               <Phone className="h-5 w-5 text-primary shrink-0" />
-              <a href="tel:+919925111438" className="hover:text-white transition font-semibold text-white">
-                +91 9925111438
+              <a href="tel:+919664956491" className="hover:text-white transition font-semibold text-white">
+                +91 96649 56491
               </a>
             </li>
             <li className="flex gap-3 items-center">

@@ -5,6 +5,7 @@ import { Outfit, Playfair_Display } from "next/font/google";
 import QuoteModal from "@/components/QuoteModal";
 import QuoteModalProvider from "@/components/QuoteModalContext";
 import FloatingButtons from "@/components/FloatingButtons";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
           <FloatingButtons />
+          <MobileBottomNav />
           <QuoteModal />
           {process.env.NODE_ENV === "production" ? (
             <script

@@ -155,7 +155,7 @@ export async function POST(request: Request) {
       console.log("💬 Attempting to send Telegram notification...");
       const botToken = process.env.TELEGRAM_BOT_TOKEN;
       const chatId = process.env.TELEGRAM_CHAT_ID;
-      
+
       const telegramMessage = `✨ *New Lead Received* ✨\n\n` +
         `👤 *Name:* ${leadName}\n` +
         `📞 *Phone:* ${leadPhone}\n` +
@@ -175,7 +175,7 @@ export async function POST(request: Request) {
           parse_mode: "Markdown",
         }),
       });
-      
+
       if (response.ok) {
         telegramSent = true;
         console.log("✅ Telegram message sent successfully!");
