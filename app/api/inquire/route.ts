@@ -134,28 +134,33 @@ export async function POST(request: Request) {
 
     // 2. Dispatch SMTP Email Alert
     let emailSent = false;
-    if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS && process.env.RECEIVER_EMAIL) {
-      console.log("📨 Attempting to send email via SMTP...");
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 465,
-        secure: Number(process.env.SMTP_PORT) === 465,
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
+    try {
+      if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS && process.env.RECEIVER_EMAIL) {
+        console.log("📨 Attempting to send email via SMTP...");
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST,
+          port: Number(process.env.SMTP_PORT) || 465,
+          secure: Number(process.env.SMTP_PORT) === 465,
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+          },
+        });
 
-      await transporter.sendMail({
-        from: `"Panchal Interior Lead" <${process.env.SMTP_USER}>`,
-        to: process.env.RECEIVER_EMAIL,
-        subject: emailSubject,
-        html: emailHtml,
-      });
-      emailSent = true;
-      console.log(`✅ Email sent successfully to ${process.env.RECEIVER_EMAIL}`);
-    } else {
-      console.warn("⚠️ SMTP email notification skipped: Missing SMTP environment variables in .env.local.");
+        await transporter.sendMail({
+          from: `"Panchal Interior Lead" <${process.env.SMTP_USER}>`,
+          to: process.env.RECEIVER_EMAIL,
+          subject: emailSubject,
+          html: emailHtml,
+        });
+        emailSent = true;
+        console.log(`✅ Email sent successfully to ${process.env.RECEIVER_EMAIL}`);
+      } else {
+        console.warn("⚠️ SMTP email notification skipped: Missing SMTP environment variables in .env.local.");
+      }
+    } catch (smtpError: any) {
+      console.error("❌ SMTP email notification failed:", smtpError);
+      // Catching the SMTP error prevents email credential problems from breaking the client lead submission flow.
     }
 
     // 3. Dispatch Telegram Notification (Instant Text notification)
