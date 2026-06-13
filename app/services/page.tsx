@@ -1,24 +1,30 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { servicesData } from "@/data/interiorData";
-import { 
-  Sofa, 
-  CookingPot, 
-  Palette, 
-  Zap, 
-  Paintbrush, 
+import {
+  Sofa,
+  CookingPot,
+  Palette,
+  Zap,
+  Paintbrush,
   Armchair,
   ArrowRight,
-  Check
+  Check,
 } from "lucide-react";
-import { useQuoteModal } from "@/components/QuoteModalContext";
-import { motion } from "framer-motion";
+import BookConsultationButton from "@/components/BookConsultationButton";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Professional Furniture & Interior Services",
+  description:
+    "We provide modular kitchen setup, customized sofa manufacturing, wardrobes, custom solid wood furniture, electrical design, and premium painting services in Ahmedabad.",
+  alternates: {
+    canonical: "https://panchalinterior.com/services",
+  },
+};
 
 export default function ServicesPage() {
-  const { openQuoteModal } = useQuoteModal();
-
   const getServiceIcon = (iconName: string) => {
     const iconClass = "h-7 w-7 text-primary group-hover:text-white transition duration-300";
     switch (iconName) {
@@ -43,35 +49,33 @@ export default function ServicesPage() {
     <div className="bg-stone-50 min-h-screen pb-20">
       {/* Page Header */}
       <section className="relative py-20 bg-stone-900 overflow-hidden text-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-          style={{ backgroundImage: "url('/images/hero.png')" }}
-        />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero.png"
+            alt="Bespoke interior design and modular kitchen services"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-20"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 to-stone-900/80" />
         <div className="relative z-10 max-w-4xl mx-auto px-5">
-          <motion.span 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 border border-primary/20 px-3 py-1 rounded-md"
-          >
-            What We Do
-          </motion.span>
-          <motion.h1 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-serif text-4xl sm:text-5xl font-extrabold text-white mt-5"
-          >
-            Our Professional Services
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-stone-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed"
-          >
-            From bespoke solid wood furniture to complete residential & commercial interior design execution.
-          </motion.p>
+          <AnimateOnScroll variant="fadeInUp" className="inline-block">
+            <span className="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 border border-primary/20 px-3 py-1 rounded-md">
+              What We Do
+            </span>
+          </AnimateOnScroll>
+          <AnimateOnScroll variant="fadeInUp" delay={0.1}>
+            <h1 className="font-serif text-4xl sm:text-5xl font-extrabold text-white mt-5">
+              Our Professional Services
+            </h1>
+          </AnimateOnScroll>
+          <AnimateOnScroll variant="fadeInUp" delay={0.2}>
+            <p className="text-stone-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed">
+              From bespoke solid wood furniture to complete residential & commercial interior design execution.
+            </p>
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -79,12 +83,10 @@ export default function ServicesPage() {
       <section className="max-w-7xl mx-auto px-5 mt-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {servicesData.map((service, idx) => (
-            <motion.div
+            <AnimateOnScroll
               key={service.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              variant="fadeInUp"
+              delay={idx * 0.05}
               className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-stone-100/80 transition duration-300 flex flex-col justify-between"
             >
               <div>
@@ -114,7 +116,7 @@ export default function ServicesPage() {
                   <h2 className="font-serif text-2xl font-bold text-stone-900 mt-6 group-hover:text-primary transition">
                     {service.name}
                   </h2>
-                  
+
                   <p className="text-stone-500 text-sm mt-3 leading-relaxed">
                     {service.description}
                   </p>
@@ -143,14 +145,13 @@ export default function ServicesPage() {
                   Learn Detailed Process
                   <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <button
-                  onClick={() => openQuoteModal(service.name)}
-                  className="rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold py-2.5 px-4 shadow-sm transition cursor-pointer"
-                >
-                  Get A Quote
-                </button>
+                <BookConsultationButton
+                  label="Get A Quote"
+                  className="rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold py-2.5 px-4 shadow-sm transition cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  productOrServiceName={service.name}
+                />
               </div>
-            </motion.div>
+            </AnimateOnScroll>
           ))}
         </div>
       </section>
@@ -164,15 +165,14 @@ export default function ServicesPage() {
             We love challenging architectural designs. Contact our workshop directly and share your custom concepts.
           </p>
           <div className="mt-6 flex flex-wrap gap-3 justify-center">
-            <button
-              onClick={() => openQuoteModal()}
-              className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-5 text-sm cursor-pointer"
-            >
-              Consult Bechar Panchal
-            </button>
+            <BookConsultationButton
+              label="Consult Rajesh Panchal"
+              className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-5 text-sm cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              productOrServiceName="Rajesh Panchal Customization"
+            />
             <a
               href="tel:+919664956491"
-              className="rounded-lg border border-stone-700 hover:bg-stone-850 text-stone-300 font-bold py-2.5 px-5 text-sm"
+              className="rounded-lg border border-stone-700 hover:bg-stone-850 text-stone-300 font-bold py-2.5 px-5 text-sm flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Call Hotline
             </a>

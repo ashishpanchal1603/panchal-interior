@@ -1,51 +1,85 @@
-"use client";
-
-import React, { useState, use } from "react";
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { productsData, categoriesData } from "@/data/interiorData";
 import { ArrowLeft, Check, Compass, Ruler, ShieldAlert, BadgeCheck } from "lucide-react";
-import { useQuoteModal } from "@/components/QuoteModalContext";
-import { FaWhatsapp } from "react-icons/fa";
-import { motion } from "framer-motion";
+import ProductGallery from "@/components/ProductGallery";
+import ProductActions from "@/components/ProductActions";
+import type { Metadata } from "next";
 
-export default function ProductDetailPage({
-  params,
-}: {
+interface PageProps {
   params: Promise<{ id: string }>;
-}) {
-  const { id } = use(params);
+}
+
+export async function generateStaticParams() {
+  return productsData.map((product) => ({
+    id: product.id,
+  }));
+}
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { id } = await props.params;
   const product = productsData.find((p) => p.id === id);
-  const { openQuoteModal } = useQuoteModal();
-  
-  // Gallery state
-  const [activeImg, setActiveImg] = useState("");
+
+  if (!product) {
+    return {};
+  }
+
+  const categoryName = categoriesData.find((c) => c.id === product.categoryId)?.name || "Furniture";
+
+  return {
+    title: `${product.name} — Custom ${categoryName}`,
+    description: `${product.description} Handcrafted in Ahmedabad using premium materials. Materials: ${product.materials.join(", ")}. Dimensions: ${product.dimensions}.`,
+    alternates: {
+      canonical: `https://panchalinterior.com/products/${product.id}`,
+    },
+  };
+}
+
+export default async function ProductDetailPage(props: PageProps) {
+  const { id } = await props.params;
+  const product = productsData.find((p) => p.id === id);
 
   if (!product) {
     notFound();
   }
 
-  // Fallback if activeImg is empty
-  const currentImg = activeImg || product.image;
-
   // Find category name
-  const categoryName = categoriesData.find(c => c.id === product.categoryId)?.name || "Furniture";
+  const categoryName = categoriesData.find((c) => c.id === product.categoryId)?.name || "Furniture";
 
-  // Pre-filled WhatsApp message
-  const waMessage = encodeURIComponent(
-    `Hello Panchal Interior, I would like to get customization options and price estimate for the product: "${product.name}" (ID: ${product.id}).`
-  );
+  // Product Schema
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": `https://panchalinterior.com${product.image}`,
+    "description": product.description,
+    "sku": product.id,
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "lowPrice": "25000",
+      "highPrice": "250000",
+      "offerCount": "10",
+      "availability": "https://schema.org/InStock",
+    },
+  };
 
   return (
     <div className="bg-white min-h-screen pb-20">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+
       {/* 1. Navigation Header */}
       <section className="bg-stone-50 border-b border-stone-200/50 py-5">
         <div className="max-w-7xl mx-auto px-5 flex items-center justify-between">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 text-xs font-bold uppercase tracking-wider transition"
+            className="inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 text-xs font-bold uppercase tracking-wider transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Catalog
@@ -58,47 +92,12 @@ export default function ProductDetailPage({
 
       {/* 2. Detailed Display Section */}
       <section className="max-w-7xl mx-auto px-5 mt-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        {/* Left Gallery Column (5 Cols) */}
-        <div className="lg:col-span-6 space-y-4">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="relative h-96 sm:h-[450px] w-full bg-stone-100 rounded-2xl overflow-hidden border border-stone-200"
-          >
-            <Image
-              src={currentImg}
-              alt={product.name}
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-          
-          {/* Thumbnails Row */}
-          {product.gallery.length > 1 && (
-            <div className="flex gap-3 overflow-x-auto pb-2">
-              {product.gallery.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveImg(img)}
-                  className={`relative h-20 w-20 shrink-0 rounded-lg overflow-hidden border-2 transition ${
-                    currentImg === img ? "border-primary shadow-sm" : "border-stone-200 hover:border-stone-400"
-                  }`}
-                >
-                  <Image
-                    src={img}
-                    alt={`${product.name} gallery thumbnail ${idx + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          )}
+        {/* Left Gallery Column (6 Cols) */}
+        <div className="lg:col-span-6">
+          <ProductGallery images={product.gallery} productName={product.name} />
         </div>
 
-        {/* Right Info Column (7 Cols) */}
+        {/* Right Info Column (6 Cols) */}
         <div className="lg:col-span-6 space-y-8">
           <div>
             <span className="text-xs font-bold text-primary uppercase tracking-wider">
@@ -107,8 +106,8 @@ export default function ProductDetailPage({
             <h1 className="font-serif text-2xl sm:text-4xl font-extrabold text-stone-900 mt-2">
               {product.name}
             </h1>
-            
-            {/* Stock info */}
+
+            {/* Custom info */}
             <div className="flex flex-wrap items-center gap-4 mt-4">
               <span className="flex items-center gap-1.5 text-xs text-stone-600">
                 <BadgeCheck className="h-4.5 w-4.5 text-emerald-500" />
@@ -124,20 +123,26 @@ export default function ProductDetailPage({
           {/* Key Specifications Grid */}
           <div className="space-y-4 border-t border-stone-100 pt-6">
             <h3 className="text-xs font-bold text-stone-800 uppercase tracking-wider">Specifications</h3>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div className="flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-100">
                 <Compass className="h-5 w-5 text-primary shrink-0" />
                 <div>
-                  <span className="block text-stone-400 text-[10px] uppercase font-semibold">Materials Used</span>
-                  <span className="block text-stone-800 font-semibold mt-0.5">{product.materials.join(", ")}</span>
+                  <span className="block text-stone-400 text-[10px] uppercase font-semibold">
+                    Materials Used
+                  </span>
+                  <span className="block text-stone-800 font-semibold mt-0.5">
+                    {product.materials.join(", ")}
+                  </span>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-100">
                 <Ruler className="h-5 w-5 text-primary shrink-0" />
                 <div>
-                  <span className="block text-stone-400 text-[10px] uppercase font-semibold">Dimensions</span>
+                  <span className="block text-stone-400 text-[10px] uppercase font-semibold">
+                    Dimensions
+                  </span>
                   <span className="block text-stone-800 font-semibold mt-0.5">{product.dimensions}</span>
                 </div>
               </div>
@@ -158,31 +163,13 @@ export default function ProductDetailPage({
           </div>
 
           {/* Direct CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 border-t border-stone-100 pt-8">
-            <a
-              href={`https://wa.me/919664956491?text=${waMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-6 shadow-md transition duration-300"
-            >
-              <FaWhatsapp className="h-5 w-5" />
-              Inquire on WhatsApp
-            </a>
-            <button
-              onClick={() => openQuoteModal(product.name)}
-              className="flex-1 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-6 shadow-md transition duration-300 cursor-pointer"
-            >
-              Request Custom Estimate
-            </button>
-          </div>
-          
+          <ProductActions productId={product.id} productName={product.name} />
+
           <div className="flex items-center gap-2 text-stone-400 text-[10px] font-medium justify-center">
             <ShieldAlert className="h-3.5 w-3.5 text-primary" />
             <span>5-year warranty against wood-borer termites. Pricing depends on wood species selection.</span>
           </div>
-
         </div>
-
       </section>
     </div>
   );

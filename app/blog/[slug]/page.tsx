@@ -1,22 +1,43 @@
-"use client";
-
-import React, { use } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPostsData } from "@/data/interiorData";
-import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
-import { useQuoteModal } from "@/components/QuoteModalContext";
-import { motion } from "framer-motion";
+import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
+import { ShareButton, BlogCTASection } from "@/components/BlogActions";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
+import type { Metadata } from "next";
 
-export default function BlogDetailPage({
-  params,
-}: {
+interface PageProps {
   params: Promise<{ slug: string }>;
-}) {
-  const { slug } = use(params);
+}
+
+export async function generateStaticParams() {
+  return blogPostsData.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const { slug } = await props.params;
   const post = blogPostsData.find((p) => p.slug === slug);
-  const { openQuoteModal } = useQuoteModal();
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: `${post.title} — Panchal Interior Guide`,
+    description: `${post.excerpt} Written by ${post.author}, Woodworking Expert & Founder at Panchal Interior.`,
+    alternates: {
+      canonical: `https://panchalinterior.com/blog/${post.slug}`,
+    },
+  };
+}
+
+export default async function BlogDetailPage(props: PageProps) {
+  const { slug } = await props.params;
+  const post = blogPostsData.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();
@@ -25,32 +46,59 @@ export default function BlogDetailPage({
   // Format content paragraphs
   const paragraphs = post.content.split("\n\n");
 
+  // Determine standard ISO dates for publishing schema
+  const publishDate = post.date.includes("May")
+    ? "2026-05-15T09:00:00+05:30"
+    : "2026-04-28T10:30:00+05:30";
+
+  // Article JSON-LD Schema
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": `https://panchalinterior.com${post.image}`,
+    "datePublished": publishDate,
+    "dateModified": publishDate,
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Panchal Interior & Furniture Solutions",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://panchalinterior.com/icon-512.png",
+      },
+    },
+  };
+
   return (
     <div className="bg-white min-h-screen pb-20">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+
       {/* Navigation Header */}
       <section className="bg-stone-50 border-b border-stone-200/50 py-5">
         <div className="max-w-4xl mx-auto px-5 flex items-center justify-between">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 text-xs font-bold uppercase tracking-wider transition"
+            className="inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 text-xs font-bold uppercase tracking-wider transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Blog
           </Link>
-          <button 
-            onClick={() => alert("Copied link to clipboard!")}
-            className="flex items-center gap-1.5 text-stone-400 hover:text-stone-900 text-xs font-bold uppercase tracking-wider transition cursor-pointer"
-          >
-            <Share2 className="h-4 w-4 text-primary" />
-            Share Guide
-          </button>
+          <ShareButton />
         </div>
       </section>
 
       {/* Article Container */}
       <article className="max-w-3xl mx-auto px-5 mt-12 space-y-8">
-        
         {/* Metadata & Title */}
         <div className="space-y-4">
           <div className="flex items-center gap-4 text-stone-400 text-xs font-bold uppercase tracking-wider">
@@ -68,26 +116,23 @@ export default function BlogDetailPage({
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 leading-tight">
             {post.title}
           </h1>
-          
+
           <p className="text-stone-500 text-sm sm:text-base italic leading-relaxed border-l-4 border-primary pl-4">
             {post.excerpt}
           </p>
         </div>
 
         {/* Big Cover Image */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="relative h-96 w-full rounded-2xl overflow-hidden border border-stone-200"
-        >
+        <AnimateOnScroll variant="fadeInUp" className="relative h-96 w-full rounded-2xl overflow-hidden border border-stone-200">
           <Image
             src={post.image}
             alt={post.title}
             fill
-            className="object-cover"
             priority
+            sizes="(max-w-7xl) 100vw, 800px"
+            className="object-cover"
           />
-        </motion.div>
+        </AnimateOnScroll>
 
         {/* Paragraphs body content */}
         <div className="space-y-6 text-stone-700 text-sm sm:text-base leading-relaxed pt-4">
@@ -118,24 +163,10 @@ export default function BlogDetailPage({
             <span className="block text-stone-400 text-xs mt-0.5">Woodworking Expert & Founder, Panchal Interior</span>
           </div>
         </div>
-
       </article>
 
       {/* Dynamic CTA */}
-      <section className="max-w-4xl mx-auto px-5 mt-20 text-center">
-        <div className="bg-stone-900 text-white rounded-2xl p-8 border border-stone-850 shadow-md">
-          <h3 className="font-serif text-xl font-bold">Looking to design a custom modular kitchen?</h3>
-          <p className="text-stone-400 text-xs mt-2 max-w-sm mx-auto leading-relaxed">
-            Discuss plywood types, hardware models, and layout solutions with our design director.
-          </p>
-          <button
-            onClick={() => openQuoteModal("Consultation from Blog")}
-            className="mt-6 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-6 text-sm cursor-pointer"
-          >
-            Request Site Consultation
-          </button>
-        </div>
-      </section>
+      <BlogCTASection postTitle={post.title} />
     </div>
   );
 }

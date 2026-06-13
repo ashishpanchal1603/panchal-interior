@@ -1,22 +1,36 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { blogPostsData } from "@/data/interiorData";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Woodworking Insights, Tips, & Home Design Guides",
+  description:
+    "Read our professional modular kitchen material guides, space optimization planning ideas, and customized wood furniture tips from Panchal Interior experts.",
+  alternates: {
+    canonical: "https://panchalinterior.com/blog",
+  },
+};
 
 export default function BlogPage() {
   return (
     <div className="bg-stone-50 min-h-screen pb-20">
       {/* 1. Header Banner */}
       <section className="relative py-16 bg-stone-900 overflow-hidden text-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
-          style={{ backgroundImage: "url('/images/hero.png')" }}
-        />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero.png"
+            alt="Panchal Interior design and custom furniture blog tips guides"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-15"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 to-stone-900/80" />
-        
+
         <div className="relative z-10 max-w-4xl mx-auto px-5">
           <span className="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 border border-primary/20 px-3 py-1 rounded-md">
             Our Insights
@@ -34,12 +48,10 @@ export default function BlogPage() {
       <section className="max-w-6xl mx-auto px-5 mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {blogPostsData.map((post, idx) => (
-            <motion.article
+            <AnimateOnScroll
               key={post.slug}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
+              variant="fadeInUp"
+              delay={idx * 0.1}
               className="bg-white rounded-2xl overflow-hidden border border-stone-200/60 shadow-sm hover:shadow-lg transition flex flex-col justify-between"
             >
               {/* Blog Image */}
@@ -70,7 +82,7 @@ export default function BlogPage() {
                   </div>
 
                   <h2 className="font-serif text-xl font-bold text-stone-900 mt-4 hover:text-primary transition leading-snug">
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href={`/blog/${post.slug}`} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                       {post.title}
                     </Link>
                   </h2>
@@ -86,17 +98,17 @@ export default function BlogPage() {
                     <User className="h-4 w-4 text-primary" />
                     By {post.author}
                   </span>
-                  
+
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-stone-950 hover:text-primary transition group"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-stone-950 hover:text-primary transition group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     Read Article
                     <ArrowRight className="h-4 w-4 transform group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                 </div>
               </div>
-            </motion.article>
+            </AnimateOnScroll>
           ))}
         </div>
       </section>

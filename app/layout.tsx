@@ -22,10 +22,50 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: "Panchal Interior & Furniture | Premium Custom Home Solutions",
+  metadataBase: new URL("https://panchalinterior.com"),
+  title: {
+    default: "Panchal Interior & Furniture Solutions | Ahmedabad",
+    template: "%s | Panchal Interior & Furniture Solutions",
+  },
   description:
-    "Premium Custom Furniture, Luxury Sofa Manufacturing, Modular Kitchens, and Modern Home Renovation and Interior Design Services in Ahmedabad, Gujarat.",
-  keywords: "Panchal Interior, Custom Furniture, Modular Kitchen, Sofa Manufacturing, Interior Design Ahmedabad",
+    "Premium Custom Furniture, Luxury Sofa Manufacturing, Modular Kitchens, and Turnkey Home Renovation and Interior Design Services in Ahmedabad, Gujarat. Direct factory rates.",
+  keywords: [
+    "Panchal Interior",
+    "Custom Furniture Ahmedabad",
+    "Modular Kitchen Ahmedabad",
+    "Sofa Manufacturing Ahmedabad",
+    "Interior Designer Ahmedabad",
+    "Wardrobe Designer Ahmedabad",
+    "Furniture Contractor Ahmedabad",
+    "Turnkey Interior Ahmedabad",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Panchal Interior & Furniture Solutions | Custom Home Solutions in Ahmedabad",
+    description: "Premium modular kitchen, luxury sofas, custom wardrobes, and turnkey interior designs directly from our Gota workshop with 5-year warranty.",
+    url: "https://panchalinterior.com",
+    siteName: "Panchal Interior & Furniture Solutions",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Panchal Interior & Furniture Solutions | Ahmedabad",
+    description: "Premium modular kitchen, custom wardrobes, and turnkey interior designs directly from our workshop with 5-year warranty.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

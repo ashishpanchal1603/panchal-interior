@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Award, Briefcase, ShieldCheck, Clock } from "lucide-react";
 import { statsData } from "@/data/interiorData";
 import { useQuoteModal } from "./QuoteModalContext";
@@ -29,12 +30,16 @@ export default function Hero() {
   return (
     <section className="relative h-[650px] w-full overflow-hidden bg-stone-900 flex items-center">
       {/* Background Image with Dark Gradient Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-10000 scale-105"
-        style={{
-          backgroundImage: "url('/images/hero.png')",
-        }}
-      />
+      <div className="absolute inset-0 transition-transform duration-10000 scale-105">
+        <Image
+          src="/images/hero.png"
+          alt="Premium Custom Furniture and Interior Design Solutions in Ahmedabad"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent" />
 

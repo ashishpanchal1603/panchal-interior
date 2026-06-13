@@ -6,7 +6,16 @@ import path from "path";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { leadName, leadPhone, leadEmail, leadMessage, calcType, details } = body;
+    const { leadName, leadPhone, leadEmail, leadMessage, calcType, details, website } = body;
+
+    // Honeypot spam protection check
+    if (website) {
+      console.warn("🤖 Spam bot detected via honeypot field. Silently dropping inquiry.");
+      return NextResponse.json({
+        success: true,
+        message: "Inquiry processed successfully (bot blocked).",
+      });
+    }
 
     console.log("\n--- [INQUIRY ATTEMPT] ---");
     console.log(`👤 Name: ${leadName}`);

@@ -1,96 +1,52 @@
-"use client";
+import React from "react";
+import Image from "next/image";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
+import FaqAccordion from "@/components/FaqAccordion";
+import type { Metadata } from "next";
 
-import React, { useState } from "react";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  CheckCircle2,
-  Loader2,
-  HelpCircle,
-  ChevronDown,
-  ChevronUp
-} from "lucide-react";
-import { motion } from "framer-motion";
-import CustomSelect from "@/components/CustomSelect";
-
-const subjectOptions = [
-  { value: "General Inquiry", label: "General Inquiry / Information" },
-  { value: "Custom Furniture Design", label: "Custom Furniture Manufacturing" },
-  { value: "Modular Kitchen Consultation", label: "Modular Kitchen Layout Setup" },
-  { value: "Turnkey Interior Execution", label: "Full House Interior Design" },
-  { value: "Site Measurement Visit", label: "Schedule Site Measurement Visit" },
-];
+export const metadata: Metadata = {
+  title: "Contact Us — Schedule Site Measurement Visit",
+  description:
+    "Connect with Panchal Interior design team in Ahmedabad. Schedule a free site measurement visit or visit our factory workshop near Gota Bridge.",
+  alternates: {
+    canonical: "https://panchalinterior.com/contact",
+  },
+};
 
 export default function ContactPage() {
-  // Form states
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("General Inquiry");
-  const [message, setMessage] = useState("");
-
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  // FAQ state
-  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
-
   const contactFaqs = [
     {
       question: "Do you charge for site visits and measurements?",
-      answer: "No, site visits and measurements are completely free of charge for locations within Ahmedabad. Our supervisor will visit your site, take precise dimensions, and discuss initial layouts with no obligation.",
+      answer:
+        "No, site visits and measurements are completely free of charge for locations within Ahmedabad. Our supervisor will visit your site, take precise dimensions, and discuss initial layouts with no obligation.",
     },
     {
       question: "What is your warranty policy on wood furniture?",
-      answer: "We offer a 5-year replacement warranty against structural termites and wood-borers on all custom furniture. All soft-closing kitchen baskets and cabinet hardware (from Hettich/Hafele) carry their respective brand warranties up to 10 years.",
+      answer:
+        "We offer a 5-year replacement warranty against structural termites and wood-borers on all custom furniture. All soft-closing kitchen baskets and cabinet hardware (from Hettich/Hafele) carry their respective brand warranties up to 10 years.",
     },
     {
       question: "What is the typical timeframe for a modular kitchen setup?",
-      answer: "Once the 3D layout design is approved and dimensions are finalized, factory cutting and edge-banding takes 10-12 days. On-site modular assembly and countertop quartz fitting takes only 3-5 days, causing minimal disruption at your home.",
+      answer:
+        "Once the 3D layout design is approved and dimensions are finalized, factory cutting and edge-banding takes 10-12 days. On-site modular assembly and countertop quartz fitting takes only 3-5 days, causing minimal disruption at your home.",
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !phone) {
-      alert("Please enter your name and phone number.");
-      return;
-    }
-
-    setLoading(true);
-    // Simulate API submission
-    setTimeout(() => {
-      setLoading(false);
-      setSuccess(true);
-
-      // Reset form
-      setName("");
-      setPhone("");
-      setEmail("");
-      setMessage("");
-    }, 1500);
-  };
-
-  const toggleFaq = (idx: number) => {
-    if (openFaqIdx === idx) {
-      setOpenFaqIdx(null);
-    } else {
-      setOpenFaqIdx(idx);
-    }
-  };
-
   return (
     <div className="bg-stone-50 min-h-screen pb-20">
-
       {/* 1. Header Banner */}
       <section className="relative py-16 bg-stone-900 overflow-hidden text-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
-          style={{ backgroundImage: "url('/images/hero.png')" }}
-        />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero.png"
+            alt="Panchal Interior Gota Factory Showroom Map Contact"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-15"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 to-stone-900/80" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-5">
@@ -108,10 +64,8 @@ export default function ContactPage() {
 
       {/* 2. Main Contact Grid */}
       <section className="max-w-7xl mx-auto px-5 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
-
         {/* Left Column (5 Cols): Details & FAQs */}
         <div className="lg:col-span-5 space-y-10">
-
           {/* Contact Cards Block */}
           <div className="bg-white border border-stone-200/60 rounded-2xl p-6 shadow-sm space-y-6">
             <h2 className="font-serif text-xl font-bold text-stone-900 border-b border-stone-100 pb-3">
@@ -124,7 +78,9 @@ export default function ContactPage() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">Factory Address</span>
+                  <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">
+                    Factory Address
+                  </span>
                   <span className="block text-stone-700 font-semibold leading-relaxed mt-1">
                     Panchal Complex, Near Gota Bridge, Gota, Ahmedabad, Gujarat - 382481
                   </span>
@@ -136,8 +92,13 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">Hotline Contact</span>
-                  <a href="tel:+919664956491" className="block text-stone-900 font-bold hover:text-primary transition mt-1">
+                  <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">
+                    Hotline Contact
+                  </span>
+                  <a
+                    href="tel:+919664956491"
+                    className="block text-stone-900 font-bold hover:text-primary transition mt-1"
+                  >
                     +91 96649 56491
                   </a>
                 </div>
@@ -148,8 +109,13 @@ export default function ContactPage() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">Email Support</span>
-                  <a href="mailto:info@panchalinterior.com" className="block text-stone-700 font-semibold hover:text-primary transition mt-1">
+                  <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">
+                    Email Support
+                  </span>
+                  <a
+                    href="mailto:info@panchalinterior.com"
+                    className="block text-stone-700 font-semibold hover:text-primary transition mt-1"
+                  >
                     info@panchalinterior.com
                   </a>
                 </div>
@@ -160,10 +126,14 @@ export default function ContactPage() {
                   <Clock className="h-5 w-5" />
                 </div>
                 <div>
-                  <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">Operating Hours</span>
+                  <span className="block text-xs font-bold text-stone-400 uppercase tracking-wider">
+                    Operating Hours
+                  </span>
                   <span className="block text-stone-700 font-semibold mt-1">
                     Monday - Saturday: 9:00 AM - 8:00 PM <br />
-                    <span className="text-stone-400 font-medium">(Sundays: Pre-booked Site Visits Only)</span>
+                    <span className="text-stone-400 font-medium">
+                      (Sundays: Pre-booked Site Visits Only)
+                    </span>
                   </span>
                 </div>
               </li>
@@ -173,153 +143,14 @@ export default function ContactPage() {
           {/* Contact FAQs Block */}
           <div className="space-y-4">
             <h3 className="font-serif text-lg font-bold text-stone-900">Consultation FAQs</h3>
-            <div className="space-y-3">
-              {contactFaqs.map((faq, i) => (
-                <div
-                  key={i}
-                  className="border border-stone-200/80 rounded-xl overflow-hidden shadow-sm bg-white"
-                >
-                  <button
-                    onClick={() => toggleFaq(i)}
-                    className="w-full flex justify-between items-center bg-stone-50 hover:bg-stone-100/60 p-4 text-left text-stone-850 text-xs font-bold transition"
-                  >
-                    <span className="flex items-center gap-2">
-                      <HelpCircle className="h-4 w-4 text-primary shrink-0" />
-                      {faq.question}
-                    </span>
-                    {openFaqIdx === i ? <ChevronUp className="h-4 w-4 text-stone-500" /> : <ChevronDown className="h-4 w-4 text-stone-500" />}
-                  </button>
-                  {openFaqIdx === i && (
-                    <div className="p-4 bg-white text-stone-600 text-xs leading-relaxed border-t border-stone-100">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+            <FaqAccordion faqs={contactFaqs} />
           </div>
-
         </div>
 
         {/* Right Column (7 Cols): Contact Form */}
         <div className="lg:col-span-7">
-          <div className="bg-white border border-stone-200/60 rounded-2xl p-6 sm:p-8 shadow-sm">
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 mb-6">
-              Send Us a Message
-            </h2>
-
-            {success ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center text-center py-12"
-              >
-                <div className="rounded-full bg-emerald-50 p-4 text-emerald-600 mb-4">
-                  <CheckCircle2 className="h-12 w-12" />
-                </div>
-                <h3 className="text-xl font-bold text-stone-900">Message Sent Successfully!</h3>
-                <p className="text-stone-500 text-sm mt-2 max-w-sm">
-                  Thank you for reaching out. A Panchal Interior design executive will review your inquiry and get back to you shortly.
-                </p>
-                <button
-                  onClick={() => setSuccess(false)}
-                  className="mt-6 text-sm text-primary hover:underline font-bold"
-                >
-                  Send another message
-                </button>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="e.g. Rajesh Shah"
-                    className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition text-sm"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="e.g. +91 99999 99999"
-                      className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition text-sm"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="e.g. rajesh@example.com"
-                      className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition text-sm"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
-                    What is this regarding?
-                  </label>
-                  <CustomSelect
-                    value={subject}
-                    onChange={setSubject}
-                    options={subjectOptions}
-                    placeholder="General Inquiry / Information"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
-                    Describe your requirements
-                  </label>
-                  <textarea
-                    rows={4}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Tell us about your space layout, sizing requirements, budget, preferred materials, or timelines..."
-                    className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition resize-none text-sm"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-6 shadow-md transition disabled:opacity-70 cursor-pointer"
-                >
-                  {loading ? (
-                    <>
-                      <Loader2 className="h-5 w-5 animate-spin" />
-                      Sending Message...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-4.5 w-4.5" />
-                      Send My Inquiry
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
+          <ContactForm />
         </div>
-
       </section>
 
       {/* 3. Embedded Google Maps Section */}
@@ -331,10 +162,10 @@ export default function ContactPage() {
               <p className="text-stone-400 text-xs mt-0.5">Explore materials, laminates, and wood logs in person.</p>
             </div>
             <a
-              href="https://maps.google.com"
+              href="https://maps.google.com/?q=Gota+Bridge,+Ahmedabad"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-bold text-primary hover:underline"
+              className="text-xs font-bold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Open in Google Maps
             </a>
@@ -354,7 +185,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }
