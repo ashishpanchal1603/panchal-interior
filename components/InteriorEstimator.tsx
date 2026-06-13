@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
@@ -29,6 +29,22 @@ export default function InteriorEstimator() {
   const { openQuoteModal } = useQuoteModal();
   const [calcType, setCalcType] = useState<CalculatorType>(null);
   const [step, setStep] = useState(1);
+  const [isInitialMount, setIsInitialMount] = useState(true);
+
+  // Scroll to the wizard container when step or calculator type changes on mobile
+  useEffect(() => {
+    if (isInitialMount) {
+      setIsInitialMount(false);
+      return;
+    }
+    const timer = setTimeout(() => {
+      const element = document.getElementById("estimator-wizard");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [step, calcType]);
 
   // Lead Contact Form State
   const [leadName, setLeadName] = useState("");
@@ -126,7 +142,7 @@ export default function InteriorEstimator() {
   };
 
   return (
-    <section id="cost-estimator" className="py-24 bg-stone-50 border-y border-stone-200/50">
+    <section id="cost-estimator" className="py-12 md:py-24 bg-white border-b border-stone-100 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-5">
 
         {/* Header */}
@@ -143,7 +159,7 @@ export default function InteriorEstimator() {
         </div>
 
         {/* Wizard Card Container */}
-        <div className=" mx-auto bg-white rounded-3xl border border-stone-100 shadow-xl overflow-hidden min-h-[520px] md:min-h-[620px] flex flex-col">
+        <div id="estimator-wizard" className="mx-auto bg-white rounded-3xl border border-stone-100 shadow-xl overflow-hidden min-h-[520px] md:min-h-[620px] flex flex-col scroll-mt-20">
 
           {/* Progress Bar (Visible inside active wizard flows) */}
           {calcType && !isSubmitted && (
@@ -152,7 +168,7 @@ export default function InteriorEstimator() {
                 type="button"
                 onClick={prevStep}
                 disabled={step === 1}
-                className="flex items-center gap-1 text-xs font-bold text-stone-600 hover:text-primary transition disabled:opacity-30 disabled:hover:text-stone-600 cursor-pointer"
+                className="flex items-center gap-1 text-xs font-bold text-stone-600 hover:text-primary transition disabled:opacity-30 disabled:hover:text-stone-600 cursor-pointer py-2 px-3 -ml-3 rounded-lg hover:bg-stone-100/50"
               >
                 <ArrowLeft className="h-4 w-4" /> Back
               </button>
@@ -381,7 +397,7 @@ export default function InteriorEstimator() {
               <button
                 type="button"
                 onClick={resetEstimator}
-                className="text-primary hover:underline font-bold bg-transparent border-0 cursor-pointer"
+                className="text-primary hover:underline font-bold bg-transparent border-0 cursor-pointer py-1.5 px-3 rounded-lg hover:bg-stone-200/40 transition"
               >
                 Reset & Choose Layout
               </button>

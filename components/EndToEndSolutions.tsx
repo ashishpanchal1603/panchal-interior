@@ -213,7 +213,7 @@ export default function EndToEndSolutions() {
   ];
 
   return (
-    <section className="py-24 bg-white border-b border-stone-100">
+    <section className="py-12 md:py-24 bg-stone-50 border-y border-stone-200/50">
       <div className="max-w-7xl mx-auto px-5 text-center">
 
         {/* Header */}

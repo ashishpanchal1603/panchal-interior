@@ -149,7 +149,7 @@ export default function HomePage() {
       <Hero />
 
       {/* 1. Services Section */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-12 md:py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-5 text-center">
           <AnimateOnScroll variant="fadeInUp">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 leading-tight">
@@ -212,7 +212,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. Popular Furniture Categories */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-5 text-center">
           <AnimateOnScroll variant="fadeInUp">
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 leading-tight">
@@ -284,7 +284,7 @@ export default function HomePage() {
       <EstimatorWrapper />
 
       {/* 3. Why Choose Us Section */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-12 md:py-24 bg-stone-50 border-y border-stone-200/50">
         <div className="max-w-7xl mx-auto px-5">
           <div className="text-center">
             <AnimateOnScroll variant="fadeInUp">
@@ -323,7 +323,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. Testimonials Section */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-12 md:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-5">
           <div className="text-center">
             <AnimateOnScroll variant="fadeInUp">
@@ -368,7 +368,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Bottom Call to Action Section */}
-      <section className="bg-stone-950 py-20 border-t border-stone-900 relative overflow-hidden">
+      <section className="bg-stone-950 py-12 md:py-20 border-t border-stone-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
         <div className="max-w-4xl mx-auto px-5 text-center relative z-10">
           <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-white">

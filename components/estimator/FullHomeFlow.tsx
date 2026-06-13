@@ -100,6 +100,7 @@ export default function FullHomeFlow({
 
           <div className="flex justify-end pt-4">
             <button
+              type="button"
               onClick={nextStep}
               className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 shadow-md transition flex items-center gap-1 cursor-pointer font-sans"
             >
@@ -206,6 +207,7 @@ export default function FullHomeFlow({
 
           <div className="flex justify-end pt-2">
             <button
+              type="button"
               onClick={nextStep}
               className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-5 shadow-md transition flex items-center gap-1 cursor-pointer font-sans text-sm"
             >
@@ -277,6 +279,7 @@ export default function FullHomeFlow({
 
           <div className="flex justify-end pt-4">
             <button
+              type="button"
               onClick={nextStep}
               className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 shadow-md transition flex items-center gap-1 cursor-pointer font-sans"
             >
