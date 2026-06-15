@@ -30,7 +30,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
     } else {
       params.set("category", category);
     }
-    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   // Filter products based on category and search query

@@ -54,12 +54,31 @@ export default function ContactPage() {
     },
   };
 
+  const faqPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": contactFaqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
   return (
     <div className="bg-stone-50 min-h-screen pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(contactPageSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqPageSchema).replace(/</g, "\\u003c"),
         }}
       />
       {/* 1. Header Banner */}

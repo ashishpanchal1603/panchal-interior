@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Sofa, Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
@@ -9,8 +9,12 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa"
 
 export default function Footer() {
   const { openQuoteModal } = useQuoteModal();
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState<number>(2026);
   const router = useRouter();
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   const [clickCount, setClickCount] = useState(0);
   const [lastClickTime, setLastClickTime] = useState(0);
