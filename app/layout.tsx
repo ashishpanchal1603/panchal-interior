@@ -6,6 +6,7 @@ import QuoteModal from "@/components/QuoteModal";
 import QuoteModalProvider from "@/components/QuoteModalContext";
 import FloatingButtons from "@/components/FloatingButtons";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import AIChatbot from "@/components/AIChatbot";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -86,6 +87,7 @@ export default function RootLayout({
           <FloatingButtons />
           <MobileBottomNav />
           <QuoteModal />
+          <AIChatbot />
           {process.env.NODE_ENV === "production" ? (
             <script
               dangerouslySetInnerHTML={{
