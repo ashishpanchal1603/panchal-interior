@@ -6,9 +6,6 @@ import {
   FullHomeState,
   KitchenState,
   WardrobeState,
-  calculateFullHomePrice,
-  calculateKitchenPrice,
-  calculateWardrobePrice,
 } from "./types";
 
 interface LeadFormProps {

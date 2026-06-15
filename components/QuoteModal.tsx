@@ -38,7 +38,10 @@ export default function QuoteModal() {
   useEffect(() => {
     const targetInterest = prefilledItem || "";
     if (interest !== targetInterest) {
-      setInterest(targetInterest);
+      const timer = setTimeout(() => {
+        setInterest(targetInterest);
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [prefilledItem, isOpen, interest]);
 

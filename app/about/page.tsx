@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useQuoteModal } from "@/components/QuoteModalContext";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import BookConsultationButton from "@/components/BookConsultationButton";
 import { Shield, Sparkles, HeartHandshake, Eye, Target } from "lucide-react";

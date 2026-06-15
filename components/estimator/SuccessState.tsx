@@ -22,10 +22,6 @@ interface SuccessStateProps {
 export default function SuccessState({
   leadName,
   leadPhone,
-  calcType,
-  fullState,
-  kitchenState,
-  wardrobeState,
   onReset,
   openQuoteModal,
 }: SuccessStateProps) {

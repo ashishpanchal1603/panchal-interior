@@ -14,14 +14,8 @@ import {
   CheckCircle,
   Clock,
   Briefcase,
-  ChevronRight,
   TrendingUp,
-  Lock,
-  Eye,
-  EyeOff,
   LogOut,
-  ArrowLeft,
-  Sofa,
 } from "lucide-react";
 
 interface Lead {
@@ -31,7 +25,7 @@ interface Lead {
   leadEmail: string;
   leadMessage: string;
   calcType: string;
-  details: any;
+  details: unknown;
   createdAt: string;
   status: string;
 }
@@ -71,9 +65,10 @@ export default function AdminLeadsPage() {
       }
       const data = await response.json();
       setLeads(data);
-    } catch (err: any) {
-      console.error(err);
-      setError(err.message || "Failed to load leads database.");
+    } catch (err) {
+      const errorObject = err as Error;
+      console.error(errorObject);
+      setError(errorObject.message || "Failed to load leads database.");
     } finally {
       setLoading(false);
     }
@@ -85,9 +80,13 @@ export default function AdminLeadsPage() {
     if (!username || !password) {
       router.replace("/admin/login");
     } else {
-      setIsVerifying(false);
-      fetchLeads(username, password);
+      const timer = setTimeout(() => {
+        setIsVerifying(false);
+        fetchLeads(username, password);
+      }, 0);
+      return () => clearTimeout(timer);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   const handleLogout = () => {
@@ -177,7 +176,6 @@ export default function AdminLeadsPage() {
   const fullHomeCount = leads.filter((l) => l.calcType === "full").length;
   const kitchenCount = leads.filter((l) => l.calcType === "kitchen").length;
   const wardrobeCount = leads.filter((l) => l.calcType === "wardrobe").length;
-  const generalCount = leads.filter((l) => l.calcType === "general" || !l.calcType).length;
 
   // Filtered leads list
   const filteredLeads = leads.filter((lead) => {
@@ -211,14 +209,26 @@ export default function AdminLeadsPage() {
       return <span className="text-stone-400 italic">General Info Request</span>;
     }
 
-    const details = lead.details;
+    const details = lead.details as {
+      bhk?: string;
+      packageTier?: string;
+      scope?: string[];
+      layout?: string;
+      lengthA?: number;
+      lengthB?: number;
+      lengthC?: number;
+      finish?: string;
+      type?: string;
+      width?: number;
+      height?: number;
+    };
     if (!details) return null;
 
     if (lead.calcType === "full") {
       return (
         <div className="space-y-1 font-sans text-xs">
-          <p>🏠 <span className="font-bold text-stone-900">BHK:</span> {details.bhk.toUpperCase()}</p>
-          <p>💎 <span className="font-bold text-stone-900">Tier:</span> {details.packageTier.toUpperCase()}</p>
+          <p>🏠 <span className="font-bold text-stone-900">BHK:</span> {(details.bhk || "").toUpperCase()}</p>
+          <p>💎 <span className="font-bold text-stone-900">Tier:</span> {(details.packageTier || "").toUpperCase()}</p>
           <p className="flex flex-wrap gap-1 mt-1">
             {details.scope?.map((s: string) => (
               <span key={s} className="px-1.5 py-0.5 rounded bg-primary-light text-primary border border-primary/20 text-[9px] font-bold uppercase">
@@ -231,29 +241,35 @@ export default function AdminLeadsPage() {
     }
 
     if (lead.calcType === "kitchen") {
-      const runningFeet = details.layout === "straight" 
-        ? details.lengthA 
-        : details.layout === "u-shape" 
-        ? (details.lengthA + details.lengthB + (details.lengthC || 8)) 
-        : (details.lengthA + details.lengthB);
+      const lengthA = details.lengthA || 0;
+      const lengthB = details.lengthB || 0;
+      const lengthC = details.lengthC || 0;
+      const layout = details.layout || "";
+      const runningFeet = layout === "straight" 
+        ? lengthA 
+        : layout === "u-shape" 
+        ? (lengthA + lengthB + (lengthC || 8)) 
+        : (lengthA + lengthB);
       return (
         <div className="space-y-1 font-sans text-xs">
-          <p>📐 <span className="font-bold text-stone-900">Layout:</span> {details.layout.replace("-", " ").toUpperCase()}</p>
-          <p>📏 <span className="font-bold text-stone-900">Size:</span> {details.lengthA}ft {details.lengthB ? `x ${details.lengthB}ft` : ""}{details.layout === "u-shape" && details.lengthC ? ` x ${details.lengthC}ft` : ""}</p>
+          <p>📐 <span className="font-bold text-stone-900">Layout:</span> {layout.replace("-", " ").toUpperCase()}</p>
+          <p>📏 <span className="font-bold text-stone-900">Size:</span> {lengthA}ft {lengthB ? `x ${lengthB}ft` : ""}{layout === "u-shape" && lengthC ? ` x ${lengthC}ft` : ""}</p>
           <p>✨ <span className="font-bold text-stone-900">Total Length:</span> {runningFeet} running ft</p>
-          <p>🎨 <span className="font-bold text-stone-900">Finish:</span> {details.finish.toUpperCase()}</p>
+          <p>🎨 <span className="font-bold text-stone-900">Finish:</span> {(details.finish || "").toUpperCase()}</p>
         </div>
       );
     }
 
     if (lead.calcType === "wardrobe") {
-      const area = details.width * details.height;
+      const width = details.width || 0;
+      const height = details.height || 0;
+      const area = width * height;
       return (
         <div className="space-y-1 font-sans text-xs">
-          <p>🚪 <span className="font-bold text-stone-900">Style:</span> {details.type.toUpperCase()}</p>
-          <p>📏 <span className="font-bold text-stone-900">Size:</span> {details.width}W x {details.height}H ft</p>
+          <p>🚪 <span className="font-bold text-stone-900">Style:</span> {(details.type || "").toUpperCase()}</p>
+          <p>📏 <span className="font-bold text-stone-900">Size:</span> {width}W x {height}H ft</p>
           <p>📐 <span className="font-bold text-stone-900">Area:</span> {area} sq.ft</p>
-          <p>🎨 <span className="font-bold text-stone-900">Finish:</span> {details.finish.toUpperCase()}</p>
+          <p>🎨 <span className="font-bold text-stone-900">Finish:</span> {(details.finish || "").toUpperCase()}</p>
         </div>
       );
     }
