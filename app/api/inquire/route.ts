@@ -75,6 +75,20 @@ export async function POST(request: Request) {
       );
     }
 
+    // Server-side mobile number validation
+    const cleanedPhone = leadPhone.replace(/\D/g, "");
+    const isPhoneValid = cleanedPhone.length === 10 || 
+                         (cleanedPhone.length === 12 && cleanedPhone.startsWith("91")) ||
+                         (cleanedPhone.length === 11 && cleanedPhone.startsWith("0"));
+
+    if (!isPhoneValid) {
+      console.warn(`⚠️ Aborting inquiry: Invalid phone number format: "${leadPhone}"`);
+      return NextResponse.json(
+        { error: "Please enter a valid 10-digit mobile number." },
+        { status: 400 }
+      );
+    }
+
     // Logging to local database file (data/leads.json)
     try {
       const dataDirectory = path.join(process.cwd(), "data");
@@ -209,40 +223,44 @@ export async function POST(request: Request) {
 
     // 3. Dispatch Telegram Notification (Instant Text notification)
     let telegramSent = false;
-    if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
-      console.log("💬 Attempting to send Telegram notification...");
-      const botToken = process.env.TELEGRAM_BOT_TOKEN;
-      const chatId = process.env.TELEGRAM_CHAT_ID;
+    try {
+      if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
+        console.log("💬 Attempting to send Telegram notification...");
+        const botToken = process.env.TELEGRAM_BOT_TOKEN;
+        const chatId = process.env.TELEGRAM_CHAT_ID;
 
-      const telegramMessage = `✨ *New Lead Received* ✨\n\n` +
-        `👤 *Name:* ${leadName}\n` +
-        `📞 *Phone:* ${leadPhone}\n` +
-        (leadEmail ? `✉️ *Email:* ${leadEmail}\n` : "") +
-        (leadMessage ? `💬 *Notes:* ${leadMessage}\n` : "") +
-        (calcType ? `\n🛠️ *Specs:*\n${summaryText}` : "");
+        const telegramMessage = `✨ *New Lead Received* ✨\n\n` +
+          `👤 *Name:* ${leadName}\n` +
+          `📞 *Phone:* ${leadPhone}\n` +
+          (leadEmail ? `✉️ *Email:* ${leadEmail}\n` : "") +
+          (leadMessage ? `💬 *Notes:* ${leadMessage}\n` : "") +
+          (calcType ? `\n🛠️ *Specs:*\n${summaryText}` : "");
 
-      const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: telegramMessage,
-          parse_mode: "Markdown",
-        }),
-      });
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: telegramMessage,
+            parse_mode: "Markdown",
+          }),
+        });
 
-      if (response.ok) {
-        telegramSent = true;
-        console.log("✅ Telegram message sent successfully!");
+        if (response.ok) {
+          telegramSent = true;
+          console.log("✅ Telegram message sent successfully!");
+        } else {
+          const errorText = await response.text();
+          console.error("❌ Telegram API error response:", errorText);
+        }
       } else {
-        const errorText = await response.text();
-        console.error("❌ Telegram API error response:", errorText);
+        console.warn("⚠️ Telegram notification skipped: Missing TELEGRAM environment variables in .env.local.");
       }
-    } else {
-      console.warn("⚠️ Telegram notification skipped: Missing TELEGRAM environment variables in .env.local.");
+    } catch (telegramError) {
+      console.error("❌ Telegram notification failed:", telegramError);
     }
 
     return NextResponse.json({

@@ -20,5 +20,16 @@
     "details": null,
     "createdAt": "2026-06-13T17:45:53.279Z",
     "status": "Pending"
+  },
+  {
+    "id": "lead_1781540084974_j3rrgvu76",
+    "leadName": "sdfsd",
+    "leadPhone": "9656410000",
+    "leadEmail": "sdsf@gmail.com",
+    "leadMessage": "dfsfsdf",
+    "calcType": "general",
+    "details": null,
+    "createdAt": "2026-06-15T16:14:44.974Z",
+    "status": "Pending"
   }
 ]

@@ -33,6 +33,7 @@ export default function QuoteModal() {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
 
   // Sync prefilled interest when modal opens
   useEffect(() => {
@@ -51,7 +52,6 @@ export default function QuoteModal() {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
-      // Reset form on close
       setTimeout(() => {
         setName("");
         setPhone("");
@@ -60,6 +60,7 @@ export default function QuoteModal() {
         setMessage("");
         setSuccess(false);
         setLoading(false);
+        setPhoneError("");
       }, 300);
     }
     return () => {
@@ -72,6 +73,19 @@ export default function QuoteModal() {
     if (!name || !phone) {
       alert("Please fill in your name and phone number.");
       return;
+    }
+
+    // Phone number validation (exactly 10 digits with optional +91 / 0)
+    const cleanedPhone = phone.replace(/\D/g, "");
+    const isPhoneValid = cleanedPhone.length === 10 || 
+                         (cleanedPhone.length === 12 && cleanedPhone.startsWith("91")) ||
+                         (cleanedPhone.length === 11 && cleanedPhone.startsWith("0"));
+
+    if (!isPhoneValid) {
+      setPhoneError("Please enter a valid 10-digit mobile number.");
+      return;
+    } else {
+      setPhoneError("");
     }
 
     setLoading(true);
@@ -194,10 +208,20 @@ export default function QuoteModal() {
                         type="tel"
                         required
                         value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                          if (phoneError) setPhoneError("");
+                        }}
                         placeholder="e.g. +91 96649 56491"
-                        className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition"
+                        className={`w-full rounded-lg border px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:outline-none transition ${
+                          phoneError 
+                            ? "border-red-400 focus:border-red-400 focus:ring-1 focus:ring-red-400" 
+                            : "border-stone-200 focus:border-primary focus:ring-1 focus:ring-primary"
+                        }`}
                       />
+                      {phoneError && (
+                        <p className="text-red-500 text-[10px] mt-1 font-semibold">{phoneError}</p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">

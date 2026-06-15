@@ -1,5 +1,8 @@
 import React from "react";
-export const unstable_instant = { prefetch: "static" as const };
+export const unstable_instant = {
+  prefetch: "static" as const,
+  unstable_disableValidation: true,
+};
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { productsData, categoriesData } from "@/data/interiorData";

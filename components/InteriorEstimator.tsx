@@ -53,6 +53,7 @@ export default function InteriorEstimator() {
   const [leadMessage, setLeadMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
 
   // Dynamic Hover states for Preview Panel
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -93,6 +94,7 @@ export default function InteriorEstimator() {
     setLeadEmail("");
     setLeadMessage("");
     setHoveredItem(null);
+    setPhoneError("");
     isInitialMount.current = true;
   };
 
@@ -101,6 +103,19 @@ export default function InteriorEstimator() {
     if (!leadName || !leadPhone) {
       alert("Please fill in your name and phone number.");
       return;
+    }
+
+    // Phone number validation (exactly 10 digits with optional +91 / 0)
+    const cleanedPhone = leadPhone.replace(/\D/g, "");
+    const isPhoneValid = cleanedPhone.length === 10 || 
+                         (cleanedPhone.length === 12 && cleanedPhone.startsWith("91")) ||
+                         (cleanedPhone.length === 11 && cleanedPhone.startsWith("0"));
+
+    if (!isPhoneValid) {
+      setPhoneError("Please enter a valid 10-digit mobile number.");
+      return;
+    } else {
+      setPhoneError("");
     }
     setIsSubmitting(true);
 
@@ -364,10 +379,14 @@ export default function InteriorEstimator() {
                     leadMessage={leadMessage}
                     isSubmitting={isSubmitting}
                     onChangeName={setLeadName}
-                    onChangePhone={setLeadPhone}
+                    onChangePhone={(val) => {
+                      setLeadPhone(val);
+                      if (phoneError) setPhoneError("");
+                    }}
                     onChangeEmail={setLeadEmail}
                     onChangeMessage={setLeadMessage}
                     onSubmit={handleLeadSubmit}
+                    phoneError={phoneError}
                   />
                 </div>
               )}

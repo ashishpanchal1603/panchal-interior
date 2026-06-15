@@ -24,12 +24,26 @@ export default function ContactForm() {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone) {
       alert("Please enter your name and phone number.");
       return;
+    }
+
+    // Phone number validation (exactly 10 digits with optional +91 / 0)
+    const cleanedPhone = phone.replace(/\D/g, "");
+    const isPhoneValid = cleanedPhone.length === 10 || 
+                         (cleanedPhone.length === 12 && cleanedPhone.startsWith("91")) ||
+                         (cleanedPhone.length === 11 && cleanedPhone.startsWith("0"));
+
+    if (!isPhoneValid) {
+      setPhoneError("Please enter a valid 10-digit mobile number.");
+      return;
+    } else {
+      setPhoneError("");
     }
 
     setLoading(true);
@@ -133,10 +147,20 @@ export default function ContactForm() {
                 type="tel"
                 required
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                  if (phoneError) setPhoneError("");
+                }}
                 placeholder="e.g. +91 99999 99999"
-                className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition text-sm"
+                className={`w-full rounded-lg border px-4 py-2.5 text-stone-800 focus:outline-none transition text-sm ${
+                  phoneError 
+                    ? "border-red-400 focus:border-red-400 focus:ring-1 focus:ring-red-400" 
+                    : "border-stone-200 focus:border-primary focus:ring-1 focus:ring-primary"
+                }`}
               />
+              {phoneError && (
+                <p className="text-red-500 text-[10px] mt-1 font-semibold">{phoneError}</p>
+              )}
             </div>
 
             <div>

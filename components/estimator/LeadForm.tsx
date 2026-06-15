@@ -23,6 +23,7 @@ interface LeadFormProps {
   onChangeEmail: (val: string) => void;
   onChangeMessage: (val: string) => void;
   onSubmit: (e: React.FormEvent) => void;
+  phoneError?: string;
 }
 
 export default function LeadForm({
@@ -40,6 +41,7 @@ export default function LeadForm({
   onChangeEmail,
   onChangeMessage,
   onSubmit,
+  phoneError,
 }: LeadFormProps) {
 
   return (
@@ -152,9 +154,16 @@ export default function LeadForm({
                   placeholder="e.g. +91 99251 11438"
                   value={leadPhone}
                   onChange={(e) => onChangePhone(e.target.value)}
-                  className="w-full rounded-lg border border-stone-200 pl-10 pr-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary text-sm transition"
+                  className={`w-full rounded-lg border pl-10 pr-4 py-2.5 text-stone-800 placeholder-stone-400 focus:outline-none text-sm transition ${
+                    phoneError 
+                      ? "border-red-400 focus:border-red-400 focus:ring-1 focus:ring-red-400" 
+                      : "border-stone-200 focus:border-primary focus:ring-1 focus:ring-primary"
+                  }`}
                 />
               </div>
+              {phoneError && (
+                <p className="text-red-500 text-[10px] mt-1 font-semibold">{phoneError}</p>
+              )}
             </div>
 
             {/* Email Field */}
