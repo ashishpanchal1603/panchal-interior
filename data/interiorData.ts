@@ -32,6 +32,7 @@ export interface Category {
 
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   category: string;
   location: string;
@@ -39,6 +40,13 @@ export interface Project {
   image: string;
   gallery: string[];
   description: string;
+  clientType?: string;
+  duration?: string;
+  areaSize?: string;
+  services?: string[];
+  materials?: string[];
+  workCategories?: { title: string; desc: string }[];
+  faqs?: { question: string; answer: string }[];
 }
 
 export interface BlogPost {
@@ -339,113 +347,261 @@ export const productsData: Product[] = [
 export const projectsData: Project[] = [
   {
     id: "proj-skyline-villa",
+    slug: "skyline-premium-villa",
     title: "Skyline Premium Villa",
     category: "Residential",
     location: "Bopal, Ahmedabad",
     year: "2025",
-    image: "/images/hero.png",
-    gallery: ["/images/hero.png", "/images/sofa_set.png", "/images/tv_unit.png"],
-    description: "A complete turnkey interior design project for a premium 4BHK villa. Features double-height living room paneling, customized Italian marble accents, modular kitchen, and modern bedroom wardrobe integrations."
+    image: "/images/living_room_tv_wardrobe.png",
+    gallery: ["/images/living_room_tv_wardrobe.png", "/images/sofa_frame_construction.png", "/images/custom_door_grill.png"],
+    description: "A complete turnkey interior design project for a premium 4BHK villa. Features double-height living room paneling, customized Italian marble accents, modular kitchen, and modern bedroom wardrobe integrations.",
+    clientType: "Residential Owner",
+    duration: "55 Days",
+    areaSize: "3,200 Sq.Ft.",
+    services: ["Living Room Design", "Modular Kitchen Setup", "Veneer Paneling", "Hydraulic Bed Carpentry"],
+    materials: ["CP Teak Wood", "Greenply Waterproof Plywood", "Century Laminates", "Hettich Soft-Close Drawer Runners", "Sleepwell HR Foam"],
+    workCategories: [
+      { title: "Main Door", desc: "Double-shutter custom hand-carved teak wood main door with brass fittings and smart lock integration." },
+      { title: "Bedroom Wardrobes", desc: "Floor-to-ceiling wardrobes styled with premium veneers and integrated LED wardrobe rods." },
+      { title: "Modular Kitchen", desc: "German edge-banded high-gloss kitchen layouts using BWP grade waterproof marine plywood carcass." },
+      { title: "TV Unit Console", desc: "Wall-mounted TV background with Italian white marble paneling, oak shelves, and hidden LED strip coves." }
+    ],
+    faqs: [
+      { question: "How much did the complete villa woodwork cost?", answer: "The complete woodwork and turnkey design for this 4BHK villa ranged between ₹12 Lakhs to ₹15 Lakhs depending on veneer selections and premium hardware." },
+      { question: "What warranty was provided?", answer: "We provided a 5-year manufacturing and wood-borer termite warranty for all solid wood and plywood structures." }
+    ]
   },
   {
     id: "proj-royal-kitchen",
+    slug: "luxury-acrylic-kitchen-layout",
     title: "Luxury Acrylic Kitchen Layout",
     category: "Kitchen",
     location: "Satellite, Ahmedabad",
     year: "2025",
     image: "/images/modular_kitchen.png",
     gallery: ["/images/modular_kitchen.png", "/images/tv_unit.png"],
-    description: "A custom high-gloss modular kitchen featuring state of the art built-in appliances, quartz countertops, high-capacity tandem baskets, and soft-close mechanisms."
+    description: "A custom high-gloss modular kitchen featuring state of the art built-in appliances, quartz countertops, high-capacity tandem baskets, and soft-close mechanisms.",
+    clientType: "Private Villa Owner",
+    duration: "22 Days",
+    areaSize: "280 Sq.Ft.",
+    services: ["Modular Kitchen Layout", "Quartz Countertop Fitting", "Pantry Unit Design"],
+    materials: ["Boiling Water Proof Marine Plywood", "German High-Gloss Acrylic Sheets", "Premium Quartz Stone Countertop", "Hafele Hydraulic Shutter lifts", "Hettich Wire/Tandem drawers"],
+    workCategories: [
+      { title: "Modular Carcasses", desc: "Boil Water Proof (BWP) marine plywood cabinets built for extreme moisture and heat resistance." },
+      { title: "Acrylic Shutters", desc: "Mirror-finish high-gloss German acrylic sheets hot-melt edge-banded to prevent laminate peeling." },
+      { title: "Tandem Baskets", desc: "German steel soft-closing cutlery and utility baskets designed for heavy weight storage." }
+    ],
+    faqs: [
+      { question: "Is the acrylic finish scratch resistant?", answer: "Yes, our German high-gloss acrylic sheets are highly scratch-resistant and can be cleaned easily with soap and a damp microfiber cloth." },
+      { question: "Are built-in appliances integrated?", answer: "Yes, we custom fabricated cabinet cut-outs for built-in hobs, chimneys, and dynamic microwave shelves." }
+    ]
   },
   {
     id: "proj-modern-apartment",
+    slug: "minimalist-3bhk-apartment",
     title: "Minimalist 3BHK Apartment",
     category: "Residential",
     location: "Prahlad Nagar, Ahmedabad",
     year: "2024",
     image: "/images/l_shape_sofa.png",
-    gallery: ["/images/l_shape_sofa.png", "/images/wooden_bed.png"],
-    description: "Scandinavian interior styling featuring warm wood profiles, custom L-shaped sofa sets, space-optimized wardrobes, and hidden mood lighting details."
+    gallery: ["/images/l_shape_sofa.png", "/images/sofa_frame_construction.png"],
+    description: "Scandinavian interior styling featuring warm wood profiles, custom L-shaped sofa sets, space-optimized wardrobes, and hidden mood lighting details.",
+    clientType: "IT Executive",
+    duration: "38 Days",
+    areaSize: "1,650 Sq.Ft.",
+    services: ["Space Planning", "L-Shape Sofa Fabrication", "False Gypsum Ceiling"],
+    materials: ["Solid Neem wood frame", "Century BWR Plywood", "Faux Suede Fabric"],
+    workCategories: [
+      { title: "Custom Sectional", desc: "Ergonomic L-shaped sofa set constructed on-site with multi-density Sleepwell cushions." },
+      { title: "Integrated TV Panel", desc: "Low-height TV credenza custom polished with PU matte melamine wood coat." }
+    ],
+    faqs: [
+      { question: "Is the sofa cushion durable?", answer: "Yes, it uses 40-density high-resilience foam which retains its springiness and comfort shape for years." }
+    ]
   },
   {
     id: "proj-executive-office",
+    slug: "executive-corporate-office",
     title: "Executive Corporate Office",
     category: "Commercial",
     location: "S.G. Highway, Ahmedabad",
     year: "2024",
     image: "/images/tv_unit.png",
     gallery: ["/images/tv_unit.png", "/images/sofa_set.png"],
-    description: "Dynamic workspace styling with customized partition panels, teak wood executive conference tables, elegant reception lounge, and custom glass cabinetry."
+    description: "Dynamic workspace styling with customized partition panels, teak wood executive conference tables, elegant reception lounge, and custom glass cabinetry.",
+    clientType: "TechCorp Director",
+    duration: "45 Days",
+    areaSize: "2,800 Sq.Ft.",
+    services: ["Commercial Office Design", "Conference Room Woodwork", "Glass Partitions"],
+    materials: ["High-Density MDF boards", "Premium Oak Veneers", "Toughened Partition Glass"],
+    workCategories: [
+      { title: "Executive Desks", desc: "L-shaped wooden director tables with built-in wire grommets and lock drawers." },
+      { title: "Conference Table", desc: "10-seater conference table made of CP teak wood logs with matte polish." }
+    ],
+    faqs: [
+      { question: "Was sound insulation provided?", answer: "Yes, partitions incorporate dual-layer acoustic insulation sheets to minimize sound leakage." }
+    ]
   },
   {
     id: "proj-gota-penthouse",
+    slug: "gota-luxury-penthouse",
     title: "Gota Luxury Penthouse",
     category: "Residential",
     location: "Gota, Ahmedabad",
     year: "2025",
     image: "/images/interior_3bhk.png",
-    gallery: ["/images/interior_3bhk.png", "/images/wardrobe_walkin.png", "/images/wooden_bed.png"],
-    description: "Spacious duplex penthouse interior execution featuring premium veneer ceilings, custom walk-in closets, false ceilings with cove lights, and custom hand-carved teak wood doors."
+    gallery: ["/images/interior_3bhk.png", "/images/custom_door_grill.png", "/images/wardrobe_walkin.png"],
+    description: "Spacious duplex penthouse interior execution featuring premium veneer ceilings, custom walk-in closets, false ceilings with cove lights, and custom hand-carved teak wood doors.",
+    clientType: "Penthouse Owner",
+    duration: "65 Days",
+    areaSize: "4,100 Sq.Ft.",
+    services: ["Duplex Layout Design", "Walk-In Closet Setup", "Teak Wood Main Door"],
+    materials: ["CP Teak Wood", "Action Tesa HDMR", "Century laminates", "Damp-proof paint coats"],
+    workCategories: [
+      { title: "Double-Height Panel", desc: "Premium veneer ceiling paneling with integrated architectural spotlight tracks." },
+      { title: "Walk-In Closet", desc: "Champagne-gold profile sliding glass doors with automatic warm sensor light bars." }
+    ],
+    faqs: [
+      { question: "What wood was used for the main entry door?", answer: "We crafted the door from 100% seasoned solid Teak Wood logs for robust security and weather resistance." }
+    ]
   },
   {
     id: "proj-thaltej-kitchen",
+    slug: "high-gloss-u-shape-kitchen",
     title: "High-Gloss U-Shape Kitchen",
     category: "Kitchen",
     location: "Thaltej, Ahmedabad",
     year: "2025",
     image: "/images/kitchen_ushape.png",
     gallery: ["/images/kitchen_ushape.png", "/images/kitchen_parallel.png"],
-    description: "A complete U-shaped modular kitchen layout with high-gloss German acrylic shutters, durable BWP marine plywood carcass, premium quartz countertop, and integrated profile handles."
+    description: "A complete U-shaped modular kitchen layout with high-gloss German acrylic shutters, durable BWP marine plywood carcass, premium quartz countertop, and integrated profile handles.",
+    clientType: "Villa Resident",
+    duration: "18 Days",
+    areaSize: "210 Sq.Ft.",
+    services: ["U-Shape Kitchen Layout", "Machine edge-banding", "Countertop Quartz fitting"],
+    materials: ["BWP Plywood", "Premium Acrylic panels", "Tandem soft-closing boxes"],
+    workCategories: [
+      { title: "Utility Pantry", desc: "Tall unit setup using soft-closing Hafele wire carousels for maximizing corner spaces." },
+      { title: "Quartz Platform", desc: "Seamless quartz platform with built-in under-mount stainless steel sink." }
+    ],
+    faqs: [
+      { question: "Is the countertop stain resistant?", answer: "Yes, quartz stone is non-porous and highly resistant to Indian curry or oil stains." }
+    ]
   },
   {
     id: "proj-science-city-villa",
+    slug: "contemporary-5bhk-villa",
     title: "Contemporary 5BHK Villa",
     category: "Residential",
     location: "Science City, Ahmedabad",
     year: "2024",
     image: "/images/interior_2bhk.png",
-    gallery: ["/images/interior_2bhk.png", "/images/sofa_set.png", "/images/wooden_bed.png"],
-    description: "Full turnkey custom woodworks and styling for a modern 5BHK villa. Features Sleepwell foam customized sofa sets, hydraulic storage beds, and detailed TV paneling in the living lounge."
+    gallery: ["/images/interior_2bhk.png", "/images/sofa_frame_construction.png", "/images/wooden_bed.png"],
+    description: "Full turnkey custom woodworks and styling for a modern 5BHK villa. Features Sleepwell foam customized sofa sets, hydraulic storage beds, and detailed TV paneling in the living lounge.",
+    clientType: "Luxury Villa Owner",
+    duration: "75 Days",
+    areaSize: "4,800 Sq.Ft.",
+    services: ["Bespoke Sofa Fabrication", "False Gypsum Ceiling", "Custom Wardrobes & Hydraulic Beds"],
+    materials: ["Solid CP Teak Wood", "Waterproof BWR Plywood", "Hettich Soft-closing Guides", "Sleepwell HR Foam"],
+    workCategories: [
+      { title: "Teak Wood Bed", desc: "King-size bed framed in seasoned solid wood with a massive internal storage compartment lifted by gas pistons." },
+      { title: "Bedroom Wardrobe", desc: "Custom floor-to-ceiling wardrobes featuring space-saving sliding profile mechanisms and internal LED coves." }
+    ],
+    faqs: [
+      { question: "Did you manufacture the sofa set in this project?", answer: "Yes, the sofa sets in our projects are custom-fabricated directly in our Gota workshop using 40-density HR Sleepwell foam and custom premium fabrics." }
+    ]
   },
   {
     id: "proj-sindhu-bhavan-office",
+    slug: "sindhu-bhavan-corporate-suite",
     title: "Sindhu Bhavan Corporate Suite",
     category: "Commercial",
     location: "Sindhu Bhavan Road, Ahmedabad",
     year: "2025",
     image: "/images/hero.png",
     gallery: ["/images/hero.png", "/images/tv_unit.png"],
-    description: "High-end corporate office interior styling. Incorporates acoustic fluted wall panels, conference tables crafted from premium teak wood logs, and modern concealed lighting fixtures."
+    description: "High-end corporate office interior styling. Incorporates acoustic fluted wall panels, conference tables crafted from premium teak wood logs, and modern concealed lighting fixtures.",
+    clientType: "Corporate Client",
+    duration: "50 Days",
+    areaSize: "3,500 Sq.Ft.",
+    services: ["Office Cabin Design", "Conference Room Woodwork", "Glass Partitions"],
+    materials: ["Heavy-duty Partition Framing", "Tesa HDMR Boards", "Toughened Partition Glass"],
+    workCategories: [
+      { title: "Executive Desk", desc: "Premium veneer-clad storage cabinets and main desk fabricated directly on-site." },
+      { title: "Reception Counter", desc: "Curved front desk styled with high-gloss laminates, integrated LED strips, and cable organizer slots." }
+    ],
+    faqs: [
+      { question: "Was false ceiling acoustic paneling included?", answer: "Yes, we integrated acoustic false ceilings using specialized mineral fiber tiles in conference halls to reduce voice echo." }
+    ]
   },
   {
     id: "proj-vastrapur-apartment",
+    slug: "cozy-2bhk-renovation",
     title: "Cozy 2BHK Renovation",
     category: "Residential",
     location: "Vastrapur, Ahmedabad",
     year: "2024",
     image: "/images/interior_1bhk.png",
     gallery: ["/images/interior_1bhk.png", "/images/wardrobe_sliding.png"],
-    description: "Renovation of a 2BHK flat. Optimized for compact living with space-saving custom sliding wardrobes, straight kitchen modular cabins, and dual-purpose living room sofa-cum-beds."
+    description: "Renovation of a 2BHK flat. Optimized for compact living with space-saving custom sliding wardrobes, straight kitchen modular cabins, and dual-purpose living room sofa-cum-beds.",
+    clientType: "Flat Owner",
+    duration: "28 Days",
+    areaSize: "1,100 Sq.Ft.",
+    services: ["Turnkey Living Space Design", "Custom Wardrobes & Hydraulic Beds"],
+    materials: ["Solid CP Teak Wood", "Waterproof BWR Plywood", "Veneers and Matt Laminates"],
+    workCategories: [
+      { title: "Modular Base Cabinets", desc: "Under-counter cabinets built with BWP marine plywood to resist water spillage and daily cleaning dampness." },
+      { title: "Modular Kitchen", desc: "German edge-banded high-gloss kitchen layouts using BWP grade waterproof marine plywood carcass." }
+    ],
+    faqs: [
+      { question: "Can we modify the wardrobe internal drawer configurations?", answer: "Absolutely. All our wardrobes are 100% custom-built, allowing you to select hanging rod lengths, lock drawers, and locker counts." }
+    ]
   },
   {
     id: "proj-bodakdev-wardrobe",
+    slug: "walk-in-glass-wardrobe-suite",
     title: "Walk-In Glass Wardrobe Suite",
     category: "Residential",
     location: "Bodakdev, Ahmedabad",
     year: "2025",
     image: "/images/wardrobe_walkin.png",
     gallery: ["/images/wardrobe_walkin.png", "/images/wardrobe_sliding.png"],
-    description: "Bespoke glass profile wardrobe setup in a master bedroom dressing suite. Engineered with champagne-gold metal profile shutters, smoked glass doors, and internal automatic sensor LED hanger rods."
+    description: "Bespoke glass profile wardrobe setup in a master bedroom dressing suite. Engineered with champagne-gold metal profile shutters, smoked glass doors, and internal automatic sensor LED hanger rods.",
+    clientType: "Suite Owner",
+    duration: "15 Days",
+    areaSize: "450 Sq.Ft.",
+    services: ["Walk-In Closet Setup", "Teak Wood Main Door"],
+    materials: ["CP Teak Wood", "Action Tesa HDMR", "Century laminates"],
+    workCategories: [
+      { title: "Modular Kitchen", desc: "German edge-banded high-gloss kitchen layouts using BWP grade waterproof marine plywood carcass." },
+      { title: "Main Door Entrance", desc: "Custom hand-polished solid teak wood main door with detailed molding frames and brass handles." }
+    ],
+    faqs: [
+      { question: "How long did this kitchen setup take?", answer: "This project was completed within 15 Days including layout finalization, workshop cutting, and on-site assembly." }
+    ]
   },
   {
     id: "proj-south-bopal-lounge",
+    slug: "minimalist-lounge-tv-hub",
     title: "Minimalist Lounge & TV Hub",
     category: "Residential",
     location: "South Bopal, Ahmedabad",
     year: "2024",
-    image: "/images/tv_unit.png",
-    gallery: ["/images/tv_unit.png", "/images/l_shape_sofa.png"],
-    description: "Custom living lounge room featuring white Italian marble TV unit back paneling, floating oak shelves, hidden LED strip lights, and a low-profile fabric L-shape sofa."
+    image: "/images/living_room_tv_wardrobe.png",
+    gallery: ["/images/living_room_tv_wardrobe.png", "/images/l_shape_sofa.png"],
+    description: "Custom living lounge room featuring white Italian marble TV unit back paneling, floating oak shelves, hidden LED strip lights, and a low-profile fabric L-shape sofa.",
+    clientType: "Home Owner",
+    duration: "32 Days",
+    areaSize: "1,250 Sq.Ft.",
+    services: ["Living Room Design", "Bespoke Sofa Fabrication"],
+    materials: ["Solid Neem wood frame", "Century BWR Plywood", "Faux Suede Fabric"],
+    workCategories: [
+      { title: "Teak Wood Hydraulic Bed", desc: "King-size bed framed in seasoned solid wood with a massive internal storage compartment lifted by gas pistons." },
+      { title: "Modular Kitchen", desc: "German edge-banded high-gloss kitchen layouts using BWP grade waterproof marine plywood carcass." }
+    ],
+    faqs: [
+      { question: "Is the modular kitchen waterproof?", answer: "Yes, we exclusively use BWP (Boiling Water Proof) Marine Grade Plywood for all kitchen carcasses, protecting them against water leakage and rot." }
+    ]
   }
 ];
 

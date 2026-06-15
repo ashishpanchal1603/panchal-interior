@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Project } from "@/data/interiorData";
 import { MapPin, Calendar, ArrowUpRight } from "lucide-react";
 import { useQuoteModal } from "@/components/QuoteModalContext";
@@ -54,7 +55,7 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
             className="group bg-white border border-stone-200/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition"
           >
             {/* Project Image Box */}
-            <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-stone-100">
+            <Link href={`/projects/${project.slug}`} className="block relative h-64 sm:h-80 w-full overflow-hidden bg-stone-100">
               <Image
                 src={project.image}
                 alt={project.title}
@@ -64,23 +65,25 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
               />
 
               {/* Category overlay */}
-              <span className="absolute top-4 left-4 text-[10px] font-bold text-stone-900 bg-white/95 px-2.5 py-1 rounded shadow-sm">
+              <span className="absolute top-4 left-4 text-[10px] font-bold text-stone-900 bg-white/95 px-2.5 py-1 rounded shadow-sm z-10">
                 {project.category}
               </span>
 
               {/* Year overlay */}
-              <span className="absolute bottom-4 right-4 flex items-center gap-1.5 text-[10px] font-bold text-stone-300 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded">
+              <span className="absolute bottom-4 right-4 flex items-center gap-1.5 text-[10px] font-bold text-stone-300 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded z-10">
                 <Calendar className="h-3.5 w-3.5 text-primary" />
                 Completed: {project.year}
               </span>
-            </div>
+            </Link>
 
             {/* Text Content */}
             <div className="p-6 space-y-4">
               <div className="flex justify-between items-start gap-4">
                 <div>
                   <h3 className="font-serif text-xl font-bold text-stone-900 group-hover:text-primary transition leading-snug">
-                    {project.title}
+                    <Link href={`/projects/${project.slug}`} className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                      {project.title}
+                    </Link>
                   </h3>
                   <div className="flex items-center gap-1.5 text-xs text-stone-400 mt-1.5 font-medium">
                     <MapPin className="h-3.5 w-3.5 text-stone-400 shrink-0" />
