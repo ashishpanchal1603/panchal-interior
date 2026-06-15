@@ -9,7 +9,6 @@ import {
   calculateFullHomePrice,
   calculateKitchenPrice,
   calculateWardrobePrice,
-  formatPrice,
 } from "./types";
 
 interface LeadFormProps {
@@ -45,15 +44,6 @@ export default function LeadForm({
   onChangeMessage,
   onSubmit,
 }: LeadFormProps) {
-  // Get active price range
-  const getPriceRange = () => {
-    if (calcType === "full") return calculateFullHomePrice(fullState);
-    if (calcType === "kitchen") return calculateKitchenPrice(kitchenState);
-    if (calcType === "wardrobe") return calculateWardrobePrice(wardrobeState);
-    return { low: 0, high: 0 };
-  };
-
-  const priceRange = getPriceRange();
 
   return (
     <motion.div

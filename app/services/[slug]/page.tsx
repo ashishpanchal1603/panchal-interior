@@ -1,4 +1,5 @@
 import React from "react";
+export const unstable_instant = { prefetch: "static" as const };
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";

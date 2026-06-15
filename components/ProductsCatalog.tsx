@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { Product, Category } from "@/data/interiorData";
 import { Search, SlidersHorizontal, ArrowRight, PackageX } from "lucide-react";
 import { useQuoteModal } from "@/components/QuoteModalContext";
@@ -15,20 +15,23 @@ interface ProductsCatalogProps {
 
 export default function ProductsCatalog({ products, categories }: ProductsCatalogProps) {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const { openQuoteModal } = useQuoteModal();
 
-  const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Sync category from URL search params (e.g. clicked from home categories)
-  useEffect(() => {
-    const cat = searchParams.get("category");
-    if (cat) {
-      setSelectedCategory(cat);
+  const selectedCategory = searchParams.get("category") || "all";
+
+  const handleCategoryChange = (category: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (category === "all") {
+      params.delete("category");
     } else {
-      setSelectedCategory("all");
+      params.set("category", category);
     }
-  }, [searchParams]);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
 
   // Filter products based on category and search query
   const filteredProducts = products.filter((product) => {
@@ -69,7 +72,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
           <div className="flex flex-row flex-wrap lg:flex-col gap-1.5">
             <button
               type="button"
-              onClick={() => setSelectedCategory("all")}
+              onClick={() => handleCategoryChange("all")}
               className={`w-auto lg:w-full text-left px-3 py-2 text-xs font-bold rounded-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                 selectedCategory === "all"
                   ? "bg-primary text-white font-bold"
@@ -82,7 +85,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
               <button
                 key={cat.id}
                 type="button"
-                onClick={() => setSelectedCategory(cat.id)}
+                onClick={() => handleCategoryChange(cat.id)}
                 className={`w-auto lg:w-full text-left px-3 py-2 text-xs font-bold rounded-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                   selectedCategory === cat.id
                     ? "bg-primary text-white font-bold"
@@ -110,7 +113,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
             <button
               type="button"
               onClick={() => {
-                setSelectedCategory("all");
+                handleCategoryChange("all");
                 setSearchQuery("");
               }}
               className="mt-6 text-xs font-bold text-primary border border-primary/20 bg-primary-light hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -166,6 +169,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
                   <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
                     <Link
                       href={`/products/${product.id}`}
+                      aria-label={`View specifications and gallery for ${product.name}`}
                       className="inline-flex items-center gap-1 text-xs font-bold text-stone-900 group-hover:text-primary transition"
                     >
                       Specs & Gallery

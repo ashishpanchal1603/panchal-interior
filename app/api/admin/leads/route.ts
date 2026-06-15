@@ -2,22 +2,34 @@ import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 
+interface Lead {
+  id: string;
+  status: string;
+  createdAt: string;
+  leadName: string;
+  leadPhone: string;
+  leadEmail?: string;
+  leadMessage?: string;
+  calcType?: string | null;
+  details?: unknown;
+}
+
 const getLeadsFilePath = () => path.join(process.cwd(), "data", "leads.json");
 
 // Helper to read leads safely
-async function readLeads() {
+async function readLeads(): Promise<Lead[]> {
   const filePath = getLeadsFilePath();
   try {
     const fileContent = await fs.readFile(filePath, "utf-8");
-    return JSON.parse(fileContent);
-  } catch (error) {
+    return JSON.parse(fileContent) as Lead[];
+  } catch {
     // If file doesn't exist, return empty array
     return [];
   }
 }
 
 // Helper to write leads safely
-async function writeLeads(leads: any[]) {
+async function writeLeads(leads: Lead[]) {
   const filePath = getLeadsFilePath();
   const dirPath = path.dirname(filePath);
   await fs.mkdir(dirPath, { recursive: true });
@@ -32,7 +44,6 @@ function isAuthorized(request: Request): boolean {
   return usernameHeader === adminUsername && passwordHeader === adminPassword;
 }
 
-
 // 1. GET - Fetch all inquiries
 export async function GET(request: Request) {
   if (!isAuthorized(request)) {
@@ -43,12 +54,13 @@ export async function GET(request: Request) {
     const leads = await readLeads();
     // Sort leads by date descending (newest first)
     const sortedLeads = leads.sort(
-      (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      (a: Lead, b: Lead) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     );
     return NextResponse.json(sortedLeads);
-  } catch (error: any) {
-    console.error("GET leads error:", error);
-    return NextResponse.json({ error: "Failed to fetch leads", message: error.message }, { status: 500 });
+  } catch (error) {
+    const err = error as Error;
+    console.error("GET leads error:", err);
+    return NextResponse.json({ error: "Failed to fetch leads", message: err.message }, { status: 500 });
   }
 }
 
@@ -66,7 +78,7 @@ export async function PUT(request: Request) {
     }
 
     const leads = await readLeads();
-    const leadIndex = leads.findIndex((l: any) => l.id === id);
+    const leadIndex = leads.findIndex((l: Lead) => l.id === id);
 
     if (leadIndex === -1) {
       return NextResponse.json({ error: "Lead not found." }, { status: 404 });
@@ -77,9 +89,10 @@ export async function PUT(request: Request) {
     await writeLeads(leads);
 
     return NextResponse.json({ success: true, lead: leads[leadIndex] });
-  } catch (error: any) {
-    console.error("PUT lead status error:", error);
-    return NextResponse.json({ error: "Failed to update status", message: error.message }, { status: 500 });
+  } catch (error) {
+    const err = error as Error;
+    console.error("PUT lead status error:", err);
+    return NextResponse.json({ error: "Failed to update status", message: err.message }, { status: 500 });
   }
 }
 
@@ -98,7 +111,7 @@ export async function DELETE(request: Request) {
     }
 
     const leads = await readLeads();
-    const filteredLeads = leads.filter((l: any) => l.id !== id);
+    const filteredLeads = leads.filter((l: Lead) => l.id !== id);
 
     if (leads.length === filteredLeads.length) {
       return NextResponse.json({ error: "Lead not found." }, { status: 404 });
@@ -106,8 +119,9 @@ export async function DELETE(request: Request) {
 
     await writeLeads(filteredLeads);
     return NextResponse.json({ success: true, message: "Lead deleted successfully." });
-  } catch (error: any) {
-    console.error("DELETE lead error:", error);
-    return NextResponse.json({ error: "Failed to delete lead", message: error.message }, { status: 500 });
+  } catch (error) {
+    const err = error as Error;
+    console.error("DELETE lead error:", err);
+    return NextResponse.json({ error: "Failed to delete lead", message: err.message }, { status: 500 });
   }
 }

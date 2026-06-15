@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { useQuoteModal } from "./QuoteModalContext";
 
 // Custom SVG Blueprint Icons matching the theme color and architectural design style
 const KitchenIcon = ({ className }: { className?: string }) => (
@@ -191,7 +189,6 @@ interface SolutionItem {
 }
 
 export default function EndToEndSolutions() {
-  const { openQuoteModal } = useQuoteModal();
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const solutions: SolutionItem[] = [

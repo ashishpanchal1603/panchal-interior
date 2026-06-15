@@ -184,6 +184,7 @@ export default function HomePage() {
                 <div className="mt-8 flex justify-between items-center">
                   <Link
                     href={`/services/${service.slug}`}
+                    aria-label={`View details of ${service.name} service`}
                     className="text-sm font-bold text-stone-950 group-hover:text-primary transition flex items-center gap-1"
                   >
                     View Details
@@ -202,6 +203,7 @@ export default function HomePage() {
           <AnimateOnScroll variant="simpleFade" className="mt-12 text-center">
             <Link
               href="/services"
+              aria-label="View all professional interior design and furniture services"
               className="inline-flex items-center gap-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-6 transition cursor-pointer"
             >
               View All Services
@@ -255,6 +257,7 @@ export default function HomePage() {
                   <div className="mt-4 flex items-center justify-between">
                     <Link
                       href={`/products?category=${cat.id}`}
+                      aria-label={`Explore our collection of custom ${cat.name}`}
                       className="text-xs font-bold text-primary bg-primary-light/10 border border-primary/20 hover:bg-primary hover:text-white px-4 py-1.5 rounded-lg backdrop-blur-sm transition duration-300"
                     >
                       Explore Collection
@@ -268,6 +271,7 @@ export default function HomePage() {
           <AnimateOnScroll variant="simpleFade" className="mt-12 text-center">
             <Link
               href="/products"
+              aria-label="Explore all custom furniture catalog products"
               className="inline-flex items-center gap-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-6 transition cursor-pointer"
             >
               Explore All Products
@@ -350,7 +354,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p className="text-stone-600 text-sm italic mt-5 leading-relaxed font-medium">
-                  "{test.text}"
+                  &ldquo;{test.text}&rdquo;
                 </p>
                 <div className="mt-6 border-t border-stone-200/60 pt-4 flex justify-between items-center">
                   <div>
@@ -384,6 +388,7 @@ export default function HomePage() {
             />
             <Link
               href="/contact"
+              aria-label="Contact Panchal Interior office in Ahmedabad"
               className="rounded-lg border border-stone-800 text-stone-300 hover:bg-stone-900 hover:text-white font-bold py-3 px-8 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Contact Our Office

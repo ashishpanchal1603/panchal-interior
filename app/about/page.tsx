@@ -250,6 +250,7 @@ export default function AboutPage() {
             />
             <Link
               href="/contact"
+              aria-label="Visit Panchal Interior office in Ahmedabad"
               className="rounded-lg border border-stone-800 text-stone-300 hover:bg-stone-900 font-bold py-3 px-6 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Visit Our Office

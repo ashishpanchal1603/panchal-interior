@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Phone, Calculator, Send } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { useQuoteModal } from "./QuoteModalContext";
@@ -46,14 +47,14 @@ export default function MobileBottomNav() {
         <div className="w-[1px] h-6 bg-stone-800" />
 
         {/* Calculator/Estimator Option */}
-        <a
+        <Link
           href="/#cost-estimator"
           onClick={handleEstimateScroll}
           className="flex flex-col items-center justify-center text-stone-300 hover:text-white active:scale-95 transition-all py-1 px-2.5"
         >
           <Calculator className="h-5 w-5 text-amber-500" />
           <span className="text-[10px] font-bold tracking-wide mt-1">Estimate</span>
-        </a>
+        </Link>
 
         {/* Divider */}
         <div className="w-[1px] h-6 bg-stone-800" />

@@ -101,6 +101,7 @@ export default function BlogPage() {
 
                   <Link
                     href={`/blog/${post.slug}`}
+                    aria-label={`Read article about ${post.title}`}
                     className="inline-flex items-center gap-1 text-xs font-bold text-stone-950 hover:text-primary transition group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     Read Article

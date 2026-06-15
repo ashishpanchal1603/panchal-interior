@@ -3,9 +3,52 @@ import nodemailer from "nodemailer";
 import fs from "fs/promises";
 import path from "path";
 
+interface FullDetails {
+  bhk: string;
+  packageTier: string;
+  scope: string[];
+}
+
+interface KitchenDetails {
+  layout: string;
+  lengthA: number;
+  lengthB: number;
+  lengthC?: number;
+  finish: string;
+}
+
+interface WardrobeDetails {
+  type: string;
+  width: number;
+  height: number;
+  finish: string;
+}
+
+interface InquireRequestBody {
+  leadName: string;
+  leadPhone: string;
+  leadEmail?: string;
+  leadMessage?: string;
+  calcType?: "full" | "kitchen" | "wardrobe" | null;
+  details?: unknown;
+  website?: string;
+}
+
+interface LeadRecord {
+  id: string;
+  leadName: string;
+  leadPhone: string;
+  leadEmail: string;
+  leadMessage: string;
+  calcType: string;
+  details: unknown;
+  createdAt: string;
+  status: string;
+}
+
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = (await request.json()) as InquireRequestBody;
     const { leadName, leadPhone, leadEmail, leadMessage, calcType, details, website } = body;
 
     // Honeypot spam protection check
@@ -40,15 +83,15 @@ export async function POST(request: Request) {
       // Ensure directory exists
       await fs.mkdir(dataDirectory, { recursive: true });
 
-      let currentLeads = [];
+      let currentLeads: LeadRecord[] = [];
       try {
         const fileContent = await fs.readFile(filePath, "utf-8");
-        currentLeads = JSON.parse(fileContent);
-      } catch (readError) {
+        currentLeads = JSON.parse(fileContent) as LeadRecord[];
+      } catch {
         currentLeads = [];
       }
 
-      const newLead = {
+      const newLead: LeadRecord = {
         id: `lead_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`,
         leadName,
         leadPhone,
@@ -71,16 +114,16 @@ export async function POST(request: Request) {
     let summaryText = "";
     let summaryHtml = "";
 
-    if (calcType === "full") {
-      const { bhk, packageTier, scope } = details;
+    if (calcType === "full" && details) {
+      const { bhk, packageTier, scope } = details as FullDetails;
       summaryText = `🏠 Config: ${bhk}\n💎 Package: ${packageTier}\n🛠️ Included: ${scope.join(", ")}`;
       summaryHtml = `
         <p><strong>🏠 Configuration:</strong> ${bhk.replace("-", " ").toUpperCase()}</p>
         <p><strong>💎 Quality Package:</strong> ${packageTier.toUpperCase()}</p>
         <p><strong>🛠️ Included Rooms:</strong> ${scope.map((s: string) => `<span style="background:#f4eae0; color:#493d2e; padding:3px 8px; border-radius:4px; font-size:11px; margin-right:5px; font-weight:bold;">${s}</span>`).join(" ")}</p>
       `;
-    } else if (calcType === "kitchen") {
-      const { layout, lengthA, lengthB, lengthC, finish } = details;
+    } else if (calcType === "kitchen" && details) {
+      const { layout, lengthA, lengthB, lengthC, finish } = details as KitchenDetails;
       const runningFeet = layout === "straight" ? lengthA : layout === "u-shape" ? (lengthA + lengthB + (lengthC || 8)) : (lengthA + lengthB);
       summaryText = `📐 Kitchen Layout: ${layout}\n📏 Sizing: Side A: ${lengthA}ft${lengthB ? `, Side B: ${lengthB}ft` : ""}${lengthC ? `, Side C: ${lengthC}ft` : ""}\n✨ Total: ${runningFeet} running ft\n🎨 Finish: ${finish}`;
       summaryHtml = `
@@ -89,8 +132,8 @@ export async function POST(request: Request) {
         <p><strong>✨ Total Length:</strong> ${runningFeet} running ft</p>
         <p><strong>🎨 Shutter Finish:</strong> ${finish.toUpperCase()}</p>
       `;
-    } else if (calcType === "wardrobe") {
-      const { type, width, height, finish } = details;
+    } else if (calcType === "wardrobe" && details) {
+      const { type, width, height, finish } = details as WardrobeDetails;
       const area = width * height;
       summaryText = `🚪 Wardrobe Style: ${type}\n📏 Size: ${width}ft (W) x ${height}ft (H)\n✨ Area: ${area} sq.ft\n🎨 Finish: ${finish}`;
       summaryHtml = `
@@ -158,8 +201,9 @@ export async function POST(request: Request) {
       } else {
         console.warn("⚠️ SMTP email notification skipped: Missing SMTP environment variables in .env.local.");
       }
-    } catch (smtpError: any) {
-      console.error("❌ SMTP email notification failed:", smtpError);
+    } catch (smtpError) {
+      const err = smtpError as Error;
+      console.error("❌ SMTP email notification failed:", err);
       // Catching the SMTP error prevents email credential problems from breaking the client lead submission flow.
     }
 
@@ -206,10 +250,11 @@ export async function POST(request: Request) {
       emailSent,
       telegramSent,
     });
-  } catch (error: any) {
-    console.error("Inquiry Route Error:", error);
+  } catch (error) {
+    const err = error as Error;
+    console.error("Inquiry Route Error:", err);
     return NextResponse.json(
-      { error: "Internal Server Error", message: error.message },
+      { error: "Internal Server Error", message: err.message },
       { status: 500 }
     );
   }

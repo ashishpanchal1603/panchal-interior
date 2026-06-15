@@ -36,12 +36,11 @@ export default function QuoteModal() {
 
   // Sync prefilled interest when modal opens
   useEffect(() => {
-    if (prefilledItem) {
-      setInterest(prefilledItem);
-    } else {
-      setInterest("");
+    const targetInterest = prefilledItem || "";
+    if (interest !== targetInterest) {
+      setInterest(targetInterest);
     }
-  }, [prefilledItem, isOpen]);
+  }, [prefilledItem, isOpen, interest]);
 
   // Prevent scroll when modal is open
   useEffect(() => {

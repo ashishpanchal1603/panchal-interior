@@ -6,10 +6,6 @@ import {
   FullHomeState,
   KitchenState,
   WardrobeState,
-  calculateFullHomePrice,
-  calculateKitchenPrice,
-  calculateWardrobePrice,
-  formatPrice,
 } from "./types";
 
 interface SuccessStateProps {
@@ -33,14 +29,6 @@ export default function SuccessState({
   onReset,
   openQuoteModal,
 }: SuccessStateProps) {
-  const getPriceRange = () => {
-    if (calcType === "full") return calculateFullHomePrice(fullState);
-    if (calcType === "kitchen") return calculateKitchenPrice(kitchenState);
-    if (calcType === "wardrobe") return calculateWardrobePrice(wardrobeState);
-    return { low: 0, high: 0 };
-  };
-
-  const priceRange = getPriceRange();
 
   return (
     <motion.div

@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Award, Briefcase, ShieldCheck, Clock } from "lucide-react";
 import { statsData } from "@/data/interiorData";
 import { useQuoteModal } from "./QuoteModalContext";
-import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function Hero() {

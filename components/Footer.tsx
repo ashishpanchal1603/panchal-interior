@@ -55,7 +55,7 @@ export default function Footer() {
 
         {/* Col 1: Brand & Intro */}
         <div className="space-y-5">
-          <Link href="/" className="flex items-center gap-2 text-white">
+          <Link href="/" aria-label="Panchal Interior Homepage" className="flex items-center gap-2 text-white">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
               <Sofa className="h-5.5 w-5.5" />
             </div>
@@ -69,19 +69,19 @@ export default function Footer() {
             </div>
           </Link>
           <p className="text-sm text-stone-400 leading-relaxed">
-            Ahmedabad's leading bespoke furniture manufacturers and interior designer consultants. Delivering quality, style, and luxury comfort to homes since 2011.
+            Ahmedabad&apos;s leading bespoke furniture manufacturers and interior designer consultants. Delivering quality, style, and luxury comfort to homes since 2011.
           </p>
           <div className="flex gap-3 pt-2">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Panchal Interior Facebook Page" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
               <FaFacebookF className="h-4 w-4" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Panchal Interior Instagram Profile" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
               <FaInstagram className="h-4 w-4" />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Panchal Interior YouTube Channel" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
               <FaYoutube className="h-4 w-4" />
             </a>
-            <a href="https://wa.me/919664956491" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
+            <a href="https://wa.me/919664956491" target="_blank" rel="noopener noreferrer" aria-label="Contact Panchal Interior on WhatsApp" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
               <FaWhatsapp className="h-4 w-4" />
             </a>
           </div>
@@ -154,6 +154,7 @@ export default function Footer() {
           </ul>
 
           <button
+            type="button"
             onClick={() => openQuoteModal()}
             className="w-full mt-6 rounded-lg bg-stone-900 border border-stone-800 text-primary hover:bg-primary hover:text-white font-bold py-2 px-4 shadow-sm hover:border-primary transition text-sm cursor-pointer"
           >

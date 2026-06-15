@@ -98,6 +98,7 @@ export default function Navbar() {
 
         <Link
           href="/"
+          aria-label="Panchal Interior Homepage"
           className="flex items-center gap-3 group"
         >
           <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white shadow-md transition group-hover:scale-105">
@@ -166,6 +167,7 @@ export default function Navbar() {
 
           <a
             href="tel:+919664956491"
+            aria-label="Call Panchal Interior customer hotline number"
             className="flex items-center gap-3 group"
           >
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition">
@@ -184,6 +186,7 @@ export default function Navbar() {
           </a>
 
           <button
+            type="button"
             onClick={() => openQuoteModal()}
             className="bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded-lg font-bold shadow-sm hover:shadow-md transition"
           >
@@ -196,6 +199,8 @@ export default function Navbar() {
         <div className="flex lg:hidden items-center gap-3">
 
           <button
+            type="button"
+            aria-label="Toggle navigation menu"
             onClick={() =>
               setMobileMenuOpen(
                 !mobileMenuOpen
@@ -258,6 +263,7 @@ export default function Navbar() {
               ))}
 
               <button
+                type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   openQuoteModal();

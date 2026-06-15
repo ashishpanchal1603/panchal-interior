@@ -33,8 +33,35 @@ export default function ContactPage() {
     },
   ];
 
+  const contactPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Panchal Interior",
+    "description": "Get in touch with Panchal Interior to schedule a site measurement visit in Ahmedabad.",
+    "url": "https://panchalinterior.com/contact",
+    "mainEntity": {
+      "@type": "ProfessionalService",
+      "name": "Panchal Interior & Furniture Solutions",
+      "telephone": "+919664956491",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Panchal Complex, Near Gota Bridge, Gota",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "postalCode": "382481",
+        "addressCountry": "IN",
+      },
+    },
+  };
+
   return (
     <div className="bg-stone-50 min-h-screen pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactPageSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* 1. Header Banner */}
       <section className="relative py-16 bg-stone-900 overflow-hidden text-center">
         <div className="absolute inset-0">
@@ -165,6 +192,7 @@ export default function ContactPage() {
               href="https://maps.google.com/?q=Gota+Bridge,+Ahmedabad"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Open Panchal Complex location in Google Maps"
               className="text-xs font-bold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Open in Google Maps

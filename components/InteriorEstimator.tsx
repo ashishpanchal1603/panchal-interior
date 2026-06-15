@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
@@ -29,12 +29,12 @@ export default function InteriorEstimator() {
   const { openQuoteModal } = useQuoteModal();
   const [calcType, setCalcType] = useState<CalculatorType>(null);
   const [step, setStep] = useState(1);
-  const [isInitialMount, setIsInitialMount] = useState(true);
+  const isInitialMount = useRef(true);
 
   // Scroll to the wizard container when step or calculator type changes on mobile
   useEffect(() => {
-    if (isInitialMount) {
-      setIsInitialMount(false);
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
       return;
     }
     const timer = setTimeout(() => {
@@ -93,6 +93,7 @@ export default function InteriorEstimator() {
     setLeadEmail("");
     setLeadMessage("");
     setHoveredItem(null);
+    isInitialMount.current = true;
   };
 
   const handleLeadSubmit = async (e: React.FormEvent) => {

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Sofa, Lock, User, Eye, EyeOff, ArrowLeft, RefreshCw } from "lucide-react";
 
 export default function AdminLoginPage() {
@@ -172,13 +173,13 @@ export default function AdminLoginPage() {
 
           {/* Go Back Link */}
           <div className="mt-6 border-t border-stone-100 pt-6 text-center">
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-400 hover:text-stone-700 transition duration-200"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Return to Homepage
-            </a>
+            </Link>
           </div>
         </div>
       </div>

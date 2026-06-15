@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Eye, Info } from "lucide-react";
+import { Sparkles, Eye } from "lucide-react";
 import { FullHomeState, KitchenState, WardrobeState } from "./types";
 
 interface PreviewPanelProps {

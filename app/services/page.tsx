@@ -140,6 +140,7 @@ export default function ServicesPage() {
               <div className="px-8 pb-8 flex items-center justify-between">
                 <Link
                   href={`/services/${service.slug}`}
+                  aria-label={`Learn detailed process of ${service.name} service`}
                   className="inline-flex items-center gap-1 text-sm font-bold text-stone-900 group-hover:text-primary transition"
                 >
                   Learn Detailed Process
@@ -172,6 +173,7 @@ export default function ServicesPage() {
             />
             <a
               href="tel:+919664956491"
+              aria-label="Call Panchal Interior customer support hotline"
               className="rounded-lg border border-stone-700 hover:bg-stone-850 text-stone-300 font-bold py-2.5 px-5 text-sm flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Call Hotline

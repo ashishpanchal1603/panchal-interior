@@ -1,9 +1,10 @@
 import React from "react";
+export const unstable_instant = { prefetch: "static" as const };
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPostsData } from "@/data/interiorData";
-import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
+import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ShareButton, BlogCTASection } from "@/components/BlogActions";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import type { Metadata } from "next";
