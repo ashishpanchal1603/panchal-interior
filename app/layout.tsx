@@ -22,8 +22,16 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+const productionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL 
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` 
+  : process.env.VERCEL_URL 
+    ? `https://${process.env.VERCEL_URL}` 
+    : "https://panchal-interior.vercel.app";
+
+const metadataBaseUrl = new URL(productionUrl);
+
 export const metadata = {
-  metadataBase: new URL("https://panchalinterior.com"),
+  metadataBase: metadataBaseUrl,
   title: {
     default: "Panchal Interior & Furniture Solutions | Ahmedabad",
     template: "%s | Panchal Interior & Furniture Solutions",
@@ -46,15 +54,24 @@ export const metadata = {
   openGraph: {
     title: "Panchal Interior & Furniture Solutions | Custom Home Solutions in Ahmedabad",
     description: "Premium modular kitchen, luxury sofas, custom wardrobes, and turnkey interior designs directly from our Gota workshop with 5-year warranty.",
-    url: "https://panchalinterior.com",
+    url: "./",
     siteName: "Panchal Interior & Furniture Solutions",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Panchal Interior Showroom Showcase",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Panchal Interior & Furniture Solutions | Ahmedabad",
     description: "Premium modular kitchen, custom wardrobes, and turnkey interior designs directly from our workshop with 5-year warranty.",
+    images: ["/images/hero.png"],
   },
   robots: {
     index: true,
