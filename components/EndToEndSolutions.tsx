@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Eye, Send, ChevronLeft, ChevronRight, MapPin, Hammer } from "lucide-react";
@@ -345,6 +345,22 @@ export default function EndToEndSolutions() {
   const [galleryCategory, setGalleryCategory] = useState<string | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  useEffect(() => {
+    if (galleryCategory) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [galleryCategory]);
+
+  const closeGallery = () => {
+    setGalleryCategory(null);
+    setLightboxIndex(null);
+  };
+
   const solutions: SolutionItem[] = [
     { id: "kitchen", name: "Modular Kitchen", icon: KitchenIcon, description: "Custom layouts, soft-close hardware & acrylic finishes" },
     { id: "wardrobe", name: "Storage & Wardrobes", icon: WardrobeIcon, description: "Sliding and swing wardrobes with loft storage solutions" },
@@ -441,13 +457,13 @@ export default function EndToEndSolutions() {
       {/* 1. Category Gallery Modal */}
       <AnimatePresence>
         {galleryCategory && activeGallery && (
-          <div className="fixed inset-0 z-[90] flex items-center justify-center p-0 sm:p-4">
+          <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setGalleryCategory(null)}
+              onClick={closeGallery}
               className="fixed inset-0 bg-black/75 backdrop-blur-md"
             />
 
@@ -457,7 +473,7 @@ export default function EndToEndSolutions() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", duration: 0.4 }}
-              className="relative w-full h-full max-h-screen sm:max-h-[85vh] sm:max-w-4xl sm:rounded-3xl bg-white shadow-2xl z-10 border border-stone-100 flex flex-col overflow-hidden"
+              className="relative w-full max-h-[85vh] sm:max-w-4xl rounded-3xl bg-white shadow-2xl z-10 border border-stone-100 flex flex-col overflow-hidden"
             >
               {/* Modal Header */}
               <div className="bg-stone-950 text-white p-5 flex items-center justify-between border-b border-stone-850 shrink-0">
@@ -469,7 +485,7 @@ export default function EndToEndSolutions() {
                   <p className="text-[10px] sm:text-xs text-stone-400 mt-1">{activeGallery.subtitle}</p>
                 </div>
                 <button
-                  onClick={() => setGalleryCategory(null)}
+                  onClick={closeGallery}
                   className="rounded-full bg-stone-800 hover:bg-stone-700 p-2 text-stone-300 hover:text-white transition cursor-pointer"
                 >
                   <X className="h-5 w-5" />
@@ -536,7 +552,7 @@ export default function EndToEndSolutions() {
       {/* 2. Fullscreen Lightbox Slider */}
       <AnimatePresence>
         {lightboxIndex !== null && activeGallery && (
-          <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -569,28 +585,28 @@ export default function EndToEndSolutions() {
             {/* Top Close Button */}
             <button
               onClick={() => setLightboxIndex(null)}
-              className="absolute top-6 right-6 rounded-full bg-stone-900/80 p-3 text-stone-300 hover:text-white hover:bg-stone-800 transition cursor-pointer z-20"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 rounded-full bg-stone-900/80 p-2 sm:p-3 text-stone-300 hover:text-white hover:bg-stone-800 transition cursor-pointer z-20"
               title="Close Full View"
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
 
             {/* Left Nav Arrow */}
             <button
               onClick={handlePrevImage}
-              className="absolute left-6 rounded-full bg-stone-900/80 p-3 text-stone-300 hover:text-white hover:bg-stone-800 transition cursor-pointer z-20"
+              className="absolute left-2 sm:left-6 rounded-full bg-stone-900/80 p-2 sm:p-3 text-stone-300 hover:text-white hover:bg-stone-800 transition cursor-pointer z-20"
               title="Previous Photo"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
 
             {/* Right Nav Arrow */}
             <button
               onClick={handleNextImage}
-              className="absolute right-6 rounded-full bg-stone-900/80 p-3 text-stone-300 hover:text-white hover:bg-stone-800 transition cursor-pointer z-20"
+              className="absolute right-2 sm:right-6 rounded-full bg-stone-900/80 p-2 sm:p-3 text-stone-300 hover:text-white hover:bg-stone-800 transition cursor-pointer z-20"
               title="Next Photo"
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
             </button>
           </div>
         )}

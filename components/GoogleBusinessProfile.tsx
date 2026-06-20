@@ -22,7 +22,7 @@ export default function GoogleBusinessProfile() {
       desc: "Visit our Gota workshop & experience materials live in our gallery showroom.",
       icon: <MapPin className="h-5 w-5" />,
       cta: "Get Directions",
-      href: "https://maps.google.com/?q=Panchal+Interior+Gota+Ahmedabad",
+      // href: "https://maps.google.com/?q=Panchal+Interior+Gota+Ahmedabad",
       color: "hover:border-red-500/30 hover:bg-red-50/5 hover:-translate-y-1 hover:shadow-lg",
       iconColor: "text-red-500 bg-red-50 border-red-100 group-hover:bg-red-500 group-hover:text-white",
       textHover: "group-hover:text-red-500",
