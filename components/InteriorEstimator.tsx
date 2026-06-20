@@ -38,10 +38,16 @@ export default function InteriorEstimator() {
       isInitialMount.current = false;
       return;
     }
+
+    // Only scroll if we are actively in a wizard flow
+    if (!calcType) return;
+
     const timer = setTimeout(() => {
       const element = document.getElementById("estimator-wizard");
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const yOffset = -90; // Leave space for the sticky navbar
+        const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     }, 50);
     return () => clearTimeout(timer);
