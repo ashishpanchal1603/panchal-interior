@@ -268,16 +268,15 @@ export default function AboutPage() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <BookConsultationButton
-              label="Get Free Site Estimate"
+              label="Get Free Site Visit"
+              productOrServiceName="About Page Site Visit"
               className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 shadow-md transition cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             />
-            <Link
-              href="/contact"
-              aria-label="Visit Panchal Interior office in Ahmedabad"
-              className="rounded-lg border border-stone-800 text-stone-300 hover:bg-stone-900 font-bold py-3 px-6 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              Visit Our Office
-            </Link>
+            <BookConsultationButton
+              label="Book Free Consultation"
+              productOrServiceName="About Page Consultation"
+              className="rounded-lg border border-stone-300 text-stone-700 hover:bg-stone-50 font-bold py-3 px-6 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-transparent cursor-pointer"
+            />
           </div>
         </div>
       </section>

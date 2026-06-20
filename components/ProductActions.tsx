@@ -25,14 +25,14 @@ export default function ProductActions({ productId, productName }: ProductAction
         className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-6 shadow-md transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
       >
         <FaWhatsapp className="h-5 w-5" />
-        Inquire on WhatsApp
+        WhatsApp Us
       </a>
       <button
         type="button"
         onClick={() => openQuoteModal(productName)}
         className="flex-1 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-6 shadow-md transition duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
-        Request Custom Estimate
+        Get Free Quote
       </button>
     </div>
   );

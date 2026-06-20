@@ -23,12 +23,43 @@ const interestOptions = [
   { value: "German High-Gloss Acrylic Kitchen", label: "German Acrylic Modular Kitchen" },
 ];
 
+const propertyTypeOptions = [
+  { value: "", label: "Select Property Type" },
+  { value: "1-2 BHK Flat", label: "1-2 BHK Flat" },
+  { value: "3-4 BHK Flat / Penthouse", label: "3-4 BHK Flat / Penthouse" },
+  { value: "Independent Villa", label: "Independent Villa" },
+  { value: "Commercial / Office", label: "Commercial / Office" },
+  { value: "Single Room / Custom Piece", label: "Single Room / Custom Piece" }
+];
+
+const budgetRangeOptions = [
+  { value: "", label: "Select Budget Range" },
+  { value: "Under ₹1.5 Lakhs", label: "Under ₹1.5 Lakhs" },
+  { value: "₹1.5 Lakhs - ₹3 Lakhs", label: "₹1.5 Lakhs - ₹3 Lakhs" },
+  { value: "₹3 Lakhs - ₹6 Lakhs", label: "₹3 Lakhs - ₹6 Lakhs" },
+  { value: "₹6 Lakhs - ₹10 Lakhs", label: "₹6 Lakhs - ₹10 Lakhs" },
+  { value: "₹10 Lakhs - ₹15 Lakhs", label: "₹10 Lakhs - ₹15 Lakhs" },
+  { value: "₹15 Lakhs+", label: "₹15 Lakhs+" }
+];
+
+const timelineOptions = [
+  { value: "", label: "Select Preferred Timeline" },
+  { value: "Immediate (Within 15 days)", label: "Immediate (Within 15 days)" },
+  { value: "Within 1 Month", label: "Within 1 Month" },
+  { value: "2-3 Months", label: "2-3 Months" },
+  { value: "Planning phase (> 3 months)", label: "Planning phase (> 3 months)" }
+];
+
 export default function QuoteModal() {
   const { isOpen, closeQuoteModal, prefilledItem } = useQuoteModal();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [interest, setInterest] = useState("");
+  const [location, setLocation] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const [budgetRange, setBudgetRange] = useState("");
+  const [timeline, setTimeline] = useState("");
   const [message, setMessage] = useState("");
 
   const [loading, setLoading] = useState(false);
@@ -57,6 +88,10 @@ export default function QuoteModal() {
         setPhone("");
         setEmail("");
         setInterest("");
+        setLocation("");
+        setPropertyType("");
+        setBudgetRange("");
+        setTimeline("");
         setMessage("");
         setSuccess(false);
         setLoading(false);
@@ -90,6 +125,15 @@ export default function QuoteModal() {
 
     setLoading(true);
 
+    const formattedMessage = [
+      interest ? `Requirement: ${interest}` : "",
+      location ? `Location: ${location}` : "",
+      propertyType ? `Property Type: ${propertyType}` : "",
+      budgetRange ? `Budget Range: ${budgetRange}` : "",
+      timeline ? `Timeline: ${timeline}` : "",
+      message ? `Message: ${message}` : ""
+    ].filter(Boolean).join("\n");
+
     try {
       const response = await fetch("/api/inquire", {
         method: "POST",
@@ -100,7 +144,7 @@ export default function QuoteModal() {
           leadName: name,
           leadPhone: phone,
           leadEmail: email,
-          leadMessage: `${interest ? `[Interest: ${interest}] ` : ""}${message}`,
+          leadMessage: formattedMessage,
           calcType: null,
           details: null,
         }),
@@ -185,21 +229,20 @@ export default function QuoteModal() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Ramesh Patel"
-                      className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition"
-                    />
-                  </div>
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="e.g. Ramesh Patel"
+                        className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition text-sm"
+                      />
+                    </div>
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
                         Phone Number *
@@ -212,8 +255,8 @@ export default function QuoteModal() {
                           setPhone(e.target.value);
                           if (phoneError) setPhoneError("");
                         }}
-                        placeholder="e.g. +91 96649 56491"
-                        className={`w-full rounded-lg border px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:outline-none transition ${
+                        placeholder="e.g. 96649 56491"
+                        className={`w-full rounded-lg border px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:outline-none transition text-sm ${
                           phoneError 
                             ? "border-red-400 focus:border-red-400 focus:ring-1 focus:ring-red-400" 
                             : "border-stone-200 focus:border-primary focus:ring-1 focus:ring-primary"
@@ -222,6 +265,22 @@ export default function QuoteModal() {
                       {phoneError && (
                         <p className="text-red-500 text-[10px] mt-1 font-semibold">{phoneError}</p>
                       )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
+                        Location / Area in Ahmedabad *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        placeholder="e.g. Gota / Satellite"
+                        className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition text-sm"
+                      />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
@@ -232,40 +291,78 @@ export default function QuoteModal() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="e.g. ramesh@example.com"
-                        className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition"
+                        className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition text-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
+                        Requirement
+                      </label>
+                      <CustomSelect
+                        value={interest}
+                        onChange={setInterest}
+                        options={interestOptions}
+                        placeholder="General Inquiry"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
+                        Property Type
+                      </label>
+                      <CustomSelect
+                        value={propertyType}
+                        onChange={setPropertyType}
+                        options={propertyTypeOptions}
+                        placeholder="Select Property Type"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
+                        Budget Range
+                      </label>
+                      <CustomSelect
+                        value={budgetRange}
+                        onChange={setBudgetRange}
+                        options={budgetRangeOptions}
+                        placeholder="Select Budget Range"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
+                        Preferred Timeline
+                      </label>
+                      <CustomSelect
+                        value={timeline}
+                        onChange={setTimeline}
+                        options={timelineOptions}
+                        placeholder="Select Preferred Timeline"
                       />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
-                      Interested In
-                    </label>
-                    <CustomSelect
-                      value={interest}
-                      onChange={setInterest}
-                      options={interestOptions}
-                      placeholder="General Inquiry / Custom Project"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-stone-600 mb-1">
-                      Project Details / Message
+                      Project Details / Message (Optional)
                     </label>
                     <textarea
-                      rows={3}
+                      rows={2}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Tell us about your requirements, layout dimensions, preferences..."
-                      className="w-full rounded-lg border border-stone-200 px-4 py-2.5 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition resize-none"
+                      placeholder="Tell us about your preferences..."
+                      className="w-full rounded-lg border border-stone-200 px-4 py-2 text-stone-800 placeholder-stone-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition resize-none text-sm"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary hover:bg-primary-hover text-white font-medium py-3 px-6 shadow-md transition disabled:opacity-75"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary hover:bg-primary-hover text-white font-medium py-3 px-6 shadow-md transition disabled:opacity-75 cursor-pointer text-sm font-bold"
                   >
                     {loading ? (
                       <>

@@ -83,12 +83,20 @@ export default function Hero() {
             className="mt-10 flex flex-wrap gap-4"
           >
             <button
-              onClick={() => openQuoteModal()}
-              className="group flex items-center gap-2 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-7 shadow-lg transition duration-300 cursor-pointer"
+              onClick={() => openQuoteModal("Hero CTA")}
+              className="group flex items-center gap-2 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-7 shadow-lg transition duration-300 cursor-pointer border-none"
             >
-              Get Free Quote
+              Get Free Site Visit
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
+            <a
+              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 rounded-xl border border-white/20 hover:border-white hover:bg-white/10 text-white font-bold py-3.5 px-7 transition duration-300 cursor-pointer"
+            >
+              WhatsApp Us
+            </a>
           </motion.div>
         </div>
       </div>

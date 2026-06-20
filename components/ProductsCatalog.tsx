@@ -181,7 +181,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
                       onClick={() => openQuoteModal(product.name)}
                       className="rounded-lg bg-primary hover:bg-primary-hover text-white text-[10px] font-bold py-1.5 px-3 transition cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
-                      Inquire Quote
+                      Get Free Quote
                     </button>
                   </div>
                 </div>

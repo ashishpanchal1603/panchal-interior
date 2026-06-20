@@ -171,7 +171,7 @@ export default function ServicesPage() {
                   <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <BookConsultationButton
-                  label="Get A Quote"
+                  label="Book Free Consultation"
                   className="rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold py-2.5 px-4 shadow-sm transition cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   productOrServiceName={service.name}
                 />
@@ -191,7 +191,7 @@ export default function ServicesPage() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3 justify-center">
             <BookConsultationButton
-              label="Consult Rajesh Panchal"
+              label="Book Free Consultation"
               className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-5 text-sm cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               productOrServiceName="Rajesh Panchal Customization"
             />
@@ -200,7 +200,7 @@ export default function ServicesPage() {
               aria-label="Call Panchal Interior customer support hotline"
               className="rounded-lg border border-stone-700 hover:bg-stone-850 text-stone-300 font-bold py-2.5 px-5 text-sm flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
-              Call Hotline
+              Call Now
             </a>
           </div>
         </div>

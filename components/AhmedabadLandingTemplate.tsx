@@ -171,7 +171,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
           {/* CTA Buttons */}
           <AnimateOnScroll variant="fadeInUp" delay={0.3} className="mt-10 flex flex-wrap gap-4 items-center">
             <BookConsultationButton
-              label="Get Free Estimates"
+              label="Get Free Quote"
               productOrServiceName={`${config.h1} Page`}
               className="rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-8 text-sm shadow-lg transition duration-300 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             />
@@ -183,7 +183,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
               Call Now
             </a>
             <a
-              href="https://wa.me/919664956491"
+              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 text-sm flex items-center justify-center gap-2 shadow-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -225,7 +225,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
             </p>
             <div className="pt-4">
               <BookConsultationButton
-                label="Book Workshop Visit"
+                label="Book Free Consultation"
                 productOrServiceName={`Workshop Visit - ${config.h1}`}
                 className="rounded-lg bg-stone-900 hover:bg-stone-850 text-white font-bold py-3 px-5 text-xs shadow transition cursor-pointer border-none"
               />
@@ -330,7 +330,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
                       ✔ Factory Direct
                     </span>
                     <BookConsultationButton
-                      label="Inquire Design"
+                      label="Get Free Quote"
                       productOrServiceName={`${item.title} Setup`}
                       className="text-xs font-bold text-primary hover:underline cursor-pointer bg-transparent border-none"
                     />
@@ -415,7 +415,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
           </p>
           <div className="flex flex-wrap gap-3.5 justify-center pt-4">
             <BookConsultationButton
-              label="Request Consultation"
+              label="Book Free Consultation"
               productOrServiceName={`${config.h1} Bottom CTA`}
               className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 text-sm cursor-pointer border-none shadow-md transition duration-300"
             />
@@ -424,16 +424,16 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
               className="rounded-lg border border-stone-800 text-stone-300 hover:bg-stone-900 hover:text-white font-bold py-3 px-5 text-sm flex items-center justify-center gap-2 transition duration-300"
             >
               <Phone className="h-4 w-4" />
-              Call Support
+              Call Now
             </a>
             <a
-              href="https://wa.me/919664956491"
+              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-5 text-sm flex items-center justify-center gap-2 shadow-md transition duration-300"
             >
               <MessageCircle className="h-4 w-4" />
-              WhatsApp Consultation
+              WhatsApp Us
             </a>
           </div>
         </div>

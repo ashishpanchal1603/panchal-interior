@@ -85,7 +85,7 @@ export default function Footer() {
             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Panchal Interior YouTube Channel" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
               <FaYoutube className="h-4 w-4" />
             </a>
-            <a href="https://wa.me/919664956491" target="_blank" rel="noopener noreferrer" aria-label="Contact Panchal Interior on WhatsApp" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
+            <a href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20" target="_blank" rel="noopener noreferrer" aria-label="Contact Panchal Interior on WhatsApp" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">
               <FaWhatsapp className="h-4 w-4" />
             </a>
           </div>

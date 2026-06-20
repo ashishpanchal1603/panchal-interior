@@ -53,7 +53,7 @@ export function BlogCTASection({ postTitle }: BlogCTASectionProps) {
           onClick={() => openQuoteModal(`Consultation from Blog: ${postTitle}`)}
           className="mt-6 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-6 text-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          Request Site Consultation
+          Book Free Consultation
         </button>
       </div>
     </section>

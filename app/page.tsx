@@ -7,6 +7,7 @@ import {
   categoriesData,
   advantagesData,
   testimonialsData,
+  projectsData,
 } from "@/data/interiorData";
 import {
   Sofa,
@@ -28,6 +29,10 @@ import {
 import BookConsultationButton from "@/components/BookConsultationButton";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 import EstimatorWrapper from "@/components/EstimatorWrapper";
+import BeforeAfterSection from "@/components/BeforeAfterSection";
+import TrustBadges from "@/components/TrustBadges";
+import HowWeWork from "@/components/HowWeWork";
+import FaqAccordion from "@/components/FaqAccordion";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -38,6 +43,29 @@ export const metadata: Metadata = {
     canonical: "https://panchalinterior.com",
   },
 };
+
+const homeFaqs = [
+  {
+    question: "What services does Panchal Interior Studio offer in Ahmedabad?",
+    answer: "We offer end-to-end interior design and custom furniture manufacturing solutions. This includes custom sofas, modular kitchens, modular wardrobes, TV unit design, bedroom furniture, false ceilings, electrical work, and turnkey residential and commercial execution."
+  },
+  {
+    question: "Do you have a physical workshop or experience center?",
+    answer: "Yes! Our main manufacturing workshop is located near Gota Bridge, Ahmedabad. Customers are welcome to schedule a visit to inspect materials, watch raw furniture carpentry in progress, and review finish catalog options."
+  },
+  {
+    question: "Is the site measurement and consultation visit completely free?",
+    answer: "Absolutely. We offer a free, no-obligation site measurement visit anywhere in Ahmedabad. Our team will visit your property, take precise measurements, evaluate space requirements, and discuss layout ideas."
+  },
+  {
+    question: "What materials do you use for modular kitchens and furniture?",
+    answer: "For kitchens and damp areas, we strictly use Boil Water Proof (BWP) Marine Grade Plywood and Hettich or Hafele soft-close hardware. For custom furniture, we use premium quality solid teak wood, commercial BWR plywood, and scratch-resistant German acrylic or PU finish sheets."
+  },
+  {
+    question: "Do you offer a warranty on your carpentry and interior work?",
+    answer: "Yes, we stand behind our workmanship with a 5-year warranty against wood termite/borer infestations and manufacturing defects on all custom furniture and wardrobes."
+  }
+];
 
 export default function HomePage() {
   // Helper to map icon names to Lucide icons for services
@@ -168,6 +196,8 @@ export default function HomePage() {
       />
 
       <Hero />
+      
+      <TrustBadges />
 
       {/* 1. Services Section */}
       <section className="py-12 md:py-24 bg-stone-50">
@@ -212,7 +242,7 @@ export default function HomePage() {
                     <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <BookConsultationButton
-                    label="Inquire Now"
+                    label="Book Free Consultation"
                     className="text-xs font-semibold text-primary hover:underline cursor-pointer bg-transparent border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     productOrServiceName={service.name}
                   />
@@ -305,6 +335,12 @@ export default function HomePage() {
       {/* 2.3 End-to-End Solutions Section */}
       <EndToEndSolutions />
 
+      {/* How We Work Process Timeline Section */}
+      <HowWeWork />
+
+      {/* 2.4 Before & After Transformations Section */}
+      <BeforeAfterSection />
+
       {/* 2.5 Cost Estimator Section */}
       <EstimatorWrapper />
 
@@ -392,31 +428,4 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Bottom Call to Action Section */}
-      <section className="bg-stone-950 py-12 md:py-20 border-t border-stone-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
-        <div className="max-w-4xl mx-auto px-5 text-center relative z-10">
-          <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-white">
-            Ready to Transform Your Living Space?
-          </h2>
-          <p className="text-stone-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed">
-            Get in touch with our design experts today. We provide free site measurement consultations and dynamic 3D rendering designs.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <BookConsultationButton
-              label="Get Free Measurement Quote"
-              className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 shadow-lg transition duration-300 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            />
-            <Link
-              href="/contact"
-              aria-label="Contact Panchal Interior office in Ahmedabad"
-              className="rounded-lg border border-stone-800 text-stone-300 hover:bg-stone-900 hover:text-white font-bold py-3 px-8 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              Contact Our Office
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+      {/* 5. Bottom Call to Actio

@@ -262,7 +262,7 @@ export default async function ServiceDetailPage(props: PageProps) {
             </ul>
 
             <BookConsultationButton
-              label="Book Consultation Now"
+              label="Book Free Consultation"
               productOrServiceName={`${service.name} Service Detail`}
               className="w-full rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3 px-4 shadow-md transition text-sm relative z-10 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             />
@@ -271,7 +271,7 @@ export default async function ServiceDetailPage(props: PageProps) {
               href="tel:+919664956491"
               className="block w-full text-center mt-3 text-xs text-stone-400 hover:text-white underline transition relative z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
-              Call for quick booking
+              Call Now
             </a>
           </div>
         </div>
