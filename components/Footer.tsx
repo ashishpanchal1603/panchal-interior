@@ -55,7 +55,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-stone-950 text-stone-300 pt-16 pb-8 border-t-4 border-primary">
-      <div className="max-w-7xl mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
 
         {/* Col 1: Brand & Intro */}
         <div className="space-y-5">
@@ -108,7 +108,58 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Col 3: Quick Links */}
+        {/* Col 3: Local Ahmedabad Hubs */}
+        <div>
+          <h4 className="font-serif text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
+            Ahmedabad Local Hubs
+          </h4>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <Link href="/interior-designer-ahmedabad" className="hover:text-primary transition flex items-center gap-1.5 group">
+                <ArrowRight className="h-3 w-3 text-stone-600 group-hover:text-primary transition-transform group-hover:translate-x-1" />
+                Interior Design
+              </Link>
+            </li>
+            <li>
+              <Link href="/custom-furniture-ahmedabad" className="hover:text-primary transition flex items-center gap-1.5 group">
+                <ArrowRight className="h-3 w-3 text-stone-600 group-hover:text-primary transition-transform group-hover:translate-x-1" />
+                Custom Furniture
+              </Link>
+            </li>
+            <li>
+              <Link href="/modular-kitchen-ahmedabad" className="hover:text-primary transition flex items-center gap-1.5 group">
+                <ArrowRight className="h-3 w-3 text-stone-600 group-hover:text-primary transition-transform group-hover:translate-x-1" />
+                Modular Kitchens
+              </Link>
+            </li>
+            <li>
+              <Link href="/custom-sofa-ahmedabad" className="hover:text-primary transition flex items-center gap-1.5 group">
+                <ArrowRight className="h-3 w-3 text-stone-600 group-hover:text-primary transition-transform group-hover:translate-x-1" />
+                Custom Sofa Set
+              </Link>
+            </li>
+            <li>
+              <Link href="/wardrobe-design-ahmedabad" className="hover:text-primary transition flex items-center gap-1.5 group">
+                <ArrowRight className="h-3 w-3 text-stone-600 group-hover:text-primary transition-transform group-hover:translate-x-1" />
+                Wardrobes & Closets
+              </Link>
+            </li>
+            <li>
+              <Link href="/tv-unit-design-ahmedabad" className="hover:text-primary transition flex items-center gap-1.5 group">
+                <ArrowRight className="h-3 w-3 text-stone-600 group-hover:text-primary transition-transform group-hover:translate-x-1" />
+                TV Unit Panels
+              </Link>
+            </li>
+            <li>
+              <Link href="/home-interior-ahmedabad" className="hover:text-primary transition flex items-center gap-1.5 group">
+                <ArrowRight className="h-3 w-3 text-stone-600 group-hover:text-primary transition-transform group-hover:translate-x-1" />
+                Home Renovation
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Col 4: Quick Links */}
         <div>
           <h4 className="font-serif text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
             Quick Navigation
