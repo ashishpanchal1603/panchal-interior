@@ -20,11 +20,7 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
-const productionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL 
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` 
-  : process.env.VERCEL_URL 
-    ? `https://${process.env.VERCEL_URL}` 
-    : "https://panchal-interior.vercel.app";
+const productionUrl = "https://panchalinterior.com";
 
 const metadataBaseUrl = new URL(productionUrl);
 
@@ -52,7 +48,7 @@ export const metadata = {
   openGraph: {
     title: "Panchal Interior & Furniture Solutions | Custom Home Solutions in Ahmedabad",
     description: "Premium modular kitchen, luxury sofas, custom wardrobes, and turnkey interior designs directly from our Gota workshop with 5-year warranty.",
-    url: "./",
+    url: "/",
     siteName: "Panchal Interior & Furniture Solutions",
     locale: "en_IN",
     type: "website",

@@ -10,7 +10,31 @@ export const metadata: Metadata = {
   description:
     "Learn about Panchal Interior, Ahmedabad's leading custom wood furniture manufacturing and turnkey home interior solution firm since 2011.",
   alternates: {
-    canonical: "https://panchalinterior.com/about",
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Our Story & Craftsmanship | Panchal Interior",
+    description:
+      "Learn about Panchal Interior, Ahmedabad's leading custom wood furniture manufacturing and turnkey home interior solution firm since 2011.",
+    url: "/about",
+    siteName: "Panchal Interior & Furniture Solutions",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Panchal Interior Custom Furniture Story",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Our Story & Craftsmanship | Panchal Interior",
+    description:
+      "Learn about Panchal Interior, Ahmedabad's leading custom wood furniture manufacturing and turnkey home interior solution firm since 2011.",
+    images: ["/images/hero.png"],
   },
 };
 

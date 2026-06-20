@@ -10,7 +10,31 @@ export const metadata: Metadata = {
   description:
     "Explore our completed residential villas, corporate offices, sliding wardrobes, and modular kitchens across Satellite, Bopal, Gota, and Thaltej in Ahmedabad.",
   alternates: {
-    canonical: "https://panchalinterior.com/projects",
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Completed Projects — Residential & Commercial Portfolio | Panchal Interior",
+    description:
+      "Explore our completed residential villas, corporate offices, sliding wardrobes, and modular kitchens across Satellite, Bopal, Gota, and Thaltej in Ahmedabad.",
+    url: "/projects",
+    siteName: "Panchal Interior & Furniture Solutions",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Panchal Interior Completed Projects Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Completed Projects — Residential & Commercial Portfolio | Panchal Interior",
+    description:
+      "Explore our completed residential villas, corporate offices, sliding wardrobes, and modular kitchens across Satellite, Bopal, Gota, and Thaltej in Ahmedabad.",
+    images: ["/images/hero.png"],
   },
 };
 

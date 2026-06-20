@@ -20,7 +20,31 @@ export const metadata: Metadata = {
   description:
     "We provide modular kitchen setup, customized sofa manufacturing, wardrobes, custom solid wood furniture, electrical design, and premium painting services in Ahmedabad.",
   alternates: {
-    canonical: "https://panchalinterior.com/services",
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Professional Furniture & Interior Services | Panchal Interior",
+    description:
+      "We provide modular kitchen setup, customized sofa manufacturing, wardrobes, custom solid wood furniture, electrical design, and premium painting services in Ahmedabad.",
+    url: "/services",
+    siteName: "Panchal Interior & Furniture Solutions",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Panchal Interior Professional Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Professional Furniture & Interior Services | Panchal Interior",
+    description:
+      "We provide modular kitchen setup, customized sofa manufacturing, wardrobes, custom solid wood furniture, electrical design, and premium painting services in Ahmedabad.",
+    images: ["/images/hero.png"],
   },
 };
 

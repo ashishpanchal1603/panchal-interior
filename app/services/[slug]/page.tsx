@@ -32,7 +32,25 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: `${service.name} — Custom Solutions in Ahmedabad`,
     description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
     alternates: {
-      canonical: `https://panchalinterior.com/services/${service.slug}`,
+      canonical: `/services/${service.slug}`,
+    },
+    openGraph: {
+      title: `${service.name} — Custom Solutions in Ahmedabad | Panchal Interior`,
+      description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
+      url: `/services/${service.slug}`,
+      type: "website",
+      images: [
+        {
+          url: service.image,
+          alt: `${service.name} Custom Woodworking`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.name} — Custom Solutions in Ahmedabad | Panchal Interior`,
+      description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
+      images: [service.image],
     },
   };
 }
@@ -77,6 +95,31 @@ export default async function ServiceDetailPage(props: PageProps) {
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://panchalinterior.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://panchalinterior.com/services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": service.name,
+        "item": `https://panchalinterior.com/services/${service.slug}`
+      }
+    ]
+  };
+
   return (
     <div className="bg-white min-h-screen pb-20">
       <script
@@ -89,6 +132,12 @@ export default async function ServiceDetailPage(props: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(professionalServiceSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
 

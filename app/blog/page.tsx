@@ -10,7 +10,31 @@ export const metadata: Metadata = {
   description:
     "Read our professional modular kitchen material guides, space optimization planning ideas, and customized wood furniture tips from Panchal Interior experts.",
   alternates: {
-    canonical: "https://panchalinterior.com/blog",
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Woodworking Insights, Tips, & Home Design Guides | Panchal Interior",
+    description:
+      "Read our professional modular kitchen material guides, space optimization planning ideas, and customized wood furniture tips from Panchal Interior experts.",
+    url: "/blog",
+    siteName: "Panchal Interior & Furniture Solutions",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Panchal Interior Blog & Guides",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Woodworking Insights, Tips, & Home Design Guides | Panchal Interior",
+    description:
+      "Read our professional modular kitchen material guides, space optimization planning ideas, and customized wood furniture tips from Panchal Interior experts.",
+    images: ["/images/hero.png"],
   },
 };
 

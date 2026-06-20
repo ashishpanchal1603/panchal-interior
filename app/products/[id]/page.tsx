@@ -32,7 +32,25 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: `${product.name} — Custom ${categoryName}`,
     description: `${product.description} Handcrafted in Ahmedabad using premium materials. Materials: ${product.materials.join(", ")}. Dimensions: ${product.dimensions}.`,
     alternates: {
-      canonical: `https://panchalinterior.com/products/${product.id}`,
+      canonical: `/products/${product.id}`,
+    },
+    openGraph: {
+      title: `${product.name} — Custom ${categoryName} | Panchal Interior`,
+      description: `${product.description} Handcrafted in Ahmedabad using premium materials.`,
+      url: `/products/${product.id}`,
+      type: "website",
+      images: [
+        {
+          url: product.image,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} — Custom ${categoryName} | Panchal Interior`,
+      description: `${product.description} Handcrafted in Ahmedabad using premium materials.`,
+      images: [product.image],
     },
   };
 }
@@ -66,12 +84,43 @@ export default async function ProductDetailPage(props: PageProps) {
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://panchalinterior.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://panchalinterior.com/products"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.name,
+        "item": `https://panchalinterior.com/products/${product.id}`
+      }
+    ]
+  };
+
   return (
     <div className="bg-white min-h-screen pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(productSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
 

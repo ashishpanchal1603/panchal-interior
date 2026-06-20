@@ -10,7 +10,31 @@ export const metadata: Metadata = {
   description:
     "Connect with Panchal Interior design team in Ahmedabad. Schedule a free site measurement visit or visit our factory workshop near Gota Bridge.",
   alternates: {
-    canonical: "https://panchalinterior.com/contact",
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Us — Schedule Site Measurement Visit | Panchal Interior",
+    description:
+      "Connect with Panchal Interior design team in Ahmedabad. Schedule a free site measurement visit or visit our factory workshop near Gota Bridge.",
+    url: "/contact",
+    siteName: "Panchal Interior & Furniture Solutions",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Contact Panchal Interior",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us — Schedule Site Measurement Visit | Panchal Interior",
+    description:
+      "Connect with Panchal Interior design team in Ahmedabad. Schedule a free site measurement visit or visit our factory workshop near Gota Bridge.",
+    images: ["/images/hero.png"],
   },
 };
 

@@ -9,7 +9,31 @@ export const metadata: Metadata = {
   description:
     "Browse our custom crafted furniture pieces, including solid teak wood beds, royal velvet sofas, sliding wardrobes, and TV units, manufactured locally in Ahmedabad.",
   alternates: {
-    canonical: "https://panchalinterior.com/products",
+    canonical: "/products",
+  },
+  openGraph: {
+    title: "Premium Custom Furniture Catalog | Panchal Interior",
+    description:
+      "Browse our custom crafted furniture pieces, including solid teak wood beds, royal velvet sofas, sliding wardrobes, and TV units, manufactured locally in Ahmedabad.",
+    url: "/products",
+    siteName: "Panchal Interior & Furniture Solutions",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/hero.png",
+        width: 1200,
+        height: 630,
+        alt: "Panchal Interior Custom Furniture Catalog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Premium Custom Furniture Catalog | Panchal Interior",
+    description:
+      "Browse our custom crafted furniture pieces, including solid teak wood beds, royal velvet sofas, sliding wardrobes, and TV units, manufactured locally in Ahmedabad.",
+    images: ["/images/hero.png"],
   },
 };
 
