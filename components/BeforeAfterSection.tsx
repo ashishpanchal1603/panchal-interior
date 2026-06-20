@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import AnimateOnScroll from "./AnimateOnScroll";
 import { Sparkles } from "lucide-react";
+import { useQuoteModal } from "./QuoteModalContext";
 
 interface ProjectTransformation {
   id: string;
@@ -17,6 +18,7 @@ interface ProjectTransformation {
 }
 
 export default function BeforeAfterSection() {
+  const { openQuoteModal } = useQuoteModal();
   const transformations: ProjectTransformation[] = [
     {
       id: "modular-kitchen",
@@ -150,7 +152,13 @@ export default function BeforeAfterSection() {
                   <span className="text-[10px] font-semibold text-stone-400">
                     📍 Factory Direct Rate
                   </span>
-
+                  <button
+                    type="button"
+                    onClick={() => openQuoteModal(proj.title)}
+                    className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-primary-hover transition cursor-pointer bg-transparent border-none p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    Get Free Quote &rarr;
+                  </button>
                 </div>
               </AnimateOnScroll>
             );

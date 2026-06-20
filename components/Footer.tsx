@@ -65,15 +65,15 @@ export default function Footer() {
             </div>
             <div>
               <span className="block font-serif text-lg font-black uppercase tracking-tight leading-none">
-                Panchal Interior
+                Panchal Interior Studio
               </span>
               <span className="block text-[9px] font-semibold uppercase tracking-wider text-primary mt-0.5 leading-none">
-                Furniture & Interior Solutions
+                Custom Furniture & Turnkey Interior Solutions
               </span>
             </div>
           </Link>
           <p className="text-sm text-stone-400 leading-relaxed">
-            Ahmedabad&apos;s leading bespoke furniture manufacturers and interior designer consultants. Delivering quality, style, and luxury comfort to homes since 2011.
+            Ahmedabad&apos;s leading custom furniture manufacturers and turnkey interior design consultants. Delivering quality, style, and premium comfort to homes since 2011.
           </p>
           <div className="flex gap-3 pt-2">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Panchal Interior Facebook Page" className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 text-stone-400 hover:bg-primary hover:text-white transition">

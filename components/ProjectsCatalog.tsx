@@ -17,9 +17,13 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
 
   const filterTabs = [
     { label: "All Projects", id: "all" },
-    { label: "Residential Design", id: "Residential" },
-    { label: "Commercial Office", id: "Commercial" },
-    { label: "Modular Kitchen", id: "Kitchen" },
+    { label: "Modular Kitchen", id: "Modular Kitchen" },
+    { label: "Wardrobe", id: "Wardrobe" },
+    { label: "TV Unit", id: "TV Unit" },
+    { label: "Sofa", id: "Sofa" },
+    { label: "Bedroom", id: "Bedroom" },
+    { label: "Living Room", id: "Living Room" },
+    { label: "Office Furniture", id: "Office Furniture" },
   ];
 
   // Filter projects based on tab selection

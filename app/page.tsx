@@ -33,6 +33,9 @@ import BeforeAfterSection from "@/components/BeforeAfterSection";
 import TrustBadges from "@/components/TrustBadges";
 import HowWeWork from "@/components/HowWeWork";
 import FaqAccordion from "@/components/FaqAccordion";
+import LeadMagnet from "@/components/LeadMagnet";
+import InstagramGrowth from "@/components/InstagramGrowth";
+import GoogleBusinessProfile from "@/components/GoogleBusinessProfile";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -264,6 +267,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <LeadMagnet />
+
       {/* 2. Popular Furniture Categories */}
       <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-5 text-center">
@@ -464,6 +469,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <InstagramGrowth />
+
       {/* 4. Testimonials Section */}
       <section className="py-12 md:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-5">
@@ -508,6 +515,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <GoogleBusinessProfile />
 
       {/* FAQs Section */}
       <section className="py-12 md:py-24 bg-stone-50 border-t border-stone-200/50 text-left">

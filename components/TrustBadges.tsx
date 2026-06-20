@@ -8,12 +8,12 @@ export default function TrustBadges() {
   const trustPoints = [
     { title: "15+ Years Experience", desc: "Crafting custom interiors since 2011" },
     { title: "500+ Projects Completed", desc: "Delivered homes & commercial spaces" },
-    { title: "Free Site Visit", desc: "No-obligation digital measurements" },
+    { title: "1000+ Happy Clients", desc: "Over a decade of local trust & smiles" },
+    { title: "Factory Direct Pricing", desc: "No middleman showroom markup" },
     { title: "Premium Materials", desc: "Marine grade ply & solid teak wood" },
-    { title: "Custom Manufacturing", desc: "100% made in our Ahmedabad factory" },
+    { title: "Free Site Visit", desc: "No-obligation digital measurements" },
     { title: "On-Time Delivery", desc: "Strictly guaranteed timeline policy" },
-    { title: "Ahmedabad Based Team", desc: "Reliable local designers & carpenters" },
-    { title: "End-to-End Execution", desc: "From blueprint design to final keys" }
+    { title: "End-To-End Execution", desc: "From blueprint design to final keys" }
   ];
 
   return (

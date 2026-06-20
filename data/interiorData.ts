@@ -58,6 +58,7 @@ export interface BlogPost {
   author: string;
   readTime: string;
   image: string;
+  category: string;
 }
 
 export interface Testimonial {
@@ -349,7 +350,7 @@ export const projectsData: Project[] = [
     id: "proj-skyline-villa",
     slug: "skyline-premium-villa",
     title: "Skyline Premium Villa",
-    category: "Residential",
+    category: "Living Room",
     location: "Bopal, Ahmedabad",
     year: "2025",
     image: "/images/living_room_tv_wardrobe.png",
@@ -367,7 +368,7 @@ export const projectsData: Project[] = [
       { title: "TV Unit Console", desc: "Wall-mounted TV background with Italian white marble paneling, oak shelves, and hidden LED strip coves." }
     ],
     faqs: [
-      { question: "How much did the complete villa woodwork cost?", answer: "The complete woodwork and turnkey design for this 4BHK villa ranged between ₹12 Lakhs to ₹15 Lakhs depending on veneer selections and premium hardware." },
+      { question: "How much did the complete woodwork cost?", answer: "The complete woodwork and turnkey design for this 4BHK villa ranged between ₹12 Lakhs to ₹15 Lakhs depending on veneer selections and premium hardware." },
       { question: "What warranty was provided?", answer: "We provided a 5-year manufacturing and wood-borer termite warranty for all solid wood and plywood structures." }
     ]
   },
@@ -375,7 +376,7 @@ export const projectsData: Project[] = [
     id: "proj-royal-kitchen",
     slug: "luxury-acrylic-kitchen-layout",
     title: "Luxury Acrylic Kitchen Layout",
-    category: "Kitchen",
+    category: "Modular Kitchen",
     location: "Satellite, Ahmedabad",
     year: "2025",
     image: "/images/modular_kitchen.png",
@@ -400,7 +401,7 @@ export const projectsData: Project[] = [
     id: "proj-modern-apartment",
     slug: "minimalist-3bhk-apartment",
     title: "Minimalist 3BHK Apartment",
-    category: "Residential",
+    category: "Sofa",
     location: "Prahlad Nagar, Ahmedabad",
     year: "2024",
     image: "/images/l_shape_sofa.png",
@@ -423,7 +424,7 @@ export const projectsData: Project[] = [
     id: "proj-executive-office",
     slug: "executive-corporate-office",
     title: "Executive Corporate Office",
-    category: "Commercial",
+    category: "Office Furniture",
     location: "S.G. Highway, Ahmedabad",
     year: "2024",
     image: "/images/tv_unit.png",
@@ -446,7 +447,7 @@ export const projectsData: Project[] = [
     id: "proj-gota-penthouse",
     slug: "gota-luxury-penthouse",
     title: "Gota Luxury Penthouse",
-    category: "Residential",
+    category: "Wardrobe",
     location: "Gota, Ahmedabad",
     year: "2025",
     image: "/images/interior_3bhk.png",
@@ -469,7 +470,7 @@ export const projectsData: Project[] = [
     id: "proj-thaltej-kitchen",
     slug: "high-gloss-u-shape-kitchen",
     title: "High-Gloss U-Shape Kitchen",
-    category: "Kitchen",
+    category: "Modular Kitchen",
     location: "Thaltej, Ahmedabad",
     year: "2025",
     image: "/images/kitchen_ushape.png",
@@ -492,7 +493,7 @@ export const projectsData: Project[] = [
     id: "proj-science-city-villa",
     slug: "contemporary-5bhk-villa",
     title: "Contemporary 5BHK Villa",
-    category: "Residential",
+    category: "Bedroom",
     location: "Science City, Ahmedabad",
     year: "2024",
     image: "/images/interior_2bhk.png",
@@ -515,7 +516,7 @@ export const projectsData: Project[] = [
     id: "proj-sindhu-bhavan-office",
     slug: "sindhu-bhavan-corporate-suite",
     title: "Sindhu Bhavan Corporate Suite",
-    category: "Commercial",
+    category: "Office Furniture",
     location: "Sindhu Bhavan Road, Ahmedabad",
     year: "2025",
     image: "/images/hero.png",
@@ -538,7 +539,7 @@ export const projectsData: Project[] = [
     id: "proj-vastrapur-apartment",
     slug: "cozy-2bhk-renovation",
     title: "Cozy 2BHK Renovation",
-    category: "Residential",
+    category: "Bedroom",
     location: "Vastrapur, Ahmedabad",
     year: "2024",
     image: "/images/interior_1bhk.png",
@@ -561,7 +562,7 @@ export const projectsData: Project[] = [
     id: "proj-bodakdev-wardrobe",
     slug: "walk-in-glass-wardrobe-suite",
     title: "Walk-In Glass Wardrobe Suite",
-    category: "Residential",
+    category: "Wardrobe",
     location: "Bodakdev, Ahmedabad",
     year: "2025",
     image: "/images/wardrobe_walkin.png",
@@ -584,7 +585,7 @@ export const projectsData: Project[] = [
     id: "proj-south-bopal-lounge",
     slug: "minimalist-lounge-tv-hub",
     title: "Minimalist Lounge & TV Hub",
-    category: "Residential",
+    category: "TV Unit",
     location: "South Bopal, Ahmedabad",
     year: "2024",
     image: "/images/living_room_tv_wardrobe.png",
@@ -619,7 +620,8 @@ Here are the key takeaways for Indian households:
     date: "May 15, 2026",
     author: "Rajesh Panchal",
     readTime: "5 min read",
-    image: "/images/modular_kitchen.png"
+    image: "/images/modular_kitchen.png",
+    category: "Kitchen Ideas"
   },
   {
     slug: "custom-vs-ready-made-furniture",
@@ -638,7 +640,100 @@ Ready-made is faster and cheaper upfront. Custom furniture has a higher starting
     date: "April 28, 2026",
     author: "Amit Panchal",
     readTime: "4 min read",
-    image: "/images/sofa_set.png"
+    image: "/images/sofa_set.png",
+    category: "Furniture Ideas"
+  },
+  {
+    slug: "modern-living-room-designs-2026",
+    title: "5 Modern Living Room Designs to Transform Your Space",
+    excerpt: "Unlock the secrets of premium living rooms using wooden paneling, layout adjustments, and curated lighting setups.",
+    content: `Your living room is the social hub of your home. A premium design doesn't mean overcrowded furniture; it's about balance, materials, and lighting.
+
+Here are 5 design ideas to implement:
+1. **Fluted Paneling & Marble Backdrops**: Combining natural veneer paneling with white or charcoal marble backboards creates a stunning focal point behind your TV.
+2. **Low-Profile Sectional Sofas**: A custom L-shaped sofa set keeps the sightlines clear and makes the room feel spacious and inviting.
+3. **Layered Lighting**: Combine warm ceiling LED strips with directional spotlighting and drop pendants near corners to create warmth.
+4. **Statement Doors**: Frame your entrance with hand-polished teak wood doors to set a premium tone before guests step inside.
+5. **Concealed Storage**: Build floating TV consoles with handle-less soft-close drawer runs to hide clutter.`,
+    date: "June 02, 2026",
+    author: "Amit Panchal",
+    readTime: "6 min read",
+    image: "/images/living_room_tv_wardrobe.png",
+    category: "Interior Design"
+  },
+  {
+    slug: "sliding-vs-open-wardrobes",
+    title: "Sliding vs Open Wardrobes: A Practical Space Comparison",
+    excerpt: "Which closet type is better for your bedroom layout? Check size limits, accessibility, and architectural styling advice.",
+    content: `Choosing a wardrobe mechanism depends on your room size, design theme, and daily lifestyle.
+
+**Sliding Wardrobes:**
+- *Pros:* Do not need front clearance space, making them perfect for narrow bedroom passages. They look extremely modern, especially with profile glass and aluminum trims.
+- *Cons:* You can only see one half of the closet at a time since the doors overlap.
+
+**Open / Swing Wardrobes:**
+- *Pros:* You can open all doors simultaneously to view the entire layout. Ideal for large rooms. Less expensive hardware and mechanisms.
+- *Cons:* Require 2 feet of clear clearance space in front of the shutters to open, limiting furniture placement options.
+
+*Recommendation:* Use sliding glass profile doors for master bedrooms to save space and add a luxury feel. Use swing doors for guest or kids' bedrooms where passage space is ample.`,
+    date: "June 10, 2026",
+    author: "Rajesh Panchal",
+    readTime: "4 min read",
+    image: "/images/wardrobe.png",
+    category: "Wardrobe Ideas"
+  },
+  {
+    slug: "modern-tv-unit-paneling-ideas",
+    title: "Modern TV Unit Paneling Ideas for Indian Homes",
+    excerpt: "Explore vertical wood paneling, hidden cable management, and stone finish highlights to upgrade your TV wall.",
+    content: `A wall-mounted TV console is more than just a place for your television; it acts as the design anchor of the room.
+
+**Key Paneling Trends:**
+1. **Vertical Louver Planks**: Vertical charcoal or teak wood fluted panels make the ceiling feel taller.
+2. **Hidden Wire Conduits**: Always plan wall chasing to lay heavy-duty PVC conduits. No cords should ever hang down from your TV.
+3. **Stone-Finish Backsheets**: High-definition laminate sheets or actual Italian quartz panels behind the TV screen add textures.
+4. **Floating Base Consoles**: Ground-cleared drawers are easier to clean under and look lightweight and premium.`,
+    date: "June 12, 2026",
+    author: "Amit Panchal",
+    readTime: "3 min read",
+    image: "/images/tv_unit.png",
+    category: "TV Unit Ideas"
+  },
+  {
+    slug: "plan-turnkey-home-interior-budget",
+    title: "How to Plan Your Turnkey Home Interior Budget in 2026",
+    excerpt: "Learn how to estimate material costs, design fees, and carpentry labor without falling for hidden contractor charges.",
+    content: `Budget planning is where most homeowners struggle. A lack of structure leads to cost overruns of 20-30%.
+
+Here is a simple blueprint for budget allocation:
+- **Woodwork & Carpentry (50-60%)**: Plywood, laminates, kitchen pull-outs, beds, and wardrobes. Ensure you prioritize BWP marine plywood for wet areas.
+- **Ceiling & Lighting (10-15%)**: False ceiling plasterboards, strip LEDs, and COB lights.
+- **Paint & Finishes (10-15%)**: Acrylic putties, royal emulsion finishes, or wood polishes.
+- **Electrical & Plumbing (5-10%)**: Concealed wiring adjustments and kitchen plumbing extensions.
+
+*Pro-Tip:* Get a detailed itemized estimate based on actual site measurements rather than lump-sum packages to avoid unexpected cost additions.`,
+    date: "June 15, 2026",
+    author: "Rajesh Panchal",
+    readTime: "7 min read",
+    image: "/images/interior_3bhk.png",
+    category: "Budget Planning"
+  },
+  {
+    slug: "top-interior-design-trends-ahmedabad",
+    title: "Top Interior Design Trends in Ahmedabad for 2026",
+    excerpt: "Discover the latest local design preferences: from premium wood finishes to climate-resilient space optimization plans.",
+    content: `Home design in Ahmedabad is evolving to blend local luxury with climate resilience.
+
+**Key 2026 Trends:**
+1. **Teak Polish & Veneers**: Solid teak wood and warm veneers are returning to popularity over cold laminates, celebrating natural wood grains.
+2. **Climate-Smart False Ceilings**: Multi-layer false ceilings incorporating LED strip runs help insulate rooms from Ahmedabad's intense summer heat.
+3. **Factory-Finished Modular Furniture**: Homeowners are choosing off-site factory cutting and edge-banding to minimize on-site dust, paint smells, and carpentry delays.
+4. **Open Kitchen Layouts**: Parallel modular kitchens with breakfast counters are replacing traditional closed kitchens in modern apartments.`,
+    date: "June 18, 2026",
+    author: "Rajesh Panchal",
+    readTime: "5 min read",
+    image: "/images/interior_2bhk.png",
+    category: "Ahmedabad Home Trends"
   }
 ];
 
