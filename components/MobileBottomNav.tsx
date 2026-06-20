@@ -60,13 +60,13 @@ export default function MobileBottomNav() {
         <div className="w-[1px] h-6 bg-stone-800" />
 
         {/* Quote Button (Prominent Accent) */}
-        <button
+        {/* <button
           onClick={() => openQuoteModal("Mobile Bottom Bar")}
           className="flex items-center gap-1.5 bg-primary hover:bg-primary-hover text-white text-xs font-black py-2.5 px-4 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
         >
           <Send className="h-3.5 w-3.5" />
           <span>Get Quote</span>
-        </button>
+        </button> */}
       </div>
     </div>
   );
