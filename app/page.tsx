@@ -406,8 +406,8 @@ export default function HomePage() {
                 delay={idx * 0.05}
                 className="group bg-white border border-stone-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300"
               >
-                <div 
-                  onClick={() => window.location.href = `/projects/${project.slug}`}
+                <Link 
+                  href={`/projects/${project.slug}`}
                   className="block relative h-56 w-full overflow-hidden bg-stone-100 cursor-pointer"
                 >
                   <Image
@@ -420,7 +420,7 @@ export default function HomePage() {
                   <span className="absolute top-4 left-4 text-[10px] font-bold text-stone-900 bg-white/95 px-2.5 py-1 rounded shadow-sm z-10">
                     {project.category}
                   </span>
-                </div>
+                </Link>
                 <div className="p-6">
                   <span className="text-[10px] font-bold text-primary uppercase tracking-wider">
                     📍 {project.location}
