@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Outfit, Playfair_Display } from "next/font/google";
 import QuoteModalProvider from "@/components/QuoteModalContext";
 import ClientLayoutElements from "@/components/ClientLayoutElements";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 
 const outfit = Outfit({
@@ -91,6 +92,7 @@ export default function RootLayout({
     >
       <body className="antialiased min-h-screen flex flex-col">
         <QuoteModalProvider>
+          <GoogleAnalytics />
           <Navbar />
           <main className="flex-grow">{children}</main>
           <Footer />

@@ -5,6 +5,7 @@ import { useQuoteModal } from "./QuoteModalContext";
 import { X, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import CustomSelect from "./CustomSelect";
+import { trackConversion } from "@/lib/gtag";
 
 const interestOptions = [
   { value: "", label: "General Inquiry / Custom Project" },
@@ -154,6 +155,15 @@ export default function QuoteModal() {
 
       if (response.ok && data.success) {
         setSuccess(true);
+        trackConversion({
+          eventName: "quote_form_submit",
+          serviceSelected: interest || "General Inquiry",
+          buttonSource: "quote_modal_form",
+          propertyType: propertyType,
+          budgetRange: budgetRange,
+          timeline: timeline,
+          location: location,
+        });
         // Auto close after 3 seconds
         setTimeout(() => {
           closeQuoteModal();

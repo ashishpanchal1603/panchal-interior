@@ -10,6 +10,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useQuoteModal } from "./QuoteModalContext";
+import { trackConversion } from "@/lib/gtag";
 
 // Modular Estimator Imports
 import {
@@ -146,6 +147,11 @@ export default function InteriorEstimator() {
 
       if (response.ok && data.success) {
         setIsSubmitted(true);
+        trackConversion({
+          eventName: "quote_form_submit",
+          serviceSelected: `Estimator: ${calcType}`,
+          buttonSource: "interior_estimator",
+        });
       } else {
         alert(data.error || "Something went wrong. Please try again.");
       }

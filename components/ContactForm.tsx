@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Send, Loader2, CheckCircle2 } from "lucide-react";
 import CustomSelect from "./CustomSelect";
+import { trackConversion } from "@/lib/gtag";
 
 const subjectOptions = [
   { value: "General Inquiry", label: "General Inquiry / Information" },
@@ -69,6 +70,11 @@ export default function ContactForm() {
 
       if (response.ok && data.success) {
         setSuccess(true);
+        trackConversion({
+          eventName: "quote_form_submit",
+          serviceSelected: subject,
+          buttonSource: "contact_form",
+        });
         setName("");
         setPhone("");
         setEmail("");

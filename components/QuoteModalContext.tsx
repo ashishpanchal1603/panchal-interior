@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
+import { trackConversion } from "@/lib/gtag";
 
 interface QuoteModalContextType {
   isOpen: boolean;
@@ -28,6 +29,13 @@ export default function QuoteModalProvider({
       setPrefilledItem("");
     }
     setIsOpen(true);
+
+    const isConsultation = productOrServiceName?.toLowerCase().includes("consultation");
+    trackConversion({
+      eventName: isConsultation ? "free_consultation_click" : "get_quote_click",
+      serviceSelected: productOrServiceName || "General Enquiry",
+      buttonSource: "quote_modal_trigger",
+    });
   };
 
   const closeQuoteModal = () => {
