@@ -1,29 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Award, Briefcase, ShieldCheck, Clock } from "lucide-react";
-import { statsData } from "@/data/interiorData";
+import { ArrowRight } from "lucide-react";
 import { useQuoteModal } from "./QuoteModalContext";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   const { openQuoteModal } = useQuoteModal();
-
-  // Map icons from strings
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case "Award":
-        return <Award className="h-6 w-6 text-primary" />;
-      case "Briefcase":
-        return <Briefcase className="h-6 w-6 text-primary" />;
-      case "ShieldCheck":
-        return <ShieldCheck className="h-6 w-6 text-primary" />;
-      case "Clock":
-        return <Clock className="h-6 w-6 text-primary" />;
-      default:
-        return <Award className="h-6 w-6 text-primary" />;
-    }
-  };
 
   return (
     <section className="relative h-[650px] w-full overflow-hidden bg-stone-900 flex items-center">
@@ -108,26 +91,7 @@ export default function Hero() {
         <button aria-label="Slide 3" className="h-2 w-2 rounded-full bg-white/50 hover:bg-white transition" />
       </div>
 
-      {/* Stats Section Overlay (Bottom Bar) */}
-      <div className="absolute bottom-0 left-0 w-full z-10 bg-black/40 border-t border-white/10 backdrop-blur-md hidden md:block">
-        <div className="max-w-7xl mx-auto px-5 py-5 grid grid-cols-4 gap-6">
-          {statsData.map((stat, idx) => (
-            <div key={idx} className="flex items-center gap-3.5 border-r border-white/10 last:border-r-0 pl-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-primary">
-                {getIcon(stat.icon)}
-              </div>
-              <div>
-                <span className="block text-xl font-extrabold text-white leading-none">
-                  {stat.value}
-                </span>
-                <span className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mt-1">
-                  {stat.label}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Bottom overlay bar removed to prevent credential duplication with TrustBadges */}
     </section>
   );
 }

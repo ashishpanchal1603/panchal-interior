@@ -10,34 +10,42 @@ export default function GoogleBusinessProfile() {
     {
       title: "View Google Reviews",
       desc: "Check our 5-star ratings and read feedback from 120+ local families.",
-      icon: <FaGoogle className="h-5 w-5 text-blue-600" />,
+      icon: <FaGoogle className="h-5 w-5" />,
       cta: "Read Reviews",
       href: "https://g.page/r/PanchalInterior",
-      color: "hover:border-blue-500/30 hover:bg-blue-50/5",
+      color: "hover:border-blue-500/30 hover:bg-blue-50/5 hover:-translate-y-1 hover:shadow-lg",
+      iconColor: "text-blue-600 bg-blue-50 border-blue-100 group-hover:bg-blue-600 group-hover:text-white",
+      textHover: "group-hover:text-blue-600",
     },
     {
       title: "Get Location Directions",
       desc: "Visit our Gota workshop & experience materials live in our gallery showroom.",
-      icon: <MapPin className="h-5 w-5 text-red-500" />,
+      icon: <MapPin className="h-5 w-5" />,
       cta: "Get Directions",
       href: "https://maps.google.com/?q=Panchal+Interior+Gota+Ahmedabad",
-      color: "hover:border-red-500/30 hover:bg-red-50/5",
+      color: "hover:border-red-500/30 hover:bg-red-50/5 hover:-translate-y-1 hover:shadow-lg",
+      iconColor: "text-red-500 bg-red-50 border-red-100 group-hover:bg-red-500 group-hover:text-white",
+      textHover: "group-hover:text-red-500",
     },
     {
       title: "WhatsApp Business Chat",
       desc: "Send us layout sketches or photographs for quick feedback from our designers.",
-      icon: <FaWhatsapp className="h-5 w-5 text-emerald-500" />,
+      icon: <FaWhatsapp className="h-5 w-5" />,
       cta: "Start Chat",
       href: "https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20%2C%20I%20found%20your%20business%20on%20Google.%20I%20would%20like%20to%20discuss%20my%20interior%20project.",
-      color: "hover:border-emerald-500/30 hover:bg-emerald-50/5",
+      color: "hover:border-emerald-500/30 hover:bg-emerald-50/5 hover:-translate-y-1 hover:shadow-lg",
+      iconColor: "text-emerald-500 bg-emerald-50 border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white",
+      textHover: "group-hover:text-emerald-600",
     },
     {
       title: "Call Direct Helpline",
       desc: "Speak with Mr. Amit Panchal for quick answers regarding budgets and timelines.",
-      icon: <Phone className="h-5 w-5 text-primary" />,
+      icon: <Phone className="h-5 w-5" />,
       cta: "Call +91 96649 56491",
       href: "tel:+919664956491",
-      color: "hover:border-primary/30 hover:bg-primary-light/5",
+      color: "hover:border-primary/30 hover:bg-primary-light/5 hover:-translate-y-1 hover:shadow-lg",
+      iconColor: "text-primary bg-primary-light border-primary-cream/50 group-hover:bg-primary group-hover:text-white",
+      textHover: "group-hover:text-primary",
     },
   ];
 
@@ -91,14 +99,15 @@ export default function GoogleBusinessProfile() {
                 key={idx}
                 variant="fadeInUp"
                 delay={idx * 0.05}
-                className={`bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between ${act.color}`}
+                className={`bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group ${act.color}`}
               >
                 <div className="space-y-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-stone-50 border border-stone-150 shadow-inner">
+                  {/* Themed Icon Container inheriting dynamic colors on hover */}
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-350 shadow-inner ${act.iconColor}`}>
                     {act.icon}
                   </div>
                   <div>
-                    <h3 className="font-serif text-stone-900 font-bold text-base leading-snug">{act.title}</h3>
+                    <h3 className={`font-serif text-stone-900 font-bold text-base leading-snug transition-colors duration-300 ${act.textHover}`}>{act.title}</h3>
                     <p className="text-stone-500 text-xs mt-2 leading-relaxed">{act.desc}</p>
                   </div>
                 </div>
@@ -108,7 +117,7 @@ export default function GoogleBusinessProfile() {
                     href={act.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-stone-950 hover:text-primary transition group cursor-pointer"
+                    className={`inline-flex items-center gap-1.5 text-xs font-bold text-stone-950 transition duration-300 ${act.textHover}`}
                   >
                     {act.cta}
                     <ArrowUpRight className="h-4 w-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
