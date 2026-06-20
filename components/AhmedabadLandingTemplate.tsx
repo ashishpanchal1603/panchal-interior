@@ -7,16 +7,16 @@ import { LandingPageConfig, areasWeServe, landingPagesData } from "@/data/localS
 import FaqAccordion from "./FaqAccordion";
 import BookConsultationButton from "./BookConsultationButton";
 import AnimateOnScroll from "./AnimateOnScroll";
-import { 
-  Phone, 
-  MessageCircle, 
-  MapPin, 
-  Clock, 
-  HelpCircle, 
-  ShieldCheck, 
-  Wrench, 
-  Gem, 
-  Tag, 
+import {
+  Phone,
+  MessageCircle,
+  MapPin,
+  Clock,
+  HelpCircle,
+  ShieldCheck,
+  Wrench,
+  Gem,
+  Tag,
   CheckCircle,
   ChevronRight,
   Sparkles,
@@ -62,7 +62,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Panchal Interior Studio",
+    "name": "Panchal Interior ",
     "image": "https://panchalinterior.com/images/hero.png",
     "@id": `https://panchalinterior.com/${config.slug}/#localbusiness`,
     "url": `https://panchalinterior.com/${config.slug}`,
@@ -148,20 +148,20 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-900/60 to-transparent" />
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-5 text-left w-full">
           <AnimateOnScroll variant="fadeInUp">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 border border-primary/20 px-3.5 py-1.5 rounded-md mb-6">
               📍 Ahmedabad Local Service Hub
             </span>
           </AnimateOnScroll>
-          
+
           <AnimateOnScroll variant="fadeInUp" delay={0.1}>
             <h1 className="font-serif text-3.5xl sm:text-5xl lg:text-6xl font-black text-white leading-tight max-w-3xl">
               {config.h1}
             </h1>
           </AnimateOnScroll>
-          
+
           <AnimateOnScroll variant="fadeInUp" delay={0.2}>
             <p className="text-stone-300 text-sm sm:text-base md:text-lg mt-6 max-w-2xl leading-relaxed">
               {config.hero.subtitle}
@@ -183,7 +183,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
               Call Now
             </a>
             <a
-              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
+              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 text-sm flex items-center justify-center gap-2 shadow-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -253,7 +253,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
             <h2 className="font-serif text-3xl font-extrabold text-stone-900 mt-2">{config.benefits.title}</h2>
             <p className="text-stone-500 text-xs sm:text-sm mt-2">{config.benefits.description}</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {config.benefits.items.map((item, idx) => (
               <div key={idx} className="bg-white rounded-xl p-8 border border-stone-150 shadow-sm space-y-4">
@@ -427,7 +427,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
               Call Now
             </a>
             <a
-              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
+              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-5 text-sm flex items-center justify-center gap-2 shadow-md transition duration-300"

@@ -34,7 +34,7 @@ export default function MobileBottomNav() {
 
         {/* WhatsApp Option */}
         <a
-          href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
+          href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
           target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center justify-center text-stone-300 hover:text-white active:scale-95 transition-all py-1 px-2.5"

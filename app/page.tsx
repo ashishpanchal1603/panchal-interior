@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
 const homeFaqs = [
   {
-    question: "What services does Panchal Interior Studio offer in Ahmedabad?",
+    question: "What services does Panchal Interior  offer in Ahmedabad?",
     answer: "We offer end-to-end interior design and custom furniture manufacturing solutions. This includes custom sofas, modular kitchens, modular wardrobes, TV unit design, bedroom furniture, false ceilings, electrical work, and turnkey residential and commercial execution."
   },
   {
@@ -199,7 +199,7 @@ export default function HomePage() {
       />
 
       <Hero />
-      
+
       <TrustBadges />
 
       {/* 1. Services Section */}
@@ -411,7 +411,7 @@ export default function HomePage() {
                 delay={idx * 0.05}
                 className="group bg-white border border-stone-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300"
               >
-                <Link 
+                <Link
                   href={`/projects/${project.slug}`}
                   className="block relative h-56 w-full overflow-hidden bg-stone-100 cursor-pointer"
                 >
@@ -554,7 +554,7 @@ export default function HomePage() {
               Call Now
             </a>
             <a
-              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
+              href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 shadow-lg transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 cursor-pointer"

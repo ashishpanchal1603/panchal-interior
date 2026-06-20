@@ -31,7 +31,7 @@ export default function PreviewPanel({
 
   if (calcType === "full") {
     badge = "Full Home Render";
-    
+
     // Determine BHK selection image
     let bhkImg = "/images/interior_3bhk.png";
     let bhkTitle = "Luxury Apartment / Villa";
@@ -96,7 +96,7 @@ export default function PreviewPanel({
     }
   } else if (calcType === "kitchen") {
     badge = "Modular Kitchen Render";
-    
+
     // Base layout images
     let kitchenImg = "/images/kitchen_lshape.png";
     let kitchenTitle = "L-Shaped Kitchen Layout";
@@ -105,7 +105,7 @@ export default function PreviewPanel({
     if (kitchenState.layout === "straight") {
       kitchenImg = "/images/kitchen_straight.png";
       kitchenTitle = "Straight Kitchen Layout";
-      kitchenDesc = "Compact single counter ideal for studio apartments and tiny homes.";
+      kitchenDesc = "Compact single counter ideal for  apartments and tiny homes.";
     } else if (kitchenState.layout === "parallel") {
       kitchenImg = "/images/kitchen_parallel.png";
       kitchenTitle = "Parallel Kitchen Layout";

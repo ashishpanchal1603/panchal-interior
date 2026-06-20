@@ -107,11 +107,11 @@ export default function Navbar() {
 
           <div>
             <span className="block text-xl font-black uppercase leading-none">
-              Panchal Interior Studio
+              Panchal Interior
             </span>
 
             <span className="block text-[10px] uppercase tracking-wider text-primary font-semibold mt-1">
-              Custom Furniture & Turnkey Interior Solutions
+              Furniture & Turnkey Interior Solutions
             </span>
           </div>
         </Link>

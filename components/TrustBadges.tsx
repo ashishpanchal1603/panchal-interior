@@ -25,7 +25,7 @@ export default function TrustBadges() {
               Our Credentials
             </span>
             <h2 className="text-2xl sm:text-3xl font-serif font-black text-stone-900 mt-3 leading-tight">
-              Why Homeowners Trust Panchal Interior Studio
+              Why Homeowners Trust Panchal Interior
             </h2>
           </AnimateOnScroll>
         </div>

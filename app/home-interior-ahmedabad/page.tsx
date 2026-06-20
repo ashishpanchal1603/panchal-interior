@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: config.title,
     description: config.metaDescription,
     url: `/${config.slug}`,
-    siteName: "Panchal Interior Studio",
+    siteName: "Panchal Interior ",
     locale: "en_IN",
     type: "website",
     images: [

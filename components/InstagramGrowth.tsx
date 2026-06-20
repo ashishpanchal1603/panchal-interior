@@ -37,10 +37,10 @@ export default function InstagramGrowth() {
     <section className="py-16 md:py-24 bg-stone-900 text-white relative overflow-hidden border-y border-stone-950">
       {/* Background Subtle Highlights */}
       <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
-      
+
       <div className="max-w-7xl mx-auto px-5 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Column (5 Cols) - Marketing Copy */}
           <div className="lg:col-span-5 space-y-6">
             <AnimateOnScroll variant="fadeInUp">
@@ -61,7 +61,7 @@ export default function InstagramGrowth() {
                   className="inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-amber-500 hover:opacity-95 text-white font-bold py-3.5 px-7 shadow-lg transition duration-300 text-sm cursor-pointer"
                 >
                   <FaInstagram className="h-5 w-5" />
-                  Follow @PanchalInteriorStudio
+                  Follow @PanchalInterior
                 </a>
               </div>
             </AnimateOnScroll>

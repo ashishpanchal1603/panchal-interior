@@ -12,7 +12,7 @@ export default function GoogleBusinessProfile() {
       desc: "Check our 5-star ratings and read feedback from 120+ local families.",
       icon: <FaGoogle className="h-5 w-5 text-blue-600" />,
       cta: "Read Reviews",
-      href: "https://g.page/r/PanchalInteriorStudio",
+      href: "https://g.page/r/PanchalInterior",
       color: "hover:border-blue-500/30 hover:bg-blue-50/5",
     },
     {
@@ -28,7 +28,7 @@ export default function GoogleBusinessProfile() {
       desc: "Send us layout sketches or photographs for quick feedback from our designers.",
       icon: <FaWhatsapp className="h-5 w-5 text-emerald-500" />,
       cta: "Start Chat",
-      href: "https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20Studio%2C%20I%20found%20your%20business%20on%20Google.%20I%20would%20like%20to%20discuss%20my%20interior%20project.",
+      href: "https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20%2C%20I%20found%20your%20business%20on%20Google.%20I%20would%20like%20to%20discuss%20my%20interior%20project.",
       color: "hover:border-emerald-500/30 hover:bg-emerald-50/5",
     },
     {
@@ -45,7 +45,7 @@ export default function GoogleBusinessProfile() {
     <section className="py-16 md:py-20 bg-stone-50 border-t border-stone-200/40">
       <div className="max-w-7xl mx-auto px-5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Left Column - Google rating summary */}
           <div className="lg:col-span-5 space-y-6">
             <AnimateOnScroll variant="fadeInUp">
@@ -58,7 +58,7 @@ export default function GoogleBusinessProfile() {
               <p className="text-stone-500 text-sm sm:text-base leading-relaxed mt-4">
                 We believe in complete transparency. Check our live location, read verified customer reviews, or connect with our designers immediately via phone or WhatsApp.
               </p>
-              
+
               {/* Stars badge */}
               <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center pt-4">
                 <div className="bg-white border border-stone-200 rounded-xl p-4 flex items-center gap-4 shadow-sm">
@@ -76,7 +76,7 @@ export default function GoogleBusinessProfile() {
                     <span className="text-xs text-stone-600 font-semibold mt-1.5 block">100% verified local reviews</span>
                   </div>
                 </div>
-                
+
                 <div className="text-xs text-stone-400 font-medium max-w-xs leading-relaxed">
                   Located near Gota Bridge, Ahmedabad. Open Monday to Saturday, 9:00 AM to 8:00 PM. Visitors are welcome to inspect raw timber and modular materials.
                 </div>
@@ -102,7 +102,7 @@ export default function GoogleBusinessProfile() {
                     <p className="text-stone-500 text-xs mt-2 leading-relaxed">{act.desc}</p>
                   </div>
                 </div>
-                
+
                 <div className="pt-6">
                   <a
                     href={act.href}

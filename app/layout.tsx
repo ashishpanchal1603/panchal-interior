@@ -27,13 +27,13 @@ const metadataBaseUrl = new URL(productionUrl);
 export const metadata = {
   metadataBase: metadataBaseUrl,
   title: {
-    default: "Panchal Interior Studio - Custom Furniture & Turnkey Interior Solutions | Ahmedabad",
-    template: "%s | Panchal Interior Studio",
+    default: "Panchal Interior - Furniture & Turnkey Interior Solutions | Ahmedabad",
+    template: "%s | Panchal Interior ",
   },
   description:
-    "Panchal Interior Studio offers premium Custom Furniture, luxury Sofa Manufacturing, modular Kitchen designs, and Turnkey Home Renovation and Interior Solutions in Ahmedabad, Gujarat.",
+    "Panchal Interior  offers premium Custom Furniture, luxury Sofa Manufacturing, modular Kitchen designs, and Turnkey Home Renovation and Interior Solutions in Ahmedabad, Gujarat.",
   keywords: [
-    "Panchal Interior Studio",
+    "Panchal Interior ",
     "Custom Furniture Ahmedabad",
     "Modular Kitchen Ahmedabad",
     "Sofa Manufacturing Ahmedabad",
@@ -45,10 +45,10 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Panchal Interior Studio - Custom Furniture & Turnkey Interior Solutions",
+    title: "Panchal Interior  - Furniture & Turnkey Interior Solutions",
     description: "Premium modular kitchens, luxury sofas, custom wardrobes, and turnkey interior solutions directly from our Gota workshop with a 5-year warranty.",
     url: "/",
-    siteName: "Panchal Interior Studio",
+    siteName: "Panchal Interior ",
     locale: "en_IN",
     type: "website",
     images: [

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "Read our professional modular kitchen material guides, space optimization planning ideas, and customized wood furniture tips from Panchal Interior experts.",
     url: "/blog",
-    siteName: "Panchal Interior Studio",
+    siteName: "Panchal Interior ",
     locale: "en_IN",
     type: "website",
     images: [
