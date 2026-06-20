@@ -278,7 +278,7 @@ export default function AIChatbot() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 font-sans flex flex-col items-end">
+    <div className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 font-sans flex flex-col items-end chatbot-container">
       {/* 1. Chat Tooltip Prompt */}
       <AnimatePresence>
         {showTooltip && !isOpen && (
@@ -323,7 +323,7 @@ export default function AIChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.95 }}
             transition={{ type: "spring", duration: 0.4 }}
-            className="w-[90vw] sm:w-[390px] h-[520px] rounded-2xl bg-white/95 border border-stone-200 shadow-2xl flex flex-col overflow-hidden mb-4 backdrop-blur-md"
+            className="w-[calc(100vw-32px)] min-[480px]:w-[340px] sm:w-[390px] h-[calc(100vh-230px)] min-h-[240px] max-h-[520px] sm:h-[520px] rounded-2xl bg-white/95 border border-stone-200 shadow-2xl flex flex-col overflow-hidden mb-4 backdrop-blur-md chatbot-panel"
           >
             {/* Header */}
             <div className="bg-stone-950 text-white p-4 flex items-center justify-between border-b border-stone-850 shrink-0">
@@ -421,10 +421,9 @@ export default function AIChatbot() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Suggestion Chips & Form Input */}
-            <div className="p-3.5 border-t border-stone-150 bg-white shrink-0 space-y-3">
+            <div className="p-3.5 border-t border-stone-150 bg-white shrink-0 space-y-3 chatbot-footer">
               {/* Suggestion Chips */}
-              <div className="flex flex-wrap gap-1.5 overflow-x-auto pb-1 select-none scrollbar-thin">
+              <div className="flex gap-1.5 overflow-x-auto pb-1 select-none scrollbar-none scrollbar-thin">
                 {suggestionChips[lang].map((chip, idx) => (
                   <button
                     key={idx}

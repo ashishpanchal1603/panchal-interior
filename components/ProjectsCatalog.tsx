@@ -36,11 +36,10 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
             key={tab.id}
             type="button"
             onClick={() => setSelectedFilter(tab.id)}
-            className={`px-5 py-2.5 text-xs font-bold rounded-lg transition duration-350 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-              selectedFilter === tab.id
-                ? "bg-primary text-white shadow"
-                : "text-stone-600 bg-white border border-stone-200 hover:border-stone-400"
-            }`}
+            className={`px-5 py-2.5 text-xs font-bold rounded-lg transition duration-350 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${selectedFilter === tab.id
+              ? "bg-primary text-white shadow"
+              : "text-stone-600 bg-white border border-stone-200 hover:border-stone-400"
+              }`}
           >
             {tab.label}
           </button>
@@ -92,14 +91,13 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
                 </div>
 
                 {/* Action button */}
-                <button
-                  type="button"
-                  onClick={() => openQuoteModal(`Inquiry about Project: ${project.title}`)}
+                <Link
+                  href={`/projects/${project.slug}`}
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary border border-primary-cream transition hover:bg-primary hover:text-white cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   title="Request similar interior design"
                 >
                   <ArrowUpRight className="h-4.5 w-4.5" />
-                </button>
+                </Link>
               </div>
 
               <p className="text-stone-500 text-xs leading-relaxed border-t border-stone-100 pt-4">

@@ -133,3 +133,30 @@ input, button, select, textarea {
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
 
+/* Short Screens (e.g. mobile landscape) Optimization */
+@media (max-height: 500px) and (max-width: 900px) {
+  .chatbot-container {
+    bottom: 4px !important;
+    right: 4px !important;
+  }
+  .chatbot-panel {
+    height: calc(100vh - 80px) !important;
+    min-height: 240px !important;
+    max-height: none !important;
+    margin-bottom: 8px !important;
+  }
+  .chatbot-panel .bg-stone-950 {
+    padding: 8px 12px !important;
+  }
+  .chatbot-panel .chatbot-footer {
+    padding: 8px 12px !important;
+  }
+  .chatbot-panel .chatbot-footer > * + * {
+    margin-top: 6px !important;
+  }
+  .scroll-to-top-button {
+    bottom: 80px !important;
+    right: 8px !important;
+  }
+}
+

@@ -2,11 +2,9 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { Outfit, Playfair_Display } from "next/font/google";
-import QuoteModal from "@/components/QuoteModal";
 import QuoteModalProvider from "@/components/QuoteModalContext";
-import FloatingButtons from "@/components/FloatingButtons";
-import MobileBottomNav from "@/components/MobileBottomNav";
-import AIChatbot from "@/components/AIChatbot";
+import ClientLayoutElements from "@/components/ClientLayoutElements";
+
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -101,10 +99,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-grow">{children}</main>
           <Footer />
-          <FloatingButtons />
-          <MobileBottomNav />
-          <QuoteModal />
-          <AIChatbot />
+          <ClientLayoutElements />
           {process.env.NODE_ENV === "production" ? (
             <script
               dangerouslySetInnerHTML={{

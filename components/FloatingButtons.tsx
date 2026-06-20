@@ -54,7 +54,7 @@ export default function FloatingButtons() {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="fixed bottom-24 md:bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-white shadow-lg transition duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+            className="fixed bottom-40 md:bottom-24 right-4 md:right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary hover:bg-primary-hover text-white shadow-lg transition duration-300 hover:scale-110 active:scale-95 cursor-pointer scroll-to-top-button"
           >
             <ArrowUp className="h-5 w-5" />
           </motion.button>
