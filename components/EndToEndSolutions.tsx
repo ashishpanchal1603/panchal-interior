@@ -441,7 +441,7 @@ export default function EndToEndSolutions() {
       {/* 1. Category Gallery Modal */}
       <AnimatePresence>
         {galleryCategory && activeGallery && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[90] flex items-center justify-center p-0 sm:p-4">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -457,7 +457,7 @@ export default function EndToEndSolutions() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", duration: 0.4 }}
-              className="relative w-full max-w-4xl max-h-[85vh] rounded-3xl bg-white shadow-2xl z-10 border border-stone-100 flex flex-col overflow-hidden"
+              className="relative w-full h-full max-h-screen sm:max-h-[85vh] sm:max-w-4xl sm:rounded-3xl bg-white shadow-2xl z-10 border border-stone-100 flex flex-col overflow-hidden"
             >
               {/* Modal Header */}
               <div className="bg-stone-950 text-white p-5 flex items-center justify-between border-b border-stone-850 shrink-0">

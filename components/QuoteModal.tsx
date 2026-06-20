@@ -128,7 +128,7 @@ export default function QuoteModal() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 sm:p-4 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -144,7 +144,7 @@ export default function QuoteModal() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ type: "spring", duration: 0.4 }}
-            className="relative w-full max-w-lg rounded-2xl bg-white shadow-2xl z-10 border border-stone-100 my-8 sm:my-0"
+            className="relative w-full h-full sm:h-auto max-h-screen sm:max-h-[90vh] sm:max-w-lg sm:rounded-2xl bg-white shadow-2xl z-10 border border-stone-100 flex flex-col sm:my-0 overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-stone-100 bg-stone-50 px-6 py-4 rounded-t-2xl">
@@ -160,7 +160,7 @@ export default function QuoteModal() {
             </div>
 
             {/* Form Content */}
-            <div className="p-6">
+            <div className="p-6 flex-grow overflow-y-auto">
               {success ? (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
