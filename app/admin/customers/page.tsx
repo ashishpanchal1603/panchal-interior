@@ -220,7 +220,7 @@ function CustomersContent() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-serif text-3xl font-extrabold text-stone-900 dark:text-white">
+          <h1 className="font-cormorant text-3xl font-extrabold text-stone-900 dark:text-white">
             Client Registry
           </h1>
           <p className="text-stone-500 text-xs mt-0.5">Manage customer directory data and track proposal history timelines.</p>
@@ -276,7 +276,7 @@ function CustomersContent() {
             ) : filteredCustomers.length === 0 ? (
               <div className="flex-grow flex flex-col items-center justify-center py-24 text-stone-400 text-center px-4 select-none">
                 <User className="h-12 w-12 text-stone-300 mb-3" />
-                <h4 className="font-serif text-lg font-bold text-stone-800 dark:text-stone-200">No Customers Found</h4>
+                <h4 className="font-cormorant text-lg font-bold text-stone-800 dark:text-stone-200">No Customers Found</h4>
                 <p className="text-xs text-stone-500 max-w-xs mt-1">
                   Try adjusting your query or create a new client file profile.
                 </p>
@@ -302,7 +302,7 @@ function CustomersContent() {
                           activeHistoryClient?.id === cust.id ? "bg-primary-light/40 dark:bg-primary/5" : ""
                         }`}
                       >
-                        <td className="py-4 px-6 font-serif font-bold text-stone-900 dark:text-white text-sm">
+                        <td className="py-4 px-6 font-cormorant font-bold text-stone-900 dark:text-white text-sm">
                           {cust.name}
                         </td>
                         <td className="py-4 px-4 text-stone-700 dark:text-stone-300 font-semibold">
@@ -366,7 +366,7 @@ function CustomersContent() {
               {/* Drawer Top Header */}
               <div className="flex justify-between items-start border-b border-stone-100 dark:border-stone-800 pb-3 select-none">
                 <div>
-                  <h3 className="font-serif font-black text-stone-900 dark:text-white text-base">
+                  <h3 className="font-cormorant font-black text-stone-900 dark:text-white text-base">
                     Client History Details
                   </h3>
                   <p className="text-[10px] text-stone-400 uppercase tracking-widest mt-0.5">Interaction Timeline</p>
@@ -381,7 +381,7 @@ function CustomersContent() {
 
               {/* Client Profile details brief card */}
               <div className="bg-stone-50/50 dark:bg-stone-950/40 p-4 rounded-xl border border-stone-100 dark:border-stone-850 text-xs space-y-1.5">
-                <h4 className="font-serif font-bold text-stone-900 dark:text-stone-200 text-sm leading-none">{activeHistoryClient.name}</h4>
+                <h4 className="font-cormorant font-bold text-stone-900 dark:text-stone-200 text-sm leading-none">{activeHistoryClient.name}</h4>
                 <p className="text-stone-500 dark:text-stone-400">📞 {activeHistoryClient.phone}</p>
                 {activeHistoryClient.email && <p className="text-stone-500 dark:text-stone-400">✉️ {activeHistoryClient.email}</p>}
                 <p className="text-stone-500 dark:text-stone-400 pt-1.5 border-t border-stone-100 dark:border-stone-800 mt-2 leading-relaxed">
@@ -405,7 +405,7 @@ function CustomersContent() {
 
               {/* Estimates list timeline */}
               <div className="space-y-3">
-                <h4 className="font-serif font-extrabold text-stone-800 dark:text-stone-300 text-xs">Generated Estimate timelines</h4>
+                <h4 className="font-cormorant font-extrabold text-stone-800 dark:text-stone-300 text-xs">Generated Estimate timelines</h4>
                 
                 {clientEstimates.length === 0 ? (
                   <p className="text-xs text-stone-400 italic">No estimates associated with this client profile.</p>
@@ -463,7 +463,7 @@ function CustomersContent() {
             >
               {/* Header */}
               <div className="flex justify-between items-center border-b border-stone-100 dark:border-stone-800 pb-3 select-none">
-                <h3 className="font-serif font-black text-stone-900 dark:text-white text-base">
+                <h3 className="font-cormorant font-black text-stone-900 dark:text-white text-base">
                   {modalMode === "create" ? "Add Client Register" : "Modify Client Profile"}
                 </h3>
                 <button

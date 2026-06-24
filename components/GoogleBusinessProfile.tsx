@@ -60,7 +60,7 @@ export default function GoogleBusinessProfile() {
               <span className="inline-flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest bg-primary-light px-3.5 py-1.5 rounded-md border border-primary/10">
                 <FaGoogle className="h-3.5 w-3.5 text-primary" /> Google Business Profile
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 mt-4 leading-tight">
+              <h2 className="font-cormorant text-3xl sm:text-4xl font-extrabold text-stone-900 mt-4 leading-tight">
                 Connect With Our Showroom & Workshop
               </h2>
               <p className="text-stone-500 text-sm sm:text-base leading-relaxed mt-4">
@@ -107,7 +107,7 @@ export default function GoogleBusinessProfile() {
                     {act.icon}
                   </div>
                   <div>
-                    <h3 className={`font-serif text-stone-900 font-bold text-base leading-snug transition-colors duration-300 ${act.textHover}`}>{act.title}</h3>
+                    <h3 className={`font-cormorant text-stone-900 font-bold text-base leading-snug transition-colors duration-300 ${act.textHover}`}>{act.title}</h3>
                     <p className="text-stone-500 text-xs mt-2 leading-relaxed">{act.desc}</p>
                   </div>
                 </div>

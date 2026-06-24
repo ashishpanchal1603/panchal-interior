@@ -227,7 +227,7 @@ function EstimatesContent() {
       {/* Action Header bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-serif text-3xl font-extrabold text-stone-900 dark:text-white">
+          <h1 className="font-cormorant text-3xl font-extrabold text-stone-900 dark:text-white">
             Estimates Registry
           </h1>
           <p className="text-stone-500 text-xs mt-0.5">Manage, print, and duplicate cost estimates for clients.</p>
@@ -308,7 +308,7 @@ function EstimatesContent() {
         ) : filteredEstimates.length === 0 ? (
           <div className="flex-grow flex flex-col items-center justify-center py-24 text-stone-400 text-center px-4 select-none">
             <FolderOpen className="h-12 w-12 text-stone-300 mb-3" />
-            <h4 className="font-serif text-lg font-bold text-stone-800 dark:text-stone-200">No Estimates Found</h4>
+            <h4 className="font-cormorant text-lg font-bold text-stone-800 dark:text-stone-200">No Estimates Found</h4>
             <p className="text-xs text-stone-500 max-w-xs mt-1">
               {searchTerm || typeFilter !== "all" || statusFilter !== "all"
                 ? "No records matched your search query filters."
@@ -336,7 +336,7 @@ function EstimatesContent() {
                 className="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-4 hover:bg-stone-50/30 dark:hover:bg-stone-950/10 transition items-center cursor-pointer"
               >
                 {/* Est Number */}
-                <div className="col-span-1 md:col-span-2 font-serif font-black text-stone-900 dark:text-white text-sm sm:text-base">
+                <div className="col-span-1 md:col-span-2 font-cormorant font-black text-stone-900 dark:text-white text-sm sm:text-base">
                   {est.estimateNumber}
                 </div>
 

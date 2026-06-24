@@ -95,7 +95,7 @@ export default function ContactForm() {
 
   return (
     <div className="bg-white border border-stone-200/60 rounded-2xl p-6 sm:p-8 shadow-sm">
-      <h2 className="font-serif text-xl sm:text-2xl font-bold text-stone-900 mb-6">
+      <h2 className="font-cormorant text-xl sm:text-2xl font-bold text-stone-900 mb-6">
         Send Us a Message
       </h2>
 

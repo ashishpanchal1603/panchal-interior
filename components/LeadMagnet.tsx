@@ -42,7 +42,7 @@ export default function LeadMagnet() {
               <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-widest bg-primary/15 border border-primary/20 px-3 py-1.5 rounded-md">
                 <Gift className="h-4 w-4" /> Limited Time Package Offer
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-white mt-4 leading-tight">
+              <h2 className="font-cormorant text-3xl sm:text-4xl font-extrabold text-white mt-4 leading-tight">
                 Claim Your Free Design & Estimate Bundle
               </h2>
               <p className="text-stone-400 text-sm sm:text-base leading-relaxed">

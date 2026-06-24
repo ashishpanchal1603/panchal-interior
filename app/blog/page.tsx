@@ -57,7 +57,7 @@ export default function BlogPage() {
           <span className="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 border border-primary/20 px-3 py-1 rounded-md">
             Our Insights
           </span>
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-5">
+          <h1 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-5">
             Panchal Interior Blog
           </h1>
           <p className="text-stone-400 text-xs sm:text-sm mt-3 max-w-xl mx-auto">

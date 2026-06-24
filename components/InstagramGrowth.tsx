@@ -47,7 +47,7 @@ export default function InstagramGrowth() {
               <span className="inline-flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 border border-primary/20 px-3.5 py-1.5 rounded-md">
                 <FaInstagram className="h-4 w-4" /> Social Proof & Updates
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-white mt-4 leading-tight">
+              <h2 className="font-cormorant text-3xl sm:text-4xl font-extrabold text-white mt-4 leading-tight">
                 Follow Our Design Journey On Instagram
               </h2>
               <p className="text-stone-400 text-sm sm:text-base leading-relaxed mt-4">
@@ -85,7 +85,7 @@ export default function InstagramGrowth() {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-serif text-white font-bold text-base">{item.theme}</h3>
+                  <h3 className="font-cormorant text-white font-bold text-base">{item.theme}</h3>
                   <p className="text-stone-400 text-xs mt-2.5 leading-relaxed">{item.desc}</p>
                 </div>
               </AnimateOnScroll>

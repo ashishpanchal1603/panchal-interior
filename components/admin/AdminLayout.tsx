@@ -83,7 +83,7 @@ export default function AdminLayout({ children, isDarkMode, toggleTheme }: Admin
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.15 }}
-              className="font-serif leading-none"
+              className="font-cormorant leading-none"
             >
               <span className="block font-black text-sm uppercase tracking-wider text-white">
                 PANCHAL STUDIO
@@ -189,7 +189,7 @@ export default function AdminLayout({ children, isDarkMode, toggleTheme }: Admin
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white">
                     <Sofa className="h-5.5 w-5.5" />
                   </div>
-                  <div className="font-serif leading-none">
+                  <div className="font-cormorant leading-none">
                     <span className="block font-black text-sm uppercase tracking-wider text-white">
                       PANCHAL STUDIO
                     </span>
@@ -264,11 +264,11 @@ export default function AdminLayout({ children, isDarkMode, toggleTheme }: Admin
               <span className="block text-[10px] uppercase tracking-wider text-primary font-bold">
                 Panchal Interior Business Suite
               </span>
-              <h2 className="font-serif text-lg font-bold text-stone-900 dark:text-white leading-tight mt-0.5">
+              <h2 className="font-cormorant text-lg font-bold text-stone-900 dark:text-white leading-tight mt-0.5">
                 {activePageTitle}
               </h2>
             </div>
-            <div className="sm:hidden font-serif font-bold text-base text-stone-900 dark:text-white">
+            <div className="sm:hidden font-cormorant font-bold text-base text-stone-900 dark:text-white">
               {activePageTitle}
             </div>
           </div>

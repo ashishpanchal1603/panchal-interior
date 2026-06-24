@@ -166,7 +166,7 @@ export default async function ServiceDetailPage(props: PageProps) {
             Back to Services
           </Link>
           <AnimateOnScroll variant="fadeInUp">
-            <h1 className="font-serif text-3xl sm:text-5xl font-extrabold text-white">
+            <h1 className="font-cormorant text-3xl sm:text-5xl font-extrabold text-white">
               {service.name}
             </h1>
           </AnimateOnScroll>
@@ -184,7 +184,7 @@ export default async function ServiceDetailPage(props: PageProps) {
         <div className="lg:col-span-2 space-y-12">
           {/* Features Block */}
           <div className="space-y-6">
-            <h2 className="font-serif text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3">
+            <h2 className="font-cormorant text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3">
               Service Overview & Specifications
             </h2>
             <p className="text-stone-600 text-sm leading-relaxed">
@@ -205,7 +205,7 @@ export default async function ServiceDetailPage(props: PageProps) {
 
           {/* Process Workflow Section */}
           <div className="space-y-6">
-            <h2 className="font-serif text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3">
+            <h2 className="font-cormorant text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3">
               Our Step-By-Step Execution Process
             </h2>
             <div className="relative border-l border-stone-200 pl-6 ml-4 space-y-8 mt-8">
@@ -231,7 +231,7 @@ export default async function ServiceDetailPage(props: PageProps) {
           {/* FAQs Accordion */}
           {service.faqs.length > 0 && (
             <div className="space-y-6">
-              <h2 className="font-serif text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3">
+              <h2 className="font-cormorant text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3">
                 Frequently Asked Questions
               </h2>
               <FaqAccordion faqs={service.faqs} />
@@ -245,7 +245,7 @@ export default async function ServiceDetailPage(props: PageProps) {
             {/* Background design */}
             <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:12px_12px]" />
 
-            <h3 className="font-serif text-xl font-bold text-white relative z-10">
+            <h3 className="font-cormorant text-xl font-bold text-white relative z-10">
               Request Site Measurement
             </h3>
             <p className="text-stone-400 text-xs mt-2 leading-relaxed relative z-10">

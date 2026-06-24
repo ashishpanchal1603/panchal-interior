@@ -42,7 +42,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight"
+            className="font-cormorant text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight"
           >
             Custom Furniture & <br />
             <span className="text-primary">Interior Design</span> Solutions

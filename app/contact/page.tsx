@@ -123,7 +123,7 @@ export default function ContactPage() {
           <span className="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 border border-primary/20 px-3 py-1 rounded-md">
             Connect With Us
           </span>
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-5">
+          <h1 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-5">
             Contact Panchal Interior
           </h1>
           <p className="text-stone-400 text-xs sm:text-sm mt-3 max-w-xl mx-auto">
@@ -138,7 +138,7 @@ export default function ContactPage() {
         <div className="lg:col-span-5 space-y-10">
           {/* Contact Cards Block */}
           <div className="bg-white border border-stone-200/60 rounded-2xl p-6 shadow-sm space-y-6">
-            <h2 className="font-serif text-xl font-bold text-stone-900 border-b border-stone-100 pb-3">
+            <h2 className="font-cormorant text-xl font-bold text-stone-900 border-b border-stone-100 pb-3">
               Office & Factory Details
             </h2>
 
@@ -212,7 +212,7 @@ export default function ContactPage() {
 
           {/* Contact FAQs Block */}
           <div className="space-y-4">
-            <h3 className="font-serif text-lg font-bold text-stone-900">Consultation FAQs</h3>
+            <h3 className="font-cormorant text-lg font-bold text-stone-900">Consultation FAQs</h3>
             <FaqAccordion faqs={contactFaqs} />
           </div>
         </div>
@@ -228,7 +228,7 @@ export default function ContactPage() {
         <div className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
           <div className="p-5 border-b border-stone-100 flex justify-between items-center bg-stone-50">
             <div>
-              <h3 className="font-serif text-lg font-bold text-stone-900">Visit Our Factory Workshop</h3>
+              <h3 className="font-cormorant text-lg font-bold text-stone-900">Visit Our Factory Workshop</h3>
               <p className="text-stone-400 text-xs mt-0.5">Explore materials, laminates, and wood logs in person.</p>
             </div>
             <a

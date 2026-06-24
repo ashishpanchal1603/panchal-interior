@@ -12,7 +12,7 @@ export default function NotFound() {
           <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
             404 Error
           </span>
-          <h1 className="font-serif text-3xl font-extrabold text-stone-900 mt-4 tracking-tight">
+          <h1 className="font-cormorant text-3xl font-extrabold text-stone-900 mt-4 tracking-tight">
             Page Not Found
           </h1>
           <p className="text-stone-500 text-sm mt-3 leading-relaxed">

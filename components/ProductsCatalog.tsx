@@ -145,7 +145,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
                     <span className="block text-[10px] font-bold text-primary uppercase tracking-wider">
                       {categories.find((c) => c.id === product.categoryId)?.name || "Furniture"}
                     </span>
-                    <h3 className="font-serif font-bold text-stone-900 text-lg mt-1 group-hover:text-primary transition leading-snug">
+                    <h3 className="font-cormorant font-bold text-stone-900 text-lg mt-1 group-hover:text-primary transition leading-snug">
                       {product.name}
                     </h3>
                     <p className="text-stone-500 text-xs mt-2.5 leading-relaxed line-clamp-2">

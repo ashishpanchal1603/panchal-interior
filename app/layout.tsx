@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
-import { Outfit, Playfair_Display } from "next/font/google";
+import { Outfit, Cormorant_Garamond } from "next/font/google";
 import QuoteModalProvider from "@/components/QuoteModalContext";
 import ClientLayoutElements from "@/components/ClientLayoutElements";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -16,10 +16,11 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -90,7 +91,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${playfair.variable} scroll-smooth`}
+      className={`${outfit.variable} ${cormorant.variable} scroll-smooth`}
     >
       <body className="antialiased min-h-screen flex flex-col">
         <ToastProvider>

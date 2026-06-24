@@ -206,7 +206,7 @@ export default function HomePage() {
       <section className="py-12 md:py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-5 text-center">
           <AnimateOnScroll variant="fadeInUp">
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 leading-tight">
+            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 leading-tight">
               Our Services
             </h2>
             <p className="text-stone-500 text-sm sm:text-base mt-3 max-w-xl mx-auto">
@@ -227,7 +227,7 @@ export default function HomePage() {
                   {getServiceIcon(service.icon)}
                 </div>
 
-                <h3 className="font-serif text-xl font-bold text-stone-900 mt-6">
+                <h3 className="font-cormorant text-xl font-bold text-stone-900 mt-6">
                   {service.name}
                 </h3>
 
@@ -273,7 +273,7 @@ export default function HomePage() {
       <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-5 text-center">
           <AnimateOnScroll variant="fadeInUp">
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 leading-tight">
+            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 leading-tight">
               Popular Furniture Categories
             </h2>
             <p className="text-stone-500 text-sm sm:text-base mt-3 max-w-xl mx-auto">
@@ -303,7 +303,7 @@ export default function HomePage() {
 
                 {/* Text content on card */}
                 <div className="absolute bottom-0 left-0 w-full p-6 text-left">
-                  <h3 className="font-serif text-xl font-bold text-white leading-tight">
+                  <h3 className="font-cormorant text-xl font-bold text-white leading-tight">
                     {cat.name}
                   </h3>
                   <p className="text-stone-300 text-xs mt-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -354,7 +354,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-5">
           <div className="text-center">
             <AnimateOnScroll variant="fadeInUp">
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900">
+              <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900">
                 Why Choose Us
               </h2>
               <p className="text-stone-500 text-sm mt-3 max-w-xl mx-auto">
@@ -395,7 +395,7 @@ export default function HomePage() {
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary-light px-3 py-1 rounded-full border border-primary/20">
               Our Portfolio
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 mt-3 leading-tight">
+            <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 mt-3 leading-tight">
               Recent Projects
             </h2>
             <p className="text-stone-500 text-sm sm:text-base mt-3 max-w-xl mx-auto">
@@ -430,7 +430,7 @@ export default function HomePage() {
                   <span className="text-[10px] font-bold text-primary uppercase tracking-wider">
                     📍 {project.location}
                   </span>
-                  <h3 className="font-serif text-lg font-bold text-stone-900 mt-2 group-hover:text-primary transition leading-snug">
+                  <h3 className="font-cormorant text-lg font-bold text-stone-900 mt-2 group-hover:text-primary transition leading-snug">
                     <Link href={`/projects/${project.slug}`}>
                       {project.title}
                     </Link>
@@ -476,7 +476,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-5">
           <div className="text-center">
             <AnimateOnScroll variant="fadeInUp">
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900">
+              <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900">
                 Customer Reviews
               </h2>
               <p className="text-stone-500 text-sm mt-3 max-w-xl mx-auto">
@@ -524,7 +524,7 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <AnimateOnScroll variant="fadeInUp">
               <span className="text-xs font-bold text-primary uppercase tracking-widest font-mono">Questions & Answers</span>
-              <h2 className="font-serif text-3xl font-extrabold text-stone-900 mt-2">Frequently Asked Questions</h2>
+              <h2 className="font-cormorant text-3xl font-extrabold text-stone-900 mt-2">Frequently Asked Questions</h2>
             </AnimateOnScroll>
           </div>
           <FaqAccordion faqs={homeFaqs} />
@@ -535,7 +535,7 @@ export default function HomePage() {
       <section className="bg-stone-950 py-12 md:py-20 border-t border-stone-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
         <div className="max-w-4xl mx-auto px-5 text-center relative z-10">
-          <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-white">
+          <h2 className="font-cormorant text-3xl sm:text-4xl font-extrabold text-white">
             Ready to Transform Your Living Space?
           </h2>
           <p className="text-stone-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed">

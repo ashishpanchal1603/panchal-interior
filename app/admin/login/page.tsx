@@ -75,7 +75,7 @@ export default function AdminLoginPage() {
         </div>
         
         {/* Title */}
-        <h2 className="mt-6 text-center font-serif text-3xl font-extrabold text-stone-900 tracking-tight">
+        <h2 className="mt-6 text-center font-cormorant text-3xl font-extrabold text-stone-900 tracking-tight">
           Panchal Interior
         </h2>
         <p className="mt-1.5 text-center text-xs font-bold uppercase tracking-widest text-primary">

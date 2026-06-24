@@ -119,7 +119,7 @@ export default function FullHomeFlow({
           className="space-y-5"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-stone-900">Choose Quality & Package</h3>
+            <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-stone-900">Choose Quality & Package</h3>
             <p className="text-stone-500 text-xs sm:text-sm mt-0.5">
               Select structural materials, hardware finishes, and custom styling budgets.
             </p>
@@ -226,7 +226,7 @@ export default function FullHomeFlow({
           className="space-y-8"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-2xl font-bold text-stone-900">Select Scope of Work</h3>
+            <h3 className="font-cormorant text-2xl font-bold text-stone-900">Select Scope of Work</h3>
             <p className="text-stone-500 text-sm mt-1">
               Check the rooms you want to design. Pricing adjusts dynamically based on selected rooms.
             </p>

@@ -47,7 +47,7 @@ export default function HowWeWork() {
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary-light px-3 py-1 rounded-full border border-primary/20">
               Our Process
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif font-black text-stone-900 mt-4 leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-cormorant font-black text-stone-900 mt-4 leading-tight">
               Our 5-Step Work Method
             </h2>
             <p className="text-stone-500 text-sm mt-3">
@@ -79,7 +79,7 @@ export default function HowWeWork() {
               </div>
 
               {/* Step Details */}
-              <h3 className="font-serif text-lg font-bold text-stone-900 mt-8 group-hover:text-primary transition duration-300">
+              <h3 className="font-cormorant text-lg font-bold text-stone-900 mt-8 group-hover:text-primary transition duration-300">
                 {st.title}
               </h3>
               <p className="text-stone-500 text-xs sm:text-sm mt-3 leading-relaxed max-w-[200px] mx-auto">

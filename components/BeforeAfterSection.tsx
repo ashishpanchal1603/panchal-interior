@@ -73,7 +73,7 @@ export default function BeforeAfterSection() {
           <span className="text-xs font-bold text-primary uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Sparkles className="h-4 w-4" /> Before & After
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 mt-2 leading-tight">
+          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 mt-2 leading-tight">
             Real Home Transformations
           </h2>
           <p className="text-stone-500 text-sm mt-3">
@@ -138,7 +138,7 @@ export default function BeforeAfterSection() {
                     <span className="block text-[10px] font-bold text-primary uppercase tracking-widest">
                       {proj.subtitle}
                     </span>
-                    <h3 className="font-serif text-lg font-bold text-stone-900">
+                    <h3 className="font-cormorant text-lg font-bold text-stone-900">
                       {proj.title}
                     </h3>
                     <p className="text-stone-500 text-xs sm:text-sm leading-relaxed">

@@ -59,7 +59,7 @@ export default function ProjectsPage() {
           <span className="text-primary text-xs font-bold uppercase tracking-widest bg-primary/10 border border-primary/20 px-3 py-1 rounded-md">
             Our Portfolio
           </span>
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-5">
+          <h1 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-5">
             Completed Masterpieces
           </h1>
           <p className="text-stone-400 text-xs sm:text-sm mt-3 max-w-xl mx-auto">
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
       {/* Bottom CTA Quote */}
       <section className="max-w-4xl mx-auto px-5 mt-20 text-center">
         <div className="bg-stone-900 text-white rounded-2xl p-8 border border-stone-850 shadow-md">
-          <h3 className="font-serif text-xl font-bold">Love our work? Get a custom budget outline</h3>
+          <h3 className="font-cormorant text-xl font-bold">Love our work? Get a custom budget outline</h3>
           <p className="text-stone-400 text-xs mt-2 max-w-sm mx-auto leading-relaxed">
             Let us draft a realistic material costing outline tailored to your floor plan dimensions.
           </p>

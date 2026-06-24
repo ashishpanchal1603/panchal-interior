@@ -39,7 +39,7 @@ export default function KitchenFlow({
           className="space-y-8"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-2xl font-bold text-stone-900">Select Kitchen Layout</h3>
+            <h3 className="font-cormorant text-2xl font-bold text-stone-900">Select Kitchen Layout</h3>
             <p className="text-stone-500 text-sm mt-1">
               Please select the layout configuration of your counter space.
             </p>
@@ -137,7 +137,7 @@ export default function KitchenFlow({
           className="space-y-8"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-2xl font-bold text-stone-900">Define Kitchen Dimensions</h3>
+            <h3 className="font-cormorant text-2xl font-bold text-stone-900">Define Kitchen Dimensions</h3>
             <p className="text-stone-500 text-sm mt-1">
               Specify counter lengths for accurate estimation calculations (in feet).
             </p>
@@ -240,7 +240,7 @@ export default function KitchenFlow({
           className="space-y-5"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-stone-900">Choose Shutter Materials & Finish</h3>
+            <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-stone-900">Choose Shutter Materials & Finish</h3>
             <p className="text-stone-500 text-xs sm:text-sm mt-0.5">
               Select the look and longevity tier of your modular kitchen doors.
             </p>

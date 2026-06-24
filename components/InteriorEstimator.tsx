@@ -180,7 +180,7 @@ export default function InteriorEstimator() {
           <span className="text-primary font-bold text-xs uppercase tracking-widest bg-primary-light px-3 py-1 rounded-full border border-primary/20">
             Design Budget Planner
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 mt-4 leading-tight">
+          <h2 className="font-cormorant text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 mt-4 leading-tight">
             Estimate Your Interior Cost
           </h2>
           <p className="text-stone-500 text-sm sm:text-base mt-4">
@@ -247,7 +247,7 @@ export default function InteriorEstimator() {
                   className="space-y-10 p-6 sm:p-10"
                 >
                   <div className="text-center">
-                    <h3 className="font-serif text-2xl font-bold text-stone-900">
+                    <h3 className="font-cormorant text-2xl font-bold text-stone-900">
                       What would you like to design?
                     </h3>
                     <p className="text-stone-500 text-sm mt-2">
@@ -268,7 +268,7 @@ export default function InteriorEstimator() {
                         <Home className="h-7 w-7" />
                       </div>
                       <div>
-                        <h4 className="font-serif text-lg font-bold text-stone-900 group-hover:text-primary transition">
+                        <h4 className="font-cormorant text-lg font-bold text-stone-900 group-hover:text-primary transition">
                           Full Home Interiors
                         </h4>
                         <p className="text-stone-500 text-xs mt-2 leading-relaxed">
@@ -292,7 +292,7 @@ export default function InteriorEstimator() {
                         <CookingPot className="h-7 w-7" />
                       </div>
                       <div>
-                        <h4 className="font-serif text-lg font-bold text-stone-900 group-hover:text-primary transition">
+                        <h4 className="font-cormorant text-lg font-bold text-stone-900 group-hover:text-primary transition">
                           Modular Kitchen
                         </h4>
                         <p className="text-stone-500 text-xs mt-2 leading-relaxed">
@@ -316,7 +316,7 @@ export default function InteriorEstimator() {
                         <DoorClosed className="h-7 w-7" />
                       </div>
                       <div>
-                        <h4 className="font-serif text-lg font-bold text-stone-900 group-hover:text-primary transition">
+                        <h4 className="font-cormorant text-lg font-bold text-stone-900 group-hover:text-primary transition">
                           Custom Wardrobes
                         </h4>
                         <p className="text-stone-500 text-xs mt-2 leading-relaxed">

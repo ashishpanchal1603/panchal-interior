@@ -157,7 +157,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fadeInUp" delay={0.1}>
-            <h1 className="font-serif text-3.5xl sm:text-5xl lg:text-6xl font-black text-white leading-tight max-w-3xl">
+            <h1 className="font-cormorant text-3.5xl sm:text-5xl lg:text-6xl font-black text-white leading-tight max-w-3xl">
               {config.h1}
             </h1>
           </AnimateOnScroll>
@@ -217,7 +217,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
             <span className="text-xs font-bold text-primary uppercase tracking-widest flex items-center gap-1.5">
               <Sparkles className="h-4 w-4" /> Why Choose Us
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 leading-tight">
+            <h2 className="font-cormorant text-3xl sm:text-4xl font-extrabold text-stone-900 leading-tight">
               {config.whyChooseUs.title}
             </h2>
             <p className="text-stone-600 text-sm leading-relaxed">
@@ -250,7 +250,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
         <div className="max-w-7xl mx-auto px-5 text-left">
           <div className="text-center max-w-xl mx-auto mb-16">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">Premium Features</span>
-            <h2 className="font-serif text-3xl font-extrabold text-stone-900 mt-2">{config.benefits.title}</h2>
+            <h2 className="font-cormorant text-3xl font-extrabold text-stone-900 mt-2">{config.benefits.title}</h2>
             <p className="text-stone-500 text-xs sm:text-sm mt-2">{config.benefits.description}</p>
           </div>
 
@@ -272,7 +272,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
       <section className="py-20 max-w-7xl mx-auto px-5 text-left">
         <div className="text-center max-w-xl mx-auto mb-16">
           <span className="text-xs font-bold text-primary uppercase tracking-widest">Workflow Timeline</span>
-          <h2 className="font-serif text-3xl font-extrabold text-stone-900 mt-2">{config.process.title}</h2>
+          <h2 className="font-cormorant text-3xl font-extrabold text-stone-900 mt-2">{config.process.title}</h2>
           <p className="text-stone-500 text-xs sm:text-sm mt-2">{config.process.description}</p>
         </div>
 
@@ -300,7 +300,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
         <div className="max-w-7xl mx-auto px-5 text-left">
           <div className="text-center max-w-xl mx-auto mb-16">
             <span className="text-xs font-bold text-primary uppercase tracking-widest">Trending Concepts</span>
-            <h2 className="font-serif text-3xl font-extrabold text-stone-900 mt-2">{config.popularDesigns.title}</h2>
+            <h2 className="font-cormorant text-3xl font-extrabold text-stone-900 mt-2">{config.popularDesigns.title}</h2>
             <p className="text-stone-500 text-xs sm:text-sm mt-2">{config.popularDesigns.description}</p>
           </div>
 
@@ -318,7 +318,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
                 </div>
                 <div className="p-6 flex-grow flex flex-col justify-between">
                   <div>
-                    <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-primary transition leading-snug">
+                    <h3 className="font-cormorant text-lg font-bold text-stone-900 group-hover:text-primary transition leading-snug">
                       {item.title}
                     </h3>
                     <p className="text-stone-500 text-xs mt-2 leading-relaxed">
@@ -346,7 +346,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
       <section className="py-20 max-w-7xl mx-auto px-5 text-left border-b border-stone-200/50">
         <div className="text-center max-w-xl mx-auto mb-16">
           <span className="text-xs font-bold text-primary uppercase tracking-widest">Neighborhood Services</span>
-          <h2 className="font-serif text-3xl font-extrabold text-stone-900 mt-2">Areas We Serve in Ahmedabad</h2>
+          <h2 className="font-cormorant text-3xl font-extrabold text-stone-900 mt-2">Areas We Serve in Ahmedabad</h2>
           <p className="text-stone-500 text-xs sm:text-sm mt-2">
             Panchal Interior offers free site visits, consultations, and quick shipping to all major locations.
           </p>
@@ -355,7 +355,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {areasWeServe.map((area, idx) => (
             <div key={idx} className="bg-stone-50/50 border border-stone-150 rounded-xl p-4.5 space-y-1.5">
-              <span className="block font-serif font-bold text-stone-900 text-sm">📍 {area.name}</span>
+              <span className="block font-cormorant font-bold text-stone-900 text-sm">📍 {area.name}</span>
               <span className="block text-stone-400 text-[10px] leading-normal">{area.desc}</span>
             </div>
           ))}
@@ -366,7 +366,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
       <section className="py-20 max-w-4xl mx-auto px-5 text-left">
         <div className="text-center mb-12">
           <span className="text-xs font-bold text-primary uppercase tracking-widest font-mono">Got Questions?</span>
-          <h2 className="font-serif text-3xl font-extrabold text-stone-900 mt-2">Frequently Asked Questions</h2>
+          <h2 className="font-cormorant text-3xl font-extrabold text-stone-900 mt-2">Frequently Asked Questions</h2>
         </div>
         <FaqAccordion faqs={config.faqs} />
       </section>
@@ -409,7 +409,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
       <section className="bg-stone-950 py-16 text-center text-white relative overflow-hidden border-t border-stone-900">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
         <div className="max-w-4xl mx-auto px-5 relative z-10 space-y-6">
-          <h3 className="font-serif text-3xl font-extrabold">Need Custom Layout Estimates in Ahmedabad?</h3>
+          <h3 className="font-cormorant text-3xl font-extrabold">Need Custom Layout Estimates in Ahmedabad?</h3>
           <p className="text-stone-400 text-sm max-w-xl mx-auto leading-relaxed">
             Get in touch with Rajesh Panchal today. We provide completely free site measurements, layout blueprints, and factory-direct estimates.
           </p>

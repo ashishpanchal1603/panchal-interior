@@ -105,7 +105,7 @@ export default function AboutPage() {
             </span>
           </AnimateOnScroll>
           <AnimateOnScroll variant="fadeInUp" delay={0.1}>
-            <h1 className="font-serif text-4xl sm:text-5xl font-extrabold text-white mt-5">
+            <h1 className="font-cormorant text-4xl sm:text-5xl font-extrabold text-white mt-5">
               About Panchal Interior
             </h1>
           </AnimateOnScroll>
@@ -122,7 +122,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text */}
           <AnimateOnScroll variant="slideLeft" className="space-y-6">
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900">
+            <h2 className="font-cormorant text-3xl sm:text-4xl font-extrabold text-stone-900">
               Crafting Quality Homes For Over 15 Years
             </h2>
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
@@ -179,7 +179,7 @@ export default function AboutPage() {
       <section className="py-20 bg-stone-50">
         <div className="max-w-7xl mx-auto px-5">
           <div className="text-center max-w-xl mx-auto">
-            <h2 className="font-serif text-3xl font-extrabold text-stone-900">
+            <h2 className="font-cormorant text-3xl font-extrabold text-stone-900">
               Our Founding Principles
             </h2>
             <p className="text-stone-500 text-xs sm:text-sm mt-2">
@@ -223,7 +223,7 @@ export default function AboutPage() {
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="fadeInUp" className="space-y-6">
-            <h2 className="font-serif text-3xl font-extrabold text-stone-900 leading-tight">
+            <h2 className="font-cormorant text-3xl font-extrabold text-stone-900 leading-tight">
               Factory Manufacturing & Finishing Quality
             </h2>
             <p className="text-stone-600 text-sm leading-relaxed">
@@ -262,7 +262,7 @@ export default function AboutPage() {
       {/* 5. CTA banner */}
       <section className="bg-stone-950 py-16 text-center text-white relative border-t border-stone-900">
         <div className="max-w-3xl mx-auto px-5">
-          <h3 className="font-serif text-2xl sm:text-3xl font-extrabold">Design Your Dream Home Today</h3>
+          <h3 className="font-cormorant text-2xl sm:text-3xl font-extrabold">Design Your Dream Home Today</h3>
           <p className="text-stone-400 text-sm mt-3 leading-relaxed">
             Get in touch for a site visit. We will measure your space and build dynamic 3D layouts, presenting realistic costs with zero hidden charges.
           </p>

@@ -478,7 +478,7 @@ export default function EndToEndSolutions() {
               {/* Modal Header */}
               <div className="bg-stone-950 text-white p-5 flex items-center justify-between border-b border-stone-850 shrink-0">
                 <div className="text-left">
-                  <h3 className="text-lg sm:text-2xl font-serif font-black tracking-wide flex items-center gap-2">
+                  <h3 className="text-lg sm:text-2xl font-cormorant font-black tracking-wide flex items-center gap-2">
                     <Hammer className="h-5 w-5 text-primary shrink-0" />
                     {activeGallery.title}
                   </h3>

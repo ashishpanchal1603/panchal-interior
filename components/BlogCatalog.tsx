@@ -91,7 +91,7 @@ export default function BlogCatalog({ blogPosts }: BlogCatalogProps) {
                     </span>
                   </div>
 
-                  <h2 className="font-serif text-xl font-bold text-stone-900 mt-4 hover:text-primary transition leading-snug">
+                  <h2 className="font-cormorant text-xl font-bold text-stone-900 mt-4 hover:text-primary transition leading-snug">
                     <Link href={`/blog/${post.slug}`} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                       {post.title}
                     </Link>

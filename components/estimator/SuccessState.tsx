@@ -37,7 +37,7 @@ export default function SuccessState({
         <CheckCircle className="h-10 w-10 animate-bounce" />
       </div>
       <div>
-        <h3 className="font-serif text-2xl font-bold text-stone-900">
+        <h3 className="font-cormorant text-2xl font-bold text-stone-900">
           Estimation Submitted!
         </h3>
         <p className="text-stone-500 text-sm mt-3 leading-relaxed">

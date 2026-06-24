@@ -91,7 +91,7 @@ export default function ServicesPage() {
             </span>
           </AnimateOnScroll>
           <AnimateOnScroll variant="fadeInUp" delay={0.1}>
-            <h1 className="font-serif text-4xl sm:text-5xl font-extrabold text-white mt-5">
+            <h1 className="font-cormorant text-4xl sm:text-5xl font-extrabold text-white mt-5">
               Our Professional Services
             </h1>
           </AnimateOnScroll>
@@ -137,7 +137,7 @@ export default function ServicesPage() {
                     </span>
                   </div>
 
-                  <h2 className="font-serif text-2xl font-bold text-stone-900 mt-6 group-hover:text-primary transition">
+                  <h2 className="font-cormorant text-2xl font-bold text-stone-900 mt-6 group-hover:text-primary transition">
                     {service.name}
                   </h2>
 
@@ -185,7 +185,7 @@ export default function ServicesPage() {
       <section className="max-w-4xl mx-auto px-5 mt-20 text-center">
         <div className="bg-stone-900 rounded-2xl p-10 text-white relative overflow-hidden shadow-lg">
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
-          <h3 className="font-serif text-xl sm:text-2xl font-bold">Looking for a specific customization?</h3>
+          <h3 className="font-cormorant text-xl sm:text-2xl font-bold">Looking for a specific customization?</h3>
           <p className="text-stone-400 text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
             We love challenging architectural designs. Contact our workshop directly and share your custom concepts.
           </p>

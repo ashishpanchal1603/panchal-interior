@@ -155,7 +155,7 @@ export default async function ProductDetailPage(props: PageProps) {
             <span className="text-xs font-bold text-primary uppercase tracking-wider">
               {categoryName} Collection
             </span>
-            <h1 className="font-serif text-2xl sm:text-4xl font-extrabold text-stone-900 mt-2">
+            <h1 className="font-cormorant text-2xl sm:text-4xl font-extrabold text-stone-900 mt-2">
               {product.name}
             </h1>
 

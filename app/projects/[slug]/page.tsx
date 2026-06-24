@@ -196,7 +196,7 @@ export default async function ProjectDetailPage(props: PageProps) {
             <span className="inline-block text-[10px] font-bold text-stone-900 bg-primary px-3 py-1 rounded mb-4 uppercase tracking-widest">
               {project.category} Showcase
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+            <h1 className="font-cormorant text-3xl sm:text-5xl font-extrabold text-white leading-tight">
               {project.title}
             </h1>
             <div className="flex flex-wrap items-center gap-5 text-stone-300 text-xs mt-4">
@@ -242,7 +242,7 @@ export default async function ProjectDetailPage(props: PageProps) {
         {/* Left Column (2/3 width) - Overview */}
         <div className="lg:col-span-2 space-y-8">
           <div className="space-y-4">
-            <h2 className="font-serif text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3">
+            <h2 className="font-cormorant text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3">
               Project Design & Execution Overview
             </h2>
             <p className="text-stone-600 text-sm leading-relaxed">
@@ -255,7 +255,7 @@ export default async function ProjectDetailPage(props: PageProps) {
 
           {/* Work Categories Subsections */}
           <div className="space-y-6">
-            <h3 className="font-serif text-xl font-bold text-stone-900">Key Executed Carpentry Work</h3>
+            <h3 className="font-cormorant text-xl font-bold text-stone-900">Key Executed Carpentry Work</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {project.workCategories.map((wc, idx) => (
                 <div key={idx} className="bg-white border border-stone-200/60 rounded-xl p-5 shadow-sm space-y-2">
@@ -302,7 +302,7 @@ export default async function ProjectDetailPage(props: PageProps) {
 
       {/* 5. Before & After Showcase */}
       <section className="max-w-7xl mx-auto px-5 mt-16 text-left">
-        <h2 className="font-serif text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3 mb-8">
+        <h2 className="font-cormorant text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3 mb-8">
           Design Transformation (Before vs After)
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -336,7 +336,7 @@ export default async function ProjectDetailPage(props: PageProps) {
 
       {/* 6. Dynamic Project FAQ Accordion */}
       <section className="max-w-4xl mx-auto px-5 mt-20 text-left space-y-6">
-        <h2 className="font-serif text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3 text-center">
+        <h2 className="font-cormorant text-2xl font-bold text-stone-900 border-b border-stone-100 pb-3 text-center">
           Project Consultation FAQs
         </h2>
         <FaqAccordion faqs={project.faqs} />
@@ -345,7 +345,7 @@ export default async function ProjectDetailPage(props: PageProps) {
       {/* 7. Related Projects Section */}
       {relatedProjects.length > 0 && (
         <section className="max-w-7xl mx-auto px-5 mt-24 text-left">
-          <h2 className="font-serif text-2xl sm:text-3xl font-extrabold text-stone-900 border-b border-stone-150 pb-3 mb-10">
+          <h2 className="font-cormorant text-2xl sm:text-3xl font-extrabold text-stone-900 border-b border-stone-150 pb-3 mb-10">
             Explore Similar Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -368,7 +368,7 @@ export default async function ProjectDetailPage(props: PageProps) {
                 </Link>
                 <div className="p-6 flex-grow flex flex-col justify-between">
                   <div>
-                    <h3 className="font-serif text-lg font-bold text-stone-900 group-hover:text-primary transition leading-snug">
+                    <h3 className="font-cormorant text-lg font-bold text-stone-900 group-hover:text-primary transition leading-snug">
                       <Link href={`/projects/${proj.slug}`}>
                         {proj.title}
                       </Link>
@@ -398,7 +398,7 @@ export default async function ProjectDetailPage(props: PageProps) {
       <section className="max-w-4xl mx-auto px-5 mt-20 text-center">
         <div className="bg-stone-900 text-white rounded-2xl p-10 border border-stone-850 shadow-lg relative overflow-hidden">
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
-          <h3 className="font-serif text-2xl font-bold">Love this project layout style?</h3>
+          <h3 className="font-cormorant text-2xl font-bold">Love this project layout style?</h3>
           <p className="text-stone-400 text-xs sm:text-sm mt-3 max-w-md mx-auto leading-relaxed">
             Connect with राजेश पंचाल and schedule a free site visit. We will take exact site measurements and prepare custom 3D estimates.
           </p>

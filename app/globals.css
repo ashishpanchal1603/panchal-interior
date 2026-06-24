@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: var(--font-outfit), system-ui, -apple-system, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-cormorant: var(--font-cormorant), Georgia, serif;
   
   --color-primary: var(--theme-primary);
   --color-primary-hover: var(--theme-primary-hover);
@@ -143,8 +143,8 @@ input, button, select, textarea {
 }
 
 /* Heading font styling helper */
-.font-serif-heading {
-  font-family: var(--font-serif);
+.font-cormorant-heading {
+  font-family: var(--font-cormorant);
 }
 
 /* Animation delays */

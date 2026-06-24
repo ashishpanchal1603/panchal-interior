@@ -83,7 +83,7 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
             <div className="p-6 space-y-4">
               <div className="flex justify-between items-start gap-4">
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-stone-900 group-hover:text-primary transition leading-snug">
+                  <h3 className="font-cormorant text-xl font-bold text-stone-900 group-hover:text-primary transition leading-snug">
                     <Link href={`/projects/${project.slug}`} className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                       {project.title}
                     </Link>

@@ -30,7 +30,7 @@ export default function WardrobeFlow({
           className="space-y-5"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-stone-900">Select Wardrobe Style</h3>
+            <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-stone-900">Select Wardrobe Style</h3>
             <p className="text-stone-500 text-xs sm:text-sm mt-0.5">
               Please select the structural opening doors configuration.
             </p>
@@ -96,7 +96,7 @@ export default function WardrobeFlow({
           className="space-y-8"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-2xl font-bold text-stone-900">Define Wardrobe Sizing</h3>
+            <h3 className="font-cormorant text-2xl font-bold text-stone-900">Define Wardrobe Sizing</h3>
             <p className="text-stone-500 text-sm mt-1">
               Specify custom width and height requirements (in feet).
             </p>
@@ -175,7 +175,7 @@ export default function WardrobeFlow({
           className="space-y-5"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-stone-900">Choose Door Finish</h3>
+            <h3 className="font-cormorant text-xl sm:text-2xl font-bold text-stone-900">Choose Door Finish</h3>
             <p className="text-stone-500 text-xs sm:text-sm mt-0.5">
               Select outer surfacing materials for design aesthetics and durability.
             </p>

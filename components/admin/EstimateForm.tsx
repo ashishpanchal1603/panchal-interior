@@ -334,7 +334,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
           <ArrowLeft className="h-4 w-4 text-stone-600 dark:text-stone-300" />
         </button>
         <div>
-          <h1 className="font-serif text-2xl font-bold text-stone-900 dark:text-white">
+          <h1 className="font-cormorant text-2xl font-bold text-stone-900 dark:text-white">
             {initialData ? `Edit Estimate Proposal (${initialData.estimateNumber})` : "Create Estimate Proposal"}
           </h1>
           <p className="text-xs text-stone-400 mt-0.5">Fill details below to calculate and generate printable estimates.</p>
@@ -349,7 +349,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
           {/* Card 1: Customer details */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-5">
             <div className="flex justify-between items-center border-b border-stone-100 dark:border-stone-800 pb-3">
-              <h3 className="font-serif font-extrabold text-stone-900 dark:text-white text-sm">
+              <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm">
                 Client Information
               </h3>
               <button
@@ -436,7 +436,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
           {/* Card 2: Dynamic Items table */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-4 overflow-x-auto">
             <div className="flex justify-between items-center border-b border-stone-100 dark:border-stone-800 pb-3 min-w-[600px]">
-              <h3 className="font-serif font-extrabold text-stone-900 dark:text-white text-sm">
+              <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm">
                 Estimate Line Items
               </h3>
               <button
@@ -582,7 +582,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
 
           {/* Card 3: Notes & Terms */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-5">
-            <h3 className="font-serif font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3">
+            <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3">
               Remarks & Terms clauses
             </h3>
             
@@ -623,7 +623,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
           
           {/* Card 1: Summary calculation details */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-md space-y-5">
-            <h3 className="font-serif font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3">
+            <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3">
               Summary Calculation
             </h3>
 

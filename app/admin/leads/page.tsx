@@ -334,7 +334,7 @@ export default function AdminLeadsPage() {
             <span className="text-primary font-bold text-xs uppercase tracking-widest bg-primary-light px-3 py-1 rounded-full border border-primary/20">
               Admin Portal
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 mt-2">
+            <h1 className="font-cormorant text-3xl sm:text-4xl font-extrabold text-stone-900 mt-2">
               Leads & Inquiries Dashboard
             </h1>
             <p className="text-stone-500 text-sm mt-1">
@@ -483,7 +483,7 @@ export default function AdminLeadsPage() {
           ) : filteredLeads.length === 0 ? (
             <div className="flex-grow flex flex-col items-center justify-center py-20 text-stone-400 text-center px-4 select-none">
               <Users className="h-12 w-12 text-stone-300 mb-3" />
-              <h4 className="font-serif text-lg font-bold text-stone-800">No Inquiries Found</h4>
+              <h4 className="font-cormorant text-lg font-bold text-stone-800">No Inquiries Found</h4>
               <p className="text-xs text-stone-500 max-w-xs mt-1">
                 {searchTerm || typeFilter !== "all" || statusFilter !== "all"
                   ? "Try adjusting your search criteria or type filters."
@@ -511,7 +511,7 @@ export default function AdminLeadsPage() {
                   {/* Col 1: Customer Contact info */}
                   <div className="col-span-1 md:col-span-3 space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-serif font-bold text-stone-900 text-sm sm:text-base leading-tight">
+                      <span className="font-cormorant font-bold text-stone-900 text-sm sm:text-base leading-tight">
                         {lead.leadName}
                       </span>
                       <span
