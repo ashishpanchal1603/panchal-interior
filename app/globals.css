@@ -72,6 +72,27 @@
   --foreground: var(--theme-stone-900);
 }
 
+.dark {
+  --theme-white: #1c1712;
+  --theme-stone-50: #14100b;
+  --theme-stone-100: #221c14;
+  --theme-stone-200: #332a1e;
+  --theme-stone-300: #554836;
+  --theme-stone-400: #88765f;
+  --theme-stone-500: #b19f88;
+  --theme-stone-600: #cfc1ae;
+  --theme-stone-700: #ebe2d4;
+  --theme-stone-800: #f5efe4;
+  --theme-stone-900: #fffdfa;
+  --theme-stone-950: #fffdfa;
+
+  --background: var(--theme-stone-50);
+  --foreground: var(--theme-stone-900);
+  
+  color-scheme: dark;
+}
+
+
 body {
   background-color: var(--background);
   color: var(--foreground);

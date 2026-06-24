@@ -18,6 +18,9 @@ import { useQuoteModal } from "./QuoteModalContext";
 
 export default function Navbar() {
   const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
   const { openQuoteModal } = useQuoteModal();
   const [mobileMenuOpen, setMobileMenuOpen] =
     useState(false);

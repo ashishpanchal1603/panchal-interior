@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import AdminClientWrapper from "@/components/admin/AdminClientWrapper";
 
 export const metadata: Metadata = {
   robots: {
@@ -12,5 +14,9 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <Suspense fallback={null}>
+      <AdminClientWrapper>{children}</AdminClientWrapper>
+    </Suspense>
+  );
 }

@@ -1,0 +1,23 @@
+[
+  { "id": "p-1", "name": "Wardrobe", "unit": "sq.ft", "materialRate": 1600, "labourRate": 450 },
+  { "id": "p-2", "name": "Kitchen", "unit": "Rft", "materialRate": 2200, "labourRate": 600 },
+  { "id": "p-3", "name": "TV Unit", "unit": "sq.ft", "materialRate": 1500, "labourRate": 400 },
+  { "id": "p-4", "name": "Crockery Unit", "unit": "sq.ft", "materialRate": 1600, "labourRate": 450 },
+  { "id": "p-5", "name": "Computer Table", "unit": "sq.ft", "materialRate": 1400, "labourRate": 350 },
+  { "id": "p-6", "name": "Dressing Table", "unit": "sq.ft", "materialRate": 1500, "labourRate": 400 },
+  { "id": "p-7", "name": "Single Bed", "unit": "Nos", "materialRate": 25000, "labourRate": 8000 },
+  { "id": "p-8", "name": "Double Bed", "unit": "Nos", "materialRate": 45000, "labourRate": 12000 },
+  { "id": "p-9", "name": "Side Box", "unit": "Nos", "materialRate": 6000, "labourRate": 1800 },
+  { "id": "p-10", "name": "Headboard", "unit": "sq.ft", "materialRate": 800, "labourRate": 300 },
+  { "id": "p-11", "name": "Sofa", "unit": "seat", "materialRate": 12000, "labourRate": 4000 },
+  { "id": "p-12", "name": "Center Table", "unit": "Nos", "materialRate": 15000, "labourRate": 4500 },
+  { "id": "p-13", "name": "Corner Table", "unit": "Nos", "materialRate": 8000, "labourRate": 2500 },
+  { "id": "p-14", "name": "Dining Table", "unit": "Nos", "materialRate": 35000, "labourRate": 10000 },
+  { "id": "p-15", "name": "Loft", "unit": "Rft", "materialRate": 900, "labourRate": 300 },
+  { "id": "p-16", "name": "Partition", "unit": "sq.ft", "materialRate": 1200, "labourRate": 400 },
+  { "id": "p-17", "name": "Wooden Ceiling", "unit": "sq.ft", "materialRate": 250, "labourRate": 90 },
+  { "id": "p-18", "name": "Window Frame", "unit": "Rft", "materialRate": 450, "labourRate": 150 },
+  { "id": "p-19", "name": "Window Shutters", "unit": "sq.ft", "materialRate": 800, "labourRate": 250 },
+  { "id": "p-20", "name": "Flush Door", "unit": "sq.ft", "materialRate": 1000, "labourRate": 300 },
+  { "id": "p-21", "name": "Shoe Cupboard", "unit": "sq.ft", "materialRate": 1400, "labourRate": 400 }
+]

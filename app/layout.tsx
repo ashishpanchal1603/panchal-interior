@@ -5,6 +5,7 @@ import { Outfit, Playfair_Display } from "next/font/google";
 import QuoteModalProvider from "@/components/QuoteModalContext";
 import ClientLayoutElements from "@/components/ClientLayoutElements";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Suspense } from "react";
 
 
 const outfit = Outfit({
@@ -93,10 +94,16 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col">
         <QuoteModalProvider>
           <GoogleAnalytics />
-          <Navbar />
+          <Suspense fallback={null}>
+            <Navbar />
+          </Suspense>
           <main className="flex-grow">{children}</main>
-          <Footer />
-          <ClientLayoutElements />
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
+          <Suspense fallback={null}>
+            <ClientLayoutElements />
+          </Suspense>
           {process.env.NODE_ENV === "production" ? (
             <script
               dangerouslySetInnerHTML={{

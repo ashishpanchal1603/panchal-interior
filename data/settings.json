@@ -1,0 +1,20 @@
+{
+  "nextEstimateNumber": 1,
+  "estimatePrefix": "PI-2026-",
+  "gstRate": 18,
+  "defaultDiscount": 0,
+  "companyDetails": {
+    "name": "Panchal Interior Studio",
+    "phone": "+91 96649 56491",
+    "email": "info@panchalinterior.com",
+    "address": "Panchal Complex, Near Gota Bridge, Gota, Ahmedabad, Gujarat - 382481"
+  },
+  "defaultTerms": [
+    "50% Advance payment required to initiate design and procurement.",
+    "40% Payment due upon delivery of raw materials at site.",
+    "10% Final payment due immediately upon project completion prior to handover.",
+    "This estimate is valid for a period of 30 days from the date of issue.",
+    "Any modifications or extra work requested will be charged additionally.",
+    "All disputes are subject to Ahmedabad jurisdiction only."
+  ]
+}

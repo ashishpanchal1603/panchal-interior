@@ -2,12 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Sofa, Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 import { useQuoteModal } from "./QuoteModalContext";
 import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
   const { openQuoteModal } = useQuoteModal();
   const [currentYear, setCurrentYear] = useState<number>(2026);
   const router = useRouter();
