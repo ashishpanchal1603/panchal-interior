@@ -31,12 +31,12 @@ export const metadata = {
   metadataBase: metadataBaseUrl,
   title: {
     default: "Panchal Interior - Furniture & Turnkey Interior Solutions | Ahmedabad",
-    template: "%s | Panchal Interior ",
+    template: "%s | Panchal Interior",
   },
   description:
-    "Panchal Interior  offers premium Custom Furniture, luxury Sofa Manufacturing, modular Kitchen designs, and Turnkey Home Renovation and Interior Solutions in Ahmedabad, Gujarat.",
+    "Panchal Interior offers premium Custom Furniture, luxury Sofa Manufacturing, modular Kitchen designs, and Turnkey Home Renovation and Interior Solutions in Ahmedabad, Gujarat.",
   keywords: [
-    "Panchal Interior ",
+    "Panchal Interior",
     "Custom Furniture Ahmedabad",
     "Modular Kitchen Ahmedabad",
     "Sofa Manufacturing Ahmedabad",
@@ -48,18 +48,18 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Panchal Interior  - Furniture & Turnkey Interior Solutions",
+    title: "Panchal Interior - Furniture & Turnkey Interior Solutions",
     description: "Premium modular kitchens, luxury sofas, custom wardrobes, and turnkey interior solutions directly from our Gota workshop with a 5-year warranty.",
-    url: "/",
-    siteName: "Panchal Interior ",
+    url: "https://panchalinterior.com",
+    siteName: "Panchal Interior",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/images/hero.png",
+        url: "https://panchalinterior.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Panchal Interior Showroom Showcase",
+        alt: "Panchal Interior - Furniture & Turnkey Interior Solutions",
       },
     ],
   },
@@ -67,7 +67,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Panchal Interior & Furniture Solutions | Ahmedabad",
     description: "Premium modular kitchen, custom wardrobes, and turnkey interior designs directly from our workshop with 5-year warranty.",
-    images: ["/images/hero.png"],
+    images: ["https://panchalinterior.com/og-image.jpg"],
   },
   robots: {
     index: true,

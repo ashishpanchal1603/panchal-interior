@@ -32,16 +32,18 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: `${service.name} — Custom Solutions in Ahmedabad`,
     description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
     alternates: {
-      canonical: `/services/${service.slug}`,
+      canonical: `https://panchalinterior.com/services/${service.slug}`,
     },
     openGraph: {
       title: `${service.name} — Custom Solutions in Ahmedabad | Panchal Interior`,
       description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
-      url: `/services/${service.slug}`,
+      url: `https://panchalinterior.com/services/${service.slug}`,
       type: "website",
       images: [
         {
-          url: service.image,
+          url: "https://panchalinterior.com/og-image.jpg",
+          width: 1200,
+          height: 630,
           alt: `${service.name} Custom Woodworking`,
         },
       ],
@@ -50,7 +52,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: `${service.name} — Custom Solutions in Ahmedabad | Panchal Interior`,
       description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
-      images: [service.image],
+      images: ["https://panchalinterior.com/og-image.jpg"],
     },
   };
 }

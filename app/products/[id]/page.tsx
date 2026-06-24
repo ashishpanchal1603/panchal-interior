@@ -32,16 +32,18 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: `${product.name} — Custom ${categoryName}`,
     description: `${product.description} Handcrafted in Ahmedabad using premium materials. Materials: ${product.materials.join(", ")}. Dimensions: ${product.dimensions}.`,
     alternates: {
-      canonical: `/products/${product.id}`,
+      canonical: `https://panchalinterior.com/products/${product.id}`,
     },
     openGraph: {
       title: `${product.name} — Custom ${categoryName} | Panchal Interior`,
       description: `${product.description} Handcrafted in Ahmedabad using premium materials.`,
-      url: `/products/${product.id}`,
+      url: `https://panchalinterior.com/products/${product.id}`,
       type: "website",
       images: [
         {
-          url: product.image,
+          url: "https://panchalinterior.com/og-image.jpg",
+          width: 1200,
+          height: 630,
           alt: product.name,
         },
       ],
@@ -50,7 +52,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: `${product.name} — Custom ${categoryName} | Panchal Interior`,
       description: `${product.description} Handcrafted in Ahmedabad using premium materials.`,
-      images: [product.image],
+      images: ["https://panchalinterior.com/og-image.jpg"],
     },
   };
 }

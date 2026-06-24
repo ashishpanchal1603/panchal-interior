@@ -29,7 +29,7 @@ function EstimatesContent() {
   const [loading, setLoading] = useState(true);
   const [estimates, setEstimates] = useState<Estimate[]>([]);
   const [companyDetails, setCompanyDetails] = useState<CompanyDetails>({
-    name: "Panchal Interior Studio",
+    name: "Panchal Interior",
     phone: "+91 96649 56491",
     email: "info@panchalinterior.com",
     address: "Panchal Complex, Gota, Ahmedabad"
@@ -56,7 +56,7 @@ function EstimatesContent() {
     title: "",
     message: "",
     type: "warning",
-    onConfirm: () => {},
+    onConfirm: () => { },
   });
 
   const triggerConfirm = (
@@ -77,7 +77,7 @@ function EstimatesContent() {
   const fetchEstimatesData = async () => {
     try {
       setLoading(true);
-      
+
       // Load estimates
       const res = await fetchWithAuth("/api/admin/estimates");
       const data = await res.json();
@@ -153,7 +153,7 @@ function EstimatesContent() {
       async () => {
         try {
           showToast("Duplicating estimate details...", "info");
-          
+
           const duplicatePayload = {
             customerId: original.customerId,
             customerName: original.customerName,
@@ -223,7 +223,7 @@ function EstimatesContent() {
 
   return (
     <div className="space-y-8 animate-fade-in-up font-sans">
-      
+
       {/* Action Header bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -242,7 +242,7 @@ function EstimatesContent() {
             <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} />
             Refresh List
           </button>
-          
+
           <Link
             href="/admin/estimates/new"
             className="flex items-center gap-1.5 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-2 px-4 shadow-md shadow-primary/10 transition text-xs select-none"
@@ -255,7 +255,7 @@ function EstimatesContent() {
 
       {/* Filter Toolbar controls */}
       <div className="bg-white dark:bg-stone-900 border border-stone-150/40 dark:border-stone-850 rounded-2xl p-5 shadow-sm flex flex-col md:flex-row gap-4 justify-between items-center select-none">
-        
+
         {/* Search */}
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3 top-3 h-4.5 w-4.5 text-stone-400" />
@@ -317,7 +317,7 @@ function EstimatesContent() {
           </div>
         ) : (
           <div className="divide-y divide-stone-100 dark:divide-stone-850 overflow-x-auto">
-            
+
             {/* Desktop Table Headers */}
             <div className="hidden md:grid grid-cols-12 gap-4 bg-stone-50/50 dark:bg-stone-950/20 px-6 py-3.5 text-left text-[10px] font-extrabold uppercase tracking-wider text-stone-500 border-b border-stone-100 dark:border-stone-850">
               <div className="col-span-2">Est Number</div>
@@ -356,11 +356,10 @@ function EstimatesContent() {
 
                 {/* Type Badge */}
                 <div className="col-span-1 md:col-span-2">
-                  <span className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md border ${
-                    est.estimateType === "material"
+                  <span className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md border ${est.estimateType === "material"
                       ? "bg-blue-50 text-blue-700 border-blue-150/40 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-900/30"
                       : "bg-orange-50 text-orange-700 border-orange-150/40 dark:bg-orange-950/40 dark:text-orange-300 dark:border-orange-900/30"
-                  }`}>
+                    }`}>
                     {est.estimateType === "material" ? "🏠 With Material" : "🛠️ Labour Work"}
                   </span>
                 </div>
@@ -372,11 +371,10 @@ function EstimatesContent() {
 
                 {/* Status */}
                 <div className="col-span-1 md:col-span-1 text-left md:text-center">
-                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest border ${
-                    est.status === "saved"
+                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest border ${est.status === "saved"
                       ? "bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900/30"
                       : "bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900/30"
-                  }`}>
+                    }`}>
                     {est.status === "saved" ? "Saved" : "Draft"}
                   </span>
                 </div>
@@ -391,7 +389,7 @@ function EstimatesContent() {
                   >
                     <Copy className="h-4 w-4" />
                   </button>
-                  
+
                   {/* Action edit draft */}
                   {est.status === "draft" && (
                     <button

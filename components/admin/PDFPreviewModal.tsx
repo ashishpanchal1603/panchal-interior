@@ -36,7 +36,7 @@ const translations = {
     grandTotal: "Grand Total",
     terms: "Terms & Conditions",
     signature: "Authorized Signature",
-    footerMsg: "Thank you for choosing Panchal Interior Studio. We design your dreams into reality.",
+    footerMsg: "Thank you for choosing Panchal Interior. We design your dreams into reality.",
     notes: "Special Notes / Comments",
     whatsappMsg: "Share via WhatsApp",
     printPDF: "Print / Save PDF"
@@ -73,7 +73,7 @@ const translations = {
 export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDetails }: PDFPreviewModalProps) {
   const [lang, setLang] = useState<"en" | "gu">("en");
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => {
     setMounted(true);
     return () => setMounted(false);
@@ -84,7 +84,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
       setLang(estimate.language);
     }
   }, [estimate?.language, estimate?.id, isOpen]);
-  
+
   if (!isOpen) return null;
   if (!mounted) return null;
 
@@ -102,11 +102,11 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
       maximumFractionDigits: 0
     }).format(estimate.grandTotal);
 
-    const shareText = `Dear *${estimate.customerName}*,\n\nGreetings from *Panchal Interior Studio*! \n\nPlease find the Estimate details for your project:\n\n*Estimate No*: ${estimate.estimateNumber}\n*Date*: ${estimate.date}\n*Type*: ${estimate.estimateType === "material" ? "With Material" : "Labour Work"}\n*Grand Total*: ${formattedTotal}\n\nWe look forward to creating something beautiful for your space.\n\nThank you for choosing Panchal Interior Studio.`;
+    const shareText = `Dear *${estimate.customerName}*,\n\nGreetings from *Panchal Interior*! \n\nPlease find the Estimate details for your project:\n\n*Estimate No*: ${estimate.estimateNumber}\n*Date*: ${estimate.date}\n*Type*: ${estimate.estimateType === "material" ? "With Material" : "Labour Work"}\n*Grand Total*: ${formattedTotal}\n\nWe look forward to creating something beautiful for your space.\n\nThank you for choosing Panchal Interior.`;
 
     const encodedText = encodeURIComponent(shareText);
     const cleanPhone = estimate.customerPhone.trim().replace(/\D/g, "");
-    
+
     // Formatting for Indian mobile numbers if length is 10
     const finalPhone = cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone;
     window.open(`https://wa.me/${finalPhone}?text=${encodedText}`, "_blank");
@@ -115,14 +115,14 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
   return createPortal(
     <div className="fixed inset-0 z-50 overflow-y-auto font-sans flex items-center justify-center p-4 print-modal-container">
       {/* 1. Backdrop */}
-      <div 
-        onClick={onClose} 
+      <div
+        onClick={onClose}
         className="fixed inset-0 bg-stone-900/60 dark:bg-black/80 backdrop-blur-sm transition-opacity print:hidden"
       />
 
       {/* 2. Modal Body */}
       <div className="relative bg-stone-50 dark:bg-stone-900 w-full max-w-4xl rounded-2xl shadow-2xl border border-stone-200/80 dark:border-stone-800/80 overflow-hidden flex flex-col z-50 h-[90vh] print:h-auto print:w-full print:border-none print:shadow-none print:bg-white print:rounded-none print:static print:overflow-visible">
-        
+
         {/* Modal Top Actions Toolbar (Hidden on print) */}
         <div className="flex flex-wrap items-center justify-between px-6 py-4 border-b border-stone-200/60 dark:border-stone-800/80 gap-3 print:hidden">
           <div className="flex items-center gap-2">
@@ -170,10 +170,10 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
 
         {/* 3. SCROLLABLE ESTIMATE PREVIEW CONTAINER */}
         <div className="flex-grow overflow-y-auto p-6 sm:p-10 bg-white dark:bg-white text-stone-900 print:overflow-visible print:p-0">
-          
+
           {/* Printable Page Structure */}
           <div className="max-w-3xl mx-auto space-y-8 print:w-full print:max-w-none">
-            
+
             {/* Header Block: Logo & Invoice details */}
             <div className="flex flex-col sm:flex-row justify-between items-start gap-6 border-b-2 border-stone-200/80 pb-6">
               {/* Company Logo/Name info */}

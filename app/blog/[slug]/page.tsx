@@ -35,18 +35,18 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: `${post.title} — Panchal Interior Guide`,
     description: `${post.excerpt} Written by ${post.author}, Woodworking Expert & Founder at Panchal Interior.`,
     alternates: {
-      canonical: `/blog/${post.slug}`,
+      canonical: `https://panchalinterior.com/blog/${post.slug}`,
     },
     openGraph: {
       title: `${post.title} — Panchal Interior Guide`,
       description: post.excerpt,
-      url: `/blog/${post.slug}`,
+      url: `https://panchalinterior.com/blog/${post.slug}`,
       type: "article",
       publishedTime: publishDate,
       authors: [post.author],
       images: [
         {
-          url: post.image,
+          url: "https://panchalinterior.com/og-image.jpg",
           alt: post.title,
         },
       ],
@@ -55,7 +55,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: `${post.title} — Panchal Interior Guide`,
       description: post.excerpt,
-      images: [post.image],
+      images: ["https://panchalinterior.com/og-image.jpg"],
     },
   };
 }

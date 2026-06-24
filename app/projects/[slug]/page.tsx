@@ -40,16 +40,18 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       "Gota furniture workshop"
     ],
     alternates: {
-      canonical: `/projects/${project.slug}`,
+      canonical: `https://panchalinterior.com/projects/${project.slug}`,
     },
     openGraph: {
       title: `${project.title} | Premium Interior Portfolio | Panchal Interior`,
       description: `${project.description} Handcrafted custom finishes completed in ${project.location} by Panchal Interior.`,
-      url: `/projects/${project.slug}`,
+      url: `https://panchalinterior.com/projects/${project.slug}`,
       type: "website",
       images: [
         {
-          url: project.image,
+          url: "https://panchalinterior.com/og-image.jpg",
+          width: 1200,
+          height: 630,
           alt: project.title,
         },
       ],
@@ -58,7 +60,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: `${project.title} | Premium Interior Portfolio | Panchal Interior`,
       description: `${project.description} Handcrafted custom finishes completed in ${project.location} by Panchal Interior.`,
-      images: [project.image],
+      images: ["https://panchalinterior.com/og-image.jpg"],
     },
   };
 }

@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     title: "Premium Custom Furniture Catalog | Panchal Interior",
     description:
       "Browse our custom crafted furniture pieces, including solid teak wood beds, royal velvet sofas, sliding wardrobes, and TV units, manufactured locally in Ahmedabad.",
-    url: "/products",
-    siteName: "Panchal Interior & Furniture Solutions",
+    url: "https://panchalinterior.com/products",
+    siteName: "Panchal Interior",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/images/hero.png",
+        url: "https://panchalinterior.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Panchal Interior Custom Furniture Catalog",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Premium Custom Furniture Catalog | Panchal Interior",
     description:
       "Browse our custom crafted furniture pieces, including solid teak wood beds, royal velvet sofas, sliding wardrobes, and TV units, manufactured locally in Ahmedabad.",
-    images: ["/images/hero.png"],
+    images: ["https://panchalinterior.com/og-image.jpg"],
   },
 };
 

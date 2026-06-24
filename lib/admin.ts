@@ -108,7 +108,7 @@ export const getSettings = () => readJsonFile<AdminSettings>("settings.json", {
   gstRate: 18,
   defaultDiscount: 0,
   companyDetails: {
-    name: "Panchal Interior Studio",
+    name: "Panchal Interior",
     phone: "+91 96649 56491",
     email: "info@panchalinterior.com",
     address: "Panchal Complex, Near Gota Bridge, Gota, Ahmedabad"
@@ -131,13 +131,13 @@ export async function getAndIncrementNextEstimateNumber(): Promise<string> {
   const settings = await getSettings();
   const nextNum = settings.nextEstimateNumber;
   const prefix = settings.estimatePrefix;
-  
+
   // Format with padStart: PI-2026-001
   const formattedNumber = `${prefix}${String(nextNum).padStart(3, "0")}`;
-  
+
   // Increment settings
   settings.nextEstimateNumber = nextNum + 1;
   await saveSettings(settings);
-  
+
   return formattedNumber;
 }

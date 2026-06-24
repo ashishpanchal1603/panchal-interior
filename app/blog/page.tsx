@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     title: "Woodworking Insights, Tips, & Home Design Guides | Panchal Interior",
     description:
       "Read our professional modular kitchen material guides, space optimization planning ideas, and customized wood furniture tips from Panchal Interior experts.",
-    url: "/blog",
-    siteName: "Panchal Interior ",
+    url: "https://panchalinterior.com/blog",
+    siteName: "Panchal Interior",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/images/hero.png",
+        url: "https://panchalinterior.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Panchal Interior Blog & Guides",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Woodworking Insights, Tips, & Home Design Guides | Panchal Interior",
     description:
       "Read our professional modular kitchen material guides, space optimization planning ideas, and customized wood furniture tips from Panchal Interior experts.",
-    images: ["/images/hero.png"],
+    images: ["https://panchalinterior.com/og-image.jpg"],
   },
 };
 

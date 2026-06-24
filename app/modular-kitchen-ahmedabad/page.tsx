@@ -13,13 +13,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: config.title,
     description: config.metaDescription,
-    url: `/${config.slug}`,
-    siteName: "Panchal Interior ",
+    url: `https://panchalinterior.com/${config.slug}`,
+    siteName: "Panchal Interior",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: config.hero.image,
+        url: "https://panchalinterior.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: config.h1,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: config.title,
     description: config.metaDescription,
-    images: [config.hero.image],
+    images: ["https://panchalinterior.com/og-image.jpg"],
   },
 };
 
