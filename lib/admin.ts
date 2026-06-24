@@ -19,6 +19,9 @@ export interface EstimateItem {
   quantity: number;
   rate: number;
   amount: number;
+  length?: number;
+  width?: number;
+  multiplier?: number;
 }
 
 export interface Estimate {

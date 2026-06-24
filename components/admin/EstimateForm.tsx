@@ -6,6 +6,7 @@ import { Plus, Trash2, Save, FileCheck, ArrowLeft, RefreshCw, UserPlus } from "l
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useToast } from "./Toast";
 import { Customer, PriceItem, EstimateItem, Estimate } from "@/lib/admin";
+import { getBilingualItemName } from "@/lib/bilingual";
 
 interface EstimateFormProps {
   initialData?: Estimate; // Provided if editing/duplicating
@@ -44,7 +45,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
 
   // items table
   const [items, setItems] = useState<EstimateItem[]>([
-    { itemName: "", unit: "sq.ft", quantity: 1, rate: 0, amount: 0 }
+    { itemName: "", unit: "sq.ft", quantity: 1, rate: 0, amount: 0, length: undefined, width: undefined, multiplier: 1 }
   ]);
 
   // Load backend catalog data
@@ -81,7 +82,12 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
           setLanguage(initialData.language);
           setNotes(initialData.notes || "");
           setTerms(initialData.termsAndConditions || []);
-          setItems(initialData.items || []);
+          const mappedItems = (initialData.items || []).map(item => ({
+            ...item,
+            itemName: getBilingualItemName(item.itemName),
+            multiplier: item.multiplier ?? 1
+          }));
+          setItems(mappedItems);
         } else {
           setTerms(settingsData.defaultTerms || []);
         }
@@ -119,7 +125,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
   const addItemRow = () => {
     setItems((prev) => [
       ...prev,
-      { itemName: "", unit: "sq.ft", quantity: 1, rate: 0, amount: 0 }
+      { itemName: "", unit: "sq.ft", quantity: 1, rate: 0, amount: 0, length: undefined, width: undefined, multiplier: 1 }
     ]);
   };
 
@@ -141,10 +147,14 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
       if (field === "itemName") {
         updatedItem.itemName = value as string;
         // Check if selected item matches price master catalog
-        const match = priceCatalog.find((p) => p.name === value);
+        const match = priceCatalog.find((p) => {
+          const bilingual = getBilingualItemName(p.name);
+          return p.name === value || bilingual === value;
+        });
         if (match) {
           updatedItem.unit = match.unit;
           updatedItem.rate = estimateType === "material" ? match.materialRate : match.labourRate;
+          updatedItem.itemName = getBilingualItemName(match.name);
         }
       } else if (field === "unit") {
         updatedItem.unit = value as string;
@@ -152,9 +162,27 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
         updatedItem.quantity = Math.max(0, Number(value));
       } else if (field === "rate") {
         updatedItem.rate = Math.max(0, Number(value));
+      } else if (field === "length") {
+        updatedItem.length = value === "" ? undefined : Math.max(0, Number(value));
+      } else if (field === "width") {
+        updatedItem.width = value === "" ? undefined : Math.max(0, Number(value));
+      } else if (field === "multiplier") {
+        updatedItem.multiplier = value === "" ? undefined : Math.max(0, Number(value));
       }
 
-      updatedItem.amount = updatedItem.quantity * updatedItem.rate;
+      // Check if both length and width are defined to auto-calculate quantity
+      const hasLength = updatedItem.length !== undefined && !isNaN(updatedItem.length) && updatedItem.length > 0;
+      const hasWidth = updatedItem.width !== undefined && !isNaN(updatedItem.width) && updatedItem.width > 0;
+      
+      if (hasLength && hasWidth) {
+        const len = updatedItem.length!;
+        const wid = updatedItem.width!;
+        const mult = (updatedItem.multiplier !== undefined && !isNaN(updatedItem.multiplier)) ? updatedItem.multiplier! : 1;
+        // Formula: Quantity = Length * Width * Multiplier (rounded to 2 decimals)
+        updatedItem.quantity = Number((len * wid * mult).toFixed(2));
+      }
+
+      updatedItem.amount = Number((updatedItem.quantity * updatedItem.rate).toFixed(2));
       copy[index] = updatedItem;
       return copy;
     });
@@ -167,13 +195,16 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
     // Update existing items rates if they match central prices
     setItems((prev) =>
       prev.map((item) => {
-        const match = priceCatalog.find((p) => p.name === item.itemName);
+        const match = priceCatalog.find((p) => {
+          const bilingual = getBilingualItemName(p.name);
+          return p.name === item.itemName || bilingual === item.itemName;
+        });
         if (match) {
           const newRate = type === "material" ? match.materialRate : match.labourRate;
           return {
             ...item,
             rate: newRate,
-            amount: item.quantity * newRate
+            amount: Number((item.quantity * newRate).toFixed(2))
           };
         }
         return item;
@@ -419,12 +450,15 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
             </div>
 
             {/* Table wrapper */}
-            <table className="w-full text-left min-w-[600px] border-collapse text-xs">
+            <table className="w-full text-left min-w-[700px] border-collapse text-xs">
               <thead>
                 <tr className="text-[10px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 border-b border-stone-100 dark:border-stone-800">
                   <th className="py-2.5 pb-3">Item Description</th>
-                  <th className="py-2.5 pb-3 px-2 w-24">Unit</th>
+                  <th className="py-2.5 pb-3 px-2 w-16 text-right">Length</th>
+                  <th className="py-2.5 pb-3 px-2 w-16 text-right">Width</th>
+                  <th className="py-2.5 pb-3 px-2 w-16 text-right">Mult</th>
                   <th className="py-2.5 pb-3 px-2 w-20 text-right">Qty</th>
+                  <th className="py-2.5 pb-3 px-2 w-24">Unit</th>
                   <th className="py-2.5 pb-3 px-2 w-28 text-right">Rate (₹)</th>
                   <th className="py-2.5 pb-3 px-2 w-32 text-right">Amount (₹)</th>
                   <th className="py-2.5 pb-3 text-right w-12"></th>
@@ -445,15 +479,65 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
                           className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-semibold"
                         />
                         <datalist id="items-autocomplete">
-                          {priceCatalog.map((p) => (
-                            <option key={p.id} value={p.name} />
-                          ))}
+                          {priceCatalog.map((p) => {
+                            const bilingual = getBilingualItemName(p.name);
+                            return <option key={p.id} value={bilingual} />;
+                          })}
                         </datalist>
                       </div>
                     </td>
 
+                    {/* Length */}
+                    <td className="py-3 px-2 w-16">
+                      <input
+                        type="number"
+                        step="any"
+                        placeholder="L"
+                        value={item.length === undefined ? "" : item.length}
+                        onChange={(e) => handleItemChange(index, "length", e.target.value)}
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                      />
+                    </td>
+
+                    {/* Width */}
+                    <td className="py-3 px-2 w-16">
+                      <input
+                        type="number"
+                        step="any"
+                        placeholder="W"
+                        value={item.width === undefined ? "" : item.width}
+                        onChange={(e) => handleItemChange(index, "width", e.target.value)}
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                      />
+                    </td>
+
+                    {/* Multiplier */}
+                    <td className="py-3 px-2 w-16">
+                      <input
+                        type="number"
+                        step="any"
+                        placeholder="Mult"
+                        value={item.multiplier === undefined ? "" : item.multiplier}
+                        onChange={(e) => handleItemChange(index, "multiplier", e.target.value)}
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                      />
+                    </td>
+
+                    {/* Qty */}
+                    <td className="py-3 px-2 w-20">
+                      <input
+                        type="number"
+                        step="any"
+                        value={item.quantity}
+                        onChange={(e) => handleItemChange(index, "quantity", e.target.value)}
+                        placeholder="Qty"
+                        readOnly={item.length !== undefined && item.width !== undefined && item.length > 0 && item.width > 0}
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium read-only:opacity-75"
+                      />
+                    </td>
+
                     {/* Unit */}
-                    <td className="py-3 px-2">
+                    <td className="py-3 px-2 w-24">
                       <input
                         type="text"
                         value={item.unit}
@@ -463,23 +547,10 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
                       />
                     </td>
 
-                    {/* Qty */}
-                    <td className="py-3 px-2">
-                      <input
-                        type="number"
-                        min="1"
-                        step="any"
-                        value={item.quantity}
-                        onChange={(e) => handleItemChange(index, "quantity", e.target.value)}
-                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
-                      />
-                    </td>
-
                     {/* Rate */}
-                    <td className="py-3 px-2">
+                    <td className="py-3 px-2 w-28">
                       <input
                         type="number"
-                        min="0"
                         value={item.rate}
                         onChange={(e) => handleItemChange(index, "rate", e.target.value)}
                         className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-semibold"
@@ -487,12 +558,12 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
                     </td>
 
                     {/* Amount */}
-                    <td className="py-3 px-2 text-right font-bold text-stone-900 dark:text-white leading-none">
-                      ₹{item.amount.toLocaleString("en-IN", { maximumFractionDigits: 0 })}
+                    <td className="py-3 px-2 text-right font-bold text-stone-900 dark:text-white leading-none w-32">
+                      ₹{item.amount.toLocaleString("en-IN", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
                     </td>
 
                     {/* Delete */}
-                    <td className="py-3 text-right">
+                    <td className="py-3 text-right w-12">
                       <button
                         type="button"
                         onClick={() => removeItemRow(index)}
@@ -507,6 +578,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
               </tbody>
             </table>
           </div>
+
 
           {/* Card 3: Notes & Terms */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-5">

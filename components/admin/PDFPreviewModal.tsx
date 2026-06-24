@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { X, Printer, Globe, MessageSquare, Sofa } from "lucide-react";
 import { Estimate, CompanyDetails } from "@/lib/admin";
+import { getBilingualItemName } from "@/lib/bilingual";
 
 interface PDFPreviewModalProps {
   isOpen: boolean;
@@ -77,6 +78,12 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
     setMounted(true);
     return () => setMounted(false);
   }, []);
+
+  useEffect(() => {
+    if (estimate?.language) {
+      setLang(estimate.language);
+    }
+  }, [estimate?.language, estimate?.id, isOpen]);
   
   if (!isOpen) return null;
   if (!mounted) return null;
@@ -242,7 +249,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
                   {estimate.items.map((item, index) => (
                     <tr key={index} className="hover:bg-stone-50/30">
                       <td className="py-3 px-3 text-stone-400">{index + 1}</td>
-                      <td className="py-3 px-3 font-semibold text-stone-900">{item.itemName}</td>
+                      <td className="py-3 px-3 font-semibold text-stone-900">{getBilingualItemName(item.itemName, lang)}</td>
                       <td className="py-3 px-3 text-stone-500 font-medium">{item.unit}</td>
                       <td className="py-3 px-3 text-right font-medium">{item.quantity}</td>
                       <td className="py-3 px-3 text-right font-medium">₹{item.rate.toLocaleString()}</td>
