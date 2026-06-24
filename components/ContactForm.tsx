@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Send, Loader2, CheckCircle2 } from "lucide-react";
 import CustomSelect from "./CustomSelect";
 import { trackConversion } from "@/lib/gtag";
+import { useToast } from "@/components/admin/Toast";
 
 const subjectOptions = [
   { value: "General Inquiry", label: "General Inquiry / Information" },
@@ -14,6 +15,7 @@ const subjectOptions = [
 ];
 
 export default function ContactForm() {
+  const { showToast } = useToast();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -30,7 +32,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone) {
-      alert("Please enter your name and phone number.");
+      showToast("Please enter your name and phone number.", "error");
       return;
     }
 
@@ -81,11 +83,11 @@ export default function ContactForm() {
         setMessage("");
         setBotField("");
       } else {
-        alert(data.error || "Failed to submit inquiry. Please try again.");
+        showToast(data.error || "Failed to submit inquiry. Please try again.", "error");
       }
     } catch (error) {
       console.error("Contact submit error:", error);
-      alert("Connection error. Failed to send message.");
+      showToast("Connection error. Failed to send message.", "error");
     } finally {
       setLoading(false);
     }

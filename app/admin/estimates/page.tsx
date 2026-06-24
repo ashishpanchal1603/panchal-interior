@@ -17,6 +17,7 @@ import {
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useToast } from "@/components/admin/Toast";
 import PDFPreviewModal from "@/components/admin/PDFPreviewModal";
+import ConfirmModal from "@/components/admin/ConfirmModal";
 import { Estimate, CompanyDetails } from "@/lib/admin";
 
 function EstimatesContent() {
@@ -42,6 +43,36 @@ function EstimatesContent() {
   // Modal State
   const [selectedEstimate, setSelectedEstimate] = useState<Estimate | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
+  // Confirm Modal state
+  const [confirmConfig, setConfirmConfig] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    type: "danger" | "warning" | "info";
+    onConfirm: () => void;
+  }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "warning",
+    onConfirm: () => {},
+  });
+
+  const triggerConfirm = (
+    title: string,
+    message: string,
+    onConfirm: () => void,
+    type: "danger" | "warning" | "info" = "warning"
+  ) => {
+    setConfirmConfig({
+      isOpen: true,
+      title,
+      message,
+      type,
+      onConfirm,
+    });
+  };
 
   const fetchEstimatesData = async () => {
     try {
@@ -84,77 +115,83 @@ function EstimatesContent() {
   }, [searchParams, estimates]);
 
   // Delete estimate
-  const handleDelete = async (e: React.MouseEvent, id: string, estNum: string) => {
+  const handleDelete = (e: React.MouseEvent, id: string, estNum: string) => {
     e.stopPropagation(); // Avoid triggering row click
-    if (!confirm(`Are you sure you want to delete estimate ${estNum}? This cannot be undone.`)) {
-      return;
-    }
+    triggerConfirm(
+      "Delete Estimate",
+      `Are you sure you want to delete estimate ${estNum}? This cannot be undone.`,
+      async () => {
+        try {
+          const res = await fetchWithAuth(`/api/admin/estimates?id=${id}`, {
+            method: "DELETE",
+          });
 
-    try {
-      const res = await fetchWithAuth(`/api/admin/estimates?id=${id}`, {
-        method: "DELETE",
-      });
-
-      if (res.ok) {
-        showToast(`Estimate ${estNum} deleted.`, "success");
-        setEstimates((prev) => prev.filter((est) => est.id !== id));
-        if (selectedEstimate?.id === id) {
-          setIsPreviewOpen(false);
+          if (res.ok) {
+            showToast(`Estimate ${estNum} deleted.`, "success");
+            setEstimates((prev) => prev.filter((est) => est.id !== id));
+            if (selectedEstimate?.id === id) {
+              setIsPreviewOpen(false);
+            }
+          } else {
+            showToast("Failed to delete estimate.", "error");
+          }
+        } catch (err) {
+          console.error(err);
+          showToast("Error executing delete command.", "error");
         }
-      } else {
-        showToast("Failed to delete estimate.", "error");
-      }
-    } catch (err) {
-      console.error(err);
-      showToast("Error executing delete command.", "error");
-    }
+      },
+      "danger"
+    );
   };
 
   // Duplicate estimate (creates a new draft copied from old one)
-  const handleDuplicate = async (e: React.MouseEvent, original: Estimate) => {
+  const handleDuplicate = (e: React.MouseEvent, original: Estimate) => {
     e.stopPropagation();
-    if (!confirm(`Duplicate estimate ${original.estimateNumber}?`)) {
-      return;
-    }
+    triggerConfirm(
+      "Duplicate Estimate",
+      `Duplicate estimate ${original.estimateNumber}?`,
+      async () => {
+        try {
+          showToast("Duplicating estimate details...", "info");
+          
+          const duplicatePayload = {
+            customerId: original.customerId,
+            customerName: original.customerName,
+            customerPhone: original.customerPhone,
+            siteAddress: original.siteAddress,
+            date: new Date().toISOString().split("T")[0], // Reset to today
+            estimateType: original.estimateType,
+            status: "draft", // Forces draft on duplicate
+            items: original.items,
+            subtotal: original.subtotal,
+            discount: original.discount,
+            gst: original.gst,
+            grandTotal: original.grandTotal,
+            language: original.language,
+            termsAndConditions: original.termsAndConditions,
+            notes: original.notes ? `${original.notes} (Duplicated)` : "Duplicated proposal",
+          };
 
-    try {
-      showToast("Duplicating estimate details...", "info");
-      
-      const duplicatePayload = {
-        customerId: original.customerId,
-        customerName: original.customerName,
-        customerPhone: original.customerPhone,
-        siteAddress: original.siteAddress,
-        date: new Date().toISOString().split("T")[0], // Reset to today
-        estimateType: original.estimateType,
-        status: "draft", // Forces draft on duplicate
-        items: original.items,
-        subtotal: original.subtotal,
-        discount: original.discount,
-        gst: original.gst,
-        grandTotal: original.grandTotal,
-        language: original.language,
-        termsAndConditions: original.termsAndConditions,
-        notes: original.notes ? `${original.notes} (Duplicated)` : "Duplicated proposal",
-      };
+          const res = await fetchWithAuth("/api/admin/estimates", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(duplicatePayload),
+          });
 
-      const res = await fetchWithAuth("/api/admin/estimates", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(duplicatePayload),
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        showToast(`Created draft duplicate: ${data.estimate.estimateNumber}`, "success");
-        fetchEstimatesData(); // Reload list
-      } else {
-        showToast("Failed to duplicate estimate.", "error");
-      }
-    } catch (err) {
-      console.error(err);
-      showToast("Error duplicating estimate details.", "error");
-    }
+          if (res.ok) {
+            const data = await res.json();
+            showToast(`Created draft duplicate: ${data.estimate.estimateNumber}`, "success");
+            fetchEstimatesData(); // Reload list
+          } else {
+            showToast("Failed to duplicate estimate.", "error");
+          }
+        } catch (err) {
+          console.error(err);
+          showToast("Error duplicating estimate details.", "error");
+        }
+      },
+      "info"
+    );
   };
 
   const openPreview = (e: React.MouseEvent, estimate: Estimate) => {
@@ -414,6 +451,16 @@ function EstimatesContent() {
           companyDetails={companyDetails}
         />
       )}
+
+      {/* 5. CONFIRMATION DIALOG */}
+      <ConfirmModal
+        isOpen={confirmConfig.isOpen}
+        onClose={() => setConfirmConfig((prev) => ({ ...prev, isOpen: false }))}
+        onConfirm={confirmConfig.onConfirm}
+        title={confirmConfig.title}
+        message={confirmConfig.message}
+        type={confirmConfig.type}
+      />
 
     </div>
   );

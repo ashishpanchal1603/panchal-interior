@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, Printer, Globe, MessageSquare, Sofa } from "lucide-react";
 import { Estimate, CompanyDetails } from "@/lib/admin";
 
@@ -70,8 +71,15 @@ const translations = {
 
 export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDetails }: PDFPreviewModalProps) {
   const [lang, setLang] = useState<"en" | "gu">("en");
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
   
   if (!isOpen) return null;
+  if (!mounted) return null;
 
   const t = translations[lang];
   const typeLabel = estimate.estimateType === "material" ? t.withMaterial : t.labourWork;
@@ -97,7 +105,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
     window.open(`https://wa.me/${finalPhone}?text=${encodedText}`, "_blank");
   };
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 overflow-y-auto font-sans flex items-center justify-center p-4 print-modal-container">
       {/* 1. Backdrop */}
       <div 
@@ -369,6 +377,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
           }
         }
       `}</style>
-    </div>
+    </div>,
+    document.body
   );
 }

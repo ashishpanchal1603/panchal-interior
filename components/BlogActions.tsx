@@ -3,18 +3,20 @@
 import React from "react";
 import { Share2 } from "lucide-react";
 import { useQuoteModal } from "./QuoteModalContext";
+import { useToast } from "@/components/admin/Toast";
 
 interface ShareButtonProps {
   label?: string;
 }
 
 export function ShareButton({ label = "Share Guide" }: ShareButtonProps) {
+  const { showToast } = useToast();
   const handleShare = () => {
     if (typeof window !== "undefined") {
       navigator.clipboard
         .writeText(window.location.href)
         .then(() => {
-          alert("Copied link to clipboard!");
+          showToast("Copied link to clipboard!", "success");
         })
         .catch((err) => {
           console.error("Failed to copy link:", err);

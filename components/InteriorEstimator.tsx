@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useQuoteModal } from "./QuoteModalContext";
 import { trackConversion } from "@/lib/gtag";
+import { useToast } from "@/components/admin/Toast";
 
 // Modular Estimator Imports
 import {
@@ -28,6 +29,7 @@ import SuccessState from "./estimator/SuccessState";
 
 export default function InteriorEstimator() {
   const { openQuoteModal } = useQuoteModal();
+  const { showToast } = useToast();
   const [calcType, setCalcType] = useState<CalculatorType>(null);
   const [step, setStep] = useState(1);
   const isInitialMount = useRef(true);
@@ -108,7 +110,7 @@ export default function InteriorEstimator() {
   const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!leadName || !leadPhone) {
-      alert("Please fill in your name and phone number.");
+      showToast("Please fill in your name and phone number.", "error");
       return;
     }
 
@@ -159,11 +161,11 @@ export default function InteriorEstimator() {
           buttonSource: "interior_estimator",
         });
       } else {
-        alert(data.error || "Something went wrong. Please try again.");
+        showToast(data.error || "Something went wrong. Please try again.", "error");
       }
     } catch (error) {
       console.error("Lead submission failed:", error);
-      alert("Failed to submit inquiry. Please check your network and try again.");
+      showToast("Failed to submit inquiry. Please check your network and try again.", "error");
     } finally {
       setIsSubmitting(false);
     }

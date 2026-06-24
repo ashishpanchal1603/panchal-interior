@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/components/admin/Toast";
+import ConfirmModal from "@/components/admin/ConfirmModal";
 import {
   Users,
   Search,
@@ -32,10 +34,41 @@ interface Lead {
 
 export default function AdminLeadsPage() {
   const router = useRouter();
+  const { showToast } = useToast();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [isVerifying, setIsVerifying] = useState(true);
+
+  // Confirm Modal state
+  const [confirmConfig, setConfirmConfig] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    type: "danger" | "warning" | "info";
+    onConfirm: () => void;
+  }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "warning",
+    onConfirm: () => {},
+  });
+
+  const triggerConfirm = (
+    title: string,
+    message: string,
+    onConfirm: () => void,
+    type: "danger" | "warning" | "info" = "warning"
+  ) => {
+    setConfirmConfig({
+      isOpen: true,
+      title,
+      message,
+      type,
+      onConfirm,
+    });
+  };
   
   // Filters
   const [searchTerm, setSearchTerm] = useState("");
@@ -112,7 +145,7 @@ export default function AdminLeadsPage() {
       });
 
       if (response.status === 401) {
-        alert("Session expired or unauthorized. Please re-authenticate.");
+        showToast("Session expired or unauthorized. Please re-authenticate.", "error");
         sessionStorage.removeItem("admin_username");
         sessionStorage.removeItem("admin_password");
         router.replace("/admin/login");
@@ -123,49 +156,54 @@ export default function AdminLeadsPage() {
         setLeads((prevLeads) =>
           prevLeads.map((l) => (l.id === leadId ? { ...l, status: nextStatus } : l))
         );
+        showToast("Updated lead status successfully.", "success");
       } else {
-        alert("Failed to update status on server.");
+        showToast("Failed to update status on server.", "error");
       }
     } catch (err) {
       console.error("Status update error:", err);
-      alert("Network error updating status.");
+      showToast("Network error updating status.", "error");
     }
   };
 
   // Delete Lead
-  const deleteLead = async (leadId: string) => {
-    if (!confirm("Are you sure you want to delete this lead? This action cannot be undone.")) {
-      return;
-    }
+  const deleteLead = (leadId: string) => {
+    triggerConfirm(
+      "Delete Lead Request",
+      "Are you sure you want to delete this lead? This action cannot be undone.",
+      async () => {
+        const username = sessionStorage.getItem("admin_username") || "";
+        const password = sessionStorage.getItem("admin_password") || "";
+        try {
+          const response = await fetch(`/api/admin/leads?id=${leadId}`, {
+            method: "DELETE",
+            headers: {
+              "x-admin-username": username,
+              "x-admin-password": password,
+            },
+          });
 
-    const username = sessionStorage.getItem("admin_username") || "";
-    const password = sessionStorage.getItem("admin_password") || "";
-    try {
-      const response = await fetch(`/api/admin/leads?id=${leadId}`, {
-        method: "DELETE",
-        headers: {
-          "x-admin-username": username,
-          "x-admin-password": password,
-        },
-      });
+          if (response.status === 401) {
+            showToast("Session expired or unauthorized. Please re-authenticate.", "error");
+            sessionStorage.removeItem("admin_username");
+            sessionStorage.removeItem("admin_password");
+            router.replace("/admin/login");
+            return;
+          }
 
-      if (response.status === 401) {
-        alert("Session expired or unauthorized. Please re-authenticate.");
-        sessionStorage.removeItem("admin_username");
-        sessionStorage.removeItem("admin_password");
-        router.replace("/admin/login");
-        return;
-      }
-
-      if (response.ok) {
-        setLeads((prevLeads) => prevLeads.filter((l) => l.id !== leadId));
-      } else {
-        alert("Failed to delete lead from server.");
-      }
-    } catch (err) {
-      console.error("Delete lead error:", err);
-      alert("Network error deleting lead.");
-    }
+          if (response.ok) {
+            setLeads((prevLeads) => prevLeads.filter((l) => l.id !== leadId));
+            showToast("Inquiry lead record deleted successfully.", "success");
+          } else {
+            showToast("Failed to delete lead from server.", "error");
+          }
+        } catch (err) {
+          console.error("Delete lead error:", err);
+          showToast("Network error deleting lead.", "error");
+        }
+      },
+      "danger"
+    );
   };
 
   // Calculations for stats
@@ -587,6 +625,15 @@ export default function AdminLeadsPage() {
         </div>
 
       </div>
+
+      <ConfirmModal
+        isOpen={confirmConfig.isOpen}
+        onClose={() => setConfirmConfig((prev) => ({ ...prev, isOpen: false }))}
+        onConfirm={confirmConfig.onConfirm}
+        title={confirmConfig.title}
+        message={confirmConfig.message}
+        type={confirmConfig.type}
+      />
     </div>
   );
 }

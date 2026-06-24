@@ -6,6 +6,7 @@ import QuoteModalProvider from "@/components/QuoteModalContext";
 import ClientLayoutElements from "@/components/ClientLayoutElements";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Suspense } from "react";
+import { ToastProvider } from "@/components/admin/Toast";
 
 
 const outfit = Outfit({
@@ -92,12 +93,13 @@ export default function RootLayout({
       className={`${outfit.variable} ${playfair.variable} scroll-smooth`}
     >
       <body className="antialiased min-h-screen flex flex-col">
-        <QuoteModalProvider>
-          <GoogleAnalytics />
-          <Suspense fallback={null}>
-            <Navbar />
-          </Suspense>
-          <main className="flex-grow">{children}</main>
+        <ToastProvider>
+          <QuoteModalProvider>
+            <GoogleAnalytics />
+            <Suspense fallback={null}>
+              <Navbar />
+            </Suspense>
+            <main className="flex-grow">{children}</main>
           <Suspense fallback={null}>
             <Footer />
           </Suspense>
@@ -143,7 +145,8 @@ export default function RootLayout({
               }}
             />
           )}
-        </QuoteModalProvider>
+          </QuoteModalProvider>
+        </ToastProvider>
       </body>
     </html>
   );

@@ -6,6 +6,7 @@ import { X, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import CustomSelect from "./CustomSelect";
 import { trackConversion } from "@/lib/gtag";
+import { useToast } from "@/components/admin/Toast";
 
 const interestOptions = [
   { value: "", label: "General Inquiry / Custom Project" },
@@ -53,6 +54,7 @@ const timelineOptions = [
 
 export default function QuoteModal() {
   const { isOpen, closeQuoteModal, prefilledItem } = useQuoteModal();
+  const { showToast } = useToast();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -107,7 +109,7 @@ export default function QuoteModal() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !phone) {
-      alert("Please fill in your name and phone number.");
+      showToast("Please fill in your name and phone number.", "error");
       return;
     }
 
@@ -169,11 +171,11 @@ export default function QuoteModal() {
           closeQuoteModal();
         }, 3000);
       } else {
-        alert(data.error || "Failed to submit request. Please try again.");
+        showToast(data.error || "Failed to submit request. Please try again.", "error");
       }
     } catch (error) {
       console.error("Quote submit error:", error);
-      alert("Failed to send request due to connection error.");
+      showToast("Failed to send request due to connection error.", "error");
     } finally {
       setLoading(false);
     }

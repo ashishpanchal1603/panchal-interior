@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { RefreshCw } from "lucide-react";
-import { ToastProvider } from "./Toast";
 import AdminLayout from "./AdminLayout";
 
 export default function AdminClientWrapper({ children }: { children: React.ReactNode }) {
@@ -62,21 +61,18 @@ export default function AdminClientWrapper({ children }: { children: React.React
 
   // Login page bypasses layout wrapping
   if (pathname === "/admin/login") {
-    return <ToastProvider>{children}</ToastProvider>;
+    return children;
   }
 
   if (isAuthenticated) {
     return (
-      <ToastProvider>
-        {/* Outer wrapper that binds the theme variable overrides */}
-        <div className={theme === "dark" ? "dark bg-stone-50 text-stone-900 min-h-screen flex flex-col" : "bg-stone-50 text-stone-900 min-h-screen flex flex-col"}>
-          <div className="bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 min-h-screen flex flex-col transition-colors duration-300">
-            <AdminLayout isDarkMode={theme === "dark"} toggleTheme={toggleTheme}>
-              {children}
-            </AdminLayout>
-          </div>
+      <div className={theme === "dark" ? "dark bg-stone-50 text-stone-900 min-h-screen flex flex-col" : "bg-stone-50 text-stone-900 min-h-screen flex flex-col"}>
+        <div className="bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-100 min-h-screen flex flex-col transition-colors duration-300">
+          <AdminLayout isDarkMode={theme === "dark"} toggleTheme={toggleTheme}>
+            {children}
+          </AdminLayout>
         </div>
-      </ToastProvider>
+      </div>
     );
   }
 

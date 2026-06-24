@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Save, Plus, Trash2, RefreshCw, Undo } from "lucide-react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useToast } from "@/components/admin/Toast";
+import ConfirmModal from "@/components/admin/ConfirmModal";
 import { PriceItem } from "@/lib/admin";
 
 export default function PriceMasterPage() {
@@ -14,6 +15,36 @@ export default function PriceMasterPage() {
   const [saving, setSaving] = useState(false);
   const [prices, setPrices] = useState<PriceItem[]>([]);
   const [originalPrices, setOriginalPrices] = useState<PriceItem[]>([]);
+
+  // Confirm Modal state
+  const [confirmConfig, setConfirmConfig] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    type: "danger" | "warning" | "info";
+    onConfirm: () => void;
+  }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "warning",
+    onConfirm: () => {},
+  });
+
+  const triggerConfirm = (
+    title: string,
+    message: string,
+    onConfirm: () => void,
+    type: "danger" | "warning" | "info" = "warning"
+  ) => {
+    setConfirmConfig({
+      isOpen: true,
+      title,
+      message,
+      type,
+      onConfirm,
+    });
+  };
 
   const fetchPriceMaster = async () => {
     try {
@@ -64,16 +95,26 @@ export default function PriceMasterPage() {
   };
 
   const handleDeleteItem = (index: number, name: string) => {
-    if (confirm(`Remove item "${name || "New Row"}" from pricing master? This removes it from autocomplete presets.`)) {
-      setPrices((prev) => prev.filter((_, i) => i !== index));
-    }
+    triggerConfirm(
+      "Delete Preset",
+      `Remove item "${name || "New Row"}" from pricing master? This removes it from autocomplete presets.`,
+      () => {
+        setPrices((prev) => prev.filter((_, i) => i !== index));
+      },
+      "danger"
+    );
   };
 
   const handleReset = () => {
-    if (confirm("Reset pricing values to last saved state? All unsaved modifications will be lost.")) {
-      setPrices(JSON.parse(JSON.stringify(originalPrices)));
-      showToast("Resetted price grid changes.", "info");
-    }
+    triggerConfirm(
+      "Reset Unsaved Changes",
+      "Reset pricing values to last saved state? All unsaved modifications will be lost.",
+      () => {
+        setPrices(JSON.parse(JSON.stringify(originalPrices)));
+        showToast("Resetted price grid changes.", "info");
+      },
+      "warning"
+    );
   };
 
   const handleSaveAll = async () => {
@@ -263,6 +304,14 @@ export default function PriceMasterPage() {
         )}
       </div>
 
+      <ConfirmModal
+        isOpen={confirmConfig.isOpen}
+        onClose={() => setConfirmConfig((prev) => ({ ...prev, isOpen: false }))}
+        onConfirm={confirmConfig.onConfirm}
+        title={confirmConfig.title}
+        message={confirmConfig.message}
+        type={confirmConfig.type}
+      />
     </div>
   );
 }

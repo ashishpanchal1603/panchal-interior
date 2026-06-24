@@ -19,6 +19,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useToast } from "@/components/admin/Toast";
+import ConfirmModal from "@/components/admin/ConfirmModal";
 import { Customer, Estimate } from "@/lib/admin";
 
 function CustomersContent() {
@@ -38,6 +39,36 @@ function CustomersContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"create" | "edit">("create");
   const [selectedCustomerId, setSelectedCustomerId] = useState<string | null>(null);
+
+  // Confirm Modal state
+  const [confirmConfig, setConfirmConfig] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    type: "danger" | "warning" | "info";
+    onConfirm: () => void;
+  }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    type: "warning",
+    onConfirm: () => {},
+  });
+
+  const triggerConfirm = (
+    title: string,
+    message: string,
+    onConfirm: () => void,
+    type: "danger" | "warning" | "info" = "warning"
+  ) => {
+    setConfirmConfig({
+      isOpen: true,
+      title,
+      message,
+      type,
+      onConfirm,
+    });
+  };
 
   // Form fields
   const [name, setName] = useState("");
@@ -143,29 +174,32 @@ function CustomersContent() {
     }
   };
 
-  const handleDelete = async (id: string, customerName: string) => {
-    if (!confirm(`Delete registry for ${customerName}? This does not clear their estimate records.`)) {
-      return;
-    }
+  const handleDelete = (id: string, customerName: string) => {
+    triggerConfirm(
+      "Delete Customer Profile",
+      `Delete registry for ${customerName}? This does not clear their estimate records.`,
+      async () => {
+        try {
+          const res = await fetchWithAuth(`/api/admin/customers?id=${id}`, {
+            method: "DELETE",
+          });
 
-    try {
-      const res = await fetchWithAuth(`/api/admin/customers?id=${id}`, {
-        method: "DELETE",
-      });
-
-      if (res.ok) {
-        showToast(`Cleared registry details for ${customerName}.`, "success");
-        if (activeHistoryClient?.id === id) {
-          setActiveHistoryClient(null);
+          if (res.ok) {
+            showToast(`Cleared registry details for ${customerName}.`, "success");
+            if (activeHistoryClient?.id === id) {
+              setActiveHistoryClient(null);
+            }
+            loadData();
+          } else {
+            showToast("Delete operation failed.", "error");
+          }
+        } catch (err) {
+          console.error(err);
+          showToast("Error occurred during delete.", "error");
         }
-        loadData();
-      } else {
-        showToast("Delete operation failed.", "error");
-      }
-    } catch (err) {
-      console.error(err);
-      showToast("Error occurred during delete.", "error");
-    }
+      },
+      "danger"
+    );
   };
 
   // History Computations
@@ -523,6 +557,14 @@ function CustomersContent() {
         )}
       </AnimatePresence>
 
+      <ConfirmModal
+        isOpen={confirmConfig.isOpen}
+        onClose={() => setConfirmConfig((prev) => ({ ...prev, isOpen: false }))}
+        onConfirm={confirmConfig.onConfirm}
+        title={confirmConfig.title}
+        message={confirmConfig.message}
+        type={confirmConfig.type}
+      />
     </div>
   );
 }
