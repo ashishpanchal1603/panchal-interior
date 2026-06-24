@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "customerId": "CUST-1782317835513",
+    "customerName": "ashish pancahl",
+    "customerPhone": "9664956491",
+    "siteAddress": "gota",
+    "date": "2026-06-24",
+    "estimateType": "material",
+    "status": "saved",
+    "items": [
+      {
+        "itemName": "Single Bed ",
+        "unit": "Nos",
+        "quantity": 1,
+        "rate": 25000,
+        "amount": 25000
+      },
+      {
+        "itemName": "TV Unit",
+        "unit": "sq.ft 23*12",
+        "quantity": 1,
+        "rate": 1500,
+        "amount": 1500
+      }
+    ],
+    "subtotal": 26500,
+    "discount": 0,
+    "gst": 18,
+    "grandTotal": 31270,
+    "language": "en",
+    "termsAndConditions": [
+      "50% Advance payment required to initiate design and procurement.",
+      "40% Payment due upon delivery of raw materials at site.",
+      "10% Final payment due immediately upon project completion prior to handover.",
+      "This estimate is valid for a period of 30 days from the date of issue.",
+      "Any modifications or extra work requested will be charged additionally.",
+      "All disputes are subject to Ahmedabad jurisdiction only."
+    ],
+    "notes": "",
+    "id": "PI-2026-001",
+    "estimateNumber": "PI-2026-001",
+    "createdAt": "2026-06-24T16:17:15.770Z",
+    "updatedAt": "2026-06-24T16:17:15.770Z"
+  }
+]

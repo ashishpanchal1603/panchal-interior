@@ -98,7 +98,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto font-sans flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 overflow-y-auto font-sans flex items-center justify-center p-4 print-modal-container">
       {/* 1. Backdrop */}
       <div 
         onClick={onClose} 
@@ -320,25 +320,30 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
       {/* Global CSS Inject to support print layouts (window.print()) natively */}
       <style jsx global>{`
         @media print {
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          body {
+            background: white !important;
+          }
           body * {
             visibility: hidden;
-            background: white !important;
-            color: black !important;
           }
           .print\\:hidden {
             display: none !important;
           }
           #print-iframe-loader,
-          .fixed,
+          .fixed:not(.print-modal-container),
           header,
           aside,
           button,
           nav {
             display: none !important;
           }
-          .fixed.inset-0,
-          .fixed.z-50,
+          .print-modal-container,
           .relative.bg-stone-50 {
+            display: block !important;
             position: absolute !important;
             left: 0 !important;
             top: 0 !important;
