@@ -121,7 +121,7 @@ export default function SettingsPage() {
       {/* Top Header bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-stone-200/60 dark:border-stone-800/40 pb-6 select-none">
         <div>
-          <h1 className="font-cormorant text-3xl font-extrabold text-stone-900 dark:text-white">
+          <h1 className="font-outfit text-3xl font-extrabold text-stone-900 dark:text-white">
             Suite Configurations
           </h1>
           <p className="text-stone-500 text-xs mt-0.5">Manage default tax values, estimate tracking prefixes, and boilerplate terms.</p>
@@ -148,7 +148,7 @@ export default function SettingsPage() {
           
           {/* Card 1: Company Profile */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-150/40 dark:border-stone-850 shadow-sm space-y-5">
-            <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3 flex items-center gap-2">
+            <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3 flex items-center gap-2">
               <Building2 className="h-4.5 w-4.5 text-primary" />
               Studio Information
             </h3>
@@ -210,7 +210,7 @@ export default function SettingsPage() {
 
           {/* Card 2: Terms and conditions boilerplate list */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-150/40 dark:border-stone-850 shadow-sm space-y-5">
-            <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3 flex items-center gap-2">
+            <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3 flex items-center gap-2">
               <FileText className="h-4.5 w-4.5 text-primary" />
               Standard Terms & Conditions Presets
             </h3>
@@ -267,7 +267,7 @@ export default function SettingsPage() {
           
           {/* Default values card */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-150/40 dark:border-stone-850 shadow-sm space-y-5">
-            <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3 flex items-center gap-2">
+            <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3 flex items-center gap-2">
               <Settings className="h-4.5 w-4.5 text-primary" />
               Tax & Estimate Defaults
             </h3>
@@ -307,7 +307,7 @@ export default function SettingsPage() {
 
           {/* Autonumber counter tracking card */}
           <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-150/40 dark:border-stone-850 shadow-sm space-y-5">
-            <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3 flex items-center gap-2">
+            <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3 flex items-center gap-2">
               <Key className="h-4.5 w-4.5 text-primary" />
               Invoice Tracking Counters
             </h3>

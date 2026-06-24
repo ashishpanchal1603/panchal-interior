@@ -84,10 +84,10 @@ export default function TrustBadges() {
                 {point.icon}
               </div>
               <div>
-                <h3 className="font-cormorant font-bold text-stone-900 text-[14px] sm:text-sm tracking-tight leading-tight group-hover:text-primary transition duration-300">
+                <h3 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-stone-900 group-hover:text-primary transition duration-300">
                   {point.title}
                 </h3>
-                <p className="text-stone-400 text-[12px] sm:text-xs mt-1.5 leading-relaxed font-medium">
+                <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 mt-1.5">
                   {point.desc}
                 </p>
               </div>

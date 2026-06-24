@@ -76,14 +76,14 @@ export default function ProjectsPage() {
       {/* Bottom CTA Quote */}
       <section className="max-w-4xl mx-auto px-5 mt-20 text-center">
         <div className="bg-stone-900 text-white rounded-2xl p-8 border border-stone-850 shadow-md">
-          <h3 className="font-cormorant text-xl font-bold">Love our work? Get a custom budget outline</h3>
-          <p className="text-stone-400 text-xs mt-2 max-w-sm mx-auto leading-relaxed">
+          <h3 className="font-outfit text-xl font-bold">Love our work? Get a custom budget outline</h3>
+          <p className="font-outfit text-sm text-stone-400 mt-2 max-w-sm mx-auto leading-relaxed">
             Let us draft a realistic material costing outline tailored to your floor plan dimensions.
           </p>
           <BookConsultationButton
             label="Request Site Budget Outline"
             productOrServiceName="Budget from projects page"
-            className="mt-6 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-6 text-sm cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="font-outfit font-medium text-sm md:text-base mt-6 rounded-lg bg-primary hover:bg-primary-hover text-white py-2.5 px-6 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           />
         </div>
       </section>

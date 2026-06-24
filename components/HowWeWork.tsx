@@ -50,7 +50,7 @@ export default function HowWeWork() {
             <h2 className="text-3xl sm:text-4xl font-cormorant font-black text-stone-900 mt-4 leading-tight">
               Our 5-Step Work Method
             </h2>
-            <p className="text-stone-500 text-sm mt-3">
+            <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 mt-3">
               How we execute projects from your initial request to the final clean handover.
             </p>
           </AnimateOnScroll>
@@ -79,10 +79,10 @@ export default function HowWeWork() {
               </div>
 
               {/* Step Details */}
-              <h3 className="font-cormorant text-lg font-bold text-stone-900 mt-8 group-hover:text-primary transition duration-300">
+              <h3 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-stone-900 mt-8 group-hover:text-primary transition duration-300">
                 {st.title}
               </h3>
-              <p className="text-stone-500 text-xs sm:text-sm mt-3 leading-relaxed max-w-[200px] mx-auto">
+              <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 mt-3 max-w-[200px] mx-auto">
                 {st.desc}
               </p>
             </AnimateOnScroll>
@@ -94,7 +94,7 @@ export default function HowWeWork() {
           <BookConsultationButton
             label="Book Free Consultation"
             productOrServiceName="Process Timeline Consultation"
-            className="group inline-flex items-center gap-2 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-8 shadow-lg transition duration-300 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="font-outfit font-medium text-sm md:text-base group inline-flex items-center gap-2 rounded-xl bg-primary hover:bg-primary-hover text-white py-3.5 px-8 shadow-lg transition duration-300 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           />
         </div>
       </div>

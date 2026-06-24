@@ -107,7 +107,7 @@ export default function GoogleBusinessProfile() {
                     {act.icon}
                   </div>
                   <div>
-                    <h3 className={`font-cormorant text-stone-900 font-bold text-base leading-snug transition-colors duration-300 ${act.textHover}`}>{act.title}</h3>
+                    <h3 className={`font-outfit text-stone-900 font-bold text-base leading-snug transition-colors duration-300 ${act.textHover}`}>{act.title}</h3>
                     <p className="text-stone-500 text-xs mt-2 leading-relaxed">{act.desc}</p>
                   </div>
                 </div>

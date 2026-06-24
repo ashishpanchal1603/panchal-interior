@@ -22,7 +22,7 @@ export default function GlobalError({
             <AlertCircle className="h-9 w-9" />
           </div>
           <div>
-            <h1 className="text-3xl font-cormorant font-black text-stone-900 tracking-tight">
+            <h1 className="text-3xl font-cormorant font-black text-stone-900 tracking-normal">
               Critical system error
             </h1>
             <p className="text-stone-500 text-sm mt-3 leading-relaxed">

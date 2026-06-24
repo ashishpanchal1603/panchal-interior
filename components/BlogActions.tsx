@@ -46,7 +46,7 @@ export function BlogCTASection({ postTitle }: BlogCTASectionProps) {
   return (
     <section className="max-w-4xl mx-auto px-5 mt-20 text-center">
       <div className="bg-stone-900 text-white rounded-2xl p-8 border border-stone-850 shadow-md">
-        <h3 className="font-cormorant text-xl font-bold">Looking to design a custom modular kitchen?</h3>
+        <h3 className="font-outfit text-xl font-bold">Looking to design a custom modular kitchen?</h3>
         <p className="text-stone-400 text-xs mt-2 max-w-sm mx-auto leading-relaxed">
           Discuss plywood types, hardware models, and layout solutions with our design director.
         </p>

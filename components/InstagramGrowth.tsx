@@ -85,7 +85,7 @@ export default function InstagramGrowth() {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-cormorant text-white font-bold text-base">{item.theme}</h3>
+                  <h3 className="font-outfit text-white font-bold text-base">{item.theme}</h3>
                   <p className="text-stone-400 text-xs mt-2.5 leading-relaxed">{item.desc}</p>
                 </div>
               </AnimateOnScroll>

@@ -245,7 +245,7 @@ export default async function ServiceDetailPage(props: PageProps) {
             {/* Background design */}
             <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:12px_12px]" />
 
-            <h3 className="font-cormorant text-xl font-bold text-white relative z-10">
+            <h3 className="font-outfit text-xl font-bold text-white relative z-10">
               Request Site Measurement
             </h3>
             <p className="text-stone-400 text-xs mt-2 leading-relaxed relative z-10">

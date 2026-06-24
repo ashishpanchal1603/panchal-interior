@@ -145,10 +145,10 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
                     <span className="block text-[10px] font-bold text-primary uppercase tracking-wider">
                       {categories.find((c) => c.id === product.categoryId)?.name || "Furniture"}
                     </span>
-                    <h3 className="font-cormorant font-bold text-stone-900 text-lg mt-1 group-hover:text-primary transition leading-snug">
+                    <h3 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-stone-900 mt-1 group-hover:text-primary transition">
                       {product.name}
                     </h3>
-                    <p className="text-stone-500 text-xs mt-2.5 leading-relaxed line-clamp-2">
+                    <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 mt-2.5 line-clamp-2">
                       {product.description}
                     </p>
 
@@ -157,7 +157,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
                       {product.materials.slice(0, 2).map((mat, index) => (
                         <span
                           key={index}
-                          className="text-[9px] font-medium text-stone-500 bg-stone-50 px-2 py-0.5 rounded border border-stone-100"
+                          className="font-outfit text-xs font-medium text-stone-600 bg-stone-50 px-2 py-0.5 rounded border border-stone-100"
                         >
                           {mat}
                         </span>
@@ -170,7 +170,7 @@ export default function ProductsCatalog({ products, categories }: ProductsCatalo
                     <Link
                       href={`/products/${product.id}`}
                       aria-label={`View specifications and gallery for ${product.name}`}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-stone-900 group-hover:text-primary transition"
+                      className="font-outfit font-medium text-sm md:text-base inline-flex items-center gap-1 text-stone-900 group-hover:text-primary transition"
                     >
                       Specs & Gallery
                       <ArrowRight className="h-3.5 w-3.5 transform group-hover:translate-x-0.5 transition-transform" />

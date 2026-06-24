@@ -235,7 +235,7 @@ export default function PreviewPanel({
         </div>
 
         <div>
-          <h4 className="font-cormorant text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2">
+          <h4 className="font-outfit text-lg sm:text-xl font-bold text-white tracking-normal flex items-center gap-2">
             {title}
           </h4>
           <p className="text-stone-300 text-xs mt-2 leading-relaxed max-w-sm">

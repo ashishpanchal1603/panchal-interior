@@ -227,11 +227,11 @@ export default function HomePage() {
                   {getServiceIcon(service.icon)}
                 </div>
 
-                <h3 className="font-cormorant text-xl font-bold text-stone-900 mt-6">
+                <h3 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-stone-900 mt-6">
                   {service.name}
                 </h3>
 
-                <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 mt-3">
                   {service.description}
                 </p>
 
@@ -239,14 +239,14 @@ export default function HomePage() {
                   <Link
                     href={`/services/${service.slug}`}
                     aria-label={`View details of ${service.name} service`}
-                    className="text-sm font-bold text-stone-950 group-hover:text-primary transition flex items-center gap-1"
+                    className="font-outfit font-medium text-sm md:text-base text-stone-950 group-hover:text-primary transition flex items-center gap-1"
                   >
                     View Details
                     <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <BookConsultationButton
                     label="Book Free Consultation"
-                    className="text-xs font-semibold text-primary hover:underline cursor-pointer bg-transparent border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    className="font-outfit font-medium text-xs text-primary hover:underline cursor-pointer bg-transparent border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     productOrServiceName={service.name}
                   />
                 </div>
@@ -258,7 +258,7 @@ export default function HomePage() {
             <Link
               href="/services"
               aria-label="View all professional interior design and furniture services"
-              className="inline-flex items-center gap-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-6 transition cursor-pointer"
+              className="font-outfit font-medium text-sm md:text-base inline-flex items-center gap-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white py-3 px-6 transition cursor-pointer"
             >
               View All Services
               <ArrowRight className="h-4 w-4" />
@@ -303,10 +303,10 @@ export default function HomePage() {
 
                 {/* Text content on card */}
                 <div className="absolute bottom-0 left-0 w-full p-6 text-left">
-                  <h3 className="font-cormorant text-xl font-bold text-white leading-tight">
+                  <h3 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-white">
                     {cat.name}
                   </h3>
-                  <p className="text-stone-300 text-xs mt-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="font-outfit text-sm leading-relaxed text-stone-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {cat.description}
                   </p>
 
@@ -314,7 +314,7 @@ export default function HomePage() {
                     <Link
                       href={`/products?category=${cat.id}`}
                       aria-label={`Explore our collection of custom ${cat.name}`}
-                      className="text-xs font-bold text-primary bg-primary-light/10 border border-primary/20 hover:bg-primary hover:text-white px-4 py-1.5 rounded-lg backdrop-blur-sm transition duration-300"
+                      className="font-outfit font-medium text-xs text-primary bg-primary-light/10 border border-primary/20 hover:bg-primary hover:text-white px-4 py-1.5 rounded-lg backdrop-blur-sm transition duration-300"
                     >
                       Explore Collection
                     </Link>
@@ -328,7 +328,7 @@ export default function HomePage() {
             <Link
               href="/products"
               aria-label="Explore all custom furniture catalog products"
-              className="inline-flex items-center gap-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-6 transition cursor-pointer"
+              className="font-outfit font-medium text-sm md:text-base inline-flex items-center gap-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white py-3 px-6 transition cursor-pointer"
             >
               Explore All Products
               <ArrowRight className="h-4 w-4" />
@@ -430,18 +430,18 @@ export default function HomePage() {
                   <span className="text-[10px] font-bold text-primary uppercase tracking-wider">
                     📍 {project.location}
                   </span>
-                  <h3 className="font-cormorant text-lg font-bold text-stone-900 mt-2 group-hover:text-primary transition leading-snug">
+                  <h3 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-stone-900 mt-2 group-hover:text-primary transition">
                     <Link href={`/projects/${project.slug}`}>
                       {project.title}
                     </Link>
                   </h3>
-                  <p className="text-stone-500 text-xs mt-2 line-clamp-2">
+                  <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 mt-2 line-clamp-2">
                     {project.description}
                   </p>
                   <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between">
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="text-xs font-bold text-stone-900 hover:text-primary transition flex items-center gap-1"
+                      className="font-outfit font-medium text-sm md:text-base text-stone-900 hover:text-primary transition flex items-center gap-1"
                     >
                       View Details
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -449,7 +449,7 @@ export default function HomePage() {
                     <BookConsultationButton
                       label="Get Free Estimate"
                       productOrServiceName={project.title}
-                      className="text-[10px] font-bold text-primary hover:underline cursor-pointer bg-transparent border-none"
+                      className="font-outfit font-medium text-xs text-primary hover:underline cursor-pointer bg-transparent border-none"
                     />
                   </div>
                 </div>
@@ -460,7 +460,7 @@ export default function HomePage() {
           <AnimateOnScroll variant="simpleFade" className="mt-12 text-center">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-6 transition cursor-pointer"
+              className="font-outfit font-medium text-sm md:text-base inline-flex items-center gap-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white py-3 px-6 transition cursor-pointer"
             >
               Explore All Projects
               <ArrowRight className="h-4 w-4" />
@@ -545,11 +545,11 @@ export default function HomePage() {
             <BookConsultationButton
               label="Get Free Site Visit"
               productOrServiceName="Bottom CTA"
-              className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 shadow-lg transition duration-300 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="font-outfit font-medium text-sm md:text-base rounded-lg bg-primary hover:bg-primary-hover text-white py-3 px-8 shadow-lg transition duration-300 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             />
             <a
               href="tel:+919664956491"
-              className="rounded-lg border border-stone-800 text-stone-300 hover:bg-stone-900 hover:text-white font-bold py-3 px-8 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
+              className="font-outfit font-medium text-sm md:text-base rounded-lg border border-stone-800 text-stone-300 hover:bg-stone-900 hover:text-white py-3 px-8 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
             >
               Call Now
             </a>
@@ -557,7 +557,7 @@ export default function HomePage() {
               href="https://wa.me/919664956491?text=Hi%20Panchal%20Interior%20%2C%0A%0AI%20need%20interior%2Ffurniture%20work.%0A%0ALocation%3A%20%0ARequirement%3A%20%0ABudget%3A%20%0APreferred%20Timeline%3A%20"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 shadow-lg transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 cursor-pointer"
+              className="font-outfit font-medium text-sm md:text-base rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white py-3 px-8 shadow-lg transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 cursor-pointer"
             >
               WhatsApp Us
             </a>

@@ -95,7 +95,7 @@ export default function ContactForm() {
 
   return (
     <div className="bg-white border border-stone-200/60 rounded-2xl p-6 sm:p-8 shadow-sm">
-      <h2 className="font-cormorant text-xl sm:text-2xl font-bold text-stone-900 mb-6">
+      <h2 className="font-outfit text-xl sm:text-2xl font-bold text-stone-900 mb-6">
         Send Us a Message
       </h2>
 
@@ -213,7 +213,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={loading}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-6 shadow-md transition disabled:opacity-70 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="font-outfit font-medium text-sm md:text-base flex w-full items-center justify-center gap-2 rounded-xl bg-primary hover:bg-primary-hover text-white py-3.5 px-6 shadow-md transition disabled:opacity-70 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             {loading ? (
               <>

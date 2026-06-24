@@ -137,11 +137,11 @@ export default function ServicesPage() {
                     </span>
                   </div>
 
-                  <h2 className="font-cormorant text-2xl font-bold text-stone-900 mt-6 group-hover:text-primary transition">
+                  <h2 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-stone-900 mt-6 group-hover:text-primary transition">
                     {service.name}
                   </h2>
 
-                  <p className="text-stone-500 text-sm mt-3 leading-relaxed">
+                  <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 mt-3">
                     {service.description}
                   </p>
 
@@ -165,14 +165,14 @@ export default function ServicesPage() {
                 <Link
                   href={`/services/${service.slug}`}
                   aria-label={`Learn detailed process of ${service.name} service`}
-                  className="inline-flex items-center gap-1 text-sm font-bold text-stone-900 group-hover:text-primary transition"
+                  className="font-outfit font-medium text-sm md:text-base inline-flex items-center gap-1 text-stone-900 group-hover:text-primary transition"
                 >
                   Learn Detailed Process
                   <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <BookConsultationButton
                   label="Book Free Consultation"
-                  className="rounded-lg bg-primary hover:bg-primary-hover text-white text-xs font-bold py-2.5 px-4 shadow-sm transition cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="font-outfit font-medium text-sm md:text-base rounded-lg bg-primary hover:bg-primary-hover text-white py-2.5 px-4 shadow-sm transition cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   productOrServiceName={service.name}
                 />
               </div>
@@ -185,14 +185,14 @@ export default function ServicesPage() {
       <section className="max-w-4xl mx-auto px-5 mt-20 text-center">
         <div className="bg-stone-900 rounded-2xl p-10 text-white relative overflow-hidden shadow-lg">
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
-          <h3 className="font-cormorant text-xl sm:text-2xl font-bold">Looking for a specific customization?</h3>
-          <p className="text-stone-400 text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
+          <h3 className="font-outfit text-xl sm:text-2xl font-bold">Looking for a specific customization?</h3>
+          <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-300 mt-2 max-w-md mx-auto">
             We love challenging architectural designs. Contact our workshop directly and share your custom concepts.
           </p>
           <div className="mt-6 flex flex-wrap gap-3 justify-center">
             <BookConsultationButton
               label="Book Free Consultation"
-              className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-2.5 px-5 text-sm cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="font-outfit font-medium text-sm md:text-base rounded-lg bg-primary hover:bg-primary-hover text-white py-2.5 px-5 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               productOrServiceName="Rajesh Panchal Customization"
             />
             <a

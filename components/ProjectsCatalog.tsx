@@ -68,12 +68,12 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
               />
 
               {/* Category overlay */}
-              <span className="absolute top-4 left-4 text-[10px] font-bold text-stone-900 bg-white/95 px-2.5 py-1 rounded shadow-sm z-10">
+              <span className="absolute top-4 left-4 font-outfit text-xs font-bold text-stone-900 bg-white/95 px-2.5 py-1 rounded shadow-sm z-10">
                 {project.category}
               </span>
 
               {/* Year overlay */}
-              <span className="absolute bottom-4 right-4 flex items-center gap-1.5 text-[10px] font-bold text-stone-300 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded z-10">
+              <span className="absolute bottom-4 right-4 flex items-center gap-1.5 font-outfit text-xs font-bold text-stone-300 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded z-10">
                 <Calendar className="h-3.5 w-3.5 text-primary" />
                 Completed: {project.year}
               </span>
@@ -83,12 +83,12 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
             <div className="p-6 space-y-4">
               <div className="flex justify-between items-start gap-4">
                 <div>
-                  <h3 className="font-cormorant text-xl font-bold text-stone-900 group-hover:text-primary transition leading-snug">
+                  <h3 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-stone-900 group-hover:text-primary transition">
                     <Link href={`/projects/${project.slug}`} className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                       {project.title}
                     </Link>
                   </h3>
-                  <div className="flex items-center gap-1.5 text-xs text-stone-400 mt-1.5 font-medium">
+                  <div className="flex items-center gap-1.5 font-outfit text-xs sm:text-sm text-stone-500 mt-1.5">
                     <MapPin className="h-3.5 w-3.5 text-stone-400 shrink-0" />
                     <span>{project.location}</span>
                   </div>
@@ -104,7 +104,7 @@ export default function ProjectsCatalog({ projects }: ProjectsCatalogProps) {
                 </Link>
               </div>
 
-              <p className="text-stone-500 text-xs leading-relaxed border-t border-stone-100 pt-4">
+              <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 border-t border-stone-100 pt-4">
                 {project.description}
               </p>
             </div>

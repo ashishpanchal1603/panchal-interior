@@ -22,7 +22,7 @@ export default function ErrorPage({
           <AlertCircle className="h-9 w-9" />
         </div>
         <div>
-          <h1 className="font-cormorant text-3xl font-extrabold text-stone-900 tracking-tight">
+          <h1 className="font-cormorant text-3xl font-extrabold text-stone-900 tracking-normal">
             Something went wrong
           </h1>
           <p className="text-stone-500 text-sm mt-3 leading-relaxed">

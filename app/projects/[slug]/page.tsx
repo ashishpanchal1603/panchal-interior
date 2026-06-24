@@ -255,7 +255,7 @@ export default async function ProjectDetailPage(props: PageProps) {
 
           {/* Work Categories Subsections */}
           <div className="space-y-6">
-            <h3 className="font-cormorant text-xl font-bold text-stone-900">Key Executed Carpentry Work</h3>
+            <h3 className="font-outfit text-xl font-bold text-stone-900">Key Executed Carpentry Work</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {project.workCategories.map((wc, idx) => (
                 <div key={idx} className="bg-white border border-stone-200/60 rounded-xl p-5 shadow-sm space-y-2">
@@ -368,7 +368,7 @@ export default async function ProjectDetailPage(props: PageProps) {
                 </Link>
                 <div className="p-6 flex-grow flex flex-col justify-between">
                   <div>
-                    <h3 className="font-cormorant text-lg font-bold text-stone-900 group-hover:text-primary transition leading-snug">
+                    <h3 className="font-outfit font-semibold text-base md:text-lg leading-normal tracking-normal text-stone-900 group-hover:text-primary transition">
                       <Link href={`/projects/${proj.slug}`}>
                         {proj.title}
                       </Link>
@@ -398,7 +398,7 @@ export default async function ProjectDetailPage(props: PageProps) {
       <section className="max-w-4xl mx-auto px-5 mt-20 text-center">
         <div className="bg-stone-900 text-white rounded-2xl p-10 border border-stone-850 shadow-lg relative overflow-hidden">
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
-          <h3 className="font-cormorant text-2xl font-bold">Love this project layout style?</h3>
+          <h3 className="font-outfit text-2xl font-bold">Love this project layout style?</h3>
           <p className="text-stone-400 text-xs sm:text-sm mt-3 max-w-md mx-auto leading-relaxed">
             Connect with राजेश पंचाल and schedule a free site visit. We will take exact site measurements and prepare custom 3D estimates.
           </p>
@@ -406,11 +406,11 @@ export default async function ProjectDetailPage(props: PageProps) {
             <BookConsultationButton
               label={`Consult about ${project.title}`}
               productOrServiceName={project.title}
-              className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 text-sm cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="font-outfit font-medium text-sm md:text-base rounded-lg bg-primary hover:bg-primary-hover text-white py-3 px-6 cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             />
             <Link
               href="/contact"
-              className="rounded-lg border border-stone-700 hover:bg-stone-800 text-stone-300 font-bold py-3 px-6 text-sm flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="font-outfit font-medium text-sm md:text-base rounded-lg border border-stone-700 hover:bg-stone-800 text-stone-300 py-3 px-6 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Contact Our Showroom
             </Link>

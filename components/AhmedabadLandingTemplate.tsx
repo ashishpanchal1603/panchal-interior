@@ -318,7 +318,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
                 </div>
                 <div className="p-6 flex-grow flex flex-col justify-between">
                   <div>
-                    <h3 className="font-cormorant text-lg font-bold text-stone-900 group-hover:text-primary transition leading-snug">
+                    <h3 className="font-outfit text-lg font-bold text-stone-900 group-hover:text-primary transition leading-snug">
                       {item.title}
                     </h3>
                     <p className="text-stone-500 text-xs mt-2 leading-relaxed">
@@ -355,7 +355,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {areasWeServe.map((area, idx) => (
             <div key={idx} className="bg-stone-50/50 border border-stone-150 rounded-xl p-4.5 space-y-1.5">
-              <span className="block font-cormorant font-bold text-stone-900 text-sm">📍 {area.name}</span>
+              <span className="block font-outfit font-bold text-stone-900 text-sm">📍 {area.name}</span>
               <span className="block text-stone-400 text-[10px] leading-normal">{area.desc}</span>
             </div>
           ))}
@@ -409,7 +409,7 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
       <section className="bg-stone-950 py-16 text-center text-white relative overflow-hidden border-t border-stone-900">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#a17a4c_1px,transparent_1px)] [background-size:16px_16px]" />
         <div className="max-w-4xl mx-auto px-5 relative z-10 space-y-6">
-          <h3 className="font-cormorant text-3xl font-extrabold">Need Custom Layout Estimates in Ahmedabad?</h3>
+          <h3 className="font-outfit text-3xl font-extrabold">Need Custom Layout Estimates in Ahmedabad?</h3>
           <p className="text-stone-400 text-sm max-w-xl mx-auto leading-relaxed">
             Get in touch with Rajesh Panchal today. We provide completely free site measurements, layout blueprints, and factory-direct estimates.
           </p>

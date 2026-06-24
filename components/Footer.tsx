@@ -68,10 +68,10 @@ export default function Footer() {
               <Sofa className="h-5.5 w-5.5" />
             </div>
             <div>
-              <span className="block font-cormorant text-lg font-black uppercase tracking-tight leading-none">
+              <span className="block font-outfit text-lg font-black uppercase tracking-normal leading-none">
                 Panchal Interior
               </span>
-              <span className="block text-[9px] font-semibold uppercase tracking-wider text-primary mt-0.5 leading-none">
+              <span className="block font-outfit text-xs font-semibold uppercase tracking-wider text-primary mt-0.5 leading-none">
                 Furniture & Turnkey Interior Solutions
               </span>
             </div>
@@ -97,7 +97,7 @@ export default function Footer() {
 
         {/* Col 2: Services */}
         <div>
-          <h4 className="font-cormorant text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
+          <h4 className="font-outfit text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
             Our Services
           </h4>
           <ul className="space-y-3 text-sm">
@@ -114,7 +114,7 @@ export default function Footer() {
 
         {/* Col 3: Local Ahmedabad Hubs */}
         <div>
-          <h4 className="font-cormorant text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
+          <h4 className="font-outfit text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
             Ahmedabad Local Hubs
           </h4>
           <ul className="space-y-3 text-sm">
@@ -165,7 +165,7 @@ export default function Footer() {
 
         {/* Col 4: Quick Links */}
         <div>
-          <h4 className="font-cormorant text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
+          <h4 className="font-outfit text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
             Quick Navigation
           </h4>
           <ul className="space-y-3 text-sm">
@@ -182,7 +182,7 @@ export default function Footer() {
 
         {/* Col 4: Contact & Showroom */}
         <div>
-          <h4 className="font-cormorant text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
+          <h4 className="font-outfit text-white text-base font-bold uppercase tracking-wider border-b border-stone-800 pb-3 mb-5">
             Get In Touch
           </h4>
           <ul className="space-y-4 text-sm">

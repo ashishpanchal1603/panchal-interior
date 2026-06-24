@@ -212,7 +212,7 @@ export default function ContactPage() {
 
           {/* Contact FAQs Block */}
           <div className="space-y-4">
-            <h3 className="font-cormorant text-lg font-bold text-stone-900">Consultation FAQs</h3>
+            <h3 className="font-outfit text-lg font-bold text-stone-900">Consultation FAQs</h3>
             <FaqAccordion faqs={contactFaqs} />
           </div>
         </div>
@@ -228,7 +228,7 @@ export default function ContactPage() {
         <div className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
           <div className="p-5 border-b border-stone-100 flex justify-between items-center bg-stone-50">
             <div>
-              <h3 className="font-cormorant text-lg font-bold text-stone-900">Visit Our Factory Workshop</h3>
+              <h3 className="font-outfit text-lg font-bold text-stone-900">Visit Our Factory Workshop</h3>
               <p className="text-stone-400 text-xs mt-0.5">Explore materials, laminates, and wood logs in person.</p>
             </div>
             <a

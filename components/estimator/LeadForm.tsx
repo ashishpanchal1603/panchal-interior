@@ -62,7 +62,7 @@ export default function LeadForm({
           </span>
 
           <div>
-            <h4 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h4 className="text-2xl sm:text-3xl font-extrabold text-white tracking-normal">
               Calculation Ready!
             </h4>
             <p className="text-stone-300 text-xs mt-3 leading-relaxed">

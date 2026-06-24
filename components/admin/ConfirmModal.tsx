@@ -96,7 +96,7 @@ export default function ConfirmModal({
             {type === "info" ? <Info className="h-6 w-6" /> : <AlertTriangle className="h-6 w-6" />}
           </div>
           <div className="space-y-1">
-            <h3 className="font-cormorant text-lg font-bold text-stone-900 dark:text-white leading-tight">
+            <h3 className="font-outfit text-lg font-bold text-stone-900 dark:text-white leading-tight">
               {title}
             </h3>
             <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed mt-1.5">

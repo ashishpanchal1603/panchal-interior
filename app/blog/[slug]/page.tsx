@@ -211,7 +211,7 @@ export default async function BlogDetailPage(props: PageProps) {
 
         {/* Author Footer card */}
         <div className="bg-stone-50 rounded-2xl p-6 border border-stone-200/50 mt-12 flex items-center gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white font-cormorant text-lg font-bold">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white font-outfit text-lg font-bold">
             {post.author.charAt(0)}
           </div>
           <div>

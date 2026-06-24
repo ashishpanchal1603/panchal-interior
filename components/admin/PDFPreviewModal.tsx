@@ -126,7 +126,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
         {/* Modal Top Actions Toolbar (Hidden on print) */}
         <div className="flex flex-wrap items-center justify-between px-6 py-4 border-b border-stone-200/60 dark:border-stone-800/80 gap-3 print:hidden">
           <div className="flex items-center gap-2">
-            <span className="font-cormorant text-sm font-bold text-stone-900 dark:text-white">
+            <span className="font-outfit text-sm font-bold text-stone-900 dark:text-white">
               Estimate Preview: {estimate.estimateNumber}
             </span>
           </div>
@@ -182,7 +182,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
                   <Sofa className="h-6.5 w-6.5" />
                 </div>
                 <div>
-                  <h1 className="font-cormorant text-2xl font-black uppercase tracking-tight text-stone-900 leading-none">
+                  <h1 className="font-outfit text-2xl font-black uppercase tracking-normal text-stone-900 leading-none">
                     Panchal Interior
                   </h1>
                   <span className="block text-[9px] uppercase tracking-widest text-primary font-bold mt-1">
@@ -193,7 +193,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
 
               {/* Estimate Title & Number metadata */}
               <div className="text-left sm:text-right font-sans">
-                <h2 className="font-cormorant text-xl font-bold tracking-wider text-primary">
+                <h2 className="font-outfit text-xl font-bold tracking-wider text-primary">
                   {t.estimate}
                 </h2>
                 <div className="mt-1.5 text-xs font-semibold text-stone-500 space-y-0.5">
@@ -211,7 +211,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
                 <span className="block text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-1.5">
                   From Studio
                 </span>
-                <h3 className="font-cormorant font-extrabold text-stone-900 text-sm">{companyDetails.name}</h3>
+                <h3 className="font-outfit font-extrabold text-stone-900 text-sm">{companyDetails.name}</h3>
                 <p className="text-stone-500">{companyDetails.address}</p>
                 <p className="text-stone-500">📞 {companyDetails.phone}</p>
                 <p className="text-stone-500">✉️ {companyDetails.email}</p>
@@ -222,7 +222,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
                 <span className="block text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-1.5">
                   Prepared For
                 </span>
-                <h3 className="font-cormorant font-extrabold text-stone-900 text-sm">{estimate.customerName}</h3>
+                <h3 className="font-outfit font-extrabold text-stone-900 text-sm">{estimate.customerName}</h3>
                 <p className="text-stone-500"><span className="font-bold text-stone-800">{t.mobileNumber}:</span> {estimate.customerPhone}</p>
                 {estimate.siteAddress && (
                   <p className="text-stone-500">
@@ -266,7 +266,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
               <div className="md:col-span-7 space-y-2 text-xs">
                 {estimate.notes && (
                   <div className="bg-stone-50/60 p-4 rounded-2xl border border-stone-100">
-                    <h4 className="font-cormorant font-bold text-stone-800 mb-1">{t.notes}</h4>
+                    <h4 className="font-outfit font-bold text-stone-800 mb-1">{t.notes}</h4>
                     <p className="text-stone-500 leading-relaxed italic">{estimate.notes}</p>
                   </div>
                 )}
@@ -303,7 +303,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-stone-200">
               {/* Terms */}
               <div className="space-y-2 text-[10px] text-stone-400 leading-relaxed">
-                <h4 className="font-cormorant font-bold text-stone-700 text-xs">{t.terms}</h4>
+                <h4 className="font-outfit font-bold text-stone-700 text-xs">{t.terms}</h4>
                 <ol className="list-decimal pl-4 space-y-1">
                   {estimate.termsAndConditions.map((clause, index) => (
                     <li key={index}>{clause}</li>

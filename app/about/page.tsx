@@ -110,7 +110,7 @@ export default function AboutPage() {
             </h1>
           </AnimateOnScroll>
           <AnimateOnScroll variant="fadeInUp" delay={0.2}>
-            <p className="text-stone-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed">
+            <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-400 mt-4 max-w-xl mx-auto">
               Crafting premium furniture and modular interior solutions in Ahmedabad since 2011.
             </p>
           </AnimateOnScroll>
@@ -125,10 +125,10 @@ export default function AboutPage() {
             <h2 className="font-cormorant text-3xl sm:text-4xl font-extrabold text-stone-900">
               Crafting Quality Homes For Over 15 Years
             </h2>
-            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+            <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600">
               Founded by Rajesh Panchal, a master craftsman with a passion for carpentry, Panchal Interior started as a small woodworking shop in Ahmedabad. Over the years, we have grown into a leading turnkey interior solution firm, serving over 500 happy families across Gujarat.
             </p>
-            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+            <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600">
               We focus on building furniture that lasts. Unlike flat-pack online furniture made of fragile particle boards, our products are hand-framed with solid woods and BWR plywood, ensuring they stand the test of time, humidity, and daily usage.
             </p>
 
@@ -139,7 +139,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-stone-900 text-sm">Our Mission</h4>
-                  <p className="text-stone-500 text-xs mt-1">
+                  <p className="font-outfit text-sm text-stone-500 mt-1">
                     To design modular, highly durable spaces at honest factory rates.
                   </p>
                 </div>
@@ -150,7 +150,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h4 className="font-bold text-stone-900 text-sm">Our Vision</h4>
-                  <p className="text-stone-500 text-xs mt-1">
+                  <p className="font-outfit text-sm text-stone-500 mt-1">
                     To be the most trusted custom wood furniture brand in Ahmedabad.
                   </p>
                 </div>
@@ -182,7 +182,7 @@ export default function AboutPage() {
             <h2 className="font-cormorant text-3xl font-extrabold text-stone-900">
               Our Founding Principles
             </h2>
-            <p className="text-stone-500 text-xs sm:text-sm mt-2">
+            <p className="font-outfit text-sm md:text-base leading-relaxed text-stone-600 mt-2">
               We operate on absolute transparency, craftsmanship excellence, and commitment.
             </p>
           </div>
@@ -262,7 +262,7 @@ export default function AboutPage() {
       {/* 5. CTA banner */}
       <section className="bg-stone-950 py-16 text-center text-white relative border-t border-stone-900">
         <div className="max-w-3xl mx-auto px-5">
-          <h3 className="font-cormorant text-2xl sm:text-3xl font-extrabold">Design Your Dream Home Today</h3>
+          <h3 className="font-outfit text-2xl sm:text-3xl font-extrabold">Design Your Dream Home Today</h3>
           <p className="text-stone-400 text-sm mt-3 leading-relaxed">
             Get in touch for a site visit. We will measure your space and build dynamic 3D layouts, presenting realistic costs with zero hidden charges.
           </p>
@@ -270,12 +270,12 @@ export default function AboutPage() {
             <BookConsultationButton
               label="Get Free Site Visit"
               productOrServiceName="About Page Site Visit"
-              className="rounded-lg bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 shadow-md transition cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="font-outfit font-medium text-sm md:text-base rounded-lg bg-primary hover:bg-primary-hover text-white py-3 px-6 shadow-md transition cursor-pointer border-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             />
             <BookConsultationButton
               label="Book Free Consultation"
               productOrServiceName="About Page Consultation"
-              className="rounded-lg border border-stone-300 text-stone-700 hover:bg-stone-50 font-bold py-3 px-6 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-transparent cursor-pointer"
+              className="font-outfit font-medium text-sm md:text-base rounded-lg border border-white/30 text-white hover:bg-white hover:text-stone-950 py-3 px-6 transition flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-transparent cursor-pointer"
             />
           </div>
         </div>

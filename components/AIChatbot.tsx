@@ -267,7 +267,7 @@ export default function AIChatbot() {
         <span
           key={idx}
           className={`block ${isHeader
-            ? "font-cormorant text-[13px] font-bold text-stone-950 mt-3.5 mb-1.5 first:mt-0"
+            ? "font-outfit text-[13px] font-bold text-stone-950 mt-3.5 mb-1.5 first:mt-0"
             : "text-xs text-stone-600 leading-relaxed mb-1.5"
             }`}
         >
@@ -333,7 +333,7 @@ export default function AIChatbot() {
                   <span className="absolute bottom-0.5 right-0.5 h-2 w-2 rounded-full bg-emerald-500 border border-stone-950 animate-pulse" />
                 </div>
                 <div>
-                  <h4 className="font-cormorant text-xs font-bold text-white tracking-wide">
+                  <h4 className="font-outfit text-xs font-bold text-white tracking-wide">
                     Panchal Interior Assistant
                   </h4>
                   <span className="text-[9px] text-stone-400 block mt-0.5 font-sans">

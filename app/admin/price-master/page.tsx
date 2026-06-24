@@ -164,7 +164,7 @@ export default function PriceMasterPage() {
       {/* Top Header bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-cormorant text-3xl font-extrabold text-stone-900 dark:text-white">
+          <h1 className="font-outfit text-3xl font-extrabold text-stone-900 dark:text-white">
             Central Price Master
           </h1>
           <p className="text-stone-500 text-xs mt-0.5">Control pricing presets that auto-fill estimates for With Material or Labour items.</p>

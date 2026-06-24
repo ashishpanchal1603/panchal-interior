@@ -149,7 +149,7 @@ export default function DashboardPage() {
       {/* Header bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="font-cormorant text-3xl font-extrabold text-stone-900 dark:text-white">
+          <h1 className="font-outfit text-3xl font-extrabold text-stone-900 dark:text-white">
             Panchal Interior Business Suite
           </h1>
           <p className="text-stone-500 text-xs mt-0.5">Centralized studio dashboard for billing metrics, estimates, and client registers.</p>
@@ -211,7 +211,7 @@ export default function DashboardPage() {
         {/* Col 1: Recent Estimates */}
         <div className="lg:col-span-8 bg-white dark:bg-stone-900 border border-stone-150/40 dark:border-stone-850 rounded-2xl shadow-sm p-6 space-y-4">
           <div className="flex justify-between items-center border-b border-stone-100 dark:border-stone-800 pb-3">
-            <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm">
+            <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm">
               Recent Estimates
             </h3>
             <Link
@@ -291,7 +291,7 @@ export default function DashboardPage() {
           
           {/* Quick Actions Panel */}
           <div className="bg-white dark:bg-stone-900 border border-stone-150/40 dark:border-stone-850 rounded-2xl shadow-sm p-6 space-y-4">
-            <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3">
+            <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3">
               Suite Navigation Shortcuts
             </h3>
             
@@ -323,7 +323,7 @@ export default function DashboardPage() {
           {/* Recent Customers List */}
           <div className="bg-white dark:bg-stone-900 border border-stone-150/40 dark:border-stone-850 rounded-2xl shadow-sm p-6 space-y-4">
             <div className="flex justify-between items-center border-b border-stone-100 dark:border-stone-800 pb-3">
-              <h3 className="font-cormorant font-extrabold text-stone-900 dark:text-white text-sm">
+              <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm">
                 Recent Customer Files
               </h3>
               <Link
@@ -347,7 +347,7 @@ export default function DashboardPage() {
                     className="flex justify-between items-center p-3 hover:bg-stone-50/50 dark:hover:bg-stone-950/20 border border-stone-100 dark:border-stone-850 rounded-xl cursor-pointer transition"
                   >
                     <div className="min-w-0">
-                      <h4 className="font-cormorant font-extrabold text-stone-900 dark:text-stone-200 text-xs truncate">
+                      <h4 className="font-outfit font-extrabold text-stone-900 dark:text-stone-200 text-xs truncate">
                         {cust.name}
                       </h4>
                       <p className="text-[10px] text-stone-400 dark:text-stone-500 mt-0.5 truncate">

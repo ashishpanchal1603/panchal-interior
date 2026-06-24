@@ -138,7 +138,7 @@ export default function BeforeAfterSection() {
                     <span className="block text-[10px] font-bold text-primary uppercase tracking-widest">
                       {proj.subtitle}
                     </span>
-                    <h3 className="font-cormorant text-lg font-bold text-stone-900">
+                    <h3 className="font-outfit text-lg font-bold text-stone-900">
                       {proj.title}
                     </h3>
                     <p className="text-stone-500 text-xs sm:text-sm leading-relaxed">
