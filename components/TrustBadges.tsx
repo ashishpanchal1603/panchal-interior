@@ -71,7 +71,7 @@ export default function TrustBadges() {
           </AnimateOnScroll>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
           {trustPoints.map((point, idx) => (
             <AnimateOnScroll
               key={idx}
@@ -84,10 +84,10 @@ export default function TrustBadges() {
                 {point.icon}
               </div>
               <div>
-                <h3 className="font-cormorant font-bold text-stone-900 text-xs sm:text-sm tracking-tight leading-tight group-hover:text-primary transition duration-300">
+                <h3 className="font-cormorant font-bold text-stone-900 text-[14px] sm:text-sm tracking-tight leading-tight group-hover:text-primary transition duration-300">
                   {point.title}
                 </h3>
-                <p className="text-stone-400 text-[10px] sm:text-xs mt-1.5 leading-relaxed font-medium">
+                <p className="text-stone-400 text-[12px] sm:text-xs mt-1.5 leading-relaxed font-medium">
                   {point.desc}
                 </p>
               </div>

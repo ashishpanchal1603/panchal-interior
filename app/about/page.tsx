@@ -132,7 +132,7 @@ export default function AboutPage() {
               We focus on building furniture that lasts. Unlike flat-pack online furniture made of fragile particle boards, our products are hand-framed with solid woods and BWR plywood, ensuring they stand the test of time, humidity, and daily usage.
             </p>
 
-            <div className="grid grid-cols-2 gap-6 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
               <div className="flex gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-light text-primary">
                   <Target className="h-5 w-5" />
