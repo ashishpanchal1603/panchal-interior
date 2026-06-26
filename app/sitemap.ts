@@ -1,8 +1,13 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { servicesData, productsData, blogPostsData, projectsData } from "@/data/interiorData";
 
+const parseDate = (dateStr: string): Date => {
+  const parsed = new Date(dateStr);
+  return isNaN(parsed.getTime()) ? new Date() : parsed;
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://panchalinterior.com";
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://panchalinterior.com").replace(/\/$/, "");
 
   // Static site routes
   const staticUrls = [
@@ -41,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic blog detail routes
   const blogUrls = blogPostsData.map((b) => ({
     url: `${baseUrl}/blog/${b.slug}`,
-    lastModified: new Date(),
+    lastModified: parseDate(b.date),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
@@ -49,10 +54,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic project detail routes
   const projectUrls = projectsData.map((p) => ({
     url: `${baseUrl}/projects/${p.slug}`,
-    lastModified: new Date(),
+    lastModified: parseDate(p.year),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
   return [...staticUrls, ...serviceUrls, ...productUrls, ...blogUrls, ...projectUrls];
 }
+

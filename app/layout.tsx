@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
@@ -7,6 +9,8 @@ import ClientLayoutElements from "@/components/ClientLayoutElements";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Suspense } from "react";
 import { ToastProvider } from "@/components/admin/Toast";
+import StructuredData from "@/components/StructuredData";
+import { getOrganizationSchema } from "@/lib/schema";
 
 
 const outfit = Outfit({
@@ -24,18 +28,20 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const productionUrl = "https://panchalinterior.com";
+const productionUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://panchalinterior.com").replace(/\/$/, "");
 
-const metadataBaseUrl = new URL(productionUrl);
-
-export const metadata = {
-  metadataBase: metadataBaseUrl,
+export const metadata: Metadata = {
+  metadataBase: new URL(productionUrl),
   title: {
     default: "Panchal Interior - Furniture & Turnkey Interior Solutions | Ahmedabad",
     template: "%s | Panchal Interior",
   },
   description:
     "Panchal Interior offers premium Custom Furniture, luxury Sofa Manufacturing, modular Kitchen designs, and Turnkey Home Renovation and Interior Solutions in Ahmedabad, Gujarat.",
+  applicationName: "Panchal Interior",
+  creator: "Panchal Interior",
+  publisher: "Panchal Interior",
+  category: "Interior Design",
   keywords: [
     "Panchal Interior",
     "Custom Furniture Ahmedabad",
@@ -51,13 +57,13 @@ export const metadata = {
   openGraph: {
     title: "Panchal Interior - Furniture & Turnkey Interior Solutions",
     description: "Premium modular kitchens, luxury sofas, custom wardrobes, and turnkey interior solutions directly from our Gota workshop with a 5-year warranty.",
-    url: "https://panchalinterior.com",
+    url: "/",
     siteName: "Panchal Interior",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://panchalinterior.com/og-image.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Panchal Interior - Furniture & Turnkey Interior Solutions",
@@ -68,7 +74,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Panchal Interior & Furniture Solutions | Ahmedabad",
     description: "Premium modular kitchen, custom wardrobes, and turnkey interior designs directly from our workshop with 5-year warranty.",
-    images: ["https://panchalinterior.com/og-image.jpg"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -96,6 +102,7 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col">
         <ToastProvider>
           <QuoteModalProvider>
+            <StructuredData data={getOrganizationSchema()} />
             <GoogleAnalytics />
             <Suspense fallback={null}>
               <Navbar />
@@ -107,45 +114,30 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <ClientLayoutElements />
           </Suspense>
-          {process.env.NODE_ENV === "production" ? (
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  if ('serviceWorker' in navigator) {
-                    const register = () => {
-                      navigator.serviceWorker.register('/sw.js').then(
-                        function(reg) { console.log('SW registered:', reg.scope); },
-                        function(err) { console.log('SW fail:', err); }
-                      );
-                    };
-                    if (document.readyState === 'complete') {
-                      register();
-                    } else {
-                      window.addEventListener('load', register);
-                    }
-                  }
-                `
-              }}
-            />
-          ) : (
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                      for (let registration of registrations) {
-                        registration.unregister().then(function(unregistered) {
-                          if (unregistered) {
-                            console.log('SW unregistered in development:', registration.scope);
-                          }
-                        });
+          <Script id="service-worker-handling" strategy="lazyOnload">
+            {process.env.NODE_ENV === "production" ? `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js').then(
+                    function(reg) { console.log('SW registered:', reg.scope); },
+                    function(err) { console.log('SW fail:', err); }
+                  );
+                });
+              }
+            ` : `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                  for (let registration of registrations) {
+                    registration.unregister().then(function(unregistered) {
+                      if (unregistered) {
+                        console.log('SW unregistered in development:', registration.scope);
                       }
                     });
                   }
-                `
-              }}
-            />
-          )}
+                });
+              }
+            `}
+          </Script>
           </QuoteModalProvider>
         </ToastProvider>
       </body>
