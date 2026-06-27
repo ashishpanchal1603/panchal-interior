@@ -96,6 +96,9 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
   const t = translations[lang];
   const typeLabel = estimate.estimateType === "material" ? t.withMaterial : t.labourWork;
 
+  // Calculate Grand Total without GST
+  const displayedGrandTotal = Math.round(estimate.subtotal * (1 - estimate.discount / 100));
+
   const handlePrint = () => {
     window.print();
   };
@@ -105,7 +108,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
       style: "currency",
       currency: "INR",
       maximumFractionDigits: 0
-    }).format(estimate.grandTotal);
+    }).format(displayedGrandTotal);
 
     const shareText = `Dear *${estimate.customerName}*,\n\nGreetings from *Panchal Interior*! \n\nPlease find the Estimate details for your project:\n\n*Estimate No*: ${estimate.estimateNumber}\n*Date*: ${estimate.date}\n*Type*: ${estimate.estimateType === "material" ? "With Material" : "Labour Work"}\n*Grand Total*: ${formattedTotal}\n\nWe look forward to creating something beautiful for your space.\n\nThank you for choosing Panchal Interior.`;
 
@@ -321,6 +324,7 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
                     <span className="font-bold">-₹{((estimate.subtotal * estimate.discount) / 100).toLocaleString()}</span>
                   </div>
                 )}
+                {/* GST disabled
                 {estimate.gst > 0 && (
                   <div className="flex justify-between">
                     <span>{t.gst} ({estimate.gst}%):</span>
@@ -329,9 +333,10 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
                     </span>
                   </div>
                 )}
+                */}
                 <div className="flex justify-between text-sm text-stone-900 font-extrabold border-t border-stone-200/80 pt-2 bg-stone-50/40 p-2 rounded-lg">
                   <span className="text-primary">{t.grandTotal}:</span>
-                  <span className="text-primary">₹{estimate.grandTotal.toLocaleString()}</span>
+                  <span className="text-primary">₹{displayedGrandTotal.toLocaleString()}</span>
                 </div>
               </div>
             </div>

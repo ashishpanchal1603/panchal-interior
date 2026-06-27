@@ -216,8 +216,8 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
   const subtotal = items.reduce((sum, item) => sum + item.amount, 0);
   const discountAmount = (subtotal * defaultDiscount) / 100;
   const taxableAmount = subtotal - discountAmount;
-  const gstAmount = (taxableAmount * defaultGst) / 100;
-  const grandTotal = Math.round(taxableAmount + gstAmount);
+  const gstAmount = 0; // GST disabled: (taxableAmount * defaultGst) / 100;
+  const grandTotal = Math.round(taxableAmount); // GST disabled: Math.round(taxableAmount + gstAmount);
 
   // Submit Handler
   const handleSubmit = async (status: "draft" | "saved") => {
@@ -274,7 +274,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
         items,
         subtotal,
         discount: defaultDiscount,
-        gst: defaultGst,
+        gst: 0, // GST disabled
         grandTotal,
         language,
         termsAndConditions: terms,
@@ -715,12 +715,14 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
                     <span>-₹{discountAmount.toLocaleString("en-IN")}</span>
                   </div>
                 )}
+                {/* GST disabled
                 {defaultGst > 0 && (
                   <div className="flex justify-between">
                     <span>GST ({defaultGst}%):</span>
                     <span className="font-bold text-stone-900 dark:text-white">₹{gstAmount.toLocaleString("en-IN")}</span>
                   </div>
                 )}
+                */}
                 <div className="flex justify-between text-sm font-extrabold text-stone-950 dark:text-white border-t border-stone-200 dark:border-stone-800 pt-2.5">
                   <span className="text-primary">Grand Total:</span>
                   <span className="text-primary text-base">
