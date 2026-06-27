@@ -97,24 +97,24 @@
     "customerPhone": "9664956491",
     "siteAddress": "gota",
     "date": "2026-06-27",
-    "estimateType": "material",
-    "status": "draft",
+    "estimateType": "labour",
+    "status": "saved",
     "items": [
       {
         "itemName": "Corner Table (કોર્નર ટેબલ)",
         "unit": "Nos",
         "quantity": 100,
-        "rate": 8000,
-        "amount": 800000,
+        "rate": 2500,
+        "amount": 250000,
         "length": 10,
         "width": 10,
         "multiplier": 1
       }
     ],
-    "subtotal": 800000,
+    "subtotal": 250000,
     "discount": 0,
     "gst": 18,
-    "grandTotal": 944000,
+    "grandTotal": 295000,
     "language": "en",
     "termsAndConditions": [
       "50% Advance payment required to initiate design and procurement.",
@@ -128,6 +128,6 @@
     "id": "PI-2026-003",
     "estimateNumber": "PI-2026-003",
     "createdAt": "2026-06-27T06:16:22.077Z",
-    "updatedAt": "2026-06-27T06:16:22.077Z"
+    "updatedAt": "2026-06-27T06:32:46.007Z"
   }
 ]
