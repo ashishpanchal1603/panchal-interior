@@ -90,5 +90,44 @@
     "estimateNumber": "PI-2026-002",
     "createdAt": "2026-06-24T17:06:11.972Z",
     "updatedAt": "2026-06-24T17:06:11.972Z"
+  },
+  {
+    "customerId": "CUST-1782317835513",
+    "customerName": "ashish pancahl",
+    "customerPhone": "9664956491",
+    "siteAddress": "gota",
+    "date": "2026-06-27",
+    "estimateType": "material",
+    "status": "draft",
+    "items": [
+      {
+        "itemName": "Corner Table (કોર્નર ટેબલ)",
+        "unit": "Nos",
+        "quantity": 100,
+        "rate": 8000,
+        "amount": 800000,
+        "length": 10,
+        "width": 10,
+        "multiplier": 1
+      }
+    ],
+    "subtotal": 800000,
+    "discount": 0,
+    "gst": 18,
+    "grandTotal": 944000,
+    "language": "en",
+    "termsAndConditions": [
+      "50% Advance payment required to initiate design and procurement.",
+      "40% Payment due upon delivery of raw materials at site.",
+      "10% Final payment due immediately upon project completion prior to handover.",
+      "This estimate is valid for a period of 30 days from the date of issue.",
+      "Any modifications or extra work requested will be charged additionally.",
+      "All disputes are subject to Ahmedabad jurisdiction only."
+    ],
+    "notes": "",
+    "id": "PI-2026-003",
+    "estimateNumber": "PI-2026-003",
+    "createdAt": "2026-06-27T06:16:22.077Z",
+    "updatedAt": "2026-06-27T06:16:22.077Z"
   }
 ]

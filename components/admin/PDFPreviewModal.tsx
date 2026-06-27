@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { X, Printer, Globe, MessageSquare, Sofa } from "lucide-react";
+import { X, Printer, Globe, MessageSquare, Sofa, Edit, Ruler } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Estimate, CompanyDetails } from "@/lib/admin";
 import { getBilingualItemName } from "@/lib/bilingual";
 
@@ -39,7 +40,8 @@ const translations = {
     footerMsg: "Thank you for choosing Panchal Interior. We design your dreams into reality.",
     notes: "Special Notes / Comments",
     whatsappMsg: "Share via WhatsApp",
-    printPDF: "Print / Save PDF"
+    printPDF: "Print / Save PDF",
+    dimensions: "Dimensions"
   },
   gu: {
     estimate: "અંદાજ પત્ર (ESTIMATE)",
@@ -66,13 +68,16 @@ const translations = {
     footerMsg: "પંચાલ ઈન્ટીરીયર સ્ટુડિયો પસંદ કરવા બદલ આભાર. અમે તમારા સપનાના ઘરને સાકાર કરીએ છીએ.",
     notes: "ખાસ નોંધ / વિગતો",
     whatsappMsg: "વોટ્સએપ શેર",
-    printPDF: "પ્રિન્ટ / પીડીએફ ડાઉનલોડ"
+    printPDF: "પ્રિન્ટ / પીડીએફ ડાઉનલોડ",
+    dimensions: "માપ (Dimensions)"
   }
 };
 
 export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDetails }: PDFPreviewModalProps) {
+  const router = useRouter();
   const [lang, setLang] = useState<"en" | "gu">("en");
   const [mounted, setMounted] = useState(false);
+  const [showDimensions, setShowDimensions] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -132,6 +137,30 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
           </div>
 
           <div className="flex items-center gap-2.5">
+            {/* Toggle dimensions button */}
+            <button
+              onClick={() => setShowDimensions(!showDimensions)}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 border rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98] ${
+                showDimensions
+                  ? "bg-primary text-white border-primary hover:bg-primary-hover shadow-sm"
+                  : "bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-primary"
+              }`}
+            >
+              <Ruler className={`h-4 w-4 ${showDimensions ? "text-white" : "text-primary"}`} />
+              <span>{showDimensions ? "Hide Dimensions" : "Show Dimensions"}</span>
+            </button>
+
+            {/* Edit button */}
+            <button
+              onClick={() => {
+                router.push(`/admin/estimates/edit/${estimate.id}`);
+              }}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98] shadow-sm"
+            >
+              <Edit className="h-4 w-4" />
+              <span>Edit</span>
+            </button>
+
             {/* Language toggle selector */}
             <button
               onClick={() => setLang(lang === "en" ? "gu" : "en")}
@@ -249,7 +278,15 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
                   {estimate.items.map((item, index) => (
                     <tr key={index} className="hover:bg-stone-50/30">
                       <td className="py-3 px-3 text-stone-400">{index + 1}</td>
-                      <td className="py-3 px-3 font-semibold text-stone-900">{getBilingualItemName(item.itemName, lang)}</td>
+                      <td className="py-3 px-3 font-semibold text-stone-900">
+                        <div>{getBilingualItemName(item.itemName, lang)}</div>
+                        {showDimensions && ((item.length !== undefined && item.length > 0) || (item.width !== undefined && item.width > 0)) && (
+                          <div className="text-[10px] text-stone-400 font-normal mt-0.5">
+                            {t.dimensions}: {item.length ?? 0} × {item.width ?? 0}
+                            {item.multiplier && item.multiplier !== 1 ? ` (Mult: ${item.multiplier})` : ""}
+                          </div>
+                        )}
+                      </td>
                       <td className="py-3 px-3 text-stone-500 font-medium">{item.unit}</td>
                       <td className="py-3 px-3 text-right font-medium">{item.quantity}</td>
                       <td className="py-3 px-3 text-right font-medium">₹{item.rate.toLocaleString()}</td>

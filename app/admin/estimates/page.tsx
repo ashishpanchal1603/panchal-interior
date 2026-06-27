@@ -390,19 +390,17 @@ function EstimatesContent() {
                     <Copy className="h-4 w-4" />
                   </button>
 
-                  {/* Action edit draft */}
-                  {est.status === "draft" && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        router.push(`/admin/estimates/edit/${est.id}`);
-                      }}
-                      className="rounded-lg py-1 px-2.5 bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-[10px] font-bold text-stone-700 dark:text-stone-300 transition cursor-pointer border border-transparent"
-                      title="Edit Draft"
-                    >
-                      Resume
-                    </button>
-                  )}
+                  {/* Action edit draft or saved */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/admin/estimates/edit/${est.id}`);
+                    }}
+                    className="rounded-lg py-1 px-2.5 bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-[10px] font-bold text-stone-700 dark:text-stone-300 transition cursor-pointer border border-transparent"
+                    title={est.status === "draft" ? "Resume Draft" : "Edit Estimate"}
+                  >
+                    {est.status === "draft" ? "Resume" : "Edit"}
+                  </button>
 
                   {/* Action view */}
                   <button
