@@ -64,6 +64,9 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  // Do not intercept or cache API requests
+  if (url.pathname.startsWith("/api/")) return;
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
