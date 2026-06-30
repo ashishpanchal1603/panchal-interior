@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import fs from "fs/promises";
-import path from "path";
+import { readJsonFile, writeJsonFile } from "@/lib/admin";
 
 interface FullDetails {
   bhk: string;
@@ -91,19 +90,7 @@ export async function POST(request: Request) {
 
     // Logging to local database file (data/leads.json)
     try {
-      const dataDirectory = path.join(process.cwd(), "data");
-      const filePath = path.join(dataDirectory, "leads.json");
-
-      // Ensure directory exists
-      await fs.mkdir(dataDirectory, { recursive: true });
-
-      let currentLeads: LeadRecord[] = [];
-      try {
-        const fileContent = await fs.readFile(filePath, "utf-8");
-        currentLeads = JSON.parse(fileContent) as LeadRecord[];
-      } catch {
-        currentLeads = [];
-      }
+      let currentLeads = await readJsonFile<LeadRecord[]>("leads.json", []);
 
       const newLead: LeadRecord = {
         id: `lead_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`,
@@ -118,7 +105,7 @@ export async function POST(request: Request) {
       };
 
       currentLeads.push(newLead);
-      await fs.writeFile(filePath, JSON.stringify(currentLeads, null, 2), "utf-8");
+      await writeJsonFile<LeadRecord[]>("leads.json", currentLeads);
       console.log("📁 Lead logged successfully to local database leads.json");
     } catch (dbError) {
       console.error("❌ Failed to log lead to leads.json database:", dbError);

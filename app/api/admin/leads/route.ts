@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
+import { readJsonFile, writeJsonFile } from "@/lib/admin";
 
 interface Lead {
   id: string;
@@ -14,27 +13,11 @@ interface Lead {
   details?: unknown;
 }
 
-const getLeadsFilePath = () => path.join(process.cwd(), "data", "leads.json");
-
 // Helper to read leads safely
-async function readLeads(): Promise<Lead[]> {
-  const filePath = getLeadsFilePath();
-  try {
-    const fileContent = await fs.readFile(filePath, "utf-8");
-    return JSON.parse(fileContent) as Lead[];
-  } catch {
-    // If file doesn't exist, return empty array
-    return [];
-  }
-}
+const readLeads = () => readJsonFile<Lead[]>("leads.json", []);
 
 // Helper to write leads safely
-async function writeLeads(leads: Lead[]) {
-  const filePath = getLeadsFilePath();
-  const dirPath = path.dirname(filePath);
-  await fs.mkdir(dirPath, { recursive: true });
-  await fs.writeFile(filePath, JSON.stringify(leads, null, 2), "utf-8");
-}
+const writeLeads = (leads: Lead[]) => writeJsonFile<Lead[]>("leads.json", leads);
 
 function isAuthorized(request: Request): boolean {
   const usernameHeader = request.headers.get("x-admin-username");

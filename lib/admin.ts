@@ -70,15 +70,29 @@ export interface AdminSettings {
   defaultTerms: string[];
 }
 
+import os from "os";
+
 // File Path Helpers
-const getDataFilePath = (fileName: string) => path.join(process.cwd(), "data", fileName);
+const isVercel = !!process.env.VERCEL;
 
 // JSON Reading/Writing Helpers
 export async function readJsonFile<T>(fileName: string, defaultValue: T): Promise<T> {
-  const filePath = getDataFilePath(fileName);
+  const seedPath = path.join(process.cwd(), "data", fileName);
+  const tempPath = path.join(os.tmpdir(), fileName);
   try {
-    const content = await fs.readFile(filePath, "utf-8");
-    return JSON.parse(content) as T;
+    if (isVercel) {
+      try {
+        const content = await fs.readFile(tempPath, "utf-8");
+        return JSON.parse(content) as T;
+      } catch {
+        // Fallback to read from seed folder if temp doesn't exist yet
+        const content = await fs.readFile(seedPath, "utf-8");
+        return JSON.parse(content) as T;
+      }
+    } else {
+      const content = await fs.readFile(seedPath, "utf-8");
+      return JSON.parse(content) as T;
+    }
   } catch (err) {
     console.error(`Error reading ${fileName}:`, err);
     return defaultValue;
@@ -86,7 +100,9 @@ export async function readJsonFile<T>(fileName: string, defaultValue: T): Promis
 }
 
 export async function writeJsonFile<T>(fileName: string, data: T): Promise<void> {
-  const filePath = getDataFilePath(fileName);
+  const filePath = isVercel
+    ? path.join(os.tmpdir(), fileName)
+    : path.join(process.cwd(), "data", fileName);
   const dirPath = path.dirname(filePath);
   await fs.mkdir(dirPath, { recursive: true });
   await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
