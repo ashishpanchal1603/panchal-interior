@@ -129,28 +129,29 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
       />
 
       {/* 2. Modal Body */}
-      <div className="relative bg-stone-50 dark:bg-stone-900 w-full max-w-4xl rounded-2xl shadow-2xl border border-stone-200/80 dark:border-stone-800/80 overflow-hidden flex flex-col z-50 h-[90vh] print:h-auto print:w-full print:border-none print:shadow-none print:bg-white print:rounded-none print:static print:overflow-visible">
+      <div className="relative bg-stone-50 dark:bg-stone-900 w-full h-full sm:h-[90vh] sm:max-w-4xl sm:rounded-2xl shadow-2xl border-t sm:border border-stone-200/80 dark:border-stone-800/80 overflow-hidden flex flex-col z-50 print:h-auto print:w-full print:border-none print:shadow-none print:bg-white print:rounded-none print:static print:overflow-visible">
 
         {/* Modal Top Actions Toolbar (Hidden on print) */}
-        <div className="flex flex-wrap items-center justify-between px-6 py-4 border-b border-stone-200/60 dark:border-stone-800/80 gap-3 print:hidden">
+        <div className="flex flex-wrap items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-stone-200/60 dark:border-stone-800/80 gap-2 sm:gap-3 print:hidden">
           <div className="flex items-center gap-2">
             <span className="font-outfit text-sm font-bold text-stone-900 dark:text-white">
               Estimate Preview: {estimate.estimateNumber}
             </span>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5">
             {/* Toggle dimensions button */}
             <button
               onClick={() => setShowDimensions(!showDimensions)}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 border rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98] ${
+              className={`flex items-center gap-1.5 p-2 sm:px-3.5 sm:py-1.5 border rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98] ${
                 showDimensions
                   ? "bg-primary text-white border-primary hover:bg-primary-hover shadow-sm"
                   : "bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:border-primary"
               }`}
+              title={showDimensions ? "Hide Dimensions" : "Show Dimensions"}
             >
-              <Ruler className={`h-4 w-4 ${showDimensions ? "text-white" : "text-primary"}`} />
-              <span>{showDimensions ? "Hide Dimensions" : "Show Dimensions"}</span>
+              <Ruler className={`h-4 w-4 shrink-0 ${showDimensions ? "text-white" : "text-primary"}`} />
+              <span className="hidden sm:inline">{showDimensions ? "Hide Dimensions" : "Show Dimensions"}</span>
             </button>
 
             {/* Edit button */}
@@ -158,42 +159,46 @@ export default function PDFPreviewModal({ isOpen, onClose, estimate, companyDeta
               onClick={() => {
                 router.push(`/admin/estimates/edit/${estimate.id}`);
               }}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98] shadow-sm"
+              className="flex items-center gap-1.5 p-2 sm:px-3.5 sm:py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98] shadow-sm"
+              title="Edit Estimate"
             >
-              <Edit className="h-4 w-4" />
-              <span>Edit</span>
+              <Edit className="h-4 w-4 shrink-0" />
+              <span className="hidden sm:inline">Edit</span>
             </button>
 
             {/* Language toggle selector */}
             <button
               onClick={() => setLang(lang === "en" ? "gu" : "en")}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-xs font-bold text-stone-700 dark:text-stone-300 hover:border-primary transition cursor-pointer select-none active:scale-[0.98]"
+              className="flex items-center gap-1.5 p-2 sm:px-3.5 sm:py-1.5 bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-xs font-bold text-stone-700 dark:text-stone-300 hover:border-primary transition cursor-pointer select-none active:scale-[0.98]"
+              title={lang === "en" ? "Change to Gujarati" : "Change to English"}
             >
-              <Globe className="h-4 w-4 text-primary" />
-              <span>{lang === "en" ? "ગુજરાતી (Gujarati)" : "English"}</span>
+              <Globe className="h-4 w-4 text-primary shrink-0" />
+              <span className="hidden sm:inline">{lang === "en" ? "ગુજરાતી" : "English"}</span>
             </button>
 
             {/* WhatsApp button */}
             <button
               onClick={handleWhatsAppShare}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98]"
+              className="flex items-center gap-1.5 p-2 sm:px-3.5 sm:py-1.5 bg-emerald-650 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98]"
+              title="Share via WhatsApp"
             >
-              <MessageSquare className="h-4 w-4" />
-              <span>{t.whatsappMsg}</span>
+              <MessageSquare className="h-4 w-4 shrink-0" />
+              <span className="hidden sm:inline">{t.whatsappMsg}</span>
             </button>
 
             {/* Print button */}
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-primary hover:bg-primary-hover text-white rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98]"
+              className="flex items-center gap-1.5 p-2 sm:px-3.5 sm:py-1.5 bg-primary hover:bg-primary-hover text-white rounded-xl text-xs font-bold transition cursor-pointer select-none active:scale-[0.98]"
+              title="Print PDF"
             >
-              <Printer className="h-4 w-4" />
-              <span>{t.printPDF}</span>
+              <Printer className="h-4 w-4 shrink-0" />
+              <span className="hidden sm:inline">{t.printPDF}</span>
             </button>
 
             <button
               onClick={onClose}
-              className="p-1.5 bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 rounded-xl text-stone-500 hover:text-stone-800 dark:hover:text-stone-200 transition cursor-pointer ml-1"
+              className="p-2 bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 rounded-xl text-stone-500 hover:text-stone-800 dark:hover:text-stone-200 transition cursor-pointer ml-0.5 sm:ml-1"
             >
               <X className="h-4 w-4" />
             </button>
