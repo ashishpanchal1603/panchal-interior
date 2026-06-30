@@ -254,7 +254,7 @@ function EstimatesContent() {
       </div>
 
       {/* Filter Toolbar controls */}
-      <div className="bg-white dark:bg-stone-900 border border-stone-150/40 dark:border-stone-850 rounded-2xl p-5 shadow-sm flex flex-col md:flex-row gap-4 justify-between items-center select-none">
+      <div className="bg-white dark:bg-stone-900 border border-stone-150/40 dark:border-stone-850 rounded-2xl p-5 shadow-sm flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center select-none">
 
         {/* Search */}
         <div className="relative w-full md:w-80">
@@ -269,13 +269,13 @@ function EstimatesContent() {
         </div>
 
         {/* Dropdowns filters */}
-        <div className="flex flex-wrap gap-4 w-full md:w-auto justify-end">
-          <div>
+        <div className="grid grid-cols-2 gap-4 w-full md:flex md:flex-wrap md:w-auto md:justify-end">
+          <div className="w-full md:w-auto">
             <label className="text-[9px] font-bold text-stone-400 uppercase tracking-wider block mb-1">Estimate Type</label>
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="border border-stone-200 dark:border-stone-850 rounded-xl px-3 py-1.5 text-xs text-stone-700 dark:text-stone-300 bg-white dark:bg-stone-900 focus:outline-none focus:border-primary"
+              className="w-full md:w-auto border border-stone-200 dark:border-stone-850 rounded-xl px-3 py-1.5 text-xs text-stone-700 dark:text-stone-300 bg-white dark:bg-stone-900 focus:outline-none focus:border-primary"
             >
               <option value="all">All Types</option>
               <option value="material">With Material</option>
@@ -283,12 +283,12 @@ function EstimatesContent() {
             </select>
           </div>
 
-          <div>
+          <div className="w-full md:w-auto">
             <label className="text-[9px] font-bold text-stone-400 uppercase tracking-wider block mb-1">Status</label>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="border border-stone-200 dark:border-stone-850 rounded-xl px-3 py-1.5 text-xs text-stone-700 dark:text-stone-300 bg-white dark:bg-stone-900 focus:outline-none focus:border-primary"
+              className="w-full md:w-auto border border-stone-200 dark:border-stone-850 rounded-xl px-3 py-1.5 text-xs text-stone-700 dark:text-stone-300 bg-white dark:bg-stone-900 focus:outline-none focus:border-primary"
             >
               <option value="all">All Statuses</option>
               <option value="saved">Saved Proposals</option>
