@@ -330,98 +330,186 @@ function EstimatesContent() {
 
             {/* List Row Items */}
             {filteredEstimates.map((est) => (
-              <div
-                key={est.id}
-                onClick={(e) => openPreview(e, est)}
-                className="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-4 hover:bg-stone-50/30 dark:hover:bg-stone-950/10 transition items-center cursor-pointer"
-              >
-                {/* Est Number */}
-                <div className="col-span-1 md:col-span-2 font-outfit font-black text-stone-900 dark:text-white text-sm sm:text-base">
-                  {est.estimateNumber}
-                </div>
+              <React.Fragment key={est.id}>
+                {/* Desktop view row */}
+                <div
+                  onClick={(e) => openPreview(e, est)}
+                  className="hidden md:grid grid-cols-12 gap-4 px-6 py-4 hover:bg-stone-50/30 dark:hover:bg-stone-950/10 transition items-center cursor-pointer"
+                >
+                  {/* Est Number */}
+                  <div className="col-span-2 font-outfit font-black text-stone-900 dark:text-white text-sm">
+                    {est.estimateNumber}
+                  </div>
 
-                {/* Customer Details */}
-                <div className="col-span-1 md:col-span-3 space-y-1">
-                  <span className="block font-bold text-stone-900 dark:text-stone-100 text-sm">
-                    {est.customerName}
-                  </span>
-                  <div className="text-[11px] text-stone-400 dark:text-stone-500 flex flex-col sm:flex-row gap-1 sm:gap-3">
-                    <span>📞 {est.customerPhone}</span>
-                    <span className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      {est.date}
+                  {/* Customer Details */}
+                  <div className="col-span-3 space-y-1">
+                    <span className="block font-bold text-stone-900 dark:text-stone-100 text-sm">
+                      {est.customerName}
                     </span>
+                    <div className="text-[11px] text-stone-400 dark:text-stone-500 flex flex-col sm:flex-row gap-1 sm:gap-3">
+                      <span>📞 {est.customerPhone}</span>
+                      <span className="flex items-center gap-1">
+                        <Calendar className="h-3 w-3" />
+                        {est.date}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Type Badge */}
+                  <div className="col-span-2">
+                    <span className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md border ${est.estimateType === "material"
+                        ? "bg-blue-50 text-blue-700 border-blue-150/40 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-900/30"
+                        : "bg-orange-50 text-orange-700 border-orange-150/40 dark:bg-orange-950/40 dark:text-orange-300 dark:border-orange-900/30"
+                      }`}>
+                      {est.estimateType === "material" ? "🏠 With Material" : "🛠️ Labour Work"}
+                    </span>
+                  </div>
+
+                  {/* Amount */}
+                  <div className="col-span-2 text-right font-black text-stone-900 dark:text-white text-base">
+                    ₹{est.grandTotal.toLocaleString("en-IN")}
+                  </div>
+
+                  {/* Status */}
+                  <div className="col-span-1 text-center">
+                    <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest border ${est.status === "saved"
+                        ? "bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900/30"
+                        : "bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900/30"
+                      }`}>
+                      {est.status === "saved" ? "Saved" : "Draft"}
+                    </span>
+                  </div>
+
+                  {/* Row actions */}
+                  <div className="col-span-2 flex justify-end gap-2.5 items-center">
+                    {/* Action duplicate */}
+                    <button
+                      onClick={(e) => handleDuplicate(e, est)}
+                      className="rounded-lg p-2 text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-850 hover:text-stone-700 dark:hover:text-stone-200 border border-transparent transition cursor-pointer"
+                      title="Duplicate Estimate"
+                    >
+                      <Copy className="h-4 w-4" />
+                    </button>
+
+                    {/* Action edit draft or saved */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        router.push(`/admin/estimates/edit/${est.id}`);
+                      }}
+                      className="rounded-lg py-1 px-2.5 bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-[10px] font-bold text-stone-700 dark:text-stone-300 transition cursor-pointer border border-transparent"
+                      title={est.status === "draft" ? "Resume Draft" : "Edit Estimate"}
+                    >
+                      {est.status === "draft" ? "Resume" : "Edit"}
+                    </button>
+
+                    {/* Action view */}
+                    <button
+                      onClick={(e) => openPreview(e, est)}
+                      className="rounded-lg p-2 text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-850 hover:text-primary border border-transparent transition cursor-pointer"
+                      title="Print / View Invoice"
+                    >
+                      <Eye className="h-4 w-4" />
+                    </button>
+
+                    {/* Action delete */}
+                    <button
+                      onClick={(e) => handleDelete(e, est.id, est.estimateNumber)}
+                      className="rounded-lg p-2 text-stone-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/30 border border-transparent hover:border-red-200/20 transition cursor-pointer"
+                      title="Delete Record"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
                   </div>
                 </div>
 
-                {/* Type Badge */}
-                <div className="col-span-1 md:col-span-2">
-                  <span className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md border ${est.estimateType === "material"
-                      ? "bg-blue-50 text-blue-700 border-blue-150/40 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-900/30"
-                      : "bg-orange-50 text-orange-700 border-orange-150/40 dark:bg-orange-950/40 dark:text-orange-300 dark:border-orange-900/30"
-                    }`}>
-                    {est.estimateType === "material" ? "🏠 With Material" : "🛠️ Labour Work"}
-                  </span>
+                {/* Mobile view card */}
+                <div
+                  onClick={(e) => openPreview(e, est)}
+                  className="md:hidden flex flex-col p-4 gap-3 hover:bg-stone-50/30 dark:hover:bg-stone-950/10 transition cursor-pointer border-b border-stone-100 dark:border-stone-850 last:border-0"
+                >
+                  <div className="flex justify-between items-center">
+                    <span className="font-outfit font-black text-stone-900 dark:text-white text-base">
+                      {est.estimateNumber}
+                    </span>
+                    <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest border ${est.status === "saved"
+                        ? "bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900/30"
+                        : "bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900/30"
+                      }`}>
+                      {est.status === "saved" ? "Saved" : "Draft"}
+                    </span>
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="block font-bold text-stone-900 dark:text-stone-100 text-sm">
+                      {est.customerName}
+                    </span>
+                    <div className="text-[11px] text-stone-400 dark:text-stone-500 flex flex-wrap gap-x-3 gap-y-1">
+                      <span>📞 {est.customerPhone}</span>
+                      <span className="flex items-center gap-1 text-stone-400">
+                        <Calendar className="h-3 w-3 text-stone-400 dark:text-stone-500" />
+                        {est.date}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between items-center pt-0.5">
+                    <span className={`inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border ${est.estimateType === "material"
+                        ? "bg-blue-50 text-blue-700 border-blue-150/40 dark:bg-blue-950/40 dark:text-blue-300 dark:border-blue-900/30"
+                        : "bg-orange-50 text-orange-700 border-orange-150/40 dark:bg-orange-950/40 dark:text-orange-300 dark:border-orange-900/30"
+                      }`}>
+                      {est.estimateType === "material" ? "🏠 Material" : "🛠️ Labour"}
+                    </span>
+                    <span className="font-black text-stone-900 dark:text-white text-base">
+                      ₹{est.grandTotal.toLocaleString("en-IN")}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between border-t border-stone-100 dark:border-stone-850 pt-2.5 mt-0.5">
+                    <div className="flex items-center gap-1.5">
+                      {/* Action edit/resume */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          router.push(`/admin/estimates/edit/${est.id}`);
+                        }}
+                        className="rounded-lg py-1.5 px-3 bg-stone-100 hover:bg-stone-250 dark:bg-stone-800 dark:hover:bg-stone-700 text-[10px] font-bold text-stone-700 dark:text-stone-300 transition cursor-pointer border border-transparent"
+                      >
+                        {est.status === "draft" ? "Resume" : "Edit"}
+                      </button>
+
+                      {/* Action duplicate */}
+                      <button
+                        onClick={(e) => handleDuplicate(e, est)}
+                        className="rounded-lg p-1.5 text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-850 hover:text-stone-700 dark:hover:text-stone-200 border border-transparent transition cursor-pointer"
+                        title="Duplicate Estimate"
+                      >
+                        <Copy className="h-4 w-4" />
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-1">
+                      {/* Action view */}
+                      <button
+                        onClick={(e) => openPreview(e, est)}
+                        className="rounded-lg p-1.5 text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-850 hover:text-primary border border-transparent transition cursor-pointer"
+                        title="Print / View Invoice"
+                      >
+                        <Eye className="h-4 w-4" />
+                      </button>
+
+                      {/* Action delete */}
+                      <button
+                        onClick={(e) => handleDelete(e, est.id, est.estimateNumber)}
+                        className="rounded-lg p-1.5 text-stone-400 hover:bg-red-50 hover:text-red-650 dark:hover:bg-red-950/30 border border-transparent hover:border-red-200/20 transition cursor-pointer"
+                        title="Delete Record"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-
-                {/* Amount */}
-                <div className="col-span-1 md:col-span-2 text-left md:text-right font-black text-stone-900 dark:text-white text-base">
-                  ₹{est.grandTotal.toLocaleString("en-IN")}
-                </div>
-
-                {/* Status */}
-                <div className="col-span-1 md:col-span-1 text-left md:text-center">
-                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-widest border ${est.status === "saved"
-                      ? "bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-900/30"
-                      : "bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-900/30"
-                    }`}>
-                    {est.status === "saved" ? "Saved" : "Draft"}
-                  </span>
-                </div>
-
-                {/* Row actions */}
-                <div className="col-span-1 md:col-span-2 flex justify-start md:justify-end gap-2.5 items-center">
-                  {/* Action duplicate */}
-                  <button
-                    onClick={(e) => handleDuplicate(e, est)}
-                    className="rounded-lg p-2 text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-850 hover:text-stone-700 dark:hover:text-stone-200 border border-transparent transition cursor-pointer"
-                    title="Duplicate Estimate"
-                  >
-                    <Copy className="h-4 w-4" />
-                  </button>
-
-                  {/* Action edit draft or saved */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      router.push(`/admin/estimates/edit/${est.id}`);
-                    }}
-                    className="rounded-lg py-1 px-2.5 bg-stone-100 hover:bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 text-[10px] font-bold text-stone-700 dark:text-stone-300 transition cursor-pointer border border-transparent"
-                    title={est.status === "draft" ? "Resume Draft" : "Edit Estimate"}
-                  >
-                    {est.status === "draft" ? "Resume" : "Edit"}
-                  </button>
-
-                  {/* Action view */}
-                  <button
-                    onClick={(e) => openPreview(e, est)}
-                    className="rounded-lg p-2 text-stone-400 hover:bg-stone-50 dark:hover:bg-stone-850 hover:text-primary border border-transparent transition cursor-pointer"
-                    title="Print / View Invoice"
-                  >
-                    <Eye className="h-4 w-4" />
-                  </button>
-
-                  {/* Action delete */}
-                  <button
-                    onClick={(e) => handleDelete(e, est.id, est.estimateNumber)}
-                    className="rounded-lg p-2 text-stone-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/30 border border-transparent hover:border-red-200/20 transition cursor-pointer"
-                    title="Delete Record"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
-
-              </div>
+              </React.Fragment>
             ))}
 
           </div>

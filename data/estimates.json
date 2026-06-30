@@ -186,5 +186,52 @@
     "estimateNumber": "PI-2026-004",
     "createdAt": "2026-06-29T16:37:24.852Z",
     "updatedAt": "2026-06-29T16:38:14.503Z"
+  },
+  {
+    "customerId": "CUST-1782829342850",
+    "customerName": "jay patel",
+    "customerPhone": "9856201021",
+    "siteAddress": "",
+    "date": "2026-06-30",
+    "estimateType": "material",
+    "status": "draft",
+    "items": [
+      {
+        "itemName": "Wardrobe (કબાટ)",
+        "unit": "sq.ft",
+        "quantity": 50,
+        "rate": 1600,
+        "amount": 80000,
+        "length": 10,
+        "width": 5,
+        "multiplier": 1
+      },
+      {
+        "itemName": "Single Bed (સિંગલ બેડ)",
+        "unit": "Nos",
+        "quantity": 1,
+        "rate": 25000,
+        "amount": 25000,
+        "multiplier": 1
+      }
+    ],
+    "subtotal": 105000,
+    "discount": 0,
+    "gst": 0,
+    "grandTotal": 105000,
+    "language": "en",
+    "termsAndConditions": [
+      "50% Advance payment required to initiate design and procurement.",
+      "40% Payment due upon delivery of raw materials at site.",
+      "10% Final payment due immediately upon project completion prior to handover.",
+      "This estimate is valid for a period of 30 days from the date of issue.",
+      "Any modifications or extra work requested will be charged additionally.",
+      "All disputes are subject to Ahmedabad jurisdiction only."
+    ],
+    "notes": "",
+    "id": "PI-2026-005",
+    "estimateNumber": "PI-2026-005",
+    "createdAt": "2026-06-30T14:22:23.482Z",
+    "updatedAt": "2026-06-30T14:22:23.482Z"
   }
 ]

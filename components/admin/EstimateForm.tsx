@@ -347,7 +347,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
         <div className="lg:col-span-8 space-y-6">
           
           {/* Card 1: Customer details */}
-          <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-5">
+          <div className="bg-white dark:bg-stone-900 rounded-2xl p-4 sm:p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-4 sm:space-y-5">
             <div className="flex justify-between items-center border-b border-stone-100 dark:border-stone-800 pb-3">
               <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm">
                 Client Information
@@ -362,7 +362,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {/* Profile dropdown selector */}
               {!isNewCustomer && (
                 <div className="sm:col-span-2">
@@ -434,8 +434,8 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
           </div>
 
           {/* Card 2: Dynamic Items table */}
-          <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-4 overflow-x-auto">
-            <div className="flex justify-between items-center border-b border-stone-100 dark:border-stone-800 pb-3 min-w-[600px]">
+          <div className="bg-white dark:bg-stone-900 rounded-2xl p-4 sm:p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-4">
+            <div className="flex justify-between items-center border-b border-stone-100 dark:border-stone-800 pb-3">
               <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm">
                 Estimate Line Items
               </h3>
@@ -449,82 +449,223 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
               </button>
             </div>
 
-            {/* Table wrapper */}
-            <table className="w-full text-left min-w-[700px] border-collapse text-xs">
-              <thead>
-                <tr className="text-[10px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 border-b border-stone-100 dark:border-stone-800">
-                  <th className="py-2.5 pb-3">Item Description</th>
-                  <th className="py-2.5 pb-3 px-2 w-16 text-right">Length</th>
-                  <th className="py-2.5 pb-3 px-2 w-16 text-right">Width</th>
-                  <th className="py-2.5 pb-3 px-2 w-16 text-right">Mult</th>
-                  <th className="py-2.5 pb-3 px-2 w-20 text-right">Qty</th>
-                  <th className="py-2.5 pb-3 px-2 w-24">Unit</th>
-                  <th className="py-2.5 pb-3 px-2 w-28 text-right">Rate (₹)</th>
-                  <th className="py-2.5 pb-3 px-2 w-32 text-right">Amount (₹)</th>
-                  <th className="py-2.5 pb-3 text-right w-12"></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-100 dark:divide-stone-850">
-                {items.map((item, index) => (
-                  <tr key={index} className="align-middle">
-                    {/* Item Name autofill autocomplete select + input */}
-                    <td className="py-3 pr-2">
-                      <div className="relative">
+            {/* Desktop Table View (Hidden on mobile) */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full text-left min-w-[700px] border-collapse text-xs">
+                <thead>
+                  <tr className="text-[10px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 border-b border-stone-100 dark:border-stone-800">
+                    <th className="py-2.5 pb-3">Item Description</th>
+                    <th className="py-2.5 pb-3 px-2 w-16 text-right">Length</th>
+                    <th className="py-2.5 pb-3 px-2 w-16 text-right">Width</th>
+                    <th className="py-2.5 pb-3 px-2 w-16 text-right">Mult</th>
+                    <th className="py-2.5 pb-3 px-2 w-20 text-right">Qty</th>
+                    <th className="py-2.5 pb-3 px-2 w-24">Unit</th>
+                    <th className="py-2.5 pb-3 px-2 w-28 text-right">Rate (₹)</th>
+                    <th className="py-2.5 pb-3 px-2 w-32 text-right">Amount (₹)</th>
+                    <th className="py-2.5 pb-3 text-right w-12"></th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100 dark:divide-stone-850">
+                  {items.map((item, index) => (
+                    <tr key={index} className="align-middle">
+                      {/* Item Name autofill autocomplete select + input */}
+                      <td className="py-3 pr-2">
+                        <div className="relative">
+                          <input
+                            type="text"
+                            list="items-autocomplete"
+                            value={item.itemName}
+                            onChange={(e) => handleItemChange(index, "itemName", e.target.value)}
+                            placeholder="Select or enter item"
+                            className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-semibold"
+                          />
+                          <datalist id="items-autocomplete">
+                            {priceCatalog.map((p) => {
+                              const bilingual = getBilingualItemName(p.name);
+                              return <option key={p.id} value={bilingual} />;
+                            })}
+                          </datalist>
+                        </div>
+                      </td>
+
+                      {/* Length */}
+                      <td className="py-3 px-2 w-16">
+                        <input
+                          type="number"
+                          step="any"
+                          placeholder="L"
+                          value={item.length === undefined ? "" : item.length}
+                          onChange={(e) => handleItemChange(index, "length", e.target.value)}
+                          className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                        />
+                      </td>
+
+                      {/* Width */}
+                      <td className="py-3 px-2 w-16">
+                        <input
+                          type="number"
+                          step="any"
+                          placeholder="W"
+                          value={item.width === undefined ? "" : item.width}
+                          onChange={(e) => handleItemChange(index, "width", e.target.value)}
+                          className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                        />
+                      </td>
+
+                      {/* Multiplier */}
+                      <td className="py-3 px-2 w-16">
+                        <input
+                          type="number"
+                          step="any"
+                          placeholder="Mult"
+                          value={item.multiplier === undefined ? "" : item.multiplier}
+                          onChange={(e) => handleItemChange(index, "multiplier", e.target.value)}
+                          className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                        />
+                      </td>
+
+                      {/* Qty */}
+                      <td className="py-3 px-2 w-20">
+                        <input
+                          type="number"
+                          step="any"
+                          value={item.quantity}
+                          onChange={(e) => handleItemChange(index, "quantity", e.target.value)}
+                          placeholder="Qty"
+                          readOnly={item.length !== undefined && item.width !== undefined && item.length > 0 && item.width > 0}
+                          className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium read-only:opacity-75"
+                        />
+                      </td>
+
+                      {/* Unit */}
+                      <td className="py-3 px-2 w-24">
                         <input
                           type="text"
-                          list="items-autocomplete"
-                          value={item.itemName}
-                          onChange={(e) => handleItemChange(index, "itemName", e.target.value)}
-                          placeholder="Select or enter item"
-                          className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-semibold"
+                          value={item.unit}
+                          onChange={(e) => handleItemChange(index, "unit", e.target.value)}
+                          placeholder="e.g. sq.ft"
+                          className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100"
                         />
-                        <datalist id="items-autocomplete">
-                          {priceCatalog.map((p) => {
-                            const bilingual = getBilingualItemName(p.name);
-                            return <option key={p.id} value={bilingual} />;
-                          })}
-                        </datalist>
-                      </div>
-                    </td>
+                      </td>
 
-                    {/* Length */}
-                    <td className="py-3 px-2 w-16">
+                      {/* Rate */}
+                      <td className="py-3 px-2 w-28">
+                        <input
+                          type="number"
+                          value={item.rate}
+                          onChange={(e) => handleItemChange(index, "rate", e.target.value)}
+                          className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-semibold"
+                        />
+                      </td>
+
+                      {/* Amount */}
+                      <td className="py-3 px-2 text-right font-bold text-stone-900 dark:text-white leading-none w-32">
+                        ₹{item.amount.toLocaleString("en-IN", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
+                      </td>
+
+                      {/* Delete */}
+                      <td className="py-3 text-right w-12">
+                        <button
+                          type="button"
+                          onClick={() => removeItemRow(index)}
+                          className="p-2 text-stone-400 hover:text-red-500 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-850 cursor-pointer"
+                          title="Delete line"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Cards View (Shown only on mobile) */}
+            <div className="md:hidden space-y-4">
+              {items.map((item, index) => (
+                <div
+                  key={index}
+                  className="p-4 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-950/20 space-y-3 relative"
+                >
+                  {/* Card header */}
+                  <div className="flex justify-between items-center border-b border-stone-200/60 dark:border-stone-850 pb-2">
+                    <span className="font-outfit font-black text-xs text-stone-500 dark:text-stone-400">
+                      Line Item #{index + 1}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => removeItemRow(index)}
+                      className="p-1.5 text-stone-400 hover:text-red-500 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-800 transition cursor-pointer"
+                      title="Delete line"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </div>
+
+                  {/* Input description */}
+                  <div className="space-y-1">
+                    <label className="block text-[9px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500">
+                      Item Description
+                    </label>
+                    <input
+                      type="text"
+                      list="items-autocomplete"
+                      value={item.itemName}
+                      onChange={(e) => handleItemChange(index, "itemName", e.target.value)}
+                      placeholder="Select or enter item"
+                      className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs bg-white dark:bg-stone-900 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-semibold"
+                    />
+                  </div>
+
+                  {/* L, W, Mult */}
+                  <div className="grid grid-cols-3 gap-2">
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">
+                        Length
+                      </label>
                       <input
                         type="number"
                         step="any"
                         placeholder="L"
                         value={item.length === undefined ? "" : item.length}
                         onChange={(e) => handleItemChange(index, "length", e.target.value)}
-                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-xs text-right bg-white dark:bg-stone-900 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
                       />
-                    </td>
-
-                    {/* Width */}
-                    <td className="py-3 px-2 w-16">
+                    </div>
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">
+                        Width
+                      </label>
                       <input
                         type="number"
                         step="any"
                         placeholder="W"
                         value={item.width === undefined ? "" : item.width}
                         onChange={(e) => handleItemChange(index, "width", e.target.value)}
-                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-xs text-right bg-white dark:bg-stone-900 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
                       />
-                    </td>
-
-                    {/* Multiplier */}
-                    <td className="py-3 px-2 w-16">
+                    </div>
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">
+                        Mult
+                      </label>
                       <input
                         type="number"
                         step="any"
                         placeholder="Mult"
                         value={item.multiplier === undefined ? "" : item.multiplier}
                         onChange={(e) => handleItemChange(index, "multiplier", e.target.value)}
-                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-2 py-2 text-xs text-right bg-white dark:bg-stone-900 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
                       />
-                    </td>
+                    </div>
+                  </div>
 
-                    {/* Qty */}
-                    <td className="py-3 px-2 w-20">
+                  {/* Qty, Unit */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">
+                        Qty
+                      </label>
                       <input
                         type="number"
                         step="any"
@@ -532,56 +673,53 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
                         onChange={(e) => handleItemChange(index, "quantity", e.target.value)}
                         placeholder="Qty"
                         readOnly={item.length !== undefined && item.width !== undefined && item.length > 0 && item.width > 0}
-                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium read-only:opacity-75"
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs text-right bg-white dark:bg-stone-900 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium read-only:opacity-75"
                       />
-                    </td>
-
-                    {/* Unit */}
-                    <td className="py-3 px-2 w-24">
+                    </div>
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">
+                        Unit
+                      </label>
                       <input
                         type="text"
                         value={item.unit}
                         onChange={(e) => handleItemChange(index, "unit", e.target.value)}
                         placeholder="e.g. sq.ft"
-                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100"
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs bg-white dark:bg-stone-900 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-medium"
                       />
-                    </td>
+                    </div>
+                  </div>
 
-                    {/* Rate */}
-                    <td className="py-3 px-2 w-28">
+                  {/* Rate, Amount */}
+                  <div className="grid grid-cols-2 gap-2 pt-1">
+                    <div>
+                      <label className="block text-[9px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">
+                        Rate (₹)
+                      </label>
                       <input
                         type="number"
                         value={item.rate}
                         onChange={(e) => handleItemChange(index, "rate", e.target.value)}
-                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-right bg-stone-50/50 dark:bg-stone-950 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-semibold"
+                        className="block w-full border border-stone-200 dark:border-stone-800 rounded-xl px-3 py-2 text-xs text-right bg-white dark:bg-stone-900 focus:outline-none focus:border-primary text-stone-800 dark:text-stone-100 font-semibold"
                       />
-                    </td>
-
-                    {/* Amount */}
-                    <td className="py-3 px-2 text-right font-bold text-stone-900 dark:text-white leading-none w-32">
-                      ₹{item.amount.toLocaleString("en-IN", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
-                    </td>
-
-                    {/* Delete */}
-                    <td className="py-3 text-right w-12">
-                      <button
-                        type="button"
-                        onClick={() => removeItemRow(index)}
-                        className="p-2 text-stone-400 hover:text-red-500 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-850 cursor-pointer"
-                        title="Delete line"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </div>
+                    <div className="flex flex-col justify-end text-right">
+                      <label className="block text-[9px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-1">
+                        Amount (₹)
+                      </label>
+                      <div className="py-2 px-1 font-bold text-sm text-stone-900 dark:text-white">
+                        ₹{item.amount.toLocaleString("en-IN", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
 
           {/* Card 3: Notes & Terms */}
-          <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-5">
+          <div className="bg-white dark:bg-stone-900 rounded-2xl p-4 sm:p-6 border border-stone-100 dark:border-stone-800/80 shadow-sm space-y-4 sm:space-y-5">
             <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3">
               Remarks & Terms clauses
             </h3>
@@ -622,7 +760,7 @@ export default function EstimateForm({ initialData }: EstimateFormProps) {
         <div className="lg:col-span-4 space-y-6">
           
           {/* Card 1: Summary calculation details */}
-          <div className="bg-white dark:bg-stone-900 rounded-2xl p-6 border border-stone-100 dark:border-stone-800/80 shadow-md space-y-5">
+          <div className="bg-white dark:bg-stone-900 rounded-2xl p-4 sm:p-6 border border-stone-100 dark:border-stone-800/80 shadow-md space-y-4 sm:space-y-5">
             <h3 className="font-outfit font-extrabold text-stone-900 dark:text-white text-sm border-b border-stone-100 dark:border-stone-800 pb-3">
               Summary Calculation
             </h3>
