@@ -4,7 +4,7 @@
  */
 
 const getBaseUrl = (): string => {
-  return (process.env.NEXT_PUBLIC_SITE_URL || "https://panchalinterior.com").replace(/\/$/, "");
+  return (process.env.NEXT_PUBLIC_SITE_URL || "https://panchal-interior.vercel.app").replace(/\/$/, "");
 };
 
 /**

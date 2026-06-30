@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     title: "Contact Us — Schedule Site Measurement Visit | Panchal Interior",
     description:
       "Connect with Panchal Interior design team in Ahmedabad. Schedule a free site measurement visit or visit our factory workshop near Gota Bridge.",
-    url: "https://panchalinterior.com/contact",
+    url: "https://panchal-interior.vercel.app/contact",
     siteName: "Panchal Interior",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://panchalinterior.com/og-image.jpg",
+        url: "https://panchal-interior.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Contact Panchal Interior",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Contact Us — Schedule Site Measurement Visit | Panchal Interior",
     description:
       "Connect with Panchal Interior design team in Ahmedabad. Schedule a free site measurement visit or visit our factory workshop near Gota Bridge.",
-    images: ["https://panchalinterior.com/og-image.jpg"],
+    images: ["https://panchal-interior.vercel.app/og-image.jpg"],
   },
 };
 
@@ -62,7 +62,7 @@ export default function ContactPage() {
     "@type": "ContactPage",
     "name": "Contact Panchal Interior",
     "description": "Get in touch with Panchal Interior to schedule a site measurement visit in Ahmedabad.",
-    "url": "https://panchalinterior.com/contact",
+    "url": "https://panchal-interior.vercel.app/contact",
     "mainEntity": {
       "@type": "ProfessionalService",
       "name": "Panchal Interior & Furniture Solutions",

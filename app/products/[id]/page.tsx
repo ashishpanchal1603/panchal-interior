@@ -32,16 +32,16 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: `${product.name} — Custom ${categoryName}`,
     description: `${product.description} Handcrafted in Ahmedabad using premium materials. Materials: ${product.materials.join(", ")}. Dimensions: ${product.dimensions}.`,
     alternates: {
-      canonical: `https://panchalinterior.com/products/${product.id}`,
+      canonical: `https://panchal-interior.vercel.app/products/${product.id}`,
     },
     openGraph: {
       title: `${product.name} — Custom ${categoryName} | Panchal Interior`,
       description: `${product.description} Handcrafted in Ahmedabad using premium materials.`,
-      url: `https://panchalinterior.com/products/${product.id}`,
+      url: `https://panchal-interior.vercel.app/products/${product.id}`,
       type: "website",
       images: [
         {
-          url: "https://panchalinterior.com/og-image.jpg",
+          url: "https://panchal-interior.vercel.app/og-image.jpg",
           width: 1200,
           height: 630,
           alt: product.name,
@@ -52,7 +52,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: `${product.name} — Custom ${categoryName} | Panchal Interior`,
       description: `${product.description} Handcrafted in Ahmedabad using premium materials.`,
-      images: ["https://panchalinterior.com/og-image.jpg"],
+      images: ["https://panchal-interior.vercel.app/og-image.jpg"],
     },
   };
 }
@@ -73,7 +73,7 @@ export default async function ProductDetailPage(props: PageProps) {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.name,
-    "image": `https://panchalinterior.com${product.image}`,
+    "image": `https://panchal-interior.vercel.app${product.image}`,
     "description": product.description,
     "sku": product.id,
     "offers": {
@@ -94,19 +94,19 @@ export default async function ProductDetailPage(props: PageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://panchalinterior.com"
+        "item": "https://panchal-interior.vercel.app"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Products",
-        "item": "https://panchalinterior.com/products"
+        "item": "https://panchal-interior.vercel.app/products"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": product.name,
-        "item": `https://panchalinterior.com/products/${product.id}`
+        "item": `https://panchal-interior.vercel.app/products/${product.id}`
       }
     ]
   };

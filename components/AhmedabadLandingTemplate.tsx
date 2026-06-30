@@ -47,13 +47,13 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://panchalinterior.com"
+        "item": "https://panchal-interior.vercel.app"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": config.h1,
-        "item": `https://panchalinterior.com/${config.slug}`
+        "item": `https://panchal-interior.vercel.app/${config.slug}`
       }
     ]
   };
@@ -63,9 +63,9 @@ export default function AhmedabadLandingTemplate({ config }: LandingPageTemplate
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Panchal Interior ",
-    "image": "https://panchalinterior.com/images/hero.png",
-    "@id": `https://panchalinterior.com/${config.slug}/#localbusiness`,
-    "url": `https://panchalinterior.com/${config.slug}`,
+    "image": "https://panchal-interior.vercel.app/images/hero.png",
+    "@id": `https://panchal-interior.vercel.app/${config.slug}/#localbusiness`,
+    "url": `https://panchal-interior.vercel.app/${config.slug}`,
     "telephone": "+919664956491",
     "priceRange": "$$",
     "address": {

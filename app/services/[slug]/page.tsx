@@ -32,16 +32,16 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: `${service.name} — Custom Solutions in Ahmedabad`,
     description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
     alternates: {
-      canonical: `https://panchalinterior.com/services/${service.slug}`,
+      canonical: `https://panchal-interior.vercel.app/services/${service.slug}`,
     },
     openGraph: {
       title: `${service.name} — Custom Solutions in Ahmedabad | Panchal Interior`,
       description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
-      url: `https://panchalinterior.com/services/${service.slug}`,
+      url: `https://panchal-interior.vercel.app/services/${service.slug}`,
       type: "website",
       images: [
         {
-          url: "https://panchalinterior.com/og-image.jpg",
+          url: "https://panchal-interior.vercel.app/og-image.jpg",
           width: 1200,
           height: 630,
           alt: `${service.name} Custom Woodworking`,
@@ -52,7 +52,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: `${service.name} — Custom Solutions in Ahmedabad | Panchal Interior`,
       description: `${service.description} Custom-built in our local Gota workshop. View 3D layout designs and execution specifications.`,
-      images: ["https://panchalinterior.com/og-image.jpg"],
+      images: ["https://panchal-interior.vercel.app/og-image.jpg"],
     },
   };
 }
@@ -83,9 +83,9 @@ export default async function ServiceDetailPage(props: PageProps) {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": `Panchal ${service.name} Services`,
-    "image": `https://panchalinterior.com${service.image}`,
-    "@id": `https://panchalinterior.com/services/${service.slug}/#service`,
-    "url": `https://panchalinterior.com/services/${service.slug}`,
+    "image": `https://panchal-interior.vercel.app${service.image}`,
+    "@id": `https://panchal-interior.vercel.app/services/${service.slug}/#service`,
+    "url": `https://panchal-interior.vercel.app/services/${service.slug}`,
     "telephone": "+919664956491",
     "address": {
       "@type": "PostalAddress",
@@ -105,19 +105,19 @@ export default async function ServiceDetailPage(props: PageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://panchalinterior.com"
+        "item": "https://panchal-interior.vercel.app"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://panchalinterior.com/services"
+        "item": "https://panchal-interior.vercel.app/services"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": service.name,
-        "item": `https://panchalinterior.com/services/${service.slug}`
+        "item": `https://panchal-interior.vercel.app/services/${service.slug}`
       }
     ]
   };

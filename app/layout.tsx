@@ -28,7 +28,7 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const productionUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://panchalinterior.com").replace(/\/$/, "");
+const productionUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://panchal-interior.vercel.app").replace(/\/$/, "");
 
 export const metadata: Metadata = {
   metadataBase: new URL(productionUrl),

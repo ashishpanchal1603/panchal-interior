@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     title: "About Our Story & Craftsmanship | Panchal Interior",
     description:
       "Learn about Panchal Interior, Ahmedabad's leading custom wood furniture manufacturing and turnkey home interior solution firm since 2011.",
-    url: "https://panchalinterior.com/about",
+    url: "https://panchal-interior.vercel.app/about",
     siteName: "Panchal Interior",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://panchalinterior.com/og-image.jpg",
+        url: "https://panchal-interior.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Panchal Interior Custom Furniture Story",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "About Our Story & Craftsmanship | Panchal Interior",
     description:
       "Learn about Panchal Interior, Ahmedabad's leading custom wood furniture manufacturing and turnkey home interior solution firm since 2011.",
-    images: ["https://panchalinterior.com/og-image.jpg"],
+    images: ["https://panchal-interior.vercel.app/og-image.jpg"],
   },
 };
 
@@ -61,9 +61,9 @@ export default function AboutPage() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Panchal Interior & Furniture Solutions",
-    "image": "https://panchalinterior.com/images/hero.png",
-    "@id": "https://panchalinterior.com/about/#professionalservice",
-    "url": "https://panchalinterior.com/about",
+    "image": "https://panchal-interior.vercel.app/images/hero.png",
+    "@id": "https://panchal-interior.vercel.app/about/#professionalservice",
+    "url": "https://panchal-interior.vercel.app/about",
     "telephone": "+919664956491",
     "address": {
       "@type": "PostalAddress",

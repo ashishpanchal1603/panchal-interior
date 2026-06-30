@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   description:
     "Bespoke furniture manufacturing, modular kitchens, wardrobes, sofa sets, and turnkey residential/commercial interior designs in Ahmedabad, Gujarat. 5-year warranty.",
   alternates: {
-    canonical: "https://panchalinterior.com",
+    canonical: "https://panchal-interior.vercel.app",
   },
 };
 
@@ -117,9 +117,9 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Panchal Interior & Furniture Solutions",
-    "image": "https://panchalinterior.com/images/hero.png",
-    "@id": "https://panchalinterior.com/#localbusiness",
-    "url": "https://panchalinterior.com",
+    "image": "https://panchal-interior.vercel.app/images/hero.png",
+    "@id": "https://panchal-interior.vercel.app/#localbusiness",
+    "url": "https://panchal-interior.vercel.app",
     "telephone": "+919664956491",
     "priceRange": "$$",
     "address": {
@@ -148,9 +148,9 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "FurnitureStore",
     "name": "Panchal Interior & Furniture Solutions",
-    "image": "https://panchalinterior.com/images/sofa_set.png",
-    "@id": "https://panchalinterior.com/#furniturestore",
-    "url": "https://panchalinterior.com",
+    "image": "https://panchal-interior.vercel.app/images/sofa_set.png",
+    "@id": "https://panchal-interior.vercel.app/#furniturestore",
+    "url": "https://panchal-interior.vercel.app",
     "telephone": "+919664956491",
     "address": {
       "@type": "PostalAddress",
@@ -166,12 +166,12 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Panchal Interior & Furniture Solutions",
-    "url": "https://panchalinterior.com",
+    "url": "https://panchal-interior.vercel.app",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://panchalinterior.com/products?query={search_term_string}"
+        "urlTemplate": "https://panchal-interior.vercel.app/products?query={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }

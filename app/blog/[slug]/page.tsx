@@ -35,18 +35,18 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     title: `${post.title} — Panchal Interior Guide`,
     description: `${post.excerpt} Written by ${post.author}, Woodworking Expert & Founder at Panchal Interior.`,
     alternates: {
-      canonical: `https://panchalinterior.com/blog/${post.slug}`,
+      canonical: `https://panchal-interior.vercel.app/blog/${post.slug}`,
     },
     openGraph: {
       title: `${post.title} — Panchal Interior Guide`,
       description: post.excerpt,
-      url: `https://panchalinterior.com/blog/${post.slug}`,
+      url: `https://panchal-interior.vercel.app/blog/${post.slug}`,
       type: "article",
       publishedTime: publishDate,
       authors: [post.author],
       images: [
         {
-          url: "https://panchalinterior.com/og-image.jpg",
+          url: "https://panchal-interior.vercel.app/og-image.jpg",
           alt: post.title,
         },
       ],
@@ -55,7 +55,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: `${post.title} — Panchal Interior Guide`,
       description: post.excerpt,
-      images: ["https://panchalinterior.com/og-image.jpg"],
+      images: ["https://panchal-interior.vercel.app/og-image.jpg"],
     },
   };
 }
@@ -82,7 +82,7 @@ export default async function BlogDetailPage(props: PageProps) {
     "@type": "Article",
     "headline": post.title,
     "description": post.excerpt,
-    "image": `https://panchalinterior.com${post.image}`,
+    "image": `https://panchal-interior.vercel.app${post.image}`,
     "datePublished": publishDate,
     "dateModified": publishDate,
     "author": {
@@ -94,7 +94,7 @@ export default async function BlogDetailPage(props: PageProps) {
       "name": "Panchal Interior & Furniture Solutions",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://panchalinterior.com/icon-512.png",
+        "url": "https://panchal-interior.vercel.app/icon-512.png",
       },
     },
   };
@@ -107,19 +107,19 @@ export default async function BlogDetailPage(props: PageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://panchalinterior.com"
+        "item": "https://panchal-interior.vercel.app"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://panchalinterior.com/blog"
+        "item": "https://panchal-interior.vercel.app/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://panchalinterior.com/blog/${post.slug}`
+        "item": `https://panchal-interior.vercel.app/blog/${post.slug}`
       }
     ]
   };

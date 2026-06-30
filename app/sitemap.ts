@@ -7,7 +7,7 @@ const parseDate = (dateStr: string): Date => {
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://panchalinterior.com").replace(/\/$/, "");
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://panchal-interior.vercel.app").replace(/\/$/, "");
 
   // Static site routes
   const staticUrls = [

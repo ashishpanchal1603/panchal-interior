@@ -40,16 +40,16 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       "Gota furniture workshop"
     ],
     alternates: {
-      canonical: `https://panchalinterior.com/projects/${project.slug}`,
+      canonical: `https://panchal-interior.vercel.app/projects/${project.slug}`,
     },
     openGraph: {
       title: `${project.title} | Premium Interior Portfolio | Panchal Interior`,
       description: `${project.description} Handcrafted custom finishes completed in ${project.location} by Panchal Interior.`,
-      url: `https://panchalinterior.com/projects/${project.slug}`,
+      url: `https://panchal-interior.vercel.app/projects/${project.slug}`,
       type: "website",
       images: [
         {
-          url: "https://panchalinterior.com/og-image.jpg",
+          url: "https://panchal-interior.vercel.app/og-image.jpg",
           width: 1200,
           height: 630,
           alt: project.title,
@@ -60,7 +60,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary_large_image",
       title: `${project.title} | Premium Interior Portfolio | Panchal Interior`,
       description: `${project.description} Handcrafted custom finishes completed in ${project.location} by Panchal Interior.`,
-      images: ["https://panchalinterior.com/og-image.jpg"],
+      images: ["https://panchal-interior.vercel.app/og-image.jpg"],
     },
   };
 }
@@ -81,7 +81,7 @@ export default async function ProjectDetailPage(props: PageProps) {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     "name": project.title,
-    "image": `https://panchalinterior.com${project.image}`,
+    "image": `https://panchal-interior.vercel.app${project.image}`,
     "description": project.description,
     "locationCreated": {
       "@type": "Place",
@@ -90,7 +90,7 @@ export default async function ProjectDetailPage(props: PageProps) {
     "creator": {
       "@type": "Organization",
       "name": "Panchal Interior & Furniture Solutions",
-      "url": "https://panchalinterior.com",
+      "url": "https://panchal-interior.vercel.app",
     },
   };
 
@@ -121,19 +121,19 @@ export default async function ProjectDetailPage(props: PageProps) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://panchalinterior.com"
+        "item": "https://panchal-interior.vercel.app"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Projects",
-        "item": "https://panchalinterior.com/projects"
+        "item": "https://panchal-interior.vercel.app/projects"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": project.title,
-        "item": `https://panchalinterior.com/projects/${project.slug}`
+        "item": `https://panchal-interior.vercel.app/projects/${project.slug}`
       }
     ]
   };
